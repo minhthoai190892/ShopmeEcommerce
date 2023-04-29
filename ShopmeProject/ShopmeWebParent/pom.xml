@@ -12,6 +12,7 @@
 	<artifactId>ShopmeWebParent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ShopmeWebParent</name>
+	<!-- thay đổi gói cho dự án-->
 	<packaging>pom</packaging>
 	<description>Parent spring web project</description>
 	<properties>
