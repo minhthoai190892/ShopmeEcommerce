@@ -275,3 +275,285 @@
 2023-04-29 12:49:37,742 [Worker-81: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.shopme:ShopmeWebParent:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\pom.xml.
 2023-04-29 12:49:37,839 [Worker-81: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeBackEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\pom.xml.
 2023-04-29 12:49:38,114 [Worker-81: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeFontEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\pom.xml.
+2023-04-30 00:22:02,847 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-04-30 00:22:07,600 [Worker-12: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeBackEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\pom.xml.
+2023-04-30 00:22:08,578 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:22:08,633 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:22:08,667 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:22:09,963 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:22:09,979 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:22:09,986 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeCommon\src\test\resources
+2023-04-30 00:22:10,987 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:22:11,021 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:22:11,043 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\src\test\resources
+2023-04-30 00:22:13,206 [Worker-0: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.shopme:ShopmeWebParent:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\pom.xml.
+2023-04-30 00:22:13,312 [Worker-0: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeFontEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\pom.xml.
+2023-04-30 00:22:13,417 [Worker-0: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeBackEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\pom.xml.
+2023-04-30 00:25:42,249 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:25:42,251 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:25:42,258 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:26:06,512 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:26:06,513 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:26:06,517 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:26:11,574 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:26:11,574 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:26:11,578 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:26:56,274 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:26:56,274 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:26:56,279 [Worker-18: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:27:23,276 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:27:23,276 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:27:23,280 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:29:18,790 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:29:18,790 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:29:18,793 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:30:32,583 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:30:32,584 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:30:32,589 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:31:16,312 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:31:16,313 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:31:16,319 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:31:27,109 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:31:27,110 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:31:27,115 [Worker-19: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:31:38,467 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:31:38,467 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:31:38,471 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:32:42,892 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606 [346])
+2023-04-30 00:32:42,896 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606
+2023-04-30 00:32:42,897 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\aether-connector-okhttp-0.17.8.jar
+2023-04-30 00:32:42,897 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\commons-lang3-3.8.1.jar
+2023-04-30 00:32:42,897 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\guice-4.2.2-no_aop.jar
+2023-04-30 00:32:42,897 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\jansi-2.4.0.jar
+2023-04-30 00:32:42,897 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-artifact-3.8.7.jar
+2023-04-30 00:32:42,897 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-builder-support-3.8.7.jar
+2023-04-30 00:32:42,898 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-compat-3.8.7.jar
+2023-04-30 00:32:42,898 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-core-3.8.7.jar
+2023-04-30 00:32:42,898 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-embedder-3.8.7.jar
+2023-04-30 00:32:42,898 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-model-3.8.7.jar
+2023-04-30 00:32:42,898 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-model-builder-3.8.7.jar
+2023-04-30 00:32:42,898 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-plugin-api-3.8.7.jar
+2023-04-30 00:32:42,898 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-repository-metadata-3.8.7.jar
+2023-04-30 00:32:42,899 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-resolver-api-1.6.3.jar
+2023-04-30 00:32:42,899 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-resolver-connector-basic-1.6.3.jar
+2023-04-30 00:32:42,899 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-resolver-impl-1.6.3.jar
+2023-04-30 00:32:42,899 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-resolver-provider-3.8.7.jar
+2023-04-30 00:32:42,899 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-resolver-spi-1.6.3.jar
+2023-04-30 00:32:42,899 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-resolver-transport-wagon-1.6.3.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-resolver-util-1.6.3.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-settings-3.8.7.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-settings-builder-3.8.7.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\maven-shared-utils-3.3.4.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\okhttp-3.14.1.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\okio-1.17.3.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\org.eclipse.sisu.inject-0.3.5.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\org.eclipse.sisu.plexus-0.3.5.jar
+2023-04-30 00:32:42,900 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\plexus-build-api-0.0.7.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\plexus-cipher-2.0.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\plexus-classworlds-2.6.0.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\plexus-component-annotations-2.1.0.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\plexus-interpolation-1.26.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\plexus-sec-dispatcher-2.0.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\plexus-utils-3.3.1.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\wagon-file-3.5.3.jar
+2023-04-30 00:32:42,901 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.eclipse.m2e.maven.runtime_3.8.701.20230209-1606\jars\wagon-provider-api-3.5.3.jar
+2023-04-30 00:32:42,903 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_31.1.0.jre [23])
+2023-04-30 00:32:42,904 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\com.google.guava_31.1.0.jre.jar
+2023-04-30 00:32:42,904 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_1.7.36 [580])
+2023-04-30 00:32:42,906 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\slf4j.api_1.7.36.jar
+2023-04-30 00:32:42,906 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.inject_1.0.0.v20220405-0441 [50])
+2023-04-30 00:32:42,907 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\javax.inject_1.0.0.v20220405-0441.jar
+2023-04-30 00:32:42,907 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=javax.annotation_1.3.5.v20221203-1659 [48])
+2023-04-30 00:32:42,908 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\javax.annotation_1.3.5.v20221203-1659.jar
+2023-04-30 00:32:42,908 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.4.0.v20221112-0806 [73])
+2023-04-30 00:32:42,910 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\org.apache.commons.cli_1.4.0.v20221112-0806.jar
+2023-04-30 00:32:42,910 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.1 [25])
+2023-04-30 00:32:42,911 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\STS4\sts-4.18.0.RELEASE\plugins\com.google.guava.failureaccess_1.0.1.jar
+2023-04-30 00:32:42,913 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject":
+2023-04-30 00:32:42,914 [Worker-16: Launching Executing install in C__Users_ASUS_OneDrive_Máy tính_bootstrap_ShopmeEcommerce_ShopmeProject] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always install
+2023-04-30 00:32:51,191 [Worker-21: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeCommon:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeCommon\pom.xml.
+2023-04-30 00:32:51,394 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:32:51,406 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:32:51,411 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeCommon\src\test\resources
+2023-04-30 00:32:51,563 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:32:51,580 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:32:51,586 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\src\test\resources
+2023-04-30 00:33:07,785 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:33:07,786 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:33:07,790 [Worker-10: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\src\test\resources
+2023-04-30 00:33:10,089 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:33:10,090 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:33:10,093 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\src\test\resources
+2023-04-30 00:36:02,883 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:36:02,884 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:36:02,889 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:36:07,928 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:36:07,928 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:36:07,932 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:36:35,604 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:36:35,604 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:36:35,608 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:36:41,047 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:36:41,127 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-04-30 00:36:41,134 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:37:11,063 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:37:11,146 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2023-04-30 00:37:11,149 [Worker-20: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:37:52,931 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:37:52,931 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:37:52,943 [Worker-21: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:38:32,113 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:38:32,114 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:38:32,119 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:39:49,918 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:39:49,918 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:39:49,922 [Worker-16: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:40:22,509 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:40:22,509 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:40:22,512 [Worker-7: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:42:29,442 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:42:29,443 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:42:29,446 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:44:58,347 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:44:58,348 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:44:58,353 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:45:07,423 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:45:07,424 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:45:07,431 [Worker-22: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:46:19,923 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:46:19,923 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:46:19,926 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:47:44,961 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:47:44,974 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:47:44,981 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:49:16,887 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:49:16,888 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:49:16,891 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:49:53,097 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:49:53,097 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:49:53,101 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:50:48,206 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:50:48,206 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:50:48,206 [Worker-33: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:51:38,235 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:51:38,236 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:51:38,241 [Worker-35: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:53:52,580 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:53:52,581 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:53:52,584 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:58:02,958 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:58:02,958 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:58:02,961 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 00:59:07,545 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 00:59:07,547 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 00:59:07,550 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 01:01:57,575 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 01:01:57,575 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 01:01:57,575 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 01:03:14,725 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2023-04-30 01:03:14,725 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 01:03:14,725 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
+2023-04-30 01:05:04,810 [Worker-54: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.shopme:ShopmeWebParent:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\pom.xml.
+2023-04-30 01:05:04,941 [Worker-54: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeFontEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\pom.xml.
+2023-04-30 01:05:04,985 [Worker-54: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeBackEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\pom.xml.
+2023-04-30 01:05:34,726 [Worker-59: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.shopme:ShopmeWebParent:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\pom.xml.
+2023-04-30 01:05:34,937 [Worker-59: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeFontEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\pom.xml.
+2023-04-30 01:05:35,015 [Worker-59: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeBackEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\pom.xml.
+2023-04-30 01:05:36,721 [Worker-54: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-devtools/3.0.5/spring-boot-devtools-3.0.5-sources.jar
+2023-04-30 01:05:36,915 [Worker-54: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-devtools/3.0.5/spring-boot-devtools-3.0.5-sources.jar
+2023-04-30 01:05:36,918 [Worker-54: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.boot:spring-boot-devtools:3.0.5
+2023-04-30 01:05:36,924 [Worker-54: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.boot:spring-boot-devtools:3.0.5
+2023-04-30 01:05:36,930 [Worker-54: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.boot:spring-boot-devtools:3.0.5
+2023-04-30 01:05:53,661 [Worker-54: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.shopme:ShopmeWebParent:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\pom.xml.
+2023-04-30 01:05:53,847 [Worker-54: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeFontEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\pom.xml.
+2023-04-30 01:05:53,906 [Worker-54: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeBackEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\pom.xml.
+2023-04-30 01:07:52,285 [Worker-61: Building] ERROR o.e.m.c.i.p.r.ProjectRegistryManager - Could not read pom.xml
+org.eclipse.core.runtime.CoreException: Could not read pom.xml
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:236)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:585)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:485)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:362)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:314)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1020)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:247)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:392)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:395)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:506)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:454)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:536)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:196)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:289)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.apache.maven.model.io.ModelParseException: end tag name </dependency> must match start tag name <dependencies> from line 27 (position: TEXT seen ...</dependency>\n\t\n\t\t</dependency>... @42:16) 
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:117)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:85)
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:234)
+	... 24 common frames omitted
+Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: end tag name </dependency> must match start tag name <dependencies> from line 27 (position: TEXT seen ...</dependency>\n\t\n\t\t</dependency>... @42:16) 
+	at org.codehaus.plexus.util.xml.pull.MXParser.parseEndTag(MXParser.java:2090)
+	at org.codehaus.plexus.util.xml.pull.MXParser.nextImpl(MXParser.java:1361)
+	at org.codehaus.plexus.util.xml.pull.MXParser.next(MXParser.java:1319)
+	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1305)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2235)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:3872)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:595)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:112)
+	... 26 common frames omitted
+2023-04-30 01:07:53,510 [Worker-57: Building] ERROR o.e.m.c.i.p.r.ProjectRegistryManager - Could not read pom.xml
+org.eclipse.core.runtime.CoreException: Could not read pom.xml
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:236)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refreshPhase2(ProjectRegistryManager.java:585)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:485)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:362)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.refresh(ProjectRegistryManager.java:314)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.getProjectFacade(MavenBuilder.java:146)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.lambda$0(MavenBuilder.java:84)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.executeBare(MavenExecutionContext.java:394)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:275)
+	at org.eclipse.m2e.core.internal.embedder.MavenExecutionContext.execute(MavenExecutionContext.java:214)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder$BuildMethod.execute(MavenBuilder.java:83)
+	at org.eclipse.m2e.core.internal.builder.MavenBuilder.build(MavenBuilder.java:192)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1020)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:247)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:392)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:395)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:506)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:454)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:536)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:196)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:289)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.apache.maven.model.io.ModelParseException: end tag name </dependency> must match start tag name <dependencies> from line 27 (position: TEXT seen ...</dependency>\n\t\n\t\t</dependency>... @42:16) 
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:117)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:85)
+	at org.eclipse.m2e.core.internal.IMavenToolbox.readModel(IMavenToolbox.java:234)
+	... 24 common frames omitted
+Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: end tag name </dependency> must match start tag name <dependencies> from line 27 (position: TEXT seen ...</dependency>\n\t\n\t\t</dependency>... @42:16) 
+	at org.codehaus.plexus.util.xml.pull.MXParser.parseEndTag(MXParser.java:2090)
+	at org.codehaus.plexus.util.xml.pull.MXParser.nextImpl(MXParser.java:1361)
+	at org.codehaus.plexus.util.xml.pull.MXParser.next(MXParser.java:1319)
+	at org.codehaus.plexus.util.xml.pull.MXParser.nextTag(MXParser.java:1305)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.parseModel(MavenXpp3Reader.java:2235)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:3872)
+	at org.apache.maven.model.io.xpp3.MavenXpp3Reader.read(MavenXpp3Reader.java:595)
+	at org.apache.maven.model.io.DefaultModelReader.read(DefaultModelReader.java:112)
+	... 26 common frames omitted
+2023-04-30 01:07:59,856 [Worker-57: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.shopme:ShopmeWebParent:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\pom.xml.
+2023-04-30 01:08:00,037 [Worker-57: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeBackEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\pom.xml.
+2023-04-30 01:08:00,116 [Worker-57: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.shopme:ShopmeFontEnd:0.0.1-SNAPSHOT @ C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeFontEnd\pom.xml.
+2023-04-30 01:08:01,856 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2023-04-30 01:08:01,872 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 3 resources from src\main\resources to target\classes
+2023-04-30 01:08:01,882 [Worker-62: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\ASUS\OneDrive\Máy tính\bootstrap\ShopmeEcommerce\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\test\resources
