@@ -1,0 +1,4 @@
+#set port
+server.port=8081
+server.servlet.context-path=/ShopmeAdmin
+
