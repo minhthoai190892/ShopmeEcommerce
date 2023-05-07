@@ -31,7 +31,7 @@ public class UserRepositoryTests {
 		// lấy "id" của "role" trong bảng "roles" trong database
 		Role roleAdmin = entityManager.find(Role.class, 1);
 		// tạo mới "user"
-		User userThoai = new User("minhthoai@gmail.com", "123", "Nguyen", "Thoai");
+		User userThoai = new User("minhthoai@gmailqwe.com", "123", "Nguyen", "Thoaias");
 		// thêm "role" cho "user"
 		userThoai.addRole(roleAdmin);
 		// lưu "user" và database
@@ -43,15 +43,15 @@ public class UserRepositoryTests {
 	@Test
 	public void testCreateUserWithOneRoles() {
 		// tạo mới một "user"
-		User userDoan = new User("doanle@gmail.com", "123", "Le", "Doan");
+		User userDoann = new User("doanasdle@gmail.com", "123", "Le", "Doansdf");
 		// lấy "id" của "role"
 		Role roleEditor = new Role(3);
 		Role roleAssistant = new Role(5);
 		// thêm roles vào user
-		userDoan.addRole(roleAssistant);
-		userDoan.addRole(roleEditor);
+		userDoann.addRole(roleAssistant);
+		userDoann.addRole(roleEditor);
 		// lưu "user" vào database
-		User saveUser = repo.save(userDoan);
+		User saveUser = repo.save(userDoann);
 		// khẳng định
 		assertThat(saveUser.getId()).isGreaterThan(0);
 	}
