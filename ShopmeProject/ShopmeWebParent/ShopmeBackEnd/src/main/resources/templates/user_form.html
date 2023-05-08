@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>Manage User</title>
+  <title>Create New User</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -70,53 +70,56 @@
         </div>
       </nav>
       <div>
-        <h2>Manage User</h2>
-        <a th:href="@{/users/new}">Create New User</a>
+        <h2>Manage User | Create New User</h2>
       </div>
-      <!-- Thông báo lỗi bằng RedirectAttributes -->
-      <div th:if="${message!=null}" class="alert alert-success text-center">
-        [[${message}]]
-      </div>
-      <!-- tabel -->
-
-      <div class="table-responsive">
-        <table class="table table-striped
-        table-hover	
-        table-borderless
-        table-primary
-        align-middle">
-          <thead class="table-light">
-            <caption>Table Name</caption>
-            <tr>
-              <th>User Id</th>
-              <th>Photo</th>
-              <th>E-mail</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Role</th>
-              <th>Enable</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody class="table-group-divider">
-            <tr class="table-primary" th:each="user:${listUsers}">
-              <td>[[${user.id}]]</td>
-              <td>Photo</td>
-              <td>[[${user.email}]]</td>
-              <td>[[${user.firstName}]]</td>
-              <td>[[${user.lastName}]]</td>
-              <td>[[${user.roles}]]</td>
-              <td>[[${user.enable}]]</td>
-              <td>Edit | Delete</td>
-            </tr>
-
-          </tbody>
-          <tfoot>
-
-          </tfoot>
-        </table>
-      </div>
-
+      <!-- Form -->
+      <!-- th:object="${user}: "user" là thuộc tính "user" trong trong hàm newUser khi được model.addAttribute("user", user) -->
+      <!-- th:action="@{/users/save}" method="post" gọi phương thức "save" trong UserController với ánh xạ "POST MAPPING"-->
+      <form class="row g-3" th:action="@{/users/save}" method="post" th:object="${user}">
+        <div class="col-md-6">
+          <label for="inputfirstName" class="form-label">First Name:</label>
+          <!-- email là tên thuộc tính của lớp "User" --->
+          <input type="text" class="form-control" id="inputfirstName" th:field="*{firstName}" minlength="2"
+            maxlength="45">
+        </div>
+        <div class="col-md-6">
+          <label for="inputLastName" class="form-label">Last Name:</label>
+          <input type="text" class="form-control" id="inputLastName" th:field="*{lastName}" minlength="2"
+            maxlength="45">
+        </div>
+        <!-- col-12" -->
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">E-mail:</label>
+          <!-- email là tên thuộc tính của lớp "User" --->
+          <input type="email" class="form-control" id="inputEmail4" th:field="*{email}" required minlength="8"
+            maxlength="128">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="inputPassword4" th:field="*{password}" required minlength="8"
+            maxlength="128">
+        </div>
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Roles:</label>
+          <br>
+          <th:block th:each=" role : ${listRoles}">
+            <input type="checkbox"  th:field="*{roles}" class="m-2" th:text="${role.name}" th:value="${role.id}"> - <small>[[${role.description}]]</small> <br>
+          </th:block>
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <label class="form-check-label" for="gridCheck">
+              Enabled
+            </label>
+            <input class="form-check-input" type="checkbox" th:field="*{enable}" id="gridCheck">
+          </div>
+        </div>
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <a style="text-decoration: none;" th:href="@{/users}"> <button type="button" class="btn btn-secondary" id="buttonCancel">Cancel</button></a>
+        </div>
+      </form>
 
 
       <div>
@@ -128,6 +131,13 @@
     <!-- place footer here -->
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
+  <!-- <script type="text/JavaScript">
+    $(document).ready(function(){
+      $("#buttonCancel").on("click",function(){
+        window.location = "[[@{/users}]]";
+      });
+    });
+  </script> -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
     </script>
