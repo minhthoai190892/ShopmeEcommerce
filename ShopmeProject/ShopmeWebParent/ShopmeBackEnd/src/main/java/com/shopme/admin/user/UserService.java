@@ -3,6 +3,7 @@ package com.shopme.admin.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.shopme.common.entity.Role;
@@ -15,7 +16,9 @@ public class UserService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
-	
+	//khai báo lơp 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	
 	public List<User> listAll(){
@@ -25,7 +28,15 @@ public class UserService {
 		return (List<Role>) roleRepository.findAll();
 	}
 	public void save(User user) {
-		// TODO Auto-generated method stub
+		// gọi hàm mã hóa mật khẩu
+		encodePassword(user);
+		//lưu "user"
 		userRepository.save(user);
+	}
+	private void encodePassword(User user) {
+		//mã hóa mật khẩu người dùng
+		String encodePassword = passwordEncoder.encode(user.getPassword());
+		//thây đổi mật khảu người dùng bằng mật khẩu đã mã hóa
+		user.setPassword(encodePassword);
 	}
 } 
