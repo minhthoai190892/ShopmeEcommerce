@@ -10,7 +10,10 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" th:href="@{fontawesome/all.css}" type="text/css">
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
 
 <body>
@@ -101,13 +104,16 @@
           <tbody class="table-group-divider">
             <tr class="table-primary" th:each="user:${listUsers}">
               <td>[[${user.id}]]</td>
-              <td>Photo</td>
+              <td><i class="fa-solid fa-image-portrait fa-2xl icon-dark"></i></td>
               <td>[[${user.email}]]</td>
               <td>[[${user.firstName}]]</td>
               <td>[[${user.lastName}]]</td>
               <td>[[${user.roles}]]</td>
-              <td>[[${user.enable}]]</td>
-              <td>Edit | Delete</td>
+              <td>
+                <a style="text-decoration: none;" href="" th:if="${user.enable == true}" class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>
+                <a style="text-decoration: none;" href="" th:if="${user.enable == false}" class="fa-sharp fa-solid fa-circle-check fa-2xl icon-dark"></a>
+              </td>
+              <td><i class="fa-solid fa-pen-to-square fa-2xl icon-green"></i> | <i class="fa-solid fa-trash fa-2xl icon-red"></i></i></td>
             </tr>
 
           </tbody>
