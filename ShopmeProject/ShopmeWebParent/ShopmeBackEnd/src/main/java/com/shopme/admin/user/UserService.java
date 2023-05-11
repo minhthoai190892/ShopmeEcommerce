@@ -1,6 +1,7 @@
 package com.shopme.admin.user;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,8 +31,29 @@ public class UserService {
 	}
 
 	public void save(User user) {
-		// gọi hàm mã hóa mật khẩu
-		encodePassword(user);
+		//kiểm tra cập nhật
+//		tạo biến boolen để kiểm tra xem id người dùng đã có hay chưa
+		boolean isUpdatingUser = (user.getId() !=null);//==>người dùng đã tồn tại
+		//kiểm tra trạng thái update hay không
+		if (isUpdatingUser) {//==> đang update user
+			//lấy người dùng đã tồn tại
+			User existingUser = userRepository.findById(user.getId()).get();
+			//kiểm tra biếu mẫu ở html có trống không
+			if (user.getPassword().isEmpty()) {//=>biếu mẫu trên html trống
+				//muốn giữ lại password
+				//--ta lấy lại password từ csdl
+				user.setPassword(existingUser.getPassword());
+			}else {//=>biếu mẫu trên html không trống
+				//muốn đổi lại password
+				//--ta mã hóa lại password
+				encodePassword(user);
+			}
+		} else {//nếu không update thì phải đặt mật khẩu
+			
+			// gọi hàm mã hóa mật khẩu
+			encodePassword(user);
+		}
+		
 		// lưu "user"
 		userRepository.save(user);
 	}
@@ -47,11 +69,44 @@ public class UserService {
 	 * @param email email cần tìm
 	 * @return true/false
 	 */
-	public boolean isEmailUnique(String email) {
+	@SuppressWarnings("unused")
+	public boolean isEmailUnique(Integer id,String email) {
 		// lấy user bằng email
 		User userByEmail = userRepository.getUserByEmail(email);
-		//userByEmail = null: thì người dùng là duy nhất
-		return userByEmail == null;
+		//kiểm tra email có phải là duy nhất không
+		if (userByEmail == null) {
+			//nếu đúng thì email đó là duy nhất trong csdl
+			return true;
+		}
+		//kiểm tra người đung đang được chỉnh sửa
+		//---tạo biến boolen để kiểm tra người dùng đã có hay chưa
+		boolean isCreatingNew = (id==null);//==>người dùng mới 
+		//kiểm ra xem isCreatingNew là mới hay củ
+		if (isCreatingNew) {
+			//kiểm tra email user có hay chưa
+			if (userByEmail !=null) {
+				//nếu user email đã tồn tại
+				return false;
+			}
+		}else {
+			//kiểm tra id của người với id được chỉnh sủa
+			if (userByEmail.getId()!= id) {
+				//==> email không phải là duy nhất
+				return false;
+			}
+		}
+		
+		return true;
 
+	}
+
+	public User get(Integer id) throws UserNotFoundException {
+		try {
+			return userRepository.findById(id).get();
+		} catch (NoSuchElementException ex) {
+			// gọi lớp
+			throw new UserNotFoundException("Could not find any user with id: "+id);
+		}
+	
 	}
 }

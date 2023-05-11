@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>Manage User</title>
+<!-- lấy giá trị title từ controller -->
+  <title>Manage User </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -113,7 +114,7 @@
                 <a style="text-decoration: none;" href="" th:if="${user.enable == true}" class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>
                 <a style="text-decoration: none;" href="" th:if="${user.enable == false}" class="fa-sharp fa-solid fa-circle-check fa-2xl icon-dark"></a>
               </td>
-              <td><i class="fa-solid fa-pen-to-square fa-2xl icon-green"></i> | <i class="fa-solid fa-trash fa-2xl icon-red"></i></i></td>
+              <td><a class="fa-solid fa-pen-to-square fa-2xl icon-green" th:href="@{'/users/edit/'+${user.id}}"></a> | <i class="fa-solid fa-trash fa-2xl icon-red"></i></i></td>
             </tr>
 
           </tbody>
@@ -144,3 +145,9 @@
 </body>
 
 </html>
+
+
+
+
+
+

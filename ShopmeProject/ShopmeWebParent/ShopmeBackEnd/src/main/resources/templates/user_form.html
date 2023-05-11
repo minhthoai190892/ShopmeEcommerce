@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <title>Create New User</title>
+  <!-- lấy title từ controller -->
+  <title>[[${pageTitle}]]</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -70,13 +71,15 @@
         </div>
       </nav>
       <div>
-        <h2>Manage User | Create New User</h2>
+        <h2>Manage User | [[${pageTitle}]]</h2>
       </div>
       <!-- Form -->
       <!-- th:object="${user}: "user" là thuộc tính "user" trong trong hàm newUser khi được model.addAttribute("user", user) -->
       <!-- th:action="@{/users/save}" method="post" gọi phương thức "save" trong UserController với ánh xạ "POST MAPPING"-->
       <form class="row g-3" th:action="@{/users/save}" method="post" th:object="${user}"
         onsubmit="return checkEmailUnique(this)">
+        <!-- lưu id người dùng  -->
+        <input type="hidden" id="id" th:field="*{id}">
         <div class="col-md-6">
           <label for="inputfirstName" class="form-label">First Name:</label>
           <!-- email là tên thuộc tính của lớp "User" --->
@@ -97,7 +100,9 @@
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Password:</label>
-          <input type="password" class="form-control" id="inputPassword4" th:field="*{password}" required minlength="8"
+          <input  type="password" class="form-control" id="inputPassword4" th:field="*{password}" th:if="${user.id==null}" required minlength="8"
+            maxlength="128">  
+            <input type="password" class="form-control" id="inputPassword4" th:field="*{password}" th:if="${user.id!=null}"   minlength="8"
             maxlength="128">
         </div>
         <div class="col-12">
@@ -180,11 +185,13 @@
         // xác định đường dẫn của dịch vụ web (UserRestService)
         url = "[[@{/users/check_email}]]";//==> nhận được giá trị của trường biểu mẫu
         userEmail = $("#email").val();
+        // lấy id người dùng
+        userId = $("#id").val();
         // //đọc giá trị csrf của trang web
         csrfValue=$("input[name='_csrf']").val();
         // khai báo 1 mảng email người dùng và thông số của csrf
         //email: userEmail là tham số 
-        params = {email: userEmail,_csrf: csrfValue};
+        params = {id: userId, email: userEmail,_csrf: csrfValue};
         // gọi AJAX đến dịch vụ web bằng phương thức post của JQuery
         //tải một trang web từ xa
         /*
