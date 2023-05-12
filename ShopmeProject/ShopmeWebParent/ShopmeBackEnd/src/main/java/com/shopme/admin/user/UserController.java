@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -46,6 +47,7 @@ public class UserController {
 		model.addAttribute("user", user);
 		//thêm listrole vào model
 		model.addAttribute("listRoles", listRoles);
+		model.addAttribute("pageTitle", "Create New User");
 		//trả về form html
 		return "user_form";
 	}
@@ -60,4 +62,48 @@ public class UserController {
 		
 		return "redirect:/users";
 	}
+	// ánh xạ đường dẫn để lấy người dùng
+	@GetMapping("/users/edit/{id}")
+	public String editUser(@PathVariable(name = "id")Integer id //lấy id từ trang html
+			,RedirectAttributes redirectAttributes //thông báo cho trang html
+			,Model model 
+			) {
+		try {
+			//lấy thông tin của người dùng
+			User user = service.get(id);
+			//lấy danh sách Role
+			List<Role> listRoles = service.listRoles();
+			//có người dùng ta đặt vào model
+			model.addAttribute("user", user);
+			model.addAttribute("pageTitle", "Edit User");
+			model.addAttribute("listRoles", listRoles);
+			//trả về form user_form
+			return "user_form";
+		} catch (UserNotFoundException e) {
+			//dùng để hiện thông báo trên trang html
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			//không tìm thấy trả về trang users 
+			return "redirect:/users";
+		}
+	}
+	
+	@GetMapping("/users/delete/{id}")
+	public String deleteUser(@PathVariable(name = "id")Integer id //lấy id từ trang html
+			,RedirectAttributes redirectAttributes //thông báo cho trang html
+			,Model model 
+			) {
+		try {
+			//xóa user
+			service.delete(id);
+			//thông báo 
+			redirectAttributes.addFlashAttribute("message", "The user ID "+id+" has been deleted successfully");
+			
+		} catch (UserNotFoundException e) {
+			//dùng để hiện thông báo trên trang html
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			//không tìm thấy trả về trang users 
+		}
+		return "redirect:/users";
+	}
+	
 }

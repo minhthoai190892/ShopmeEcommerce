@@ -77,32 +77,50 @@ public class UserRepositoryTests {
 	public void testUpdateUserDetails() {
 		// lấy id của người dùng
 		User userThoai = repo.findById(3).get();
-		//cập nhật dữ liệu
+		// cập nhật dữ liệu
 		userThoai.setEmail("Lethidoan@gmail.com");
 		userThoai.setEnable(true);
-		//lưu lại user
+		// lưu lại user
 		repo.save(userThoai);
 	}
+
 	@Test
 	public void testUpdateUserRoles() {
-		//lấy user
+		// lấy user
 		User userDoan = repo.findById(3).get();
-		//lấy role
+		// lấy role
 		Role roleEditor = new Role(3);
 		Role roleShipper = new Role(4);
-		//xóa một role
+		// xóa một role
 		userDoan.getRoles().remove(roleEditor);
-		//thêm một role mới
+		// thêm một role mới
 		userDoan.addRole(roleShipper);
-		//lưu lại thông tin
+		// lưu lại thông tin
 		repo.save(userDoan);
-		
+
 	}
+
 	@Test
 	public void testDeleteUser() {
-		//lấy "id" của "user"
+		// lấy "id" của "user"
 		Integer id = 1;
-		//xóa "user" bằng id
+		// xóa "user" bằng id
 		repo.deleteById(id);
 	}
+
+	@Test
+	public void testGetUserByEmail() {
+		// lấy user bằng email
+		String email = "thoainguyen@gmail.com";
+		User user = repo.getUserByEmail(email);
+		System.out.println(user);
+		assertThat(user).isNotNull();
+	}
+	@Test
+	public void testCountById() {
+		Integer id =10;
+		Long countById = repo.countById(id);
+		assertThat(countById).isNotNull().isGreaterThan(0);
+	}
+
 }
