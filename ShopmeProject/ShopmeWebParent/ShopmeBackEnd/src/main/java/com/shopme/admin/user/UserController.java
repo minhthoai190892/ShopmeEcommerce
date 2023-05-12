@@ -85,6 +85,25 @@ public class UserController {
 			//không tìm thấy trả về trang users 
 			return "redirect:/users";
 		}
-		
 	}
+	
+	@GetMapping("/users/delete/{id}")
+	public String deleteUser(@PathVariable(name = "id")Integer id //lấy id từ trang html
+			,RedirectAttributes redirectAttributes //thông báo cho trang html
+			,Model model 
+			) {
+		try {
+			//xóa user
+			service.delete(id);
+			//thông báo 
+			redirectAttributes.addFlashAttribute("message", "The user ID "+id+" has been deleted successfully");
+			
+		} catch (UserNotFoundException e) {
+			//dùng để hiện thông báo trên trang html
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			//không tìm thấy trả về trang users 
+		}
+		return "redirect:/users";
+	}
+	
 }
