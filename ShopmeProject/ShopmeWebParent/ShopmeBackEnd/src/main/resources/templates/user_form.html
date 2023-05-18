@@ -76,8 +76,12 @@
       <!-- Form -->
       <!-- th:object="${user}: "user" là thuộc tính "user" trong trong hàm newUser khi được model.addAttribute("user", user) -->
       <!-- th:action="@{/users/save}" method="post" gọi phương thức "save" trong UserController với ánh xạ "POST MAPPING"-->
+      <!-- enctype="multipart/form-data": cho phép tải lên tệp cho biểu mẫu -->
       <form class="row g-3" th:action="@{/users/save}" method="post" th:object="${user}"
-        onsubmit="return checkEmailUnique(this)">
+        onsubmit="return checkEmailUnique(this)"
+        enctype="multipart/form-data"
+        
+        >
         <!-- lưu id người dùng  -->
         <input type="hidden" id="id" th:field="*{id}">
         <div class="col-md-6">
@@ -95,15 +99,17 @@
         <div class="col-md-6">
           <label for="email" class="form-label">E-mail:</label>
           <!-- email là tên thuộc tính của lớp "User" --->
-          <input type="email" class="form-control" id="email" th:field="*{email}" required minlength="8"
-            maxlength="128">
+          <input type="email" class="form-control" id="email" th:field="*{email}" th:if="${user.email==null}" required
+            minlength="8" maxlength="128">
+          <input type="email" class="form-control" id="email" th:field="*{email}" th:if="${user.email!=null}" readonly
+            minlength="8" maxlength="128">
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">Password:</label>
-          <input  type="password" class="form-control" id="inputPassword4" th:field="*{password}" th:if="${user.id==null}" required minlength="8"
-            maxlength="128">  
-            <input type="password" class="form-control" id="inputPassword4" th:field="*{password}" th:if="${user.id!=null}"   minlength="8"
-            maxlength="128">
+          <input type="password" class="form-control" id="inputPassword4" th:field="*{password}"
+            th:if="${user.id==null}" required minlength="8" maxlength="128">
+          <input type="password" class="form-control" id="inputPassword4" th:field="*{password}"
+            th:if="${user.id!=null}" minlength="8" maxlength="128">
         </div>
         <div class="col-12">
           <label for="inputPassword4" class="form-label">Roles:</label>
@@ -122,9 +128,18 @@
           </div>
         </div>
 
+        <div class="col-md-4">
+          <label for="fileImage" class="form-label">Photo:</label>
+          <!-- <input type="file" id="fileImage" accept="image/png,image/jpeg"> -->
+          <input class="form-control"  type="file" id="fileImage" name="image" >
+          <input type="hidden" th:field="*{photos}">
+          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo" th:if="${user.photos==null}"  th:src="@{/images/default-user.png}">
+          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo" th:if="${user.photos!=null}"  th:src="@{${user.photosImagePath}}">
+        </div>
+
+
         <div class="col-12">
-          <button type="submit" data-bs-toggle="modal" 
-            class="btn btn-primary">Save</button>
+          <button type="submit" data-bs-toggle="modal" class="btn btn-primary">Save</button>
           <a style="text-decoration: none;" th:href="@{/users}"> <button type="button" class="btn btn-secondary"
               id="buttonCancel">Cancel</button></a>
 
@@ -181,6 +196,35 @@
     //     window.location = "[[@{/users}]]";
     //   });
     // });
+ $(document).ready(function(){
+      // $("#buttonCancel").on("click",function(){
+      //   window.location = "[[@{/users}]]";
+      // });
+
+       $("#fileImage").change(function (e) { 
+        e.preventDefault();
+        //lấy size của hình ảnh
+        fileSize = this.files[0].size;
+      
+        //kiểm tra ddoojdaif file
+        if (fileSize>1048576) {
+          this.setCustomValidity("You must choose an image less than 1MB!");//hiện thông báo
+          this.reportValidity();//ngăn chuyển tới server
+        }else{
+          this.setCustomValidity("");//hiện thông báo
+          showImageThumbnail(this);
+        }
+       });
+    });
+    function  showImageThumbnail(fileInput) {
+      var file = fileInput.files[0];
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#thumbnail").attr("src",e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
       function checkEmailUnique(form) {
         // xác định đường dẫn của dịch vụ web (UserRestService)
         url = "[[@{/users/check_email}]]";//==> nhận được giá trị của trường biểu mẫu
@@ -230,9 +274,3 @@
 </body>
 
 </html>
-
-
-
-
-
-

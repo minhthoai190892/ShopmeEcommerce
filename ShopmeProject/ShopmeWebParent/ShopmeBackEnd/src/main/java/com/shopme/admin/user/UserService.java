@@ -43,8 +43,9 @@ public class UserService {
 	/**
 	 * Hàm lưu thông tin người dùng
 	 * @param user
+	 * @return trả về 1 user
 	 */
-	public void save(User user) {
+	public User save(User user) {
 		// kiểm tra cập nhật
 		// tạo biến boolen để kiểm tra xem id người dùng đã có hay chưa
 		boolean isUpdatingUser = (user.getId() != null);// ==>người dùng đã tồn tại
@@ -69,7 +70,7 @@ public class UserService {
 		}
 
 		// lưu "user"
-		userRepository.save(user);
+	return	userRepository.save(user);
 	}
 
 
@@ -92,7 +93,7 @@ public class UserService {
 	 * @param email email người dùng
 	 * @return
 	 */
-	@SuppressWarnings("unused")
+
 	public boolean isEmailUnique(Integer id, String email) {
 		// lấy user bằng email
 		User userByEmail = userRepository.getUserByEmail(email);
