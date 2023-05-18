@@ -2,8 +2,6 @@ package com.shopme.admin.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -123,4 +121,10 @@ public class UserRepositoryTests {
 		assertThat(countById).isNotNull().isGreaterThan(0);
 	}
 
+	@Test
+	public void testDisableUser() {
+		//lấy id người dùng
+		Integer id=9;
+		repo.updateEnabledStatus(id, false);
+	}
 }

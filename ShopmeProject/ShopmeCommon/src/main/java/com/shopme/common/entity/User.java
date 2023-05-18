@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "users")
@@ -134,9 +135,20 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", roles=" + roles + "]";
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", photos=" + photos + ", enable=" + enable + ", roles=" + roles + "]";
 	}
+
+	@Transient
+	//getter
+	public String getPhotosImagePath() {
+		//kiểm tra xem id và image có null không
+//		if (id == null || photos==null) {
+//			return "images/ShopmeAdminSmall.png";
+//		}
+		return "/user-photos/"+this.id+"/"+this.photos;
+	}
+
 	
 	
 	

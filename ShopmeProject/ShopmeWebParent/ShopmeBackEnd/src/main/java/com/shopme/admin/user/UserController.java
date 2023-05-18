@@ -1,15 +1,20 @@
 package com.shopme.admin.user;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.shopme.admin.FileUploadUtil;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 
@@ -53,12 +58,39 @@ public class UserController {
 	}
 	//ánh xạ lưu người dùng giống với form html
 	@PostMapping("/users/save")
-	public String saveUser(User user,RedirectAttributes redirectAttributes) {
+	public String saveUser(User user
+			,RedirectAttributes redirectAttributes
+			,@RequestParam("image") MultipartFile multipartFile //image là tên file của html,MultipartFile là đại diện cho các file được upload  
+			) throws IOException {
 		System.out.println(user);
-		//lưu "user"
-		service.save(user);
-		//thông báo lưu thành công (để hiển thị tại trang danh sách "user")
+		System.out.println(multipartFile.getOriginalFilename());
+		//kiểm tra biểu mẫu có được tải lên không (image)
+		if (!multipartFile.isEmpty()) { //biễu mẫu không trống(image)
+			//=> có hình ảnh mới tạo thư mục
+			//StringUtils: dùng để làm sạch đường dẫn
+			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());//tên file(hình ảnh) 
+			//gán hình ảnh được tải lên vào field photo
+			user.setPhotos(fileName);
+			//save người dùng
+			User savedUser = service.save(user);
+			String uploadDir = "user-photos/"+savedUser.getId(); //tạo thư mục với id của người dùng
+			//gọi hàm làm sạch tập tin
+			FileUploadUtil.cleanDir(uploadDir);
+			
+			//gọi hàm lưu thư tập tin
+			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile); 
+			
+		} else {
+			if (user.getPhotos().isEmpty()) {
+				user.setPhotos(null);
+			}
+//		//lưu "user"
+			service.save(user);
+		}
+		
+//		//thông báo lưu thành công (để hiển thị tại trang danh sách "user")
 		redirectAttributes.addFlashAttribute("message", "The user has been save successfully.");
+//		
 		
 		return "redirect:/users";
 	}
@@ -105,5 +137,16 @@ public class UserController {
 		}
 		return "redirect:/users";
 	}
-	
+	@GetMapping("/users/{id}/enabled/{status}")
+	public String updateUserEnabledStatus(@PathVariable("id")Integer id,@PathVariable("status") boolean enable,RedirectAttributes redirectAttributes  ) {
+		service.updateUserEnabledStatus(id, enable);
+		String status = enable?"enabled":"disable";
+		String message = "The user ID "+ id+" has been "+status;
+		redirectAttributes.addFlashAttribute("message", message);
+		return "redirect:/users";
+		
+	}
 }
+
+
+

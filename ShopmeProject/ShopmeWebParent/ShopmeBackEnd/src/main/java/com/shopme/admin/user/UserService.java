@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class UserService {
 	// khai báo repository
 	@Autowired
@@ -40,8 +43,9 @@ public class UserService {
 	/**
 	 * Hàm lưu thông tin người dùng
 	 * @param user
+	 * @return trả về 1 user
 	 */
-	public void save(User user) {
+	public User save(User user) {
 		// kiểm tra cập nhật
 		// tạo biến boolen để kiểm tra xem id người dùng đã có hay chưa
 		boolean isUpdatingUser = (user.getId() != null);// ==>người dùng đã tồn tại
@@ -66,7 +70,7 @@ public class UserService {
 		}
 
 		// lưu "user"
-		userRepository.save(user);
+	return	userRepository.save(user);
 	}
 
 
@@ -89,7 +93,7 @@ public class UserService {
 	 * @param email email người dùng
 	 * @return
 	 */
-	@SuppressWarnings("unused")
+
 	public boolean isEmailUnique(Integer id, String email) {
 		// lấy user bằng email
 		User userByEmail = userRepository.getUserByEmail(email);
@@ -146,5 +150,8 @@ public class UserService {
 		//=> người dùng có tồn tại
 		//gọi hàm deleteById của interface CrudRepository
 		userRepository.deleteById(id);
+	}
+	public void updateUserEnabledStatus(Integer id,boolean enabled) {
+		userRepository.updateEnabledStatus(id, enabled);
 	}
 }
