@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,7 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class UserService {
+	public static final int USER_PER_PAGE = 4;
 	// khai báo repository
 	@Autowired
 	private UserRepository userRepository;
@@ -25,15 +29,28 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	/** Lấy danh sách users từ cơ sở dữ liệu
+	/**
+	 * Lấy danh sách users từ cơ sở dữ liệu
+	 * 
 	 * @return
 	 */
 	public List<User> listAll() {
 		return (List<User>) userRepository.findAll();
 	}
 
+	/** 
+	 * hàm lấy số lượng người dùng trên một trang
+	 * @param pageNum
+	 * @return 
+	 */
+	public Page<User> listByPage(int pageNum) {
+		Pageable pageable = PageRequest.of(pageNum - 1, USER_PER_PAGE);
+		return userRepository.findAll(pageable);
+	}
+
 	/**
 	 * Lấy danh sách Roles từ cơ sở dữ liệu
+	 * 
 	 * @return
 	 */
 	public List<Role> listRoles() {
@@ -42,6 +59,7 @@ public class UserService {
 
 	/**
 	 * Hàm lưu thông tin người dùng
+	 * 
 	 * @param user
 	 * @return trả về 1 user
 	 */
@@ -52,7 +70,7 @@ public class UserService {
 		// kiểm tra trạng thái update hay không
 		if (isUpdatingUser) {// ==> đang update user
 			// lấy người dùng đã tồn tại
-			User existingUser = userRepository.findById(user.getId()).get();
+			User existingUser = (User) userRepository.findById(user.getId()).get();
 			// kiểm tra biếu mẫu ở html có trống không
 			if (user.getPassword().isEmpty()) {// =>biếu mẫu trên html trống
 				// muốn giữ lại password
@@ -70,13 +88,13 @@ public class UserService {
 		}
 
 		// lưu "user"
-	return	userRepository.save(user);
+		return userRepository.save(user);
 	}
-
 
 	/**
 	 * Hàm mã hóa passowrd
-	 * @param user 
+	 * 
+	 * @param user
 	 */
 	private void encodePassword(User user) {
 		// mã hóa mật khẩu người dùng
@@ -85,11 +103,11 @@ public class UserService {
 		user.setPassword(encodePassword);
 	}
 
-	
 	/**
 	 * hàm kiểm tra email là duy nhất
 	 * kiểm tra email mới tạo hay là email được cập nhật
-	 * @param id id người dùng
+	 * 
+	 * @param id    id người dùng
 	 * @param email email người dùng
 	 * @return
 	 */
@@ -126,32 +144,35 @@ public class UserService {
 
 	/**
 	 * Phương thức tìm người đùng
+	 * 
 	 * @param id id người dùng cần tìm
 	 * @return trả về id của người dùng hoặc là thông báo không tìm thấy
 	 * @throws UserNotFoundException
 	 */
 	public User get(Integer id) throws UserNotFoundException {
 		try {
-			return userRepository.findById(id).get();
+			return (User) userRepository.findById(id).get();
 		} catch (NoSuchElementException ex) {
 			// gọi lớp
 			throw new UserNotFoundException("Could not find any user with id: " + id);
 		}
 
 	}
+
 	public void delete(Integer id) throws UserNotFoundException {
-		//lấy id của người dùng
+		// lấy id của người dùng
 		Long countById = userRepository.countById(id);
-		//kiểm tra id người dùng có tồn tại không
-		if (countById==null || countById==0) {
-			//=> người dùng không tồn tại
+		// kiểm tra id người dùng có tồn tại không
+		if (countById == null || countById == 0) {
+			// => người dùng không tồn tại
 			throw new UserNotFoundException("Could not find any user with id: " + id);
 		}
-		//=> người dùng có tồn tại
-		//gọi hàm deleteById của interface CrudRepository
+		// => người dùng có tồn tại
+		// gọi hàm deleteById của interface CrudRepository
 		userRepository.deleteById(id);
 	}
-	public void updateUserEnabledStatus(Integer id,boolean enabled) {
+
+	public void updateUserEnabledStatus(Integer id, boolean enabled) {
 		userRepository.updateEnabledStatus(id, enabled);
 	}
 }
