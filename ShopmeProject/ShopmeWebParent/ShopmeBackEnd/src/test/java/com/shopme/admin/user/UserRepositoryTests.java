@@ -2,18 +2,26 @@ package com.shopme.admin.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
+import com.shopme.admin.FileUploadUtil;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 
-@DataJpaTest
+@DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 public class UserRepositoryTests {
@@ -66,7 +74,7 @@ public class UserRepositoryTests {
 	@Test
 	public void testGetUserById() {
 		// lấy id của người dùng
-		User userThoai = repo.findById(3).get();
+		User userThoai = (User) repo.findById(3).get();
 		System.out.println(userThoai);
 		assertThat(userThoai).isNotNull();
 	}
@@ -74,7 +82,7 @@ public class UserRepositoryTests {
 	@Test
 	public void testUpdateUserDetails() {
 		// lấy id của người dùng
-		User userThoai = repo.findById(3).get();
+		User userThoai = (User) repo.findById(3).get();
 		// cập nhật dữ liệu
 		userThoai.setEmail("Lethidoan@gmail.com");
 		userThoai.setEnable(true);
@@ -85,7 +93,7 @@ public class UserRepositoryTests {
 	@Test
 	public void testUpdateUserRoles() {
 		// lấy user
-		User userDoan = repo.findById(3).get();
+		User userDoan = (User) repo.findById(3).get();
 		// lấy role
 		Role roleEditor = new Role(3);
 		Role roleShipper = new Role(4);
@@ -114,17 +122,32 @@ public class UserRepositoryTests {
 		System.out.println(user);
 		assertThat(user).isNotNull();
 	}
+
 	@Test
 	public void testCountById() {
-		Integer id =10;
+		Integer id = 10;
 		Long countById = repo.countById(id);
 		assertThat(countById).isNotNull().isGreaterThan(0);
 	}
 
 	@Test
 	public void testDisableUser() {
-		//lấy id người dùng
-		Integer id=9;
+		// lấy id người dùng
+		Integer id = 9;
 		repo.updateEnabledStatus(id, false);
+	}
+
+	@Test
+	public void testListFirstPage() {
+		int pageNumber = 1;
+		int pagesize = 2;
+
+		Pageable pageable = PageRequest.of(pageNumber, pagesize);
+		Page<User> page = repo.findAll(pageable);
+		// tập hợp danh sách đối tượng user
+		List<User> list = page.getContent();
+		// in chi tiết người dùng trong danh sách
+		list.forEach(user -> System.out.println(user));
+		assertThat(list.size()).isEqualTo(pagesize);
 	}
 }
