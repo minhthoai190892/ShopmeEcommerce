@@ -69,6 +69,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\bootstrap\ShopmeEcommerce"/>
 			<item value="D:\Funix\PRJ321\ShopmeEcommerce"/>
 		</list>
 		<list key="projectNameTemplate">

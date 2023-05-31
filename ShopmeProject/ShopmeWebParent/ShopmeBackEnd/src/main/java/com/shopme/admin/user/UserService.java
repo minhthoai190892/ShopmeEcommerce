@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -38,13 +39,21 @@ public class UserService {
 		return (List<User>) userRepository.findAll();
 	}
 
-	/** 
-	 * hàm lấy số lượng người dùng trên một trang
-	 * @param pageNum
-	 * @return 
+	/**
+	 * hàm lấy số lượng người dùng trên một trang và sắp xếp
+	 * 
+	 * @param pageNum   là số trang
+	 * @param sortField là trường cần sort
+	 * @param sortDir   loại muốn sắp xếp (tăng hoặc giảm)
+	 * @return trả về danh sách
 	 */
-	public Page<User> listByPage(int pageNum) {
-		Pageable pageable = PageRequest.of(pageNum - 1, USER_PER_PAGE);
+	public Page<User> listByPage(int pageNum, String sortField, String sortDir) {
+		// tạo đối tượng sort bằng field
+		Sort sort = Sort.by(sortField);
+		// loại sort
+		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+		//bắt đầu phân trang và sort
+		Pageable pageable = PageRequest.of(pageNum - 1, USER_PER_PAGE,sort);
 		return userRepository.findAll(pageable);
 	}
 
@@ -104,8 +113,8 @@ public class UserService {
 	}
 
 	/**
-	 * hàm kiểm tra email là duy nhất
-	 * kiểm tra email mới tạo hay là email được cập nhật
+	 * hàm kiểm tra email là duy nhất kiểm tra email mới tạo hay là email được cập
+	 * nhật
 	 * 
 	 * @param id    id người dùng
 	 * @param email email người dùng
