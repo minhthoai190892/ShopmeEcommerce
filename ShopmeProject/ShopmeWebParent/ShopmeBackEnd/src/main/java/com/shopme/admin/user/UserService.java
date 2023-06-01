@@ -47,13 +47,18 @@ public class UserService {
 	 * @param sortDir   loại muốn sắp xếp (tăng hoặc giảm)
 	 * @return trả về danh sách
 	 */
-	public Page<User> listByPage(int pageNum, String sortField, String sortDir) {
+	public Page<User> listByPage(int pageNum, String sortField, String sortDir,String keyword) {
 		// tạo đối tượng sort bằng field
 		Sort sort = Sort.by(sortField);
 		// loại sort
 		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 		//bắt đầu phân trang và sort
 		Pageable pageable = PageRequest.of(pageNum - 1, USER_PER_PAGE,sort);
+		//kiểm tra người dùng có nhập tìm kiếm
+		if (keyword!=null) {
+			return userRepository.findAll(keyword, pageable);
+		}
+		
 		return userRepository.findAll(pageable);
 	}
 

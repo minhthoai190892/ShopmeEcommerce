@@ -41,7 +41,7 @@ public class UserController {
 //		//thêm vào model
 //		model.addAttribute("listUsers", listUsers);
 //		return "users";
-		return listByPage(1, model,"firstName","asc");
+		return listByPage(1, model,"firstName","asc", null);
 	}
 	/**
 	 * hàm hiển thị phân trên html
@@ -54,9 +54,9 @@ public class UserController {
 			@PathVariable(name = "pageNum")int pageNum //@PathVariable thì được dùng để trích xuất dữ liệu từ URL path
 			,Model model
 			,@Param("sortField") String sortField,@Param("sortDir") String sortDir
-			
+			,@Param("keyword") String keyword
 			) {
-		Page<User> pageUser = service.listByPage(pageNum,sortField,sortDir);
+		Page<User> pageUser = service.listByPage(pageNum,sortField,sortDir, keyword);
 		//trả về nội dung của trang dưới dạng danh sách
 		List<User> listUsers = pageUser.getContent();
 		long startCount = (pageNum-1)*UserService.USER_PER_PAGE+1;
@@ -75,6 +75,7 @@ public class UserController {
 		System.out.println("Sort Field: "+sortField);
 		System.out.println("Sort Dir: "+sortDir);
 		System.out.println("reverseSortDir: "+reverseSortDir);
+		System.out.println("keyword: "+keyword);
 		
 		//thêm vào model dùng để hiển thị trên html 
 		model.addAttribute("currentPage", pageNum);
@@ -86,6 +87,8 @@ public class UserController {
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("reverseSortDir", reverseSortDir);
+		//search
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("listUsers", listUsers);
 		return "users";
 	}
