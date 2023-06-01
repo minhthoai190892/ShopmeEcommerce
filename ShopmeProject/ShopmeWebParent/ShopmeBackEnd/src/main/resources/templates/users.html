@@ -80,11 +80,11 @@
       </div>
       <!-- form search -->
       <div>
-        <form th:action="@{/users/page/1}" class="form-inline" >
+        <form th:action="@{/users/page/1}" class="form-inline">
           <input type="hidden" name="sortField" th:value="${sortField}">
           <input type="hidden" name="sortDir" th:value="${sortDir}">
           Filter:
-          <input type="search" name="keyword" th:value="${keyword}" class="my-3" required/>
+          <input type="search" name="keyword" th:value="${keyword}" class="my-3" required />
           <input type="submit" value="Search" class="btn btn-primary">
           <input type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()">
         </form>
@@ -102,66 +102,19 @@
             <caption class="text-center m-1" th:unless="${totalItems>0}">No users found</caption>
 
             <tr>
-              <th>
-                <a th:if="${sortField != 'id'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=id&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">User Id</a>
-                <a th:if="${sortField == 'id'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=id&sortDir='+${reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">User Id</a>
-                <!-- sort icon -->
-                <span th:if="${sortField == 'id'}"
-                  th:class="${sortDir=='asc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
-              </th>
+              <!-- gọi từ fragments.html -->
+              <th th:replace="fragments::column_link('id','User Id')"></th>
               <th>Photo</th>
-              <th>
-                <a th:if="${sortField != 'email'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=email&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">E-mail</a>
-                <a th:if="${sortField == 'email'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=email&sortDir='+${reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">E-mail</a>
-                <!-- sort icon -->
-                <span th:if="${sortField == 'email'}"
-                  th:class="${sortDir=='asc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
-                </th>
-              <th>
-                <!-- users/page/2?sortField=email&sortDir=asc -->
-                <a th:if="${sortField != 'firstName'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=firstName&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">First Name</a>
-                <a th:if="${sortField == 'firstName'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=firstName&sortDir='+${reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">First Name</a>
-                <!-- sort icon -->
-                <span th:if="${sortField == 'firstName'}"
-                  th:class="${sortDir=='asc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
-              </th>
+              <!-- gọi từ fragments.html -->
+              <th th:replace="fragments::column_link('email','E-mail')"></th>
+              <!-- gọi từ fragments.html -->
+              <th th:replace="fragments::column_link('firstName','First Name')"></th>
 
-              <th>
-                <a th:if="${sortField != 'lastName'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=lastName&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">Last Name</a>
-                <a th:if="${sortField == 'lastName'}"
-                  th:href="@{'/users/page/'+${currentPage}+'?sortField=lastName&sortDir='+${reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
-                  class="text-black" style="text-decoration: none;">Last Name</a>
-                <!-- sort icon -->
-                <span th:if="${sortField == 'lastName'}"
-                  th:class="${sortDir=='asc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
-              </th>
+              <!-- gọi từ fragments.html -->
+              <th th:replace="fragments::column_link('lastName','Last Name')"></th>
               <th>Role</th>
-              <th>
-                <a th:if="${sortField != 'enable'}"
-                th:href="@{'/users/page/'+${currentPage}+'?sortField=enable&sortDir='+${sortDir}  +${keyword!=null?'&keyword='+keyword:''}}"
-                class="text-black" style="text-decoration: none;">Enable</a>
-              <a th:if="${sortField == 'enable'}"
-                th:href="@{'/users/page/'+${currentPage}+'?sortField=enable&sortDir='+${reverseSortDir}  +${keyword!=null?'&keyword='+keyword:''}}"
-                class="text-black" style="text-decoration: none;">Enable</a>
-              <!-- sort icon -->
-              <span th:if="${sortField == 'enable'}"
-                th:class="${sortDir=='asc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
-           
-              </th>
+              <!-- gọi từ fragments.html -->
+              <th th:replace="fragments::column_link('enable','Enable')"></th>
               <th>Action</th>
             </tr>
           </thead>
@@ -201,22 +154,31 @@
         <nav>
           <ul class="pagination justify-content-center">
             <!-- users/page/2?sortField=email&sortDir=asc -->
-            <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}"><a class="page-link"
-                th:href="@{'/users/page/1'+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">First</a></li>
-            <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}"><a class="page-link"
-                th:href="@{'/users/page/'+${currentPage -1}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">Previous</a></li>
+            <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
+              <!-- gọi từ fragments.html -->
+              <a th:replace="fragments::page_link(1,'First')"></a>
+            </li>
+            <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
+              <!-- gọi từ fragments.html -->
+              <a th:replace="fragments::page_link(${currentPage -1},'Previous')"></a>
+            </li>
             <!-- tạo số trang tăng dần -->
-  
+
             <li th:class="${currentPage !=i ? 'page-item':'page-item active'}"
               th:each=" i: ${#numbers.sequence(1,totalPages)}">
-              <a class="page-link" th:href="@{'/users/page/'+${i}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}" >[[${i}]]</a>
+              <!-- gọi từ fragments.html -->
+              <a th:replace="fragments::page_link(${i},${i})"></a>
             </li>
-  
-            <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}"><a class="page-link"
-                th:href="@{'/users/page/'+${currentPage +1}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">Next</a></li>
-            <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}"><a class="page-link"
-                th:href="@{'/users/page/'+${totalPages}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">Last</a></li>
-  
+
+            <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
+              <!-- gọi từ fragments.html -->
+              <a th:replace="fragments::page_link(${currentPage +1},'Next')"></a>
+               </li>
+            <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
+              <!-- gọi từ fragments.html -->
+              <a th:replace="fragments::page_link(${totalPages},'Last')"></a>
+              </li>
+
           </ul>
         </nav>
       </section>
@@ -282,8 +244,3 @@
 </body>
 
 </html>
-
-
-
-
-

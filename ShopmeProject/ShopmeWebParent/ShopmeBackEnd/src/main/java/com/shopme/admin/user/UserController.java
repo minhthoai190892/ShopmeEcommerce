@@ -146,8 +146,13 @@ public class UserController {
 //		//thông báo lưu thành công (để hiển thị tại trang danh sách "user")
 		redirectAttributes.addFlashAttribute("message", "The user has been save successfully.");
 //		
+		return getRedirectURLtoAffectedUser(user);
+	}
+	private String getRedirectURLtoAffectedUser(User user) {
+		//cắt lấy phần đầu của email
+		String firstPartOfEmail = user.getEmail().split("@")[0];
 		
-		return "redirect:/users";
+		return "redirect:/users/page/1?sortField=id&sortDir=asc&keyword="+firstPartOfEmail;
 	}
 	// ánh xạ đường dẫn để lấy người dùng
 	@GetMapping("/users/edit/{id}")
