@@ -21,6 +21,8 @@ import com.shopme.admin.FileUploadUtil;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 
 
 @Controller
@@ -206,6 +208,15 @@ public class UserController {
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/users";
 		
+	}
+	@GetMapping("/users/export/csv")
+	public void exportToCSV(HttpServletResponse response) throws IOException{
+		//lấy danh sách user
+		List<User> lisUsers = service.listAll();
+		//khởi tạo đối tượng Export
+		UserCsvExporter exporter = new UserCsvExporter();
+		//gọi hàm export
+		exporter.exprot(lisUsers, response);
 	}
 }
 

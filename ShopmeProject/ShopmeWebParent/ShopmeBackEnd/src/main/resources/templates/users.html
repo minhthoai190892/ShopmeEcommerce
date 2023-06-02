@@ -72,7 +72,7 @@
       </nav>
       <div>
         <h2>Manage User</h2>
-        <a th:href="@{/users/new}">Create New User</a>
+        <a th:href="@{/users/new}">Create New User</a> | <a th:href="@{/users/export/csv}">Export to CSV</a>
       </div>
       <!-- Thông báo lỗi bằng RedirectAttributes -->
       <div th:if="${message!=null}" class="alert alert-success text-center">
@@ -244,3 +244,7 @@
 </body>
 
 </html>
+
+
+
+

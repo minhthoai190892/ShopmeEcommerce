@@ -36,7 +36,7 @@ public class UserService {
 	 * @return
 	 */
 	public List<User> listAll() {
-		return (List<User>) userRepository.findAll();
+		return (List<User>) userRepository.findAll(Sort.by("id").ascending());
 	}
 
 	/**
