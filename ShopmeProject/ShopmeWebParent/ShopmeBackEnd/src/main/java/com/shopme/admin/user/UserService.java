@@ -36,6 +36,7 @@ public class UserService {
 	 * @return
 	 */
 	public List<User> listAll() {
+		//trả về danh sách user và sort user
 		return (List<User>) userRepository.findAll(Sort.by("id").ascending());
 	}
 

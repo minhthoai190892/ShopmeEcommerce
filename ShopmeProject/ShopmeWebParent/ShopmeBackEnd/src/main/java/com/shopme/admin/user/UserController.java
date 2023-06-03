@@ -209,12 +209,31 @@ public class UserController {
 		return "redirect:/users";
 		
 	}
+	/**
+	 * Hàm xuất file CSV
+	 * @param response nhận một response
+	 * @throws IOException
+	 */
 	@GetMapping("/users/export/csv")
 	public void exportToCSV(HttpServletResponse response) throws IOException{
 		//lấy danh sách user
 		List<User> lisUsers = service.listAll();
 		//khởi tạo đối tượng Export
 		UserCsvExporter exporter = new UserCsvExporter();
+		//gọi hàm export
+		exporter.exprot(lisUsers, response);
+	}
+	/**
+	 * Hàm xuất file excel
+	 * @param response nhận một response
+	 * @throws IOException
+	 */
+	@GetMapping("/users/export/excel")
+	public void exportToExcel(HttpServletResponse response) throws IOException{
+		//lấy danh sách user
+		List<User> lisUsers = service.listAll();
+		//khởi tạo đối tượng Export
+		UserExcelExporter exporter = new UserExcelExporter();
 		//gọi hàm export
 		exporter.exprot(lisUsers, response);
 	}

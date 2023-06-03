@@ -2,4 +2,15 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.shopme.admin.user.UserCsvExporter"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="java.text.DateFormat"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.supercsv.io.ICsvBeanWriter"/>
+    <fullyQualifiedTypeName name="org.supercsv.io.CsvBeanWriter"/>
+    <fullyQualifiedTypeName name="org.supercsv.prefs.CsvPreference"/>
+    <fullyQualifiedTypeName name="com.shopme.common.entity.User"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Sort"/>
 </qualifiedTypeNameHistroy>
