@@ -1,12 +1,10 @@
 package com.shopme.admin.user;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 
-import org.apache.poi.ss.format.CellTextFormatter;
+
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -85,7 +83,7 @@ public class UserExcelExporter extends AbstractExporter {
 		for (User user : listUsers) {
 			XSSFRow row = sheet.createRow(rowIndex++);
 			int columnIndex = 0;
-			// gọi hàm
+			// gọi hàm và ghi dữ liệu
 			createCell(row, columnIndex++, user.getId(), cellStyle);
 			createCell(row, columnIndex++, user.getEmail(), cellStyle);
 			createCell(row, columnIndex++, user.getFirstName(), cellStyle);

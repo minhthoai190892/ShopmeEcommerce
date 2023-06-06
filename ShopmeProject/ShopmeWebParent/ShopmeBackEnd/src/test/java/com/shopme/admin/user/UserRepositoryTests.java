@@ -2,8 +2,7 @@ package com.shopme.admin.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
-import java.nio.file.Path;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
-import com.shopme.admin.FileUploadUtil;
+
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 

@@ -1,7 +1,7 @@
 package com.shopme.admin.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -234,6 +234,15 @@ public class UserController {
 		List<User> lisUsers = service.listAll();
 		//khởi tạo đối tượng Export
 		UserExcelExporter exporter = new UserExcelExporter();
+		//gọi hàm export
+		exporter.exprot(lisUsers, response);
+	}
+	@GetMapping("/users/export/pdf")
+	public void exportToPDF(HttpServletResponse response) throws IOException{
+		//lấy danh sách user
+		List<User> lisUsers = service.listAll();
+		//khởi tạo đối tượng Export
+		UserPDFExporter exporter = new UserPDFExporter();
 		//gọi hàm export
 		exporter.exprot(lisUsers, response);
 	}
