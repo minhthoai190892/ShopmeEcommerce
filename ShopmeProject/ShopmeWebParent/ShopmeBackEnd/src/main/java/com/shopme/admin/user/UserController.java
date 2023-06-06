@@ -43,7 +43,7 @@ public class UserController {
 //		//thêm vào model
 //		model.addAttribute("listUsers", listUsers);
 //		return "users";
-		return listByPage(1, model,"firstName","asc", null);
+		return listByPage(1, model,"id","asc", null);
 	}
 	/**
 	 * hàm hiển thị phân trên html
