@@ -5,6 +5,7 @@ import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,7 +35,7 @@ public class User {
 	private boolean	enable;
 	
 	//tập các roles
-	@ManyToMany // quan hệ nhiều - nhiều
+	@ManyToMany(fetch = FetchType.EAGER) // quan hệ nhiều - nhiều
 	//@JoinTable: là tên bản tham gia
 	@JoinTable(
 			name = "users_roles",// tên bản tham gia
@@ -154,5 +155,9 @@ public class User {
 	public String getFullName() {
 		return firstName+ " "+lastName;
 	}
+
+
+
+
 	
 }
