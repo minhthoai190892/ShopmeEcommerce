@@ -23,10 +23,14 @@
       <img th:src="@{/images/ShopmeAdminBig.png}" alt=""></a>
       <!-- form login -->
       <form th:action="@{/login}" method="post" style="max-width:350px ; margin: 0 auto;">
+        <!-- hiên thị thông báo sai tài khoản, mật khẩu và tài khoản disable -->
         <div th:if="${param.error}">
           <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
         </div>
-        
+        <!-- hiển thị thông báo đăng xuất thành công -->
+        <div th:if="${param.logout}">
+          <p class="text-warning">You have been logged out</p>
+        </div>
         <div class="border border-secondary rounded p-3">
           <p>Access to Shopme Control Panel</p>
           <p><input type="email" name="email" class="form-control" placeholder="E-mail" required></p>

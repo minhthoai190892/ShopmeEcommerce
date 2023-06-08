@@ -9877,3 +9877,39 @@ org.eclipse.swt.SWTException: Invalid thread access
 	at org.eclipse.m2e.core.ui.internal.markers.MavenProblemResolution.run(MavenProblemResolution.java:118)
 	at org.eclipse.ui.internal.genericeditor.markers.MarkerInformationControl$1$1.run(MarkerInformationControl.java:141)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-06-08 10:26:03.753
+!MESSAGE executing callback sts4.classpath.zvkhEccc FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-06-08 10:26:03.782
+!MESSAGE No language server has registered to handle command 'sts4.classpath.zvkhEccc'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.zvkhEccc'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:42)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-06-08 11:19:18.648
+!MESSAGE executing callback sts4.classpath.zvkhEccc FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-06-08 11:19:18.650
+!MESSAGE No language server has registered to handle command 'sts4.classpath.zvkhEccc'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.zvkhEccc'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:42)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-06-08 11:19:18.983
+!MESSAGE executing callback sts4.classpath.zvkhEccc FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-06-08 11:19:18.983
+!MESSAGE No language server has registered to handle command 'sts4.classpath.zvkhEccc'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.zvkhEccc'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:42)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

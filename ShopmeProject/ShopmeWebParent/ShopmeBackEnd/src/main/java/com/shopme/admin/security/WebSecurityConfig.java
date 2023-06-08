@@ -41,7 +41,7 @@ public class WebSecurityConfig  {
 
 		
 		http.authorizeHttpRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
-				.usernameParameter("email").permitAll();
+				.usernameParameter("email").permitAll().and().logout().permitAll();
 		
 		return http.build();
 
