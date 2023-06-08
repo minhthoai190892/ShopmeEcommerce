@@ -23,53 +23,8 @@
   </header>
   <main>
     <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/ShopmeAdminSmall.png}" alt=""></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" th:href="@{/users}">Users</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/categories}">Categories</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" th:href="@{/brands}">Brands</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/products}">Products</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" th:href="@{/customers}">Customers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/shipping}">Shipping</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" th:href="@{/orders}">Orders</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/report}">Sales Report</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/articles}">Articles</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/menus}">Menus</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" th:href="@{/settings}">Settings</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <!-- Menu -->
+      <div th:replace="navigation::menu"></div>
       <div>
         <h2>Manage User</h2>
 
@@ -118,7 +73,7 @@
               <!-- gọi từ fragments.html -->
               <th class="hideable-colum">
               <th th:replace="fragments::column_link('email','E-mail','tag')"></th>
-            </th>
+              </th>
               <!-- gọi từ fragments.html -->
               <th th:replace="fragments::column_link('firstName','First Name','none')"></th>
 
@@ -225,9 +180,7 @@
           </ul>
         </nav>
       </section>
-      <div>
-        <p class="text-center">Shopme Control Panel - Copyright &copy; Shopme</p>
-      </div>
+
 
     </div>
     <!-- Modal -->
@@ -252,6 +205,7 @@
   </main>
   <footer>
     <!-- place footer here -->
+    <div th:replace="fragments::footer"></div>
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -262,7 +216,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
   <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
-
+  <script type="text/javaScript"  th:src="@{/js/common.js}"></script>
   <script type="text/JavaScript">
   $(document).ready(function(){
     $(".link-delete").on("click",function(e){
