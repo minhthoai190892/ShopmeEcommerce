@@ -31,6 +31,14 @@ public class UserService {
 	private PasswordEncoder passwordEncoder;
 
 	/**
+	 * Hàm lấy User bằng email
+	 * @param email nhận một chuổi email
+	 * @return trả về User
+	 */
+	public User getByEmail(String email) {
+		return userRepository.getUserByEmail(email);
+	}
+	/**
 	 * Lấy danh sách users từ cơ sở dữ liệu
 	 * 
 	 * @return
@@ -190,4 +198,34 @@ public class UserService {
 	public void updateUserEnabledStatus(Integer id, boolean enabled) {
 		userRepository.updateEnabledStatus(id, enabled);
 	}
+	
+	/**
+	 * Hàm cập nhật lại thông tin Account
+	 * @param userInform
+	 * @return
+	 */
+	public User updateAccount(User userInform) {
+		//lấy thông tin người dùng bằng Id
+		User userInDB=userRepository.findById(userInform.getId()).get();
+		//kiểm tra xem password có trống không
+		if (!userInform.getPassword().isEmpty()) {
+			//=> password không trống
+			//ta cập nhập lại mật khẩu
+			userInDB.setPassword(userInform.getPassword());
+			//mã hóa lại password
+			encodePassword(userInDB);
+			
+		}
+		//kiểm tra xem photo có trống không
+		if (userInform.getPhotos() !=null) {
+			//=> photo không trống
+			//cập nhật lại hình ảnh
+			userInDB.setPhotos(userInform.getPhotos());
+		}
+		//cập nhật lại thông tin: firstName, lastName
+		userInDB.setFirstName(userInform.getFirstName());
+		userInDB.setLastName(userInform.getLastName());
+		return userRepository.save(userInDB);
+	}
+	
 }

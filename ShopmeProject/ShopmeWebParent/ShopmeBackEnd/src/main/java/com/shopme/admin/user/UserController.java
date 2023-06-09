@@ -18,6 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopme.admin.FileUploadUtil;
+import com.shopme.admin.user.export.UserCsvExporter;
+import com.shopme.admin.user.export.UserExcelExporter;
+import com.shopme.admin.user.export.UserPDFExporter;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 
@@ -150,6 +153,8 @@ public class UserController {
 //		
 		return getRedirectURLtoAffectedUser(user);
 	}
+	
+	
 	private String getRedirectURLtoAffectedUser(User user) {
 		//cắt lấy phần đầu của email
 		String firstPartOfEmail = user.getEmail().split("@")[0];

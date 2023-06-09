@@ -58,7 +58,7 @@
                             <a class="nav-link" th:href="@{/settings}">Settings</a>
                         </li>
 
-                        <div style="display: inline-flex; align-items: center;">
+                        <div  style="display: inline-flex; align-items: center;">
                             <li>
                                 <span class="fa-sharp fa-solid fa-user icon-silver "></span>
                             </li>
@@ -67,8 +67,11 @@
                       pricipal: đại dại cho đối tượng User
                     -->
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                                th:href="@{/account}"
                                     sec:authentication="principal.fullName"></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <!-- tạo liên kết đến class AccountController -->
+                                    <a th:href="@{/account}" class="dropdown-item">Profile</a>
                                     <a href="" id="logoutLink" class="dropdown-item">Logout</a>
                                 </div>
                             </li>

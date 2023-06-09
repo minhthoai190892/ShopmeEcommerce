@@ -69,8 +69,25 @@ public class ShopmeUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return user.isEnable();
 	}
+    /**
+	 * Hàm lấy full name từ lớp User
+     * @return trả về full name của User
+     */
     public String getFullName(){
         return this.user.getFullName();
     }
-
+    /**
+	 * Hàm đặt lại first name
+     * @param firstName nhận một tham số là first name
+     */
+    public void setFirstName(String firstName) {
+		this.user.setFirstName(firstName);
+	}
+    /**
+	 * Hàm đặt lại last name
+     * @param lastName nhận một tham số là last name
+     */
+    public void setLastName(String lastName) {
+  		this.user.setLastName(lastName);
+  	}
 }

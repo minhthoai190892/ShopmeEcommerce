@@ -1,18 +1,7 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-  <!-- lấy title từ controller -->
-  <title>[[${pageTitle}]]</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
-</head>
+<head th:replace="fragments::page_head(${pageTitle})"></head>
 
 <body>
   <header>
@@ -157,7 +146,7 @@
         //lấy size của hình ảnh
         fileSize = this.files[0].size;
       
-        //kiểm tra ddoojdaif file
+        //kiểm tra độ dài file
         if (fileSize>1048576) {
           this.setCustomValidity("You must choose an image less than 1MB!");//hiện thông báo
           this.reportValidity();//ngăn chuyển tới server
