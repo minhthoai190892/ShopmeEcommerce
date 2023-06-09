@@ -19,7 +19,7 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class WebSecurityConfig  {
+public class WebSecurityConfig {
 	@Bean
 	// lớp mã hóa mật khẩu
 	public PasswordEncoder passwordEncoder() {
@@ -39,10 +39,22 @@ public class WebSecurityConfig  {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-		
-		http.authorizeHttpRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
-				.usernameParameter("email").permitAll().and().logout().permitAll();
-		
+		http.authorizeHttpRequests().anyRequest().authenticated()
+		.and()
+			.formLogin()//hiển thị form login
+				.loginPage("/login")//hiển thị form login custom
+				.usernameParameter("email")//sử dụng email để đăng nhập
+				.permitAll()//cho phép tất cả
+		.and()
+			.logout()//logout 
+			.permitAll()//cho phép tất cả
+		.and()
+			.rememberMe()//kích hoạt nhớ tài khoản
+				//tạo một key mặc định cho ứng dụng trong cookie
+				.key("bWluaHRob2FpJTQwZ21haWxxd2UuY29tOjE2ODc0OTQ0NzEwNTA6U0hBMjU2OjdiNTk5NTliOTU1MDUxOTgwOTJjMzFhYzMwMGIyNDc0MTA5ZjQ0YWE5YmJlZmE0ZWExZDIyZDRjOWYyMjlkMjA")
+				.tokenValiditySeconds(7*24*60*60)//thây đổi thời gian hết hạn của key 
+		;
+
 		return http.build();
 
 	}
