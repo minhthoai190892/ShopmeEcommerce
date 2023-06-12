@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::page_head('Your Account Details')"></head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+    <div class="container-fluid">
+      <!-- Menu -->
+      <div th:replace="navigation::menu"></div>
+      <div>
+        <h2>Your Account Details</h2>
+      </div>
+        <!-- Thông báo lỗi bằng RedirectAttributes -->
+        <div th:if="${message!=null}" class="alert alert-success text-center">
+          [[${message}]]
+        </div>
+
+
+      <!-- Form -->
+      <!-- th:object="${user}: "user" là thuộc tính "user" trong trong hàm newUser khi được model.addAttribute("user", user) -->
+      <!-- th:action="@{/users/save}" method="post" gọi phương thức "save" trong UserController với ánh xạ "POST MAPPING"-->
+      <!-- enctype="multipart/form-data": cho phép tải lên tệp cho biểu mẫu -->
+      <form class="row g-3" th:action="@{/account/update}" method="post" th:object="${user}"
+        enctype="multipart/form-data">
+        <!-- lưu id người dùng  -->
+        <input type="hidden" id="id" th:field="*{id}">
+        <div class="col-md-12">
+          <label for="email" class="form-label">E-mail:</label>
+          <!-- email là tên thuộc tính của lớp "User" --->
+
+          <input type="email" class="form-control" id="email" th:field="*{email}" readonly="readonly">
+        </div>
+        <div class="col-md-6">
+          <label for="inputfirstName" class="form-label">First Name:</label>
+          <!-- email là tên thuộc tính của lớp "User" --->
+          <input type="text" class="form-control" id="inputfirstName" th:field="*{firstName}" minlength="2"
+            maxlength="45">
+        </div>
+        <div class="col-md-6">
+          <label for="inputLastName" class="form-label">Last Name:</label>
+          <input type="text" class="form-control" id="inputLastName" th:field="*{lastName}" minlength="2"
+            maxlength="45">
+        </div>
+        <!-- col-12" -->
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password:</label>
+          <input type="password" class="form-control"  th:field="*{password}"
+            placeholder="Leave blank if you don't change password" minlength="8" maxlength="128"
+            oninput="checkPasswordMatch(document.getElementById('confirmPassword'))">
+        </div>
+        <div class="col-md-6">
+          <!-- oninput="checkPasswordMatch(this)" gọi lại hàm và truyền vào chính nó -->
+          <label for="inputPassword4" class="form-label">Confirm Password:</label>
+          <input type="password" oninput="checkPasswordMatch(this)" class="form-control" id="confirmPassword"
+            minlength="8" maxlength="128">
+        </div>
+        <div class="col-12">
+          <label for="inputPassword4" class="form-label">Assigned Roles:</label>
+          <span><b>[[${user.roles}]]</b></span>
+        </div>
+
+
+        <div class="col-md-4">
+          <label for="fileImage" class="form-label">Photo:</label>
+          <!-- <input type="file" id="fileImage" accept="image/png,image/jpeg"> -->
+          <input class="form-control" type="file" id="fileImage" name="image">
+          <input type="hidden" th:field="*{photos}">
+          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo"
+            th:if="${user.photos==null}" th:src="@{/images/default-user.png}">
+          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo"
+            th:if="${user.photos!=null}" th:src="@{${user.photosImagePath}}">
+        </div>
+
+
+        <div class="col-12">
+          <button type="submit" data-bs-toggle="modal" class="btn btn-primary">Save</button>
+          <a style="text-decoration: none;" th:href="@{/}"> <button type="button" class="btn btn-secondary"
+              id="buttonCancel">Cancel</button></a>
+
+        </div>
+
+      </form>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalDialog" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitle">Warning</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+    <div th:replace="fragments::footer"></div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+  <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+
+  <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+ <script type="text/javaScript" th:src="@{/js/common_form.js}"></script>
+  <script type="text/JavaScript">
+  
+    function checkPasswordMatch(confirmPassword) {
+      //kiểm tra trường password và confirmPassword có giống nhau không
+      if (confirmPassword.value != $("#password").val()) {
+        //hiển thị thông báo mật khẩu không giống nhau
+        confirmPassword.setCustomValidity("Passwords do not match!");
+       
+      }else{
+        confirmPassword.setCustomValidity("");
+      }
+      console.log(confirmPassword +" "+$("#password").val());
+    }
+      
+  </script>
+</body>
+
+</html>

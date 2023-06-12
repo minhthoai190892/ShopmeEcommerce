@@ -38,9 +38,17 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
-		http.authorizeHttpRequests().anyRequest().authenticated()
-		.and()
+		/*
+		 * hasRole: phải có tiền tố phái trước mõi roles trong CSDL phải có ROLE_tênrole
+		 * hasAuthority sử dụng vai trò đã cho trong CSDL
+		 * */
+		http.authorizeHttpRequests(configurer->configurer
+														.requestMatchers("/users/**").hasAnyAuthority("Admin")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
+														.anyRequest()
+														.authenticated()		
+				)
+		
+		
 			.formLogin()//hiển thị form login
 				.loginPage("/login")//hiển thị form login custom
 				.usernameParameter("email")//sử dụng email để đăng nhập
