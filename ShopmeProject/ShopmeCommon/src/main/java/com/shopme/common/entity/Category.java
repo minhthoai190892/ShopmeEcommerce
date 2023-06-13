@@ -3,6 +3,8 @@ package com.shopme.common.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.aspectj.apache.bcel.classfile.Code;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -110,6 +112,5 @@ public class Category {
 	public void setChildren(Set<Category> children) {
 		this.children = children;
 	}
-	
 	
 }

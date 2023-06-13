@@ -3,6 +3,7 @@ package com.shopme.admin.category;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.Console;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ import org.springframework.test.annotation.Rollback;
 
 import com.shopme.common.entity.Category;
 
-@DataJpaTest
+@DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 public class CategoryTestsRepository {
@@ -31,9 +32,9 @@ public class CategoryTestsRepository {
 	@Test
 	public void testCreateSubCategory() {
 		//lấy id của category cha
-		Category paretnCategory = new Category(5);
+		Category paretnCategory = new Category(4);
 		System.out.println("==========>"+paretnCategory.getId());
-		Category subCategory = new Category("Memory", paretnCategory);
+		Category subCategory = new Category("Gaming Laptops", paretnCategory);
 		categoryRepository.save(subCategory);
 //		assertThat(saveCategory.getId()).isGreaterThan(0);
 	}
@@ -45,6 +46,33 @@ public class CategoryTestsRepository {
 		Set<Category> children = category.getChildren();
 		for (Category subCategory : children) {
 			System.out.println(subCategory.getName());
+		}
+		
+	}
+	@Test
+	public void testPrintHierarchicalCategories() {
+		Iterable<Category> categories = categoryRepository.findAll();
+		for (Category category : categories) {
+			if (category.getParent()==null) {
+				System.out.println(category.getName());
+				
+				Set<Category> children = category.getChildren();
+				for (Category subCategory: children) {
+					System.out.println("--"+subCategory.getName());
+					printChildren(subCategory, 1);
+				}
+			}
+		}
+	}
+	private void printChildren(Category parent,int subLevel) {
+		int newSubLevel = subLevel+1;
+		Set<Category> children = parent.getChildren();
+		for (Category subCategory: children) {
+			for (int i = 0; i < newSubLevel; i++) {
+				System.out.print("--");
+			}
+			System.out.println(subCategory.getName());
+			printChildren(subCategory, newSubLevel);
 		}
 	}
 }
