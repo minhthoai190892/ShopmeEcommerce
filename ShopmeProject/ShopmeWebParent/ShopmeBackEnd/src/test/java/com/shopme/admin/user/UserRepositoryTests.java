@@ -2,8 +2,7 @@ package com.shopme.admin.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
-import java.nio.file.Path;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
-import com.shopme.admin.FileUploadUtil;
+
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 
@@ -149,5 +148,19 @@ public class UserRepositoryTests {
 		// in chi tiết người dùng trong danh sách
 		list.forEach(user -> System.out.println(user));
 		assertThat(list.size()).isEqualTo(pagesize);
+	}
+	@Test
+	public void testSearchUsers() {
+		String keyword = "Danh";
+		int pageNumber = 0;
+		int pagesize = 2;
+
+		Pageable pageable = PageRequest.of(pageNumber, pagesize);
+		Page<User> page = repo.findAll(keyword, pageable);
+		// tập hợp danh sách đối tượng user
+		List<User> list = page.getContent();
+		// in chi tiết người dùng trong danh sách
+		list.forEach(user -> System.out.println(user));
+		assertThat(list.size()).isGreaterThan(0);
 	}
 }

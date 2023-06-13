@@ -1,6 +1,5 @@
 package com.shopme.admin;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -8,11 +7,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import javax.sound.midi.Patch;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtil {
+	private static final Logger LOGGER=LoggerFactory.getLogger(FileUploadUtil.class);
 	/**
 	 * Hàm tạo thư mục và lưu tệp hình ảnh
 	 * @param uploadDir  tạo tên thư mục
@@ -47,12 +47,14 @@ public class FileUploadUtil {
 					try {
 						Files.delete(file);
 					} catch (Exception e) {
-						System.out.println("Could not delete file: "+file);
+						LOGGER.error("Could not delete file: "+file);
+//						System.out.println("Could not delete file: "+file);
 					}
 				}
 			});
 		} catch (IOException e) {
-			System.out.println("Could not list directory: "+dirPath);
+			LOGGER.error("Could not list directory: "+dirPath);
+//			System.out.println("Could not list directory: "+dirPath);
 		}
 	}
 	

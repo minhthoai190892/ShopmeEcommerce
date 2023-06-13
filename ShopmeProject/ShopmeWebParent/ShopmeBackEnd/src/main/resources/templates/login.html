@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::page_head('Login Admin')">
+  
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+  </header>
+  <main>
+    <div class="container-fluid text-center">
+      <!-- logo -->
+      <img th:src="@{/images/ShopmeAdminBig.png}" alt=""></a>
+      <!-- form login -->
+      <form th:action="@{/login}" method="post" style="max-width:350px ; margin: 0 auto;">
+        <!-- hiên thị thông báo sai tài khoản, mật khẩu và tài khoản disable -->
+        <div th:if="${param.error}">
+          <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>
+        <!-- hiển thị thông báo đăng xuất thành công -->
+        <div th:if="${param.logout}">
+          <p class="text-warning">You have been logged out</p>
+        </div>
+        <div class="border border-secondary rounded p-3">
+          <p>Access to Shopme Control Panel</p>
+          <p><input type="email" name="email" class="form-control" placeholder="E-mail" required></p>
+          <p><input type="password" name="password" class="form-control" placeholder="Password" required></p>
+          <p>
+            <input type="checkbox" name="remember-me" id="" >&nbsp; Remember me
+          </p>
+          <p><input type="submit"  value="Login" class="btn btn-primary"></p>
+
+        </div>
+      </form>
+      
+    </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,21 +31,43 @@ public class UserService {
 	private PasswordEncoder passwordEncoder;
 
 	/**
+	 * Hàm lấy User bằng email
+	 * @param email nhận một chuổi email
+	 * @return trả về User
+	 */
+	public User getByEmail(String email) {
+		return userRepository.getUserByEmail(email);
+	}
+	/**
 	 * Lấy danh sách users từ cơ sở dữ liệu
 	 * 
 	 * @return
 	 */
 	public List<User> listAll() {
-		return (List<User>) userRepository.findAll();
+		//trả về danh sách user và sort user
+		return (List<User>) userRepository.findAll(Sort.by("id").ascending());
 	}
 
-	/** 
-	 * hàm lấy số lượng người dùng trên một trang
-	 * @param pageNum
-	 * @return 
+	/**
+	 * hàm lấy số lượng người dùng trên một trang và sắp xếp
+	 * 
+	 * @param pageNum   là số trang
+	 * @param sortField là trường cần sort
+	 * @param sortDir   loại muốn sắp xếp (tăng hoặc giảm)
+	 * @return trả về danh sách
 	 */
-	public Page<User> listByPage(int pageNum) {
-		Pageable pageable = PageRequest.of(pageNum - 1, USER_PER_PAGE);
+	public Page<User> listByPage(int pageNum, String sortField, String sortDir,String keyword) {
+		// tạo đối tượng sort bằng field
+		Sort sort = Sort.by(sortField);
+		// loại sort
+		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+		//bắt đầu phân trang và sort
+		Pageable pageable = PageRequest.of(pageNum - 1, USER_PER_PAGE,sort);
+		//kiểm tra người dùng có nhập tìm kiếm
+		if (keyword!=null) {
+			return userRepository.findAll(keyword, pageable);
+		}
+		
 		return userRepository.findAll(pageable);
 	}
 
@@ -104,8 +127,8 @@ public class UserService {
 	}
 
 	/**
-	 * hàm kiểm tra email là duy nhất
-	 * kiểm tra email mới tạo hay là email được cập nhật
+	 * hàm kiểm tra email là duy nhất kiểm tra email mới tạo hay là email được cập
+	 * nhật
 	 * 
 	 * @param id    id người dùng
 	 * @param email email người dùng
@@ -175,4 +198,40 @@ public class UserService {
 	public void updateUserEnabledStatus(Integer id, boolean enabled) {
 		userRepository.updateEnabledStatus(id, enabled);
 	}
+	
+	/**
+	 * Hàm cập nhật lại thông tin Account
+	 * @param userInform
+	 * @return
+	 */
+	public User updateAccount(User userInform) {
+		//lấy thông tin người dùng bằng Id
+		User userInDB=userRepository.findById(userInform.getId()).get();
+		//kiểm tra xem password có trống không
+		if (!userInform.getPassword().isEmpty()) {
+			//=> password không trống
+			//ta cập nhập lại mật khẩu
+			userInDB.setPassword(userInform.getPassword());
+			//mã hóa lại password
+			encodePassword(userInDB);
+			
+		}
+		//kiểm tra xem photo có trống không
+		if (userInform.getPhotos() !=null) {
+			//=> photo không trống
+			//cập nhật lại hình ảnh
+			userInDB.setPhotos(userInform.getPhotos());
+		}
+		//cập nhật lại thông tin: firstName, lastName
+		userInDB.setFirstName(userInform.getFirstName());
+		userInDB.setLastName(userInform.getLastName());
+		return userRepository.save(userInDB);
+	}
+	
 }
+
+
+
+
+
+
