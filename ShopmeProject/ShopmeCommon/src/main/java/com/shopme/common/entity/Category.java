@@ -3,7 +3,6 @@ package com.shopme.common.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.aspectj.apache.bcel.classfile.Code;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
