@@ -15,12 +15,14 @@ import com.shopme.common.entity.Category;
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
+
 	@GetMapping("/categories")
 	public String listAll(Model model) {
-		List<Category> categories = categoryService.listAll();
-		model.addAttribute("categories", categories);
+		List<Category> listCategories = categoryService.listAll();
+		model.addAttribute("listCategories", listCategories);
 		return "categories/categories";
 	}
+
 	/**
 	 * @param id
 	 * @param enabled
@@ -28,12 +30,24 @@ public class CategoryController {
 	 * @return
 	 */
 	@GetMapping("/categories/{id}/enabled/{status}")
-	public String updateCategoryEnabledStatus(@PathVariable("id")Integer id, @PathVariable("status")boolean enabled,RedirectAttributes redirectAttributes) {
+	public String updateCategoryEnabledStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enabled,
+			RedirectAttributes redirectAttributes) {
 		categoryService.updateCategoryEnabledStatus(id, enabled);
-		String status = enabled?"enabled":"disable";
-		String message = "The category id "+id+" has been "+status;
+		String status = enabled ? "enabled" : "disable";
+		String message = "The category id " + id + " has been " + status;
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/categories";
-		
-	}	
+
+	}
+
+	@GetMapping("/categories/new")
+	public String newCategory(Model model) {
+		List<Category> listCategories = categoryService.listCategoriesUsedInForm();
+		model.addAttribute("listCategories", listCategories);
+		model.addAttribute("category", new Category());
+		model.addAttribute("pageTitle", "Create Category");
+
+		return "categories/category_form";
+	}
+
 }
