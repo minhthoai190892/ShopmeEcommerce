@@ -31,33 +31,39 @@ public class CategoryService {
 
 	public List<Category> listCategoriesUsedInForm() {
 		List<Category> categoriesUsedInForm = new ArrayList<>();
+		// lấy dữ liệu từ DB
 		Iterable<Category> categoriesInDB = categoryRepository.findAll();
-		for (Category category : categoriesInDB) {
+		for (Category category : categoriesInDB) {// => chạy danh sách cha
 			if (category.getParent() == null) {
-				categoriesUsedInForm.add(new Category(category.getName()));
+				// categoriesUsedInForm.add(new Category(category.getName()));
+				categoriesUsedInForm.add(Category.copyIdAndName(category));
 
-				Set<Category> children = category.getChildren();
-				for (Category subCategory : children) {
-					String name = "--"+subCategory.getName();
-					categoriesUsedInForm.add(new Category(name));
-					listChildren(categoriesUsedInForm,subCategory, 1);
+				Set<Category> children = category.getChildren();// =>list danh sách con
+				for (Category subCategory : children) {// => chạy danh sách con
+					String name = "--" + subCategory.getName();
+					categoriesUsedInForm.add(Category.copyIdAndName(subCategory.getId(), name));
+					listChildren(categoriesUsedInForm, subCategory, 1);
 				}
 			}
 		}
 		return categoriesUsedInForm;
 	}
 
-	private void listChildren(List<Category> categoriesUsedInForm,Category parent, int subLevel) {
+	private void listChildren(List<Category> categoriesUsedInForm, Category parent, int subLevel) {
 		int newSubLevel = subLevel + 1;
 		Set<Category> children = parent.getChildren();
 		for (Category subCategory : children) {
-			String name ="";
+			String name = "";
 			for (int i = 0; i < newSubLevel; i++) {
-				name+= "--";
+				name += "--";
 			}
-			name+=subCategory.getName();
-			categoriesUsedInForm.add(new Category(name));
-			listChildren(categoriesUsedInForm,subCategory, newSubLevel);
+			name += subCategory.getName();
+			categoriesUsedInForm.add(Category.copyIdAndName(subCategory.getId(), name));
+			listChildren(categoriesUsedInForm, subCategory, newSubLevel);
 		}
+	}
+
+	public Category save(Category category) {
+		return categoryRepository.save(category);
 	}
 }
