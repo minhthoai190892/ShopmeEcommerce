@@ -3,7 +3,6 @@ package com.shopme.common.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.aspectj.apache.bcel.classfile.Code;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +37,6 @@ public class Category {
 	public Category() {
 		super();
 	}
-
 
 	/**
 	 * Hàm tạo mới một Category
@@ -112,5 +110,22 @@ public class Category {
 	public void setChildren(Set<Category> children) {
 		this.children = children;
 	}
-	
+
+	/**
+	 * Hàm sao chép id và tên 
+	 * @param category nhận một đối tượng Category
+	 * @return trả về một đối tượng đã được sao chép
+	 */
+	public static Category copyIdAndName(Category category) {
+		Category copyCategory = new Category();
+		copyCategory.setId(category.getId());
+		copyCategory.setName(category.getName());
+		return copyCategory;
+	}
+	public static Category copyIdAndName(Integer id, String name) {
+		Category copyCategory = new Category();
+		copyCategory.setId(id);
+		copyCategory.setName(name);
+		return copyCategory;
+	}
 }

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::page_head('Categories - Shopme Admin')"></head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <!-- Menu -->
+    <div th:replace="navigation::menu"></div>
+  </header>
+  <main>
+    <div class="container-fluid">
+      <div>
+        <h2>Manager Categories</h2>
+        <a th:href="@{/categories/new}" class="fa-solid fa-user-plus icon-dark fa-xl "></a>
+        <a th:href="@{/categories/export/csv}" class="fa-solid fa-file-csv icon-dark fa-xl "></a>
+        <a th:href="@{/categories/export/excel}" class="fa-solid fa-file-excel fa-xl icon-dark"></a>
+        <a th:href="@{/categories/export/pdf}" class="fa-solid fa-file-pdf fa-xl icon-dark"></a>
+      </div>
+      <div class="full-details">
+        <form th:action="@{/categories/page/1}" class="form-inline">
+
+          Filter:
+          <input type="search" name="keyword" th:value="${keyword}" class="my-3" required />
+          <button type="submit" value="Search" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()">
+            <i class="fa-solid fa-eraser"></i>
+          </button>
+        </form>
+        <!-- Thông báo lỗi bằng RedirectAttributes -->
+        <div th:if="${message!=null}" class="alert alert-success text-center">
+          [[${message}]]
+        </div>
+      </div>
+      <div>
+        <table class="table table-striped table-inverse table-responsive">
+          <thead class="thead-inverse">
+            <tr>
+              <th>ID</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Alias</th>
+              <th>Enables</th>
+
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each=" category: ${listCategories}">
+              <td>[[${category.id}]]</td>
+              <td>[[${category.image}]]</td>
+              <td>[[${category.name}]]</td>
+              <td>[[${category.alias}]]</td>
+              <td>
+                <!-- Enabled -->
+                <a style="text-decoration: none;" th:href="@{'/categories/'+${category.id}+'/enabled/false'}"
+                  th:if="${category.enabled == true}" title="Disable this category"
+                  class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>
+                <a style="text-decoration: none;" th:href="@{'/categories/'+${category.id}+'/enabled/true'}"
+                  th:if="${category.enabled == false}" class="fa-sharp fa-solid fa-circle fa-2xl icon-dark"
+                  title="Enable this category"></a>
+              </td>
+              <td>
+                <!-- Edit and Delete -->
+                <a title="Update this category" class="fa-solid fa-pen-to-square fa-2xl icon-green"></a> |
+                <a title="Delete this category" class="fa-solid fa-trash fa-2xl icon-red link-delete"></a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+    <div th:replace="fragments::footer"></div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+  <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+  <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+ 
+</body>
+
+</html>
