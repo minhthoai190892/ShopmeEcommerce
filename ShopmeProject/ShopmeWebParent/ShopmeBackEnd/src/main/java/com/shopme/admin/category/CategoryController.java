@@ -61,7 +61,8 @@ public class CategoryController {
 		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		category.setImage(fileName);
 		Category saveCategory = categoryService.save(category);
-		String uploadDir = "../category-images"+saveCategory.getId();
+		// vị trí lưu file và tên file
+		String uploadDir = "../category-images/"+saveCategory.getId();
 		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 		redirectAttributes.addFlashAttribute("message", "The category has been saved successfully");
 		return "redirect:/categories";
