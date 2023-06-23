@@ -52,7 +52,7 @@
             <tr th:each=" category: ${listCategories}">
               <td>[[${category.id}]]</td>
               <td>
-                <img th:src="@{${category.imagePath}}" alt="">
+                <img th:src="@{${category.imagePath}}" alt="Image ">
               </td>
               <td>[[${category.name}]]</td>
               <td>[[${category.alias}]]</td>
@@ -66,8 +66,9 @@
                   title="Enable this category"></a>
               </td>
               <td>
+             
                 <!-- Edit and Delete -->
-                <a title="Update this category" class="fa-solid fa-pen-to-square fa-2xl icon-green"></a> |
+                <a title="Update this category"  th:href="@{'/categories/edit/'+${category.id}}"  class="fa-solid fa-pen-to-square fa-2xl icon-green"></a> |
                 <a title="Delete this category" class="fa-solid fa-trash fa-2xl icon-red link-delete"></a>
               </td>
             </tr>
