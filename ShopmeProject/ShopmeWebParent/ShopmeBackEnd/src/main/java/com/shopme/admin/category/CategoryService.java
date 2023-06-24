@@ -2,6 +2,7 @@ package com.shopme.admin.category;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class CategoryService {
 
 	public List<Category> listAll() {
 		List<Category> rootCategories = categoryRepository.findRootCategories();
-		//gọi lại hàm
+		// gọi lại hàm
 		return listHierarchicalCategories(rootCategories);
 		// return rootCategories;
 	}
@@ -112,11 +113,21 @@ public class CategoryService {
 		}
 	}
 
-	/** hàm lưu thông tin category
-	 * @param category nhận vào một đối tượng 
+	/**
+	 * hàm lưu thông tin category
+	 * 
+	 * @param category nhận vào một đối tượng
 	 * @return trả
 	 */
 	public Category save(Category category) {
 		return categoryRepository.save(category);
+	}
+
+	public Category get(Integer id) throws CategoryNotFoundException {
+		try {
+			return categoryRepository.findById(id).get();
+		} catch (NoSuchElementException ex) {
+			throw new CategoryNotFoundException("Could not find any category with ID " + id);
+		}
 	}
 }

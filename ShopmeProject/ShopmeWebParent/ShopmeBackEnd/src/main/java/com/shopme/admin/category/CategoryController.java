@@ -57,15 +57,39 @@ public class CategoryController {
 	}
 
 	@PostMapping("/categories/save")
-	public String saveCategory(Category category, @RequestParam("fileImage") MultipartFile multipartFile,RedirectAttributes redirectAttributes) throws IOException {
-		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-		category.setImage(fileName);
-		Category saveCategory = categoryService.save(category);
-		// vị trí lưu file và tên file
-		String uploadDir = "../category-images/"+saveCategory.getId();
-		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+	public String saveCategory(Category category, @RequestParam("fileImage") MultipartFile multipartFile,
+			RedirectAttributes redirectAttributes) throws IOException {
+		if (!multipartFile.isEmpty()) {
+			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+			category.setImage(fileName);
+
+			Category saveCategory = categoryService.save(category);
+			// vị trí lưu file và tên file
+			String uploadDir = "../category-images/" + saveCategory.getId();
+			FileUploadUtil.cleanDir(uploadDir);
+			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+		} else {
+			categoryService.save(category);
+		}
 		redirectAttributes.addFlashAttribute("message", "The category has been saved successfully");
+
 		return "redirect:/categories";
 	}
 
+	@GetMapping("/categories/edit/{id}")
+	public String editCategory(@PathVariable(name = "id") Integer id, Model model,
+			RedirectAttributes redirectAttributes) throws CategoryNotFoundException {
+
+		try {
+			Category category = categoryService.get(id);
+			List<Category> listCategories = categoryService.listCategoriesUsedInForm();
+			model.addAttribute("listCategories", listCategories);
+			model.addAttribute("category", category);
+			model.addAttribute("pageTitle", "Edit Category (ID: " + id + ")");
+			return "categories/category_form";
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			return "redirect:/categories";
+		}
+	}
 }
