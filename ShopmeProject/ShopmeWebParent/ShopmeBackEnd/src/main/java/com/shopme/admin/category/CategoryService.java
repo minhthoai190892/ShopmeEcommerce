@@ -123,11 +123,50 @@ public class CategoryService {
 		return categoryRepository.save(category);
 	}
 
+	/**
+	 * Hàm thông tin bằng id
+	 * 
+	 * @param id nhận vào một id
+	 * @return trả về một đối tượng
+	 * @throws CategoryNotFoundException
+	 */
 	public Category get(Integer id) throws CategoryNotFoundException {
 		try {
 			return categoryRepository.findById(id).get();
 		} catch (NoSuchElementException ex) {
 			throw new CategoryNotFoundException("Could not find any category with ID " + id);
 		}
+	}
+
+	/**
+	 * Hàm kiểm tra name và alias có trùng không
+	 * @param id nhận vào một id 
+	 * @param name 
+	 * @param alias
+	 * @return trả về một chuổi Ok hoặc DuplicateName
+	 */
+	public String checkUnique(Integer id, String name, String alias) {
+		boolean isCreatingNew = (id == null || id == 0);// =>kiểm tra có tạo mới chưa
+		Category categoryByName = categoryRepository.findByName(name);
+		if (isCreatingNew) {
+			if (categoryByName != null) {// => kiểm tra đã tồn tại chưa
+				return "DuplicateName";
+			}else{
+				Category categoryByAlias = categoryRepository.findByAlias(alias);
+				if (categoryByAlias !=null) {
+					return "DuplicateAlias";
+				}
+			}
+		}else{
+			if (categoryByName != null && categoryByName.getId() !=id) {
+				return "DuplicateName";
+			}
+			Category categoryByAlias = categoryRepository.findByAlias(alias);
+			if (categoryByAlias !=null && categoryByAlias.getId() != id) {
+				return "DuplicateAlias";
+			}
+		}
+		return "Ok";
+
 	}
 }

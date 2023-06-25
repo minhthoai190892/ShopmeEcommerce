@@ -19,7 +19,7 @@
       <!-- th:action="@{/categories/save}" method="post" gọi phương thức "save" trong categoryController với ánh xạ "POST MAPPING"-->
       <!-- enctype="multipart/form-data": cho phép tải lên tệp cho biểu mẫu -->
       <form class="row g-3" th:action="@{/categories/save}" method="post" th:object="${category}"
-        enctype="multipart/form-data">
+        enctype="multipart/form-data" onsubmit="return checkUnique(this)">
         <!-- lưu id người dùng  -->
         <input type="hidden" id="id" th:field="*{id}">
         <div class="col-md-6">
@@ -38,7 +38,7 @@
             <select name="" id="" class="form-control" th:field="*{parent}">
               <option value="0">[No Parent]</option>
               <th:block th:each=" cat: ${listCategories}">
-              <option th:value="${cat.id}">[[${cat.name}]]</option>
+                <option th:value="${cat.id}">[[${cat.name}]]</option>
               </th:block>
             </select>
           </div>
@@ -58,11 +58,12 @@
           <!-- <input class="form-control" type="file" id="fileImage" name="image"> -->
           <input type="hidden" th:field="*{image}">
 
-          <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg"   th:required="${category.imagePath == null}">
-        
+          <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg"
+            th:required="${category.imagePath == null}">
+
           <div class="mt-2">
             <img th:src="@{${category.ImagePath}}" style="width: 200px; height: 200px; object-fit: cover;"
-              id="thumbnail" alt="Image Preview" >
+              id="thumbnail" alt="Image Preview">
           </div>
         </div>
 
@@ -75,32 +76,7 @@
         </div>
 
       </form>
-
-
-
-      <!-- Modal -->
-      <div class="modal fade" id="modalDialog" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalTitle">Warning</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modalBody">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
+      <div th:replace="./fragments/fragment_modal::modal_dialog"></div>
     </div>
   </main>
   <footer>
@@ -121,6 +97,33 @@
   <script type="text/javaScript" th:src="@{/js/common_form.js}"></script>
   <script type="text/JavaScript">
       moduleURL = "[[@{/categories}]]"
+      function checkUnique(form) {
+        catId =$("#id").val();
+        catName =$("#name").val();
+        catAlias =$("#alias").val();
+        // //đọc giá trị csrf của trang web
+        csrfValue=$("input[name='_csrf']").val();
+        // xác định đường dẫn của dịch vụ web (CategoryRestController)
+        url = "[[@{/categories/check_unique}]]";//==> nhận được giá trị của trường biểu mẫu
+         params = {id:catId,name:catName,alias:catAlias,_csrf:csrfValue}
+        $.post(url,params,function(response){
+          if (response =="Ok") {
+           form.submit();
+          }else if (response=="DuplicateName") {
+            showWarningModal( "There is another category having same name: "+catName);
+          }else if (response=="DuplicateAlias") {
+            showWarningModal( "There is another category having same alias: "+catAlias);
+          }else{
+            showErrorModal( "Unknown response from server");
+          }
+        }).fail(function(){
+          showErrorModal( "Could not connect to the server");
+        });
+  
+
+        return false;
+      }
+      
   </script>
 
 

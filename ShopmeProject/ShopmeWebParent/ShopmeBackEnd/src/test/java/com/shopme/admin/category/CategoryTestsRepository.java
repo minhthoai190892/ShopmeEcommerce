@@ -78,4 +78,20 @@ public class CategoryTestsRepository {
 		List<Category> rootCategories = categoryRepository.findRootCategories();
 		rootCategories.forEach(cat->System.out.println(cat.getName()));
 	}
+	@Test
+	public void testFindByName(){
+		String name ="Compute1r";
+		Category category = categoryRepository.findByName(name);
+		
+		assertThat(category).isNotNull();
+		assertThat(category.getName()).isEqualTo(name);
+	}
+	@Test
+	public void testFindByAlias(){
+		String alias ="Book 1";
+		Category category = categoryRepository.findByAlias(alias);
+		System.out.println(category);
+		assertThat(category).isNotNull();
+		assertThat(category.getAlias()).isEqualTo(alias);
+	}
 }
