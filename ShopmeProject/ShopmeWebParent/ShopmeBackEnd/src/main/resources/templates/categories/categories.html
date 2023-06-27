@@ -41,7 +41,12 @@
             <tr>
               <th>ID</th>
               <th>Image</th>
-              <th>Name</th>
+              <th>
+                <!-- ở cateogryController: listAll -->
+                <a class="text-black" th:href="@{'/categories?sortDir='+${reverseSortDir}}">Name</a>
+                <span th:class="${reverseSortDir=='desc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
+
+              </th>
               <th>Alias</th>
               <th>Enables</th>
 
@@ -66,9 +71,10 @@
                   title="Enable this category"></a>
               </td>
               <td>
-             
+
                 <!-- Edit and Delete -->
-                <a title="Update this category"  th:href="@{'/categories/edit/'+${category.id}}"  class="fa-solid fa-pen-to-square fa-2xl icon-green"></a> |
+                <a title="Update this category" th:href="@{'/categories/edit/'+${category.id}}"
+                  class="fa-solid fa-pen-to-square fa-2xl icon-green"></a> |
                 <a title="Delete this category" class="fa-solid fa-trash fa-2xl icon-red link-delete"></a>
               </td>
             </tr>
@@ -93,7 +99,7 @@
     </script>
   <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
   <script type="text/javaScript" th:src="@{/js/common.js}"></script>
- 
+
 </body>
 
 </html>

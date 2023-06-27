@@ -2,6 +2,7 @@ package com.shopme.admin.category;
 
 import java.util.List;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +21,7 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	public void updateEnabledStatus(Integer id, boolean enabled);
 
 	@Query("select c from Category c where c.parent.id is null")
-	public List<Category> findRootCategories();
+	public List<Category> findRootCategories(Sort sort);
 
 	/**
 	 * Hàm tìm kiếm thông qua tên
