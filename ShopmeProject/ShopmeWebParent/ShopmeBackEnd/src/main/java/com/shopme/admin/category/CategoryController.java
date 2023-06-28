@@ -23,8 +23,15 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
+	/** 
+	 * Hàm hiển thị tất cả thông tin của Category
+	 * @param model cần đối tượng model
+	 * @param sortDir để phân biệt cách sort (asc hoặc desc)
+	 * @return trả về trang html
+	 */
 	@GetMapping("/categories")
 	public String listAll(Model model,@Param("sortDir") String sortDir) {
+		//hiển thị tất cả thông tin và sắp xếp dữ liệu
 		List<Category> listCategories = categoryService.listAll(sortDir);
 		if (sortDir == null || sortDir.isEmpty()) {
 			sortDir="asc";
@@ -36,11 +43,13 @@ public class CategoryController {
 		
 	}
 
+	
 	/**
-	 * @param id
-	 * @param enabled
-	 * @param redirectAttributes
-	 * @return
+	 * Hàm cập nhật category status
+	 * @param id lấy id trên URL
+	 * @param enabled lấy enable trên URL
+	 * @param redirectAttributes thông báo lỗi
+	 * @return sau khi update xong sẽ trả về trang hml
 	 */
 	@GetMapping("/categories/{id}/enabled/{status}")
 	public String updateCategoryEnabledStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enabled,
@@ -53,6 +62,11 @@ public class CategoryController {
 
 	}
 
+	/**
+	 * Hàm tạo mới một category
+	 * @param model đối tượng model
+	 * @return gọi đến trang form html
+	 */
 	@GetMapping("/categories/new")
 	public String newCategory(Model model) {
 		List<Category> listCategories = categoryService.listCategoriesUsedInForm();
@@ -63,6 +77,14 @@ public class CategoryController {
 		return "categories/category_form";
 	}
 
+	/**
+	 * Hàm lưu một category
+	 * @param category nhận một đối tượng category từ form html
+	 * @param multipartFile nhận file hình ảnh từ form
+	 * @param redirectAttributes thông báo lỗi cho trang html
+	 * @return sau khi lưu lại sẽ trả về trang html
+	 * @throws IOException thông báo lỗi hệ thống
+	 */
 	@PostMapping("/categories/save")
 	public String saveCategory(Category category, @RequestParam("fileImage") MultipartFile multipartFile,
 			RedirectAttributes redirectAttributes) throws IOException {
@@ -83,6 +105,14 @@ public class CategoryController {
 		return "redirect:/categories";
 	}
 
+	/**
+	 * Hàm cập nhật category 
+	 * @param id nhận một id 
+	 * @param model 
+	 * @param redirectAttributes thông báo lỗi cho trang html
+	 * @return sau khi cập nhật sẽ trả về trang html
+	 * @throws CategoryNotFoundException thông báo lỗi hệ thống
+	 */
 	@GetMapping("/categories/edit/{id}")
 	public String editCategory(@PathVariable(name = "id") Integer id, Model model,
 			RedirectAttributes redirectAttributes) throws CategoryNotFoundException {
@@ -98,5 +128,21 @@ public class CategoryController {
 			redirectAttributes.addFlashAttribute("message", e.getMessage());
 			return "redirect:/categories";
 		}
+	}
+	@GetMapping("/categories/delete/{id}")
+	public String deleteCategory(@PathVariable(name = "id")Integer id, 
+			RedirectAttributes redirectAttributes) {
+		try {
+			//xóa category bằng id
+			categoryService.delete(id);
+			//lấy đường dẫn file chứa hình ảnh
+			String categoryDir = "../category-images/"+id;
+			//gọi hàm xóa thư mục chứa file ảnh
+			FileUploadUtil.removeDir(categoryDir);
+			redirectAttributes.addFlashAttribute("message","the category ID "+id+" has been deleted successfully");
+		} catch (CategoryNotFoundException e) {
+			redirectAttributes.addFlashAttribute("message",e.getMessage());
+		}
+		return "redirect:/categories";
 	}
 }

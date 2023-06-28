@@ -2,6 +2,7 @@ package com.shopme.admin.category;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -20,6 +21,11 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	@Modifying // chú thích sửa đổi
 	public void updateEnabledStatus(Integer id, boolean enabled);
 
+	/**
+	 * Hàm hiển thị thông tin và sắp xếp
+	 * @param sort cách thức sắp xếp (asc hoặc desc)
+	 * @return
+	 */
 	@Query("select c from Category c where c.parent.id is null")
 	public List<Category> findRootCategories(Sort sort);
 
@@ -35,4 +41,13 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	 * @return trả về một đối tượng tìm kiếm
 	 */
 	public Category findByAlias(String alias);
+	public Long countById(Integer id) ;
+	
+	/**
+	 * Hàm hiển thị thông tin và phân trang
+	 * @param pageable 
+	 * @return
+	 */
+	@Query("select c from Category c where c.parent.id is null")
+	public List<Category> findRootCategories(Pageable pageable);
 }
