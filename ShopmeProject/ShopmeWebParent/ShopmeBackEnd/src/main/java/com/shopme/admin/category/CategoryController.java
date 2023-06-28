@@ -23,31 +23,47 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
-	/** 
+	/**
 	 * Hàm hiển thị tất cả thông tin của Category
-	 * @param model cần đối tượng model
+	 * 
+	 * @param model   cần đối tượng model
 	 * @param sortDir để phân biệt cách sort (asc hoặc desc)
 	 * @return trả về trang html
 	 */
 	@GetMapping("/categories")
-	public String listAll(Model model,@Param("sortDir") String sortDir) {
-		//hiển thị tất cả thông tin và sắp xếp dữ liệu
-		List<Category> listCategories = categoryService.listAll(sortDir);
-		if (sortDir == null || sortDir.isEmpty()) {
-			sortDir="asc";
-		} 
-		String reverseSortDir = sortDir.equals("asc")?"desc":"asc";
-		model.addAttribute("listCategories", listCategories);
-		model.addAttribute("reverseSortDir",reverseSortDir);
-		return "categories/categories";
-		
+	public String listFirstPage(Model model, @Param("sortDir") String sortDir) {
+
+		return listByPage(model, sortDir, 1);
 	}
 
+	@GetMapping("/categories/page/{pageNum}")
+	public String listByPage(Model model, @Param("sortDir") String sortDir,
+			@PathVariable(name = "pageNum") int pageNum) {
+
+		if (sortDir == null || sortDir.isEmpty()) {
+			sortDir = "asc";
+		}
+		CategoryPageInfo pageInfo= new CategoryPageInfo();
+		// hiển thị tất cả thông tin và sắp xếp dữ liệu
+		List<Category> listCategories = categoryService.listByPage(sortDir, pageNum, pageInfo);
 	
+		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+		model.addAttribute("listCategories", listCategories);
+		model.addAttribute("reverseSortDir", reverseSortDir);
+		model.addAttribute("totalPages", pageInfo.getTotalPages());
+		model.addAttribute("totalItems", pageInfo.getTotalElements());
+		model.addAttribute("currentPage", pageNum);
+		model.addAttribute("sortField", "name");
+		model.addAttribute("sortField", sortDir);
+		return "categories/categories";
+
+	}
+
 	/**
 	 * Hàm cập nhật category status
-	 * @param id lấy id trên URL
-	 * @param enabled lấy enable trên URL
+	 * 
+	 * @param id                 lấy id trên URL
+	 * @param enabled            lấy enable trên URL
 	 * @param redirectAttributes thông báo lỗi
 	 * @return sau khi update xong sẽ trả về trang hml
 	 */
@@ -64,6 +80,7 @@ public class CategoryController {
 
 	/**
 	 * Hàm tạo mới một category
+	 * 
 	 * @param model đối tượng model
 	 * @return gọi đến trang form html
 	 */
@@ -79,8 +96,9 @@ public class CategoryController {
 
 	/**
 	 * Hàm lưu một category
-	 * @param category nhận một đối tượng category từ form html
-	 * @param multipartFile nhận file hình ảnh từ form
+	 * 
+	 * @param category           nhận một đối tượng category từ form html
+	 * @param multipartFile      nhận file hình ảnh từ form
 	 * @param redirectAttributes thông báo lỗi cho trang html
 	 * @return sau khi lưu lại sẽ trả về trang html
 	 * @throws IOException thông báo lỗi hệ thống
@@ -106,9 +124,10 @@ public class CategoryController {
 	}
 
 	/**
-	 * Hàm cập nhật category 
-	 * @param id nhận một id 
-	 * @param model 
+	 * Hàm cập nhật category
+	 * 
+	 * @param id                 nhận một id
+	 * @param model
 	 * @param redirectAttributes thông báo lỗi cho trang html
 	 * @return sau khi cập nhật sẽ trả về trang html
 	 * @throws CategoryNotFoundException thông báo lỗi hệ thống
@@ -129,19 +148,19 @@ public class CategoryController {
 			return "redirect:/categories";
 		}
 	}
+
 	@GetMapping("/categories/delete/{id}")
-	public String deleteCategory(@PathVariable(name = "id")Integer id, 
-			RedirectAttributes redirectAttributes) {
+	public String deleteCategory(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 		try {
-			//xóa category bằng id
+			// xóa category bằng id
 			categoryService.delete(id);
-			//lấy đường dẫn file chứa hình ảnh
-			String categoryDir = "../category-images/"+id;
-			//gọi hàm xóa thư mục chứa file ảnh
+			// lấy đường dẫn file chứa hình ảnh
+			String categoryDir = "../category-images/" + id;
+			// gọi hàm xóa thư mục chứa file ảnh
 			FileUploadUtil.removeDir(categoryDir);
-			redirectAttributes.addFlashAttribute("message","the category ID "+id+" has been deleted successfully");
+			redirectAttributes.addFlashAttribute("message", "the category ID " + id + " has been deleted successfully");
 		} catch (CategoryNotFoundException e) {
-			redirectAttributes.addFlashAttribute("message",e.getMessage());
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
 		}
 		return "redirect:/categories";
 	}

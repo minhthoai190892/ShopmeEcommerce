@@ -43,7 +43,7 @@
               <th>Image</th>
               <th>
                 <!-- ở cateogryController: listAll -->
-                <a class="text-black" th:href="@{'/categories?sortDir='+${reverseSortDir}}">Name</a>
+                <a class="text-black" th:href="@{'/categories/page/'+${pageNum}+'?sortDir='+${reverseSortDir}}">Name</a>
                 <span
                   th:class="${reverseSortDir=='desc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
 
@@ -76,9 +76,11 @@
                 <!-- Edit and Delete -->
                 <a title="Update this category" th:href="@{'/categories/edit/'+${category.id}}"
                   class="fa-solid fa-pen-to-square fa-2xl icon-green"></a> |
-              <th:block th:if="${category.hasChildren == false}">
-                <a title="Delete this category" th:entityId="${category.id}" th:href="@{'/categories/delete/'+${category.id}}" class="fa-solid fa-trash fa-2xl icon-red link-delete"></a>
-              </th>
+                <th:block th:if="${category.hasChildren == false}">
+                  <a title="Delete this category" th:entityId="${category.id}"
+                    th:href="@{'/categories/delete/'+${category.id}}"
+                    class="fa-solid fa-trash fa-2xl icon-red link-delete"></a>
+                  </th>
               </td>
             </tr>
 
@@ -86,8 +88,10 @@
         </table>
       </div>
     </div>
-<!-- Modal Confirm -->
-<div th:replace="./fragments/fragment_modal::confirm_modal"></div>
+       <!-- pagination -->
+    <div th:replace="fragments::pagination('/categories/page/','top-level categories')"></div>
+    <!-- Modal Confirm -->
+    <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
   </main>
   <footer>
     <!-- place footer here -->
@@ -103,17 +107,17 @@
     </script>
   <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
   <script type="text/javaScript" th:src="@{/js/common.js}"></script>
-<script>
-  moduleURL = "[[@{/categories}]]";
-  $(document).ready(function(){
-    $(".link-delete").on("click",function(e){
-      e.preventDefault();
-      //gọi hàm trong common.js
-      showDeleteConfirmModal($(this),'category')
-     
+  <script>
+    moduleURL = "[[@{/categories}]]";
+    $(document).ready(function () {
+      $(".link-delete").on("click", function (e) {
+        e.preventDefault();
+        //gọi hàm trong common.js
+        showDeleteConfirmModal($(this), 'category')
+
+      });
     });
-  });
-</script>
+  </script>
 </body>
 
 </html>

@@ -9,6 +9,9 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,7 @@ import jakarta.transaction.Transactional;
 public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
+	private static final int ROOT_CATEGORIES_PER_PAGE=2;
 
 	/**
 	 * hàm hiển thị tất cả thông tin từ DB
@@ -31,7 +35,7 @@ public class CategoryService {
 	// return categoryRepository.findAll();
 	// }
 
-	public List<Category> listAll(String sortDir) {
+	public List<Category> listByPage(String sortDir,int pageNum,CategoryPageInfo pageInfo) {
 		Sort sort = Sort.by("name");
 		if (sortDir == null || sortDir.isEmpty()) {
 			sort=sort.ascending();
@@ -40,7 +44,11 @@ public class CategoryService {
 		} else if (sortDir.equals("desc")) {
 			sort = sort.descending();
 		}
-		List<Category> rootCategories = categoryRepository.findRootCategories(sort);
+		Pageable pageable = PageRequest.of(pageNum -1, ROOT_CATEGORIES_PER_PAGE,sort);
+		Page<Category> pageCategories = categoryRepository.findRootCategories(pageable);
+		List<Category> rootCategories = pageCategories.getContent();
+		pageInfo.setTotalElements(pageCategories.getNumberOfElements());
+		pageInfo.setTotalPages(pageCategories.getTotalPages());
 		// gọi lại hàm
 		return listHierarchicalCategories(rootCategories);
 		// return rootCategories;
