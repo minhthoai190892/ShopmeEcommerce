@@ -16,7 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopme.admin.FileUploadUtil;
+import com.shopme.admin.user.UserService;
+import com.shopme.admin.user.export.CategoryCsvExpoter;
 import com.shopme.common.entity.Category;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class CategoryController {
@@ -33,11 +37,12 @@ public class CategoryController {
 	@GetMapping("/categories")
 	public String listFirstPage(Model model, @Param("sortDir") String sortDir) {
 
-		return listByPage(model, sortDir, 1);
+//		return listByPage(model, sortDir, 1);
+		return listByPage(model, sortDir, null, 1);
 	}
 
 	@GetMapping("/categories/page/{pageNum}")
-	public String listByPage(Model model, @Param("sortDir") String sortDir,
+	public String listByPage(Model model, @Param("sortDir") String sortDir,@Param("keyword") String keyword,
 			@PathVariable(name = "pageNum") int pageNum) {
 
 		if (sortDir == null || sortDir.isEmpty()) {
@@ -45,16 +50,24 @@ public class CategoryController {
 		}
 		CategoryPageInfo pageInfo= new CategoryPageInfo();
 		// hiển thị tất cả thông tin và sắp xếp dữ liệu
-		List<Category> listCategories = categoryService.listByPage(sortDir, pageNum, pageInfo);
+		List<Category> listCategories = categoryService.listByPage(sortDir, pageNum, pageInfo, keyword);
 	
 		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+		long startCount = (pageNum-1)*CategoryService.ROOT_CATEGORIES_PER_PAGE+1;
+		long endCount = startCount+CategoryService.ROOT_CATEGORIES_PER_PAGE-1;
+		if (endCount>pageInfo.getTotalElements()) {
+			endCount=pageInfo.getTotalElements();
+		}
 		model.addAttribute("listCategories", listCategories);
 		model.addAttribute("reverseSortDir", reverseSortDir);
 		model.addAttribute("totalPages", pageInfo.getTotalPages());
 		model.addAttribute("totalItems", pageInfo.getTotalElements());
 		model.addAttribute("currentPage", pageNum);
 		model.addAttribute("sortField", "name");
-		model.addAttribute("sortField", sortDir);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("startCount", startCount);
+		model.addAttribute("endCount", endCount);
 		return "categories/categories";
 
 	}
@@ -164,4 +177,13 @@ public class CategoryController {
 		}
 		return "redirect:/categories";
 	}
+	
+	
+	@GetMapping("/categories/export/csv")
+	public void exportToCSV(HttpServletResponse response) throws IOException {
+		List<Category>listCategories = categoryService.listCategoriesUsedInForm();
+		CategoryCsvExpoter expoter = new CategoryCsvExpoter();
+		expoter.exprot(listCategories, response);
+	}
+	
 }

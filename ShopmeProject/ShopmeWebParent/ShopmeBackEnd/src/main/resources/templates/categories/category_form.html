@@ -59,7 +59,7 @@
           <input type="hidden" th:field="*{image}">
 
           <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg"
-            th:required="${category.imagePath == null}">
+            th:required="${category.imagePath == null}" required>
 
           <div class="mt-2">
             <img th:src="@{${category.ImagePath}}" style="width: 200px; height: 200px; object-fit: cover;"

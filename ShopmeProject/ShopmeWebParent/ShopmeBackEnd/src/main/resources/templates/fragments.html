@@ -42,7 +42,8 @@
         <section>
             <!-- thể hiện số lượng phần tử trên một trang và thông báo rỗng -->
             <div class="text-center">
-                <caption class="text-center m-1" th:if="${totalItems>0}">Showing [[${entityName}]] # [[${startCount}]] to
+                <caption class="text-center m-1" th:if="${totalItems>0}">Showing [[${entityName}]] # [[${startCount}]]
+                    to
                     [[${endCount}]] of [[${totalItems}]]</caption>
                 <caption class="text-center m-1" th:unless="${totalItems>0}">No [[${entityName}]] found</caption>
             </div>
@@ -80,7 +81,23 @@
             </div>
         </section>
     </div>
-
+    <div th:fragment="search_form(moduleURL)">
+        <section>
+            <!--th:action="@{/users/page/1}"  -->
+            <form th:action="@{${moduleURL}}" class="form-inline">
+                <input type="hidden" name="sortField" th:value="${sortField}">
+                <input type="hidden" name="sortDir" th:value="${sortDir}">
+                Filter:
+                <input type="search" name="keyword" th:value="${keyword}" class="my-3" required />
+                <button type="submit" value="Search" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()">
+                    <i class="fa-solid fa-eraser"></i>
+                </button>
+            </form>
+        </section>
+    </div>
 
 </body>
 

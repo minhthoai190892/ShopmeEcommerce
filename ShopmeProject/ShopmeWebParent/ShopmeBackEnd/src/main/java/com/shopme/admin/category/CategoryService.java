@@ -24,7 +24,7 @@ import jakarta.transaction.Transactional;
 public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
-	private static final int ROOT_CATEGORIES_PER_PAGE=2;
+	public static final int ROOT_CATEGORIES_PER_PAGE = 2;
 
 	/**
 	 * hàm hiển thị tất cả thông tin từ DB
@@ -35,22 +35,37 @@ public class CategoryService {
 	// return categoryRepository.findAll();
 	// }
 
-	public List<Category> listByPage(String sortDir,int pageNum,CategoryPageInfo pageInfo) {
+	public List<Category> listByPage(String sortDir, int pageNum, CategoryPageInfo pageInfo, String keyword) {
 		Sort sort = Sort.by("name");
 		if (sortDir == null || sortDir.isEmpty()) {
-			sort=sort.ascending();
+			sort = sort.ascending();
 		} else if (sortDir.equals("asc")) {
 			sort = sort.ascending();
 		} else if (sortDir.equals("desc")) {
 			sort = sort.descending();
 		}
-		Pageable pageable = PageRequest.of(pageNum -1, ROOT_CATEGORIES_PER_PAGE,sort);
-		Page<Category> pageCategories = categoryRepository.findRootCategories(pageable);
+		Page<Category> pageCategories = null;
+		Pageable pageable = PageRequest.of(pageNum - 1, ROOT_CATEGORIES_PER_PAGE, sort);
+
+		if (keyword != null && !keyword.isEmpty()) {
+			pageCategories = categoryRepository.search(keyword, pageable);
+		} else {
+			pageCategories = categoryRepository.findRootCategories(pageable);
+		}
 		List<Category> rootCategories = pageCategories.getContent();
 		pageInfo.setTotalElements(pageCategories.getNumberOfElements());
 		pageInfo.setTotalPages(pageCategories.getTotalPages());
-		// gọi lại hàm
-		return listHierarchicalCategories(rootCategories);
+		if (keyword != null && !keyword.isEmpty()) {
+			List<Category> searchResult = pageCategories.getContent();
+			for (Category category : searchResult) {
+				category.setHasChildren(category.getChildren().size()>0);
+			}
+			return searchResult;
+		} else {
+			// gọi lại hàm
+			return listHierarchicalCategories(rootCategories);
+		}
+
 		// return rootCategories;
 	}
 
@@ -194,12 +209,12 @@ public class CategoryService {
 		return "Ok";
 
 	}
-	private SortedSet<Category> sortSubCategories(Set<Category> children) {
-		return sortSubCategories(children,"asc");
-	}
-	
 
-	private SortedSet<Category> sortSubCategories(Set<Category> children,String sortDir) {
+	private SortedSet<Category> sortSubCategories(Set<Category> children) {
+		return sortSubCategories(children, "asc");
+	}
+
+	private SortedSet<Category> sortSubCategories(Set<Category> children, String sortDir) {
 		SortedSet<Category> sortedChildren = new TreeSet<>(new Comparator<Category>() {
 
 			@Override
@@ -209,17 +224,18 @@ public class CategoryService {
 				} else {
 					return cat2.getName().compareTo(cat1.getName());
 				}
-				
+
 			}
 		});
 		sortedChildren.addAll(children);
 		return sortedChildren;
 	}
+
 	public void delete(Integer id) throws CategoryNotFoundException {
-		Long countById= categoryRepository.countById(id);
-		if (countById==null || countById==0) {
-			throw new CategoryNotFoundException("Could not find any category with ID: "+id);
-			
+		Long countById = categoryRepository.countById(id);
+		if (countById == null || countById == 0) {
+			throw new CategoryNotFoundException("Could not find any category with ID: " + id);
+
 		}
 		categoryRepository.deleteById(id);
 	}
