@@ -9,8 +9,8 @@
   </header>
   <main>
     <div class="container-fluid">
- <!-- Menu -->
- <div th:replace="navigation::menu"></div>
+      <!-- Menu -->
+      <div th:replace="navigation::menu"></div>
       <div>
         <h2>Manage User | [[${pageTitle}]]</h2>
       </div>
@@ -19,10 +19,7 @@
       <!-- th:action="@{/users/save}" method="post" gọi phương thức "save" trong UserController với ánh xạ "POST MAPPING"-->
       <!-- enctype="multipart/form-data": cho phép tải lên tệp cho biểu mẫu -->
       <form class="row g-3" th:action="@{/users/save}" method="post" th:object="${user}"
-        onsubmit="return checkEmailUnique(this)"
-        enctype="multipart/form-data"
-        
-        >
+        onsubmit="return checkEmailUnique(this)" enctype="multipart/form-data">
         <!-- lưu id người dùng  -->
         <input type="hidden" id="id" th:field="*{id}">
         <div class="col-md-6">
@@ -72,10 +69,12 @@
         <div class="col-md-4">
           <label for="fileImage" class="form-label">Photo:</label>
           <!-- <input type="file" id="fileImage" accept="image/png,image/jpeg"> -->
-          <input class="form-control"  type="file" id="fileImage" name="image" >
+          <input class="form-control" type="file" id="fileImage" name="image">
           <input type="hidden" th:field="*{photos}">
-          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo" th:if="${user.photos==null}"  th:src="@{/images/default-user.png}">
-          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo" th:if="${user.photos!=null}"  th:src="@{${user.photosImagePath}}">
+          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo"
+            th:if="${user.photos==null}" th:src="@{/images/default-user.png}">
+          <img style="width: 200px; height: 200px; object-fit: cover;" id="thumbnail" alt="Photo"
+            th:if="${user.photos!=null}" th:src="@{${user.photosImagePath}}">
         </div>
 
 
@@ -88,31 +87,8 @@
 
       </form>
 
+      <div th:replace="./fragments/fragment_modal::modal_dialog"></div>
 
-
-      <!-- Modal -->
-      <div class="modal fade" id="modalDialog" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalTitle">Warning</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modalBody">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-      
     </div>
   </main>
   <footer>
@@ -129,8 +105,8 @@
     </script>
   <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
 
-  <script type="text/javaScript"  th:src="@{/js/common.js}"></script>
-  <script type="text/javaScript"  th:src="@{/js/common_form.js}"></script>
+  <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+  <script type="text/javaScript" th:src="@{/js/common_form.js}"></script>
   <script type="text/JavaScript">
       function checkEmailUnique(form) {
         // xác định đường dẫn của dịch vụ web (UserRestService)
@@ -157,20 +133,16 @@
            
             form.submit();
           }else if (response =="Duplicated") {
-            showModalDialog( "Warning" ,"There is another user having the email: "+userEmail);
+            showWarningModal( "There is another user having the email: "+userEmail);
           }else{
-            showModalDialog( "Error" ,"Unknown response from server");
+            showErrorModal( "Unknown response from server");
           }
         }).fail(function(){
-          showModalDialog( "Error" ,"Could not connect to the server");
+          showErrorModal( "Could not connect to the server");
         });
         return false;
       }
-      function showModalDialog(title,message) {
-        $("#modalTitle").text(title);
-        $("#modalBody").text(message);
-        $("#modalDialog").modal('show');
-      }
+     
   </script>
 
 

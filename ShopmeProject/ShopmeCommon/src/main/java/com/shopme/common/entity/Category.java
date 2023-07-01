@@ -62,6 +62,12 @@ public class Category {
 		this.parent = parent;
 	}
 
+	public Category(Integer id, String name, String alias) {
+		this.id = id;
+		this.name = name;
+		this.alias = alias;
+	}
+
 	public Category(Integer id) {
 		super();
 		this.id = id;
@@ -138,6 +144,7 @@ public class Category {
 
 	/**
 	 * Hàm copy id và tên
+	 * 
 	 * @param id
 	 * @param name
 	 * @return
@@ -151,7 +158,8 @@ public class Category {
 
 	/**
 	 * hàm copy tất cả thông tin
-	 * @param category nhận vào đối tượng 
+	 * 
+	 * @param category nhận vào đối tượng
 	 * @return trả về một đối tượng được copy
 	 */
 	public static Category copyFull(Category category) {
@@ -161,25 +169,49 @@ public class Category {
 		copyCategory.setAlias(category.alias);
 		copyCategory.setImage(category.getImage());
 		copyCategory.setEnabled(category.isEnabled());
+		copyCategory.setHasChildren(category.getChildren().size()>0);
 		return copyCategory;
 	}
+
 	/**
-	 * hàm copy toàn bộ thông tin và thây đổi tên 
+	 * hàm copy toàn bộ thông tin và thây đổi tên
+	 * 
 	 * @param category nhận vào một đối tượng
-	 * @param name nhận vào một chuổi "tên"
+	 * @param name     nhận vào một chuổi "tên"
 	 * @return trả về một đối tượng đã được copy
 	 */
-	public static Category copyFull(Category category,String name) {
+	public static Category copyFull(Category category, String name) {
 		Category copyCategory = Category.copyFull(category);
 		copyCategory.setName(name);
 		return copyCategory;
 	}
 
 	@Transient
-	public String getImagePath(){
+	public String getImagePath() {
 		if (this.id == null) {
 			return "/images/image-thumbnail.png";
 		}
-		return "/category-images/"+this.id+"/"+this.image;
+		return "/category-images/" + this.id + "/" + this.image;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", alias=" + alias + ", image=" + image + ", enabled="
+				+ enabled + "]";
+	}
+
+	//khai báo một biến không có trong class entity
+	@Transient
+	private boolean hasChildren;
+	//getter and setter
+	public boolean isHasChildren() {
+		return hasChildren;
+	}
+
+	public void setHasChildren(boolean hasChildren) {
+		this.hasChildren = hasChildren;
+	}
+	
+	
+
 }

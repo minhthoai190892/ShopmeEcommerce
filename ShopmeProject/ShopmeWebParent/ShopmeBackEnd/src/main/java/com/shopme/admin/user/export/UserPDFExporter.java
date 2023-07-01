@@ -21,7 +21,8 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UserPDFExporter extends AbstractExporter {
 
 	public void exprot(List<User> lisUsers, HttpServletResponse response) throws IOException {
-		super.setResponseHeader(response, "application/pdf", ".pdf");
+//		super.setResponseHeader(response, "application/pdf", ".pdf");
+		super.setResponseHeader(response, "application/pdf", ".pdf", "users_");
 		// khởi tạo đối tượng chọn khổ giấy A4
 		Document document = new Document(PageSize.A4);
 		PdfWriter.getInstance(document, response.getOutputStream());

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 
 import com.shopme.common.entity.Category;
@@ -75,7 +76,23 @@ public class CategoryTestsRepository {
 	}
 	@Test
 	public void testListRootCategories(){
-		List<Category> rootCategories = categoryRepository.findRootCategories();
+		List<Category> rootCategories = categoryRepository.findRootCategories(Sort.by("name").ascending());
 		rootCategories.forEach(cat->System.out.println(cat.getName()));
+	}
+	@Test
+	public void testFindByName(){
+		String name ="Compute1r";
+		Category category = categoryRepository.findByName(name);
+		
+		assertThat(category).isNotNull();
+		assertThat(category.getName()).isEqualTo(name);
+	}
+	@Test
+	public void testFindByAlias(){
+		String alias ="Book 1";
+		Category category = categoryRepository.findByAlias(alias);
+		System.out.println(category);
+		assertThat(category).isNotNull();
+		assertThat(category.getAlias()).isEqualTo(alias);
 	}
 }

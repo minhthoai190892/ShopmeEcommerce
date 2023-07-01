@@ -38,20 +38,7 @@
         [[${message}]]
       </div>
       <!-- form search -->
-      <div>
-        <form th:action="@{/users/page/1}" class="form-inline">
-          <input type="hidden" name="sortField" th:value="${sortField}">
-          <input type="hidden" name="sortDir" th:value="${sortDir}">
-          Filter:
-          <input type="search" name="keyword" th:value="${keyword}" class="my-3" required />
-          <button type="submit" value="Search" class="btn btn-primary">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <button type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()">
-            <i class="fa-solid fa-eraser"></i>
-          </button>
-        </form>
-      </div>
+      <div th:replace="fragments::search_form('/users/page/1')"></div>
       <!-- tabel -->
       <div class="table-responsive full-details">
         <table class="table table-striped
@@ -60,9 +47,10 @@
         table-primary
         align-middle">
           <thead class="table-light">
-            <caption class="text-center m-1" th:if="${totalItems>0}">Showing users # [[${startCount}]] to
+            <!-- <caption class="text-center m-1" th:if="${totalItems>0}">Showing users # [[${startCount}]] to
               [[${endCount}]] of [[${totalItems}]]</caption>
             <caption class="text-center m-1" th:unless="${totalItems>0}">No users found</caption>
+             -->
             <!-- sắp xếp ở header -->
             <tr>
               <!-- gọi từ fragments.html -->
@@ -120,6 +108,8 @@
           </tfoot>
         </table>
       </div>
+
+      <!-- reponsive -->
       <div class="less-details">
         <div th:each="user:${listUsers}" class="row m-1">
           <div class="col-4">
@@ -148,39 +138,7 @@
         </div>
       </div>
       <!-- pagination -->
-      <section th:if="${totalPages>1}">
-        <nav>
-          <ul class="pagination justify-content-center flex-wrap">
-            <!-- users/page/2?sortField=email&sortDir=asc -->
-            <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
-              <!-- gọi từ fragments.html -->
-              <a th:replace="fragments::page_link(1,'First')"></a>
-            </li>
-            <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
-              <!-- gọi từ fragments.html -->
-              <a th:replace="fragments::page_link(${currentPage -1},'Previous')"></a>
-            </li>
-            <!-- tạo số trang tăng dần -->
-
-            <li th:class="${currentPage !=i ? 'page-item':'page-item active'}"
-              th:each=" i: ${#numbers.sequence(1,totalPages)}">
-              <!-- gọi từ fragments.html -->
-              <a th:replace="fragments::page_link(${i},${i})"></a>
-            </li>
-
-            <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
-              <!-- gọi từ fragments.html -->
-              <a th:replace="fragments::page_link(${currentPage +1},'Next')"></a>
-            </li>
-            <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
-              <!-- gọi từ fragments.html -->
-              <a th:replace="fragments::page_link(${totalPages},'Last')"></a>
-            </li>
-
-          </ul>
-        </nav>
-      </section>
-
+     <div th:replace="fragments::pagination('/users/page/','users')"></div>
 
     </div>
     <!-- Modal -->
@@ -216,7 +174,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
   <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
-  <script type="text/javaScript"  th:src="@{/js/common.js}"></script>
+  <script type="text/javaScript" th:src="@{/js/common.js}"></script>
   <script type="text/JavaScript">
   $(document).ready(function(){
     $(".link-delete").on("click",function(e){
