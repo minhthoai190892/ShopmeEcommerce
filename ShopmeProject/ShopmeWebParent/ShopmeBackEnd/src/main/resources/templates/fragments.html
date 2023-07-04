@@ -20,9 +20,9 @@
 
 <body>
     <!-- sort by title -->
-    <th th:fragment="column_link(fieldName,columnLabel,removeTag)" th:remove="${removeTag}">
+    <th th:fragment="column_link(moduleURL,fieldName,columnLabel,removeTag)" th:remove="${removeTag}">
 
-        <a th:href="@{'/users/page/'+${currentPage}+'?sortField='+${fieldName}+'&sortDir='+${sortField!=fieldName?sortDir:reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
+        <a th:href="@{${moduleURL}+'page/'+${currentPage}+'?sortField='+${fieldName}+'&sortDir='+${sortField!=fieldName?sortDir:reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
             class="text-black" style="text-decoration: none;">[[${columnLabel}]]</a>
         <!-- sort icon -->
         <span th:if="${sortField == fieldName}"
@@ -99,6 +99,32 @@
         </section>
     </div>
 
+
+
+    <td th:fragment="status(enabled,entityURL,entityName)">
+        <!-- Enable -->
+        <!-- /users/'+${user.id} -->
+        <a style="text-decoration: none;" th:href="@{${entityURL}+'/enabled/false'}" th:if="${enabled == true}"
+            th:title="'Disable this '+${entityName}" class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>
+        <a style="text-decoration: none;" th:href="@{${entityURL}+'/enabled/true'}" th:if="${enabled == false}"
+            class="fa-sharp fa-solid fa-circle fa-2xl icon-dark" th:title="'Enable this '+${entityName}"></a>
+    </td>
+    <!-- Edit and Delete -->
+    <!-- '/users/edit/'+${user.id} -->
+    <span th:fragment="edit(entityName,entityURL)">
+        <a th:title="'Update this '+${entityName}" class="fa-solid fa-pen-to-square fa-2xl icon-green"
+            th:href="@{${entityURL}}"></a>
+    </span>
+    <!-- '/users/delete/'+${user.id} -->
+    <!-- user.id -->
+    <!-- category.hasChildren -->
+    <span th:fragment="delete(entityName,entityURL,entityId,visible)" th:remove="tag">
+        <th:block th:if="${visible}">
+            <a th:title="'Delete this '+${entityName}" class="fa-solid fa-trash fa-2xl icon-red link-delete"
+                th:href="@{${entityURL}}" th:entityId="${entityId}"></a>
+            </td>
+        </th:block>
+    </span>
 </body>
 
 </html>
