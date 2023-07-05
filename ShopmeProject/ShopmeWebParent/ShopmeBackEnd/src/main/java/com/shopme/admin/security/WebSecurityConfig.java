@@ -34,6 +34,7 @@ public class WebSecurityConfig {
         				
                         .requestMatchers("/users/**").hasAnyAuthority("Admin")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
+                        .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
                         .anyRequest()
                         .authenticated()
         )

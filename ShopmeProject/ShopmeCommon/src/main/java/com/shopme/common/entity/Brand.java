@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "brands")
@@ -29,8 +30,6 @@ public class Brand {
 			inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
 
-	
-	
 	public Brand() {
 		super();
 	}
@@ -38,7 +37,7 @@ public class Brand {
 	public Brand(String name) {
 		super();
 		this.name = name;
-		this.logo="brand-logo.png";
+		this.logo = "brand-logo.png";
 	}
 
 	public Integer getId() {
@@ -76,6 +75,14 @@ public class Brand {
 	@Override
 	public String toString() {
 		return "Brand [id=" + id + ", name=" + name + ", logo=" + logo + ", categories=" + categories + "]";
+	}
+
+	@Transient
+	public String logoPath() {
+		if (this.id == null) {
+			return "/images/image-thumbnail.png";
+		}
+		return "/brand-logos/" + this.id + "/" + this.logo;
 	}
 
 }

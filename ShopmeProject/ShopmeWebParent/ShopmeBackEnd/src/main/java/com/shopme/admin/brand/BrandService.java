@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 public class BrandService {
 	@Autowired
 	private BrandRepository brandRepository;
-	public List<Brand> listBrands(){
+	public List<Brand> listAll(){
 		return brandRepository.findAll();
 	}
 }
