@@ -19,6 +19,15 @@
 </head>
 
 <body>
+    <!-- tiêu đề và tải file -->
+    <div th:fragment="downfile(title,entityURL)">
+        <h2>[[${title}]]</h2>
+        <!-- /users/ -->
+        <a th:href="@{${entityURL}+'new'}" class="fa-solid fa-user-plus icon-dark fa-xl "></a>
+        <a th:href="@{${entityURL}+'export/csv'}" class="fa-solid fa-file-csv icon-dark fa-xl "></a>
+        <a th:href="@{${entityURL}+'export/excel'}" class="fa-solid fa-file-excel fa-xl icon-dark"></a>
+        <a th:href="@{${entityURL}+'export/pdf'}" class="fa-solid fa-file-pdf fa-xl icon-dark"></a>
+    </div>
     <!-- sort by title -->
     <th th:fragment="column_link(moduleURL,fieldName,columnLabel,removeTag)" th:remove="${removeTag}">
 
