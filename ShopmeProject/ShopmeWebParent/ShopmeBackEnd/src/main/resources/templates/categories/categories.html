@@ -33,15 +33,17 @@
             <tr>
               <th>ID</th>
               <th>Image</th>
-              <th>
-                <!-- ở cateogryController: listAll -->
+              <!-- <th>
+                 ở cateogryController: listAll 
                
                 <a class="text-black" th:if="${pageNum!=null}" th:href="@{'/categories/page/'+${pageNum}+'?sortDir='+${reverseSortDir}}">Name</a>
                 <a class="text-black" th:if="${pageNum==null}" th:href="@{'/categories?sortDir='+${reverseSortDir}}">Name</a>
+                
                 <span
                   th:class="${reverseSortDir=='desc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
 
-              </th> 
+              </th>  -->
+              <th th:replace="fragments::column_link('/categories/','name','Category Name','none')"></th>
               <th>Alias</th>
               <th>Enables</th>
 
@@ -56,25 +58,29 @@
               </td>
               <td>[[${category.name}]]</td>
               <td>[[${category.alias}]]</td>
-              <td>
-                <!-- Enabled -->
+              <!-- Enabled -->
+              <!-- <td>
                 <a style="text-decoration: none;" th:href="@{'/categories/'+${category.id}+'/enabled/false'}"
                   th:if="${category.enabled == true}" title="Disable this category"
                   class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>
                 <a style="text-decoration: none;" th:href="@{'/categories/'+${category.id}+'/enabled/true'}"
                   th:if="${category.enabled == false}" class="fa-sharp fa-solid fa-circle fa-2xl icon-dark"
                   title="Enable this category"></a>
-              </td>
+              </td> -->
+              <td th:replace="fragments::status(${category.enabled},'/categories/'+${category.id},'category')"></td>
+              <!-- Edit and Delete -->
               <td>
-
-                <!-- Edit and Delete -->
-                <a title="Update this category" th:href="@{'/categories/edit/'+${category.id}}"
-                  class="fa-solid fa-pen-to-square fa-2xl icon-green"></a> |
-                <th:block th:if="${category.hasChildren == false}">
+                <!-- <a title="Update this category" th:href="@{'/categories/edit/'+${category.id}}"
+                  class="fa-solid fa-pen-to-square fa-2xl icon-green"></a>  -->
+                <span th:replace="fragments::edit('category','/categories/edit/'+${category.id})"></span>
+                |
+                <!-- <th:block th:if="${category.hasChildren == false}">
                   <a title="Delete this category" th:entityId="${category.id}"
                     th:href="@{'/categories/delete/'+${category.id}}"
                     class="fa-solid fa-trash fa-2xl icon-red link-delete"></a>
-                  </th>
+                </th:block> -->
+                <span
+                  th:replace="fragments::delete('category','/categories/delete/'+${category.id},${category.id},${!category.hasChildren})"></span>
               </td>
             </tr>
 
@@ -82,12 +88,12 @@
         </table>
       </div>
     </div>
-       <!-- pagination -->
-       <!-- <div th:if="${keyword!=null }" class="text-center">
+    <!-- pagination -->
+    <!-- <div th:if="${keyword!=null }" class="text-center">
         <span>Search result does not show categories in hierarchical form</span>
         <div th:replace="fragments::pagination('/categories','categories')"></div>
        </div> -->
-   
+
     <div th:replace="fragments::pagination('/categories/page/','top-level categories')"></div>
     <!-- Modal Confirm -->
     <div th:replace="./fragments/fragment_modal::confirm_modal"></div>

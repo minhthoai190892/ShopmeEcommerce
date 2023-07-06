@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::page_head('Manage Brands')"></head>
+
+<body>
+    <div class="container-fluid">
+        <!-- menu -->
+        <div th:replace="navigation::menu"></div>
+        <!-- title -->
+        <div th:replace="fragments::downfile('Test','/brands/')"></div>
+        <!-- form -->
+        <div th:replace="fragments::search_form('/brands/page/1')"></div>
+        <div th:if="${message!=null}" class="alert alert-success text-center">
+            [[${message}]]
+          </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Brand ID</th>
+                    <th>Logo</th>
+                    <th>Brand Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each=" brand: ${listBrands}">
+                    <td scope="row">[[${brand.id}]]</td>
+                    <td>
+                        <!-- [[${brand.logo}]] -->
+                        <img th:src="@{${brand.logoPath}}" style="width: 100px;height: 100px;" alt="asd">
+                    </td>
+                    <td>[[${brand.name}]]</td>
+                    <td>
+                        <th:block th:each=" cat: ${brand.categories}">
+                            <span class="badge bg-secondary" th:text="${cat.name}"></span>
+                        </th:block>
+                    </td>
+                    <td>
+                        <span th:replace="fragments::edit('brand','/brands/edit/'+${brand.id})"></span>|<span
+                            th:replace="fragments::delete('brand','/brands/delete/'+${brand.id},${brand.id},true)"></span>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!-- Modal -->
+        <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
+        <!-- footer -->
+        <div th:replace="fragments::footer"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+    <script type="text/javaScript">
+        moduleURL = "[[@{/bands}]]";
+        $(document).ready(function(){
+            $(".link-delete").on("click",function(e){
+                e.preventDefault();
+                showDeleteConfirmModal($(this),'brand')
+            });
+        });
+     
+    </script>
+</body>
+
+</html>

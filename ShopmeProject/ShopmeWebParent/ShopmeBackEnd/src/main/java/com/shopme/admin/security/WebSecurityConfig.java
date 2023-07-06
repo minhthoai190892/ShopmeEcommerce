@@ -29,9 +29,12 @@ public class WebSecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(configurer -> configurer
+        http
+        .authorizeHttpRequests(configurer -> configurer
+        				
                         .requestMatchers("/users/**").hasAnyAuthority("Admin")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
+                        .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
                         .anyRequest()
                         .authenticated()
         )

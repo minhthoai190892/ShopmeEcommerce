@@ -194,15 +194,20 @@ public class Category {
 		return "/category-images/" + this.id + "/" + this.image;
 	}
 
-	@Override
-	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", alias=" + alias + ", image=" + image + ", enabled="
-				+ enabled + "]";
-	}
+	// @Override
+	// public String toString() {
+	// 	return "Category [id=" + id + ", name=" + name + ", alias=" + alias + ", image=" + image + ", enabled="
+	// 			+ enabled + "]";
+	// }
 
 	//khai báo một biến không có trong class entity
 	@Transient
 	private boolean hasChildren;
+	@Override
+	public String toString() {
+		return  this.name ;
+	}
+
 	//getter and setter
 	public boolean isHasChildren() {
 		return hasChildren;

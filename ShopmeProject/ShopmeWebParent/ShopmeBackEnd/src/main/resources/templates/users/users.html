@@ -55,21 +55,21 @@
             <tr>
               <!-- gọi từ fragments.html -->
               <th class="hideable-colum">
-              <th th:replace="fragments::column_link('id','User Id','tag')"></th>
+              <th th:replace="fragments::column_link('/users/','id','User Id','tag')"></th>
               </th>
               <th>Photo</th>
               <!-- gọi từ fragments.html -->
               <th class="hideable-colum">
-              <th th:replace="fragments::column_link('email','E-mail','tag')"></th>
+              <th th:replace="fragments::column_link('/users/','email','E-mail','tag')"></th>
               </th>
               <!-- gọi từ fragments.html -->
-              <th th:replace="fragments::column_link('firstName','First Name','none')"></th>
+              <th th:replace="fragments::column_link('/users/','firstName','First Name','none')"></th>
 
               <!-- gọi từ fragments.html -->
-              <th th:replace="fragments::column_link('lastName','Last Name','none')"></th>
+              <th th:replace="fragments::column_link('/users/','lastName','Last Name','none')"></th>
               <th>Role</th>
               <!-- gọi từ fragments.html -->
-              <th th:replace="fragments::column_link('enable','Enable','none')"></th>
+              <th th:replace="fragments::column_link('/users/','enable','Enable','none')"></th>
               <th>Action</th>
             </tr>
           </thead>
@@ -85,21 +85,28 @@
               <td>[[${user.firstName}]]</td>
               <td>[[${user.lastName}]]</td>
               <td>[[${user.roles}]]</td>
-              <td>
-                <!-- Enable -->
+              <!--     Enable  -->
+              <!-- <td>
                 <a style="text-decoration: none;" th:href="@{'/users/'+${user.id}+'/enabled/false'}"
                   th:if="${user.enable == true}" title="Disable this user"
                   class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>
                 <a style="text-decoration: none;" th:href="@{'/users/'+${user.id}+'/enabled/true'}"
                   th:if="${user.enable == false}" class="fa-sharp fa-solid fa-circle fa-2xl icon-dark"
                   title="Enable this user"></a>
-              </td>
+              </td> -->
+              <!-- /users/'+${user.id} -->
+              <td th:replace="fragments::status(${user.enable},'/users/'+${user.id},'user')"></td>
+
+
+              <!-- Edit and Delete -->
               <td>
-                <!-- Edit and Delete -->
-                <a title="Update this user" class="fa-solid fa-pen-to-square fa-2xl icon-green"
-                  th:href="@{'/users/edit/'+${user.id}}"></a> |
+                <span th:replace="fragments::edit(user,'/users/edit/'+${user.id})"></span>
+                <!-- <a title="Update this user" class="fa-solid fa-pen-to-square fa-2xl icon-green"
+                  th:href="@{'/users/edit/'+${user.id}}"></a>-->
+                |
                 <a title="Delete this user" class="fa-solid fa-trash fa-2xl icon-red link-delete"
                   th:href="@{'/users/delete/'+${user.id}}" th:userId="${user.id}" th:userName="${user.firstName}"></a>
+
               </td>
             </tr>
 
@@ -138,7 +145,7 @@
         </div>
       </div>
       <!-- pagination -->
-     <div th:replace="fragments::pagination('/users/page/','users')"></div>
+      <div th:replace="fragments::pagination('/users/page/','users')"></div>
 
     </div>
     <!-- Modal -->
@@ -187,7 +194,7 @@
       //cập nhật đường dẫn cho nút "Yes" của modal
       $("#modalYesButton").attr("href",link.attr("href"));
       //thêm "text" vào trang html
-      $("#confirmtext").text(" Are you sure you want to delete this user ID "+userId + userName);
+      $("#confirmtext").text(" Are you sure you want to delete this user ID "+userId +" "+ userName);
       //hiển thị modal
       $("#confirmModal").modal('show');
     });
