@@ -28,6 +28,14 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/category-images/**")// đăng ký cho tất cả các thư mục có trong "dirName"
 				.addResourceLocations("file:/" + categoryImagesPath + "/");// ánh xạ đến file hệ thống
 
+		String brandLogosDirName = "../brand-logos";
+		Path brandLogosDir = Paths.get(brandLogosDirName);// lấy thư mục hình ảnh chung của tất cả người dùng
+		// lấy file hình của người dùng
+		String brandLogosPath = brandLogosDir.toFile().getAbsolutePath();
+		// gọi hàm đăng ký
+		registry.addResourceHandler("/brand-logos/**")// đăng ký cho tất cả các thư mục có trong "dirName"
+				.addResourceLocations("file:/" + brandLogosPath + "/");// ánh xạ đến file hệ thống
+
 	}
 
 }
