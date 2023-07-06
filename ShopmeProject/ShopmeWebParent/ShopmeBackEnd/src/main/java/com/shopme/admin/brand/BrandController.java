@@ -53,7 +53,7 @@ public class BrandController {
 		}else {
 			brandService.save(brand);
 		}
-		redirectAttributes.addAttribute("message","The brand has been saved successfully");
+		redirectAttributes.addFlashAttribute("message","The brand has been saved successfully");
 		return "redirect:/brands";
 	}
 	
@@ -70,6 +70,7 @@ public class BrandController {
 		} catch (BrandNotFoundException e) {
 			// TODO: handle exception
 			redirectAttributes.addFlashAttribute("message",e.getMessage());
+//			redirectAttributes.addFlashAttribute("message","The brand has been edit successfully");
 			return "redirect:/brands";
 		}
 	}

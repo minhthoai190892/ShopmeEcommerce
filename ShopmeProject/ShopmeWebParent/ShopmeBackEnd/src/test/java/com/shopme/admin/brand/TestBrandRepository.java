@@ -18,6 +18,7 @@ import com.shopme.common.entity.Category;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
+
 public class TestBrandRepository {
 	@Autowired
 	private BrandRepository brandRepository;

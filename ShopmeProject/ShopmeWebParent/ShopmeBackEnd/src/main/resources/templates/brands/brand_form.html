@@ -15,7 +15,7 @@
                 <h2>Manage Categories | [[${pageTitle}]]</h2>
             </div>
             <form th:action="@{/brands/save}" method="post" style="max-width: 500px; margin: 0 auto;"
-                enctype="multipart/form-data" th:object="${brand}">
+                enctype="multipart/form-data" th:object="${brand}" onsubmit="return checkUnique(this)">
                 <input type="hidden" name="" th:field="*{id}">
                 <div class="border border-secondary rounded p-3">
                     <div class="form-group row">
@@ -29,8 +29,8 @@
                         <label for="" class="col-sm-4 col-form-label">Logo:</label>
                         <div class="col-sm-8">
                             <input type="hidden" name="" th:field="*{logo}">
-                            <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg" th:required="${brand.id==null}"
-                                class="mt-2">
+                            <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg"
+                                th:required="${brand.id==null}" class="mt-2">
                             <div class="mt-2">
                                 <!-- th:src="@{${brand.logoPath}}" -->
                                 <img th:src="@{${brand.logoPath}}" id="thumbnail" class="img-fluid" alt="Image preview">
@@ -58,7 +58,8 @@
                     </div>
                     <div class="text-center">
                         <input type="submit" value="Save" class="btn btn-primary m-3">
-                        <input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel">
+                        <a style="text-decoration: none;" th:href="@{/brands}"> <button type="button"
+                                class="btn btn-secondary" id="buttonCancel">Cancel</button></a>
                     </div>
                 </div>
             </form>
@@ -106,9 +107,30 @@
                 divChosenCategories.append("<span class='badge bg-secondary m-1' >"+catName+"</span>")
             });
         };
+        function checkUnique(form) {
+            brandId = $("#id").val();
+
+            brandName = $("#name").val().trim();
+            console.log(brandName);
+             // //đọc giá trị csrf của trang web
+            csrfValue=$("input[name='_csrf']").val();
+            url="[[@{/brands/check_unique}]]";
+            param = {id:brandId,name:brandName,_csrf:csrfValue};
+            $.post(url,param,function(response){
+                if (response=="Ok") {
+                    form.submit();
+                }else if (response=="Duplicate") {
+                    showWarningModal( "There is another brand having same name: "+brandName);
+                }else{
+                    showErrorModal( "Unknown response from server");
+                }
+            }).fail(function(){
+                showErrorModal( "Could not connect to the server");
+            });
+            return false;
+        }
     </script>
 
 </body>
 
 </html>
-
