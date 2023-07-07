@@ -81,7 +81,6 @@ INDEX VERSION 1.134+C:\Users\ASUS\Downloads\ShopmeEcommerce\.metadata\.plugins\o
 775139458.index
 1865797976.index
 3566169325.index
-2740986887.index
 1851320994.index
 1557905769.index
 3545385922.index

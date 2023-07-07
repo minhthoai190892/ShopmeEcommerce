@@ -21,6 +21,7 @@ import com.shopme.admin.category.CategoryService;
 
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
+import com.shopme.common.entity.User;
 
 @Controller
 public class BrandController {
@@ -89,9 +90,16 @@ public class BrandController {
 			brandService.save(brand);
 		}
 		redirectAttributes.addFlashAttribute("message", "The brand has been saved successfully");
-		return "redirect:/brands";
+		
+//		return "redirect:/brands";
+		return getRedirectURLtoAffectedUser(brand);
 	}
-
+	private String getRedirectURLtoAffectedUser(Brand brand) {
+		//cắt lấy phần đầu của email
+//		String firstPartOfEmail = user.getEmail().split("@")[0];
+		String searchBrand = brand.getName();
+		return "redirect:/brands/page/1?sortField=id&sortDir=asc&keyword="+searchBrand;
+	}
 	@GetMapping("/brands/edit/{id}")
 	public String editBrand(Model model, RedirectAttributes redirectAttributes, @PathVariable(name = "id") Integer id) {
 		try {
