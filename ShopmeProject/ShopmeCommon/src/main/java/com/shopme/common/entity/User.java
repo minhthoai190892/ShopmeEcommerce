@@ -140,14 +140,21 @@ public class User {
 				+ ", lastName=" + lastName + ", photos=" + photos + ", enable=" + enable + ", roles=" + roles + "]";
 	}
 
+// 	@Transient
+// 	//getter
+// 	public String getPhotosImagePath() {
+// 		//kiểm tra xem id và image có null không
+// //		if (id == null || photos==null) {
+// //			return "images/ShopmeAdminSmall.png";
+// //		}
+// 		return "/user-photos/"+this.id+"/"+this.photos;
+// 	}
 	@Transient
-	//getter
 	public String getPhotosImagePath() {
-		//kiểm tra xem id và image có null không
-//		if (id == null || photos==null) {
-//			return "images/ShopmeAdminSmall.png";
-//		}
-		return "/user-photos/"+this.id+"/"+this.photos;
+		if (this.id == null || photos==null) {
+			return "/images/default-user.png";
+		}
+		return "/user-photos/" + this.id + "/" + this.photos;
 	}
 
 	
