@@ -23,6 +23,8 @@ import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
 import com.shopme.common.entity.User;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 public class BrandController {
 	@Autowired
@@ -131,5 +133,10 @@ public class BrandController {
 		}
 		return "redirect:/brands";
 	}
-
+	@GetMapping("/brands/export/csv")
+	public void exportToCSV(HttpServletResponse response) throws IOException {
+		List<Brand> listBrands = brandService.listAll();
+		BrandCsvExport brandCsvExport = new BrandCsvExport();
+		brandCsvExport.export(listBrands, response);
+	}
 }
