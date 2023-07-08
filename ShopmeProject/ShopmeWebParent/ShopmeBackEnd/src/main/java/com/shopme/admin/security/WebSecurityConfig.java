@@ -37,10 +37,8 @@ public class WebSecurityConfig {
                         .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
                         .anyRequest()
                         .authenticated()
-        )
-
-
-                .formLogin(login -> login//hiển thị form login
+        				)
+        .formLogin(login -> login//hiển thị form login
                         .loginPage("/login")//hiển thị form login custom
                         .usernameParameter("email")//sử dụng email để đăng nhập
                         .permitAll())
