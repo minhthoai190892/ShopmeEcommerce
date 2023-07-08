@@ -37,9 +37,6 @@
         <span th:if="${sortField == fieldName}"
             th:class="${sortDir=='asc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
     </th>
-    <!-- số trang và tên nút -->
-    <a th:fragment="page_link(moduleURL,pageNum,label)" class="page-link"
-        th:href="@{${moduleURL}+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">[[${label}]]</a>
 
     <div th:fragment="footer" class="text-center m-3">
         <p>Shopme control Panel - Copyright &copy; Shopme</p>
@@ -47,6 +44,10 @@
 
 
     <!-- pagination -->
+    <!-- số trang và tên nút -->
+    <a th:fragment="page_link(moduleURL,pageNum,label)" class="page-link"
+        th:href="@{${moduleURL}+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">[[${label}]]</a>
+
     <div th:fragment="pagination(moduleURL,entityName)" th:remove="tag">
         <section>
             <!-- thể hiện số lượng phần tử trên một trang và thông báo rỗng -->

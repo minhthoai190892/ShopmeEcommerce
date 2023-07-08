@@ -21,7 +21,7 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-4 col-form-label">Brand Name:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{name}" required minlength="3"
+                            <input type="text" class="form-control" id="name" th:field="*{name}" required minlength="3"
                                 maxlength="40">
                         </div>
                     </div>
@@ -97,6 +97,7 @@
                 divChosenCategories.empty();
                 showChosenCategories();
             });
+            showChosenCategories();
         });
         function showChosenCategories() {
             dropdownCategories.children("option:selected").each(function(){
@@ -110,7 +111,7 @@
         function checkUnique(form) {
             brandId = $("#id").val();
 
-            brandName = $("#name").val().trim();
+            brandName = $("#name").val();
             console.log(brandName);
              // //đọc giá trị csrf của trang web
             csrfValue=$("input[name='_csrf']").val();
@@ -134,3 +135,5 @@
 </body>
 
 </html>
+
+

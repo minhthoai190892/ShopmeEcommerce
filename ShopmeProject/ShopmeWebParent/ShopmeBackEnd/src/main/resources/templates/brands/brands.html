@@ -14,13 +14,14 @@
         <div th:replace="fragments::search_form('/brands/page/1')"></div>
         <div th:if="${message!=null}" class="alert alert-success text-center">
             [[${message}]]
-          </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
                     <th>Brand ID</th>
                     <th>Logo</th>
-                    <th>Brand Name</th>
+                    <!-- <th>Brand Name</th> -->
+                    <th th:replace="fragments::column_link('/brands/','name','Brand Name','none')"></th>
                     <th>Category</th>
                     <th>Action</th>
                 </tr>
@@ -46,6 +47,7 @@
 
             </tbody>
         </table>
+        <div th:replace="fragments::pagination('/brands/page/','brand')"></div>
         <!-- Modal -->
         <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
         <!-- footer -->
@@ -61,14 +63,16 @@
     <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
     <script type="text/javaScript" th:src="@{/js/common.js}"></script>
     <script type="text/javaScript">
-        moduleURL = "[[@{/bands}]]";
+
+        moduleURL = "[[@{/brands}]]";
+   
         $(document).ready(function(){
             $(".link-delete").on("click",function(e){
                 e.preventDefault();
                 showDeleteConfirmModal($(this),'brand')
             });
         });
-     
+
     </script>
 </body>
 
