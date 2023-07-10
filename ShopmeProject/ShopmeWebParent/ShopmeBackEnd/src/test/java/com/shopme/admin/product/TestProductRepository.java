@@ -28,11 +28,11 @@ public class TestProductRepository {
 
 	@Test
 	public void testCreateProduct() {
-		Brand brand = entityManager.find(Brand.class, 6);
+		Brand brand = entityManager.find(Brand.class, 7);
 		Category category = entityManager.find(Category.class, 6);
 		Product product = new Product();
-		product.setName("Samsung Galaxy A41");
-		product.setAlias("Samsung Galaxy A41");
+		product.setName("Samsung Galaxy A412");
+		product.setAlias("Samsung Galaxy A412");
 		product.setShortDescription("A good smartphone from samsung");
 		product.setFullDescription("Full description");
 		product.setEnabled(true);

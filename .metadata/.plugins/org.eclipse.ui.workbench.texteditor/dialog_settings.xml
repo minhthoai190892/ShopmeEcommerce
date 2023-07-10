@@ -9,6 +9,9 @@
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
 			<item value="check"/>
+			<item value="edit"/>
+			<item value="findAll"/>
+			<item value="listAll"/>
 			<item value="loadUserByUsername"/>
 			<item value="UserDetails"/>
 			<item value="sortField"/>
