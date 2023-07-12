@@ -21,7 +21,6 @@ import com.shopme.admin.category.CategoryService;
 
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
-import com.shopme.common.entity.User;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -32,6 +31,11 @@ public class BrandController {
 	@Autowired
 	private CategoryService categoryService;
 
+	/**
+	 * Hàm hiển thị danh sách Brands
+	 * @param model 
+	 * @return Hàm trả về trand đầu tiên
+	 */
 	@GetMapping("/brands")
 	public String listBrands(Model model) {
 //		List<Brand> listBrands = brandService.listAll();
@@ -40,6 +44,15 @@ public class BrandController {
 		return listByPage(1, model, "name", "acs", null);
 	}
 
+	/**
+	 * Hàm hiển thị số lượng danh sách trong một trang
+	 * @param pageNum số trang
+	 * @param model
+	 * @param sortField sort theo field
+	 * @param sortDir sort theo asc hoặc desc
+	 * @param keyword giá trị tìm kiếm
+	 * @return trả về trang html
+	 */
 	@GetMapping("/brands/page/{pageNum}")
 	public String listByPage(@PathVariable(name = "pageNum") int pageNum, Model model,
 			@Param("sortField") String sortField, @Param("sortDir") String sortDir, @Param("keyword") String keyword) {
@@ -67,6 +80,11 @@ public class BrandController {
 
 	}
 
+	/**
+	 * Hàm tạo mới một Brand
+	 * @param model
+	 * @return mở trang brand_form.html
+	 */
 	@GetMapping("/brands/new")
 	public String newBrand(Model model) {
 		List<Category> listCategories = categoryService.listCategoriesUsedInForm();
@@ -77,6 +95,14 @@ public class BrandController {
 
 	}
 
+	/**
+	 * Hàm save thông tin brand từ trang brand_form.html
+	 * @param brand nhận vào đối tượng brand từ brand_form.html
+	 * @param multipartFile hình ảnh từ brand_form.html
+	 * @param redirectAttributes thông báo 
+	 * @return save thành công sẽ trả về đối tượng vừa tạo
+	 * @throws IOException
+	 */
 	@PostMapping("/brands/save")
 	public String saveBrand(Brand brand, @RequestParam("fileImage") MultipartFile multipartFile,
 			RedirectAttributes redirectAttributes) throws IOException {
@@ -94,9 +120,14 @@ public class BrandController {
 		redirectAttributes.addFlashAttribute("message", "The brand has been saved successfully");
 		
 //		return "redirect:/brands";
-		return getRedirectURLtoAffectedUser(brand);
+		return getRedirectURLtoAffectedBrand(brand);
 	}
-	private String getRedirectURLtoAffectedUser(Brand brand) {
+	/**
+	 * hàm hàm trả về đường dẫn khi tạo, cập nhật, và tiềm kiếm brand
+	 * @param brand
+	 * @return
+	 */
+	private String getRedirectURLtoAffectedBrand(Brand brand) {
 		//cắt lấy phần đầu của email
 //		String firstPartOfEmail = user.getEmail().split("@")[0];
 		String searchBrand = brand.getName();
