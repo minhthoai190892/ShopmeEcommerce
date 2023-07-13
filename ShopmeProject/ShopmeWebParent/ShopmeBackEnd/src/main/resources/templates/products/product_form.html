@@ -1,7 +1,13 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments::page_head(${pageTitle})"></head>
+<head>
+
+  <head th:replace="fragments::page_head(${pageTitle},'tag')"></head>
+  <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}">
+
+
+</head>
 
 <body>
   <header>
@@ -29,15 +35,19 @@
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="description-tab" data-bs-toggle="tab" data-bs-target="#description"
-                type="button" role="tab" aria-controls="description" aria-selected="false">description</button>
+                type="button" role="tab" aria-controls="description" aria-selected="false">Description</button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="images-tab" data-bs-toggle="tab" data-bs-target="#images" type="button"
-                role="tab" aria-controls="images" aria-selected="false">images</button>
+                role="tab" aria-controls="images" aria-selected="false">Images</button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button"
-                role="tab" aria-controls="details" aria-selected="false">details</button>
+                role="tab" aria-controls="details" aria-selected="false">Details</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button"
+                role="tab" aria-controls="shipping" aria-selected="false">Shipping</button>
             </li>
           </ul>
 
@@ -46,9 +56,14 @@
             <div class="tab-pane active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
               <div th:replace="products/product_overview::content"></div>
             </div>
-            <div class="tab-pane" id="description" role="tabpanel" aria-labelledby="description-tab">description</div>
-            <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">images</div>
-            <div class="tab-pane" id="details" role="tabpanel" aria-labelledby="details-tab">details</div>
+            <div class="tab-pane" id="description" role="tabpanel" aria-labelledby="description-tab">
+              <div th:replace="products/product_description::content"></div>
+            </div>
+            <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">Images</div>
+            <div class="tab-pane" id="details" role="tabpanel" aria-labelledby="details-tab">Details</div>
+            <div class="tab-pane p-3" id="shipping" role="tabpanel" aria-labelledby="details-tab">
+              <div th:replace="products/product_shipping::content"></div>
+            </div>
           </div>
         </div>
         <!-- Button -->
@@ -78,6 +93,8 @@
 
   <script type="text/javaScript" th:src="@{/js/common.js}"></script>
   <script type="text/javaScript" th:src="@{/js/common_form.js}"></script>
+  <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.js}"></script>
+  <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.min.js}"></script>
   <script type="text/JavaScript">
       moduleURL = "[[@{/products}]]";
       brandModuleURL = "[[@{/brands}]]"
@@ -86,6 +103,8 @@
       dropdownCategories =$("#category");
     
       $(document).ready(function () {
+        $("#shortDescription").richText();
+        $("#fullDescription").richText();
       dropdownBrands.change(function(){
         dropdownCategories.empty();
         getCategoies();
@@ -95,6 +114,7 @@
      function getCategoies() {
       brandID =  dropdownBrands.val();//id
       //tạo đường dẫn giống với BrandRestController
+      // /brands/id/categories
       url = brandModuleURL+"/"+brandID+"/categories";
       $.get(url,function(responseJson){
         $.each(responseJson,function(index,category){
@@ -104,6 +124,7 @@
      
      }
   </script>
+
 </body>
 
 </html>
