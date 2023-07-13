@@ -26,7 +26,7 @@
                         <th>Product Name</th>
                         <th>Brand</th>
                         <th>Category</th>
-                        <th>Alias</th>
+                      
                         <th>Enabled</th>
 
                     </tr>
@@ -38,7 +38,7 @@
                         <td>[[${product.name}]]</td>
                         <td>[[${product.brand.name}]]</td>
                         <td>[[${product.category.name}]]</td>
-                        <td>[[${product.alias}]]</td>
+                        
                         <td th:replace="fragments::status(${product.enabled},'/products/edit/'+${product.id},product)">
 
                         </td>

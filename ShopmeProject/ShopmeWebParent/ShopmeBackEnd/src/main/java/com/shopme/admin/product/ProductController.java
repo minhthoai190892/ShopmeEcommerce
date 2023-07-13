@@ -38,10 +38,25 @@ public class ProductController {
 		return "products/product_form";
 	}
 	@PostMapping("/products/save")
-	public String saveProduct(Model model,Product product) {
+	public String saveProduct(Model model,Product product,RedirectAttributes redirectAttributes) {
+		productService.saveProduct(product);
+		redirectAttributes.addFlashAttribute("message","The product has been saved successfully.");
 		System.err.println("Product Name: "+product.getName());
+		System.err.println("Alias: "+product.getAlias());
 		System.err.println("Brand Id: "+product.getBrand().getId());
 		System.err.println("Category Id: "+product.getCategory().getId());
+		System.err.println("Cost: "+product.getCost());
+		System.err.println("price: "+product.getPrice());
+		System.err.println("discount: "+product.getDiscountPercent());
+		System.err.println("short desciption: "+product.getShortDescription());
+		System.err.println("full desciption: "+product.getFullDescription());
+		System.err.println("length: "+product.getLength());
+		System.err.println("width : "+product.getWidth());
+		System.err.println("height : "+product.getHeight());
+		System.err.println("weight : "+product.getWeight());
+		
+		
+		
 		return "redirect:/products";
 	}
 }
