@@ -111,8 +111,8 @@
 
 
 
+    <!-- Enable -->
     <td th:fragment="status(enabled,entityURL,entityName)">
-        <!-- Enable -->
         <!-- /users/'+${user.id} -->
         <a style="text-decoration: none;" th:href="@{${entityURL}+'/enabled/false'}" th:if="${enabled == true}"
             th:title="'Disable this '+${entityName}" class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>

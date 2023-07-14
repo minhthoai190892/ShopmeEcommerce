@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Product;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class ProductService {
 
 	@Autowired
@@ -56,5 +59,8 @@ public class ProductService {
 		}
 		return "Ok";
 	}
-
+	
+	public void updateProductEnabledStatus(Integer id,boolean enabled) {
+		productRepository.updateEnabledStatus(id, enabled);
+	}
 }
