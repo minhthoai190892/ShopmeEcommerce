@@ -108,6 +108,7 @@
   <script type="text/javaScript" th:src="@{/js/common.js}"></script>
   <script type="text/javaScript" th:src="@{/js/common_form.js}"></script>
   <script type="text/JavaScript">
+    MAX_FILE_SIZE=1048576;
       function checkEmailUnique(form) {
         // xác định đường dẫn của dịch vụ web (UserRestService)
         url = "[[@{/users/check_email}]]";//==> nhận được giá trị của trường biểu mẫu

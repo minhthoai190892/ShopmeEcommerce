@@ -67,8 +67,8 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="C:\Users\ASUS\Downloads\ShopmeEcommerce"/>
 			<item value="D:\ShopmeEcommerce"/>
+			<item value="C:\Users\ASUS\Downloads\ShopmeEcommerce"/>
 			<item value="D:\bootstrap\ShopmeEcommerce"/>
 			<item value="D:\Funix\PRJ321\ShopmeEcommerce"/>
 		</list>

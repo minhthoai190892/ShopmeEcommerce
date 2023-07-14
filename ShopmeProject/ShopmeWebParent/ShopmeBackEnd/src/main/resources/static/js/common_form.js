@@ -14,7 +14,7 @@ $(document).ready(function () {
     fileSize = this.files[0].size;
 
     //kiểm tra ddoojdaif file
-    if (fileSize > 1048576) {
+    if (fileSize > MAX_FILE_SIZE) { 
       this.setCustomValidity("You must choose an image less than 1MB!");//hiện thông báo
       this.reportValidity();//ngăn chuyển tới server
     } else {

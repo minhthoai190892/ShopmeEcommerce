@@ -25,7 +25,8 @@
       <!-- th:action="@{/products/save}" method="post" gọi phương thức "save" trong productController với ánh xạ "POST MAPPING"-->
       <!-- enctype="multipart/form-data": cho phép tải lên tệp cho biểu mẫu -->
       <form class="row g-3" th:action="@{/products/save}" method="post" th:object="${product}"
-        onsubmit="return checkUnique(this)">
+        enctype="multipart/form-data"
+      onsubmit="return checkUnique(this)">
         <!-- lưu id người dùng  -->
         <input type="hidden" id="id" th:field="*{id}">
         <div>
@@ -60,7 +61,10 @@
             <div class="tab-pane" id="description" role="tabpanel" aria-labelledby="description-tab">
               <div th:replace="products/product_description::content"></div>
             </div>
-            <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">Images</div>
+            <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">
+              <div th:replace="products/product_images::content"></div>
+              
+            </div>
             <div class="tab-pane" id="details" role="tabpanel" aria-labelledby="details-tab">Details</div>
             <div class="tab-pane p-3" id="shipping" role="tabpanel" aria-labelledby="details-tab">
               <div th:replace="products/product_shipping::content"></div>
@@ -70,7 +74,7 @@
         <!-- Button -->
         <div class="col-12 text-center">
           <button type="submit" data-bs-toggle="modal" class="btn btn-primary">Save</button>
-          <a style="text-decoration: none;" th:href="@{/categories}"> <button type="button" class="btn btn-secondary"
+          <a style="text-decoration: none;" th:href="@{/products}"> <button type="button" class="btn btn-secondary"
               id="buttonCancel">Cancel</button></a>
 
         </div>
@@ -97,6 +101,7 @@
   <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.js}"></script>
   <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.min.js}"></script>
   <script type="text/JavaScript">
+    MAX_FILE_SIZE=1048576;
       moduleURL = "[[@{/products}]]";
       brandModuleURL = "[[@{/brands}]]"
 
