@@ -1,6 +1,7 @@
 package com.shopme.admin.product;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatComparable;
 
 import java.util.Date;
 import java.util.List;
@@ -68,5 +69,19 @@ public class TestProductRepository {
 	@Test
 	public void testDeleteProduct() {
 		productRepository.deleteById(1);
+	}
+	@Test
+	public void testSaveProductWithImages() {
+//		testListALlProducts();
+//		// TODO Auto-generated method stub
+		Integer id =4;
+		Product product = productRepository.findById(id).get();
+		product.setMainImage("main image.jpg");
+		product.addExtraImage("extra image 1.png");
+		product.addExtraImage("extra_image 2.png");
+		product.addExtraImage("extra-image 3.png");
+		Product saveProduct = productRepository.save(product);
+		System.err.println(saveProduct);
+		assertThat(saveProduct.getImages().size()).isEqualTo(3);
 	}
 }
