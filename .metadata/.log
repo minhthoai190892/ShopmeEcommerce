@@ -2648,3 +2648,672 @@ java.lang.UnsupportedOperationException: No language server has registered to ha
 	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
 	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:23:07.798
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:23:07.935
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:23:07.936
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:23:07.979
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:23:07.980
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:24:56.624
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:24:56.644
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:24:56.645
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:24:56.656
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:24:56.657
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:24:56.679
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:24:56.679
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:25:26.447
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:25:26.490
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:25:26.491
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:25:26.495
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:25:26.495
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 2 0 2023-07-13 23:26:28.747
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:26:30.629
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:26:30.658
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:26:30.658
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:26:30.661
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:26:30.662
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:27:14.685
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:27:14.719
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:27:14.720
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:27:14.731
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:27:14.732
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:27:14.751
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:27:14.751
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:34:01.681
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.eclipse.lsp4e 4 0 2023-07-13 23:34:11.701
+!MESSAGE LanguageServer not initialized within 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:826)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:300)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:556)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:316)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:403)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:152)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:129)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:29)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2023-07-13 23:34:11.702
+!MESSAGE LanguageServer not initialized within 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:826)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:300)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:556)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:316)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:403)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:152)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:129)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:29)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2023-07-13 23:34:11.730
+!MESSAGE LanguageServer not initialized within 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:826)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.capabilitiesComply(LanguageServiceAccessor.java:300)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getStartedWrappers(LanguageServiceAccessor.java:556)
+	at org.eclipse.lsp4e.LanguageServers$LanguageServerProjectExecutor.getServers(LanguageServers.java:316)
+	at org.eclipse.lsp4e.LanguageServers.executeOnServers(LanguageServers.java:403)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:152)
+	at org.eclipse.lsp4e.LanguageServers.computeFirst(LanguageServers.java:129)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:29)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:34:14.034
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:34:14.034
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:34:14.035
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Unhandled method workspace/executeCommand
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Unhandled method workspace/executeCommand
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:31)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Unhandled method workspace/executeCommand
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:209)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:193)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:282)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:34:14.036
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Unhandled method workspace/executeCommand
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Unhandled method workspace/executeCommand
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:31)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Unhandled method workspace/executeCommand
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:209)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:193)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:282)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:34:14.059
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:34:14.059
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:34:14.059
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:34:14.060
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:38:44.775
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:38:51.527
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:38:51.527
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:38:51.528
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:38:51.528
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:43:55.859
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:44:01.813
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:44:01.813
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:44:01.814
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:44:01.814
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:44:26.896
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:44:33.386
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:44:33.386
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:44:33.387
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:44:33.387
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-13 23:46:24.433
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:46:32.397
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:46:32.398
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-13 23:46:32.400
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-13 23:46:32.400
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:26.682
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:26.683
+!MESSAGE Classpath changed for project: ShopmeCommon
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:49:29.963
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:49:29.964
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:49:29.964
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:49:29.965
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:41.587
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:41.588
+!MESSAGE Classpath changed for project: ShopmeCommon
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:41.589
+!MESSAGE Classpath changed for project: ShopmeFontEnd
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:43.835
+!MESSAGE Classpath changed for project: ShopmeCommon
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:46.804
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:48.311
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:49:48.311
+!MESSAGE Classpath changed for project: ShopmeFontEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:49:53.793
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:49:53.794
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:49:53.794
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:49:53.797
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:49:54.135
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:49:54.136
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:49:54.282
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:49:54.283
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 2 0 2023-07-14 09:50:33.110
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 09:50:40.706
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:50:48.818
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 09:50:48.821
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:50:48.822
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 09:50:48.822
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2023-07-14 10:07:54.151
+!MESSAGE Classpath changed for project: ShopmeBackEnd
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 10:08:01.488
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 10:08:01.488
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 10:08:01.489
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 10:08:01.489
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 10:08:01.513
+!MESSAGE executing callback sts4.classpath.KxqZYryN FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 10:08:01.513
+!MESSAGE No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.KxqZYryN'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2023-07-14 10:08:01.515
+!MESSAGE executing callback sts4.classpath.ckPZYHrn FAILED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 4 0 2023-07-14 10:08:01.515
+!MESSAGE No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+!STACK 0
+java.lang.UnsupportedOperationException: No language server has registered to handle command 'sts4.classpath.ckPZYHrn'
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.lambda$1(LSP4ECommandExecutor.java:32)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.springframework.tooling.ls.eclipse.commons.LSP4ECommandExecutor.executeClientCommand(LSP4ECommandExecutor.java:32)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.flush(SendClasspathNotificationsJob.java:178)
+	at org.springframework.tooling.jdt.ls.commons.classpath.SendClasspathNotificationsJob.run(SendClasspathNotificationsJob.java:149)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
