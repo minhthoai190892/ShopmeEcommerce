@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:fragment="page_head(title)">
+<head th:fragment="page_head(title,remove)" th:remove="${remove}">
     <title>[[${title}]]</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -111,8 +111,8 @@
 
 
 
+    <!-- Enable -->
     <td th:fragment="status(enabled,entityURL,entityName)">
-        <!-- Enable -->
         <!-- /users/'+${user.id} -->
         <a style="text-decoration: none;" th:href="@{${entityURL}+'/enabled/false'}" th:if="${enabled == true}"
             th:title="'Disable this '+${entityName}" class="fa-sharp fa-solid fa-circle-check fa-2xl icon-green"></a>

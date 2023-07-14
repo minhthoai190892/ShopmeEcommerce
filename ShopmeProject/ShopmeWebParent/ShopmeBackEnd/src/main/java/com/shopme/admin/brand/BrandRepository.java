@@ -16,5 +16,7 @@ public interface BrandRepository extends JpaRepository<Brand, Integer> {
 	public Brand  findByName(String name);
 	@Query("select b from Brand b Where b.name like %?1%")
 	public Page<Brand> findAll(String keyword,Pageable pageable);
+	@Query("select new Brand(b.id, b.name) from Brand b order by b.name asc")
+	public List<Brand> findAll() ;
 }
 

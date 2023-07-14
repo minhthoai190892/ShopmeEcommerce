@@ -83,4 +83,10 @@ public class TestBrandRepository {
 		Optional<Brand> result = brandRepository.findById(id);
 		assertThat(result.isEmpty());
 	}
+	@Test
+	public void testFindAll() {
+		Iterable<Brand> listBrands = brandRepository.findAll();
+		listBrands.forEach(System.out::println);
+		assertThat(listBrands).isNotEmpty();
+	}
 }

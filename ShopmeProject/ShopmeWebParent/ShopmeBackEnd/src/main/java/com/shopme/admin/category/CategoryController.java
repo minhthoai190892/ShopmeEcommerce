@@ -100,8 +100,10 @@ public class CategoryController {
 	@GetMapping("/categories/new")
 	public String newCategory(Model model) {
 		List<Category> listCategories = categoryService.listCategoriesUsedInForm();
+		Category category = new Category();
+		category.setEnabled(true);
 		model.addAttribute("listCategories", listCategories);
-		model.addAttribute("category", new Category());
+		model.addAttribute("category", category);
 		model.addAttribute("pageTitle", "Create Category");
 
 		return "categories/category_form";

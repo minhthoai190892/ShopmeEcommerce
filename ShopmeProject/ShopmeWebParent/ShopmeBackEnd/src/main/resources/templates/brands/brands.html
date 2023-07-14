@@ -2,14 +2,14 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments::page_head('Manage Brands')"></head>
+<head th:replace="fragments::page_head('Manage Brands','none')"></head>
 
 <body>
     <div class="container-fluid">
         <!-- menu -->
         <div th:replace="navigation::menu"></div>
         <!-- title -->
-        <div th:replace="fragments::downfile('Test','/brands/')"></div>
+        <div th:replace="fragments::downfile('Manage Brands','/brands/')"></div>
         <!-- form -->
         <div th:replace="fragments::search_form('/brands/page/1')"></div>
         <div th:if="${message!=null}" class="alert alert-success text-center">

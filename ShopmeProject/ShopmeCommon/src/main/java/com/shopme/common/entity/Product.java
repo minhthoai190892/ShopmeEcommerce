@@ -1,7 +1,9 @@
 package com.shopme.common.entity;
 
 import java.util.Date;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "products")
@@ -35,6 +39,8 @@ public class Product {
 	@Column(name = "in_stock")
 	private boolean inStock;
 
+	
+	
 	private float cost;
 
 	private float price;
@@ -45,6 +51,14 @@ public class Product {
 	private float width;
 	private float height;
 	private float weight;
+	@Column(name = "main_image",nullable = false)
+	private String mainImage;
+	/**
+	 *
+	 */
+	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL)//ánh xạ đến field của productimage
+	private Set<ProductImage> images;
+	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
@@ -160,15 +174,36 @@ public class Product {
 	public void setUpdateTime(Date updateTime) {
 		UpdateTime = updateTime;
 	}
+	public String getMainImage() {
+		return mainImage;
+	}
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
+	}
+	
+	
+	
+	public Set<ProductImage> getImages() {
+		return images;
+	}
+	public void setImages(Set<ProductImage> images) {
+		this.images = images;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", alias=" + alias + ", shortDescription=" + shortDescription
 				+ ", fullDescription=" + fullDescription + ", createdTime=" + createdTime + ", UpdateTime=" + UpdateTime
 				+ ", enabled=" + enabled + ", inStock=" + inStock + ", cost=" + cost + ", price=" + price
 				+ ", discountPercent=" + discountPercent + ", length=" + length + ", width=" + width + ", height="
-				+ height + ", weight=" + weight + ", category=" + category + ", brand=" + brand + "]";
+				+ height + ", weight=" + weight + ", mainImage=" + mainImage + ", images=" + images + ", category="
+				+ category + ", brand=" + brand + "]";
 	}
-	
-	
-	
+	/**
+	 * hàm thêm extra image
+	 * @param imageName tên image extra
+	 */
+	public void addExtraImage(String imageName) {
+		this.images.add(new ProductImage(imageName,this));
+	}
 }

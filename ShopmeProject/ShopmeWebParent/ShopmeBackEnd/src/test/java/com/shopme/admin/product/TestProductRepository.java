@@ -1,6 +1,7 @@
 package com.shopme.admin.product;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatComparable;
 
 import java.util.Date;
 import java.util.List;
@@ -28,11 +29,11 @@ public class TestProductRepository {
 
 	@Test
 	public void testCreateProduct() {
-		Brand brand = entityManager.find(Brand.class, 6);
+		Brand brand = entityManager.find(Brand.class, 7);
 		Category category = entityManager.find(Category.class, 6);
 		Product product = new Product();
-		product.setName("Samsung Galaxy A41");
-		product.setAlias("Samsung Galaxy A41");
+		product.setName("Samsung Galaxy A412");
+		product.setAlias("Samsung Galaxy A412");
 		product.setShortDescription("A good smartphone from samsung");
 		product.setFullDescription("Full description");
 		product.setEnabled(true);
@@ -68,5 +69,19 @@ public class TestProductRepository {
 	@Test
 	public void testDeleteProduct() {
 		productRepository.deleteById(1);
+	}
+	@Test
+	public void testSaveProductWithImages() {
+//		testListALlProducts();
+//		// TODO Auto-generated method stub
+		Integer id =4;
+		Product product = productRepository.findById(id).get();
+		product.setMainImage("main image.jpg");
+		product.addExtraImage("extra image 1.png");
+		product.addExtraImage("extra_image 2.png");
+		product.addExtraImage("extra-image 3.png");
+		Product saveProduct = productRepository.save(product);
+		System.err.println(saveProduct);
+		assertThat(saveProduct.getImages().size()).isEqualTo(3);
 	}
 }
