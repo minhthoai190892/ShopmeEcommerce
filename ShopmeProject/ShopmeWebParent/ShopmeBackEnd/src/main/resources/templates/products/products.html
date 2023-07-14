@@ -68,12 +68,12 @@
          <script type="text/javaScript" th:src="@{/js/common.js}"></script>
          <script type="text/javaScript">
      
-             moduleURL = "[[@{/brands}]]";
+             moduleURL = "[[@{/products}]]";
         
              $(document).ready(function(){
                  $(".link-delete").on("click",function(e){
                      e.preventDefault();
-                     showDeleteConfirmModal($(this),'brand')
+                     showDeleteConfirmModal($(this),'product')
                  });
              });
      

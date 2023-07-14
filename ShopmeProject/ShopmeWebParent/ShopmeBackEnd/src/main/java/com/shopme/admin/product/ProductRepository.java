@@ -12,5 +12,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 	@Query("update Product p set p.enabled =?2 where p.id =?1")
 	@Modifying
 	public void updateEnabledStatus(Integer id,boolean enabled);
-	
+	public Long countById(Integer id);
 }

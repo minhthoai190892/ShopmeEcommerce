@@ -57,7 +57,7 @@ public class ProductController {
 		System.err.println("weight : "+product.getWeight());
 		return "redirect:/products";
 	}
-//	
+	
 	@GetMapping("/products/{id}/enabled/{status}")
 	public String updateProductEnabledStatus(@PathVariable( "id") Integer id, @PathVariable("status")boolean enabled,RedirectAttributes redirectAttributes) {
 		productService.updateProductEnabledStatus(id, enabled);
@@ -66,15 +66,16 @@ public class ProductController {
 		redirectAttributes.addFlashAttribute("message",message);
 		return "redirect:/products";
 	}
-//	@GetMapping("/categories/{id}/enabled/{status}")
-//	@GetMapping("/products/{id}/enabled/{status}")
-//	public String updateCategoryEnabledStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enabled,
-//			RedirectAttributes redirectAttributes) {
-//		productService.updateProductEnabledStatus(id, enabled);
-//		String status = enabled ? "enabled" : "disable";
-//		String message = "The category id " + id + " has been " + status;
-//		redirectAttributes.addFlashAttribute("message", message);
-//		return "redirect:/products";
-//
-//	}
+	@GetMapping("/products/delete/{id}")
+	public String deleteProduct(@PathVariable(name = "id")Integer id,RedirectAttributes redirectAttributes) {
+		try {
+			productService.delete(id);
+			redirectAttributes.addFlashAttribute("message","The product ID "+id+" has been deleted successfully");
+		} catch (ProductNotFoundException e) {
+			redirectAttributes.addFlashAttribute("message",e.getMessage());
+			// TODO: handle exception
+		}
+		return "redirect:/products";
+	}
+
 }
