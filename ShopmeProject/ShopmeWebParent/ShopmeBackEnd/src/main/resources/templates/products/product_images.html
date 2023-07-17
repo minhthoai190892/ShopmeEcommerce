@@ -3,7 +3,8 @@
 
 <body>
     <div th:fragment="content" th:remove="tag">
-        <div class="row">
+        <div class="row" id="divProductImages">
+            <!-- Main image -->
             <div class="col border m-3 p-2">
                 <div>
                     <label for="">Main Image: </label>
@@ -15,8 +16,22 @@
                     <input type="file" name="fileImage" id="fileImage" required accept="image/png,image/jpeg">
                 </div>
             </div>
+            <!-- Extra image -->
+            <div class="col border m-3 p-2" id="divExtraImage0">
+                <div id="extraImageHeader0">
+                    <label for="">Extra Image #1: </label>
+                </div>
+                <div>
+                    <img th:src="@{/images/image-thumbnail.png}" style="width: 200px; height: 200px;" 
+                    alt="Extra Image #1 preview" class="img-fluid" id="extraThumbnail0">
+                </div>
+                <div>
+                    <input type="file" name="extraImage"  accept="image/png,image/jpeg">
+                </div>
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>
