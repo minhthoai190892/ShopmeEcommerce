@@ -111,7 +111,7 @@ public class ProductController {
 		}
 
 	}
-
+	
 	private void setExtraImageNames(MultipartFile[] extraImageMultipartFiles, Product product) {
 		// TODO Auto-generated method stub
 		if (extraImageMultipartFiles.length > 0) {
