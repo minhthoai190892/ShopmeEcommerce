@@ -1,6 +1,7 @@
 package com.shopme.common.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -58,7 +59,7 @@ public class Product {
 	 *
 	 */
 	@OneToMany(mappedBy = "product",cascade = CascadeType.ALL)//ánh xạ đến field của productimage
-	private Set<ProductImage> images;
+	private Set<ProductImage> images = new HashSet<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "category_id")

@@ -100,10 +100,13 @@
   <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.js}"></script>
   <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.min.js}"></script>
   <script type="text/JavaScript">
-    MAX_FILE_SIZE=1048576;
+      MAX_FILE_SIZE=1048576;
       moduleURL = "[[@{/products}]]";
       brandModuleURL = "[[@{/brands}]]"
       defaultImageThumbnailSrc ="[[@{/images/image-thumbnail.png}]]";
+      //lấy url của restController
+   
+      checkUniqueUrl = "[[@{/products/check_unique}]]";
   </script>
   <script type="text/javaScript" th:src="@{/js/product_form.js}"></script>
 </body>

@@ -62,3 +62,4 @@ function showWarningModal(message) {
 function showErrorModal(message) {
   showModalDialog("Error", message);
 }
+
