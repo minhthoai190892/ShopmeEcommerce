@@ -1,21 +1,15 @@
 
-dropdownBrands = $("#brand");
-dropdownCategories = $("#category");
 var extraImagesCount = 0;
 $(document).ready(function () {
-    $("#shortDescription").richText();
-    $("#fullDescription").richText();
-    dropdownBrands.change(function () {
-        dropdownCategories.empty();
-        getCategoies();
-    });
-    getCategoies();
 
     $("input[name='extraImage']").each(function (index) {
         extraImagesCount++;
         $(this).change(function () {
+            if (!checkFileSize(this)) {
+                return;
+            }
             //gọi hàm hiển thị hình ảnh extra
-            showExtraImageThumbnail(this, index)
+            showExtraImageThumbnail(this, index);
         })
     });
 
@@ -31,7 +25,7 @@ function showExtraImageThumbnail(fileInput, index) {
         $("#extraThumbnail" + index).attr("src", e.target.result);
     };
     reader.readAsDataURL(file);
-    if (index >= extraImagesCount-1) {
+    if (index >= extraImagesCount - 1) {
         // gọi hàm thêm extra image
 
         addNextExtraImageSection(index + 1);
@@ -71,47 +65,5 @@ function addNextExtraImageSection(index) {
  */
 function removeExtraImage(index) {
     $("#divExtraImage" + index).remove();
-   
-}
-/**
- * Hàm liệt kê danh sách category
- */
-function getCategoies() {
-    brandID = dropdownBrands.val();//id
-    //tạo đường dẫn giống với BrandRestController
-    // /brands/id/categories
-    url = brandModuleURL + "/" + brandID + "/categories";
-    $.get(url, function (responseJson) {
-        $.each(responseJson, function (index, category) {
-            $("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
-        })
-    });
 
-}
-
-
-/**
- * Hàm kiểm tra trùng nhau
- * @param {*} form 
- * @returns 
- */
-function checkUnique(form) {
-
-    productId = $("#id").val();
-    productName = $("#name").val();
-    csrfValue = $("input[name='_csrf']").val();
-    
-    params = { id: productId, name: productName, _csrf: csrfValue };
-    $.post(checkUniqueUrl, params, function (response) {
-        if (response == "Ok") {
-            form.submit();
-        } else if (response == "Duplicate") {
-            showWarningModal("There is another product having the name " + productName)
-        } else {
-            showErrorModal("Unknown response from server");
-        }
-    }).fail(function () {
-        showErrorModal("could not connect to the server");
-    });
-    return false;
 }
