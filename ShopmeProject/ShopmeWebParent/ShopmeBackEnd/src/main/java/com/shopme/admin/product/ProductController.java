@@ -1,6 +1,7 @@
 package com.shopme.admin.product;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,31 +58,38 @@ public class ProductController {
 	@PostMapping("/products/save")
 	public String saveProduct(Model model, Product product, RedirectAttributes redirectAttributes,
 			@RequestParam("fileImage") MultipartFile mainImageMultipartFile,
-			@RequestParam("extraImage") MultipartFile[] extraImageMultipartFiles) throws IOException {
+			@RequestParam(name = "extraImage") MultipartFile[] extraImageMultipartFiles,
+			@RequestParam(name = "detailNames",required = false) String[] detailNames,
+			@RequestParam(name = "detailValues",required = false) String[] detailValues
+			
+			) throws IOException {
 		// gọi hàm
 		setMainImageName(mainImageMultipartFile, product);
 		setExtraImageNames(extraImageMultipartFiles, product);
+		setProductDetails(detailNames,detailValues,product);
 		// save product
 		Product saveProduct = productService.save(product);
 		saveUploadedImages(mainImageMultipartFile, extraImageMultipartFiles, saveProduct);
 
 		productService.save(product);
 		redirectAttributes.addFlashAttribute("message", "The product has been saved successfully.");
-		System.err.println("Product Name: " + product.getName());
-		System.err.println("Alias: " + product.getAlias());
-		System.err.println("Brand Id: " + product.getBrand().getId());
-		System.err.println("Category Id: " + product.getCategory().getId());
-		System.err.println("Cost: " + product.getCost());
-		System.err.println("price: " + product.getPrice());
-		System.err.println("discount: " + product.getDiscountPercent());
-		System.err.println("short desciption: " + product.getShortDescription());
-		System.err.println("full desciption: " + product.getFullDescription());
-		System.err.println("length: " + product.getLength());
-		System.err.println("width : " + product.getWidth());
-		System.err.println("height : " + product.getHeight());
-		System.err.println("weight : " + product.getWeight());
+
 		System.err.println("Product : " + product);
 		return "redirect:/products";
+	}
+
+	private void setProductDetails(String[] detailNames, String[] detailValues, Product product) {
+		// TODO Auto-generated method stub
+		if (detailNames==null||detailNames.length==0) {
+			return;
+		}
+		for (int count = 0; count < detailNames.length; count++) {
+			String name = detailNames[count];
+			String value = detailValues[count];
+			if (!name.isEmpty()&&!value.isEmpty()) {
+				product.addDetail(name, value);
+			}
+		}
 	}
 
 	/**
