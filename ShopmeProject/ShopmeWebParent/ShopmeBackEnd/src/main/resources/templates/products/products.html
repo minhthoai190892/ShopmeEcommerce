@@ -25,8 +25,7 @@
                         <th>Main Image</th>
                         <th>Product Name</th>
                         <th>Brand</th>
-                        <th>Category</th>
-                      
+                        <th>Category</th>   
                         <th>Enabled</th>
 
                     </tr>
@@ -34,7 +33,10 @@
                 <tbody>
                     <tr th:each=" product: ${listProducts}">
                         <td scope="row">[[${product.id}]]</td>
-                        <td></td>
+                        <td>
+                            <img th:src="@{${product.mainImagePath}}" class="img-fluid" style="width: 120px;" alt="">
+                            
+                        </td>
                         <td>[[${product.name}]]</td>
                         <td>[[${product.brand.name}]]</td>
                         <td>[[${product.category.name}]]</td>

@@ -25,7 +25,7 @@
       <!-- th:action="@{/products/save}" method="post" gọi phương thức "save" trong productController với ánh xạ "POST MAPPING"-->
       <!-- enctype="multipart/form-data": cho phép tải lên tệp cho biểu mẫu -->
       <form class="row g-3" th:action="@{/products/save}" method="post" th:object="${product}"
-        onsubmit="return checkUnique(this)">
+        enctype="multipart/form-data" onsubmit="return checkUnique(this)">
         <!-- lưu id người dùng  -->
         <input type="hidden" id="id" th:field="*{id}">
         <div>
@@ -60,8 +60,16 @@
             <div class="tab-pane" id="description" role="tabpanel" aria-labelledby="description-tab">
               <div th:replace="products/product_description::content"></div>
             </div>
-            <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">Images</div>
-            <div class="tab-pane" id="details" role="tabpanel" aria-labelledby="details-tab">Details</div>
+            <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">
+              <div th:replace="products/product_images::content"></div>
+
+            </div>
+            <div class="tab-pane" id="details" role="tabpanel" aria-labelledby="details-tab">
+              <div th:replace="products/product_details::content"></div>
+              <div>
+                <input type="button" class="btn btn-secondary" value="Add More Detail" onclick="addNextDetailSection()">
+              </div>
+            </div>
             <div class="tab-pane p-3" id="shipping" role="tabpanel" aria-labelledby="details-tab">
               <div th:replace="products/product_shipping::content"></div>
             </div>
@@ -69,8 +77,8 @@
         </div>
         <!-- Button -->
         <div class="col-12 text-center">
-          <button type="submit" data-bs-toggle="modal" class="btn btn-primary">Save</button>
-          <a style="text-decoration: none;" th:href="@{/categories}"> <button type="button" class="btn btn-secondary"
+          <button type="submit" data-bs-toggle="modal" class="btn btn-primary" >Save</button>
+          <a style="text-decoration: none;" th:href="@{/products}"> <button type="button" class="btn btn-secondary"
               id="buttonCancel">Cancel</button></a>
 
         </div>
@@ -97,59 +105,17 @@
   <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.js}"></script>
   <script type="text/javaScript" th:src="@{/richtext/jquery.richtext.min.js}"></script>
   <script type="text/JavaScript">
+      MAX_FILE_SIZE=1048576;
       moduleURL = "[[@{/products}]]";
       brandModuleURL = "[[@{/brands}]]"
-
-      dropdownBrands = $("#brand");
-      dropdownCategories =$("#category");
-    
-      $(document).ready(function () {
-        $("#shortDescription").richText();
-        $("#fullDescription").richText();
-      dropdownBrands.change(function(){
-        dropdownCategories.empty();
-        getCategoies();
-      });
-      getCategoies();
-     });
-     function getCategoies() {
-      brandID =  dropdownBrands.val();//id
-      //tạo đường dẫn giống với BrandRestController
-      // /brands/id/categories
-      url = brandModuleURL+"/"+brandID+"/categories";
-      $.get(url,function(responseJson){
-        $.each(responseJson,function(index,category){
-          $("<option>").val(category.id).text(category.name).appendTo(dropdownCategories);
-        })
-      });
-     
-     }
-
-
-
-     function checkUnique(form) {
-      productId = $("#id").val();
-      productName = $("#name").val();
-       csrfValue = $("input[name='_csrf']").val();
-      url="[[@{/products/check_unique}]]";
-      params={id:productId,name:productName,_csrf:csrfValue};
-      $.post(url,params,function(response){
-        if (response=="Ok") {
-          form.submit();
-        }else if (response=="Duplicate") {
-          showWarningModal("There is another product having the name "+productName)
-        }else{
-          showErrorModal("Unknown response from server");
-        }
-      }).fail(function(){
-        showErrorModal("could not connect to the server");
-      });
-      return false;
-     }
+      defaultImageThumbnailSrc ="[[@{/images/image-thumbnail.png}]]";
+      //lấy url của restController
+   
+      checkUniqueUrl = "[[@{/products/check_unique}]]";
   </script>
-
+  <script type="text/javaScript" th:src="@{/js/product_form_images.js}"></script>
+  <script type="text/javaScript" th:src="@{/js/product_form_overview.js}"></script>
+  <script type="text/javaScript" th:src="@{/js/product_form_details.js}"></script>
 </body>
 
 </html>
-
-

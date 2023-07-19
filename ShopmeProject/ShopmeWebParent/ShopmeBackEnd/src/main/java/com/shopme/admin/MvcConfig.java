@@ -11,6 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
 
 	@Override
+	/** 
+	 * hàm đăng ký tạo file hình ảnh
+	*/
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //		String dirName = "user-photos";
 //		Path userPhotoDir = Paths.get(dirName);// lấy thư mục hình ảnh chung của tất cả người dùng
@@ -40,7 +43,13 @@ public class MvcConfig implements WebMvcConfigurer {
 		exposeDirectory("user-photos", registry);
 		exposeDirectory("../category-images", registry);
 		exposeDirectory("../brand-logos", registry);
+		exposeDirectory("../product-images", registry);
 	}
+	/**
+	 * Hàm tạo file hình ảnh
+	 * @param pathPattern tên thư mục hình ảnh
+	 * @param registry đăng ký thư mục
+	 */
 	private void exposeDirectory(String pathPattern,ResourceHandlerRegistry registry) {
 		Path path = Paths.get(pathPattern);
 		String absolutePath = path.toFile().getAbsolutePath();
