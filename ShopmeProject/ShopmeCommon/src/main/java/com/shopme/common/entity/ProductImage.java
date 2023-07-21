@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "product_image")
@@ -55,5 +56,11 @@ public class ProductImage {
 		return "ProductImage [name=" + name + "]";
 	}
 	
-	
+	@Transient
+	public String getImagePath() {
+		return "/product-images/"+product.getId()+"/extras/"+this.name;
+	}
 }
+
+
+

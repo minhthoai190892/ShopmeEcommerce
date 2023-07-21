@@ -1,83 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<body>
+  <body>
     <div th:fragment="content" th:remove="tag">
-        <!-- name -->
-        <div class="form-group row mt-2 mb-2">
-            <label for="name" class="col-sm-2 col-form-label">Product Name:</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" th:field="*{name}" required minlength="3"
-                    maxlength="256">
-            </div>
+      <!-- name -->
+      <div class="form-group row mt-2 mb-2">
+        <label for="name" class="col-sm-2 col-form-label">Product Name:</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            th:field="*{name}"
+            required
+            minlength="3"
+            maxlength="256"
+          />
         </div>
-        <!-- alias -->
-        <div class="form-group row mb-2">
-            <label for="alias" class="col-sm-2 col-form-label">Alias:</label>
-            <div class="col-sm-10">
-                <input type="text" placeholder="Default is product name (spaces are replaced by dashes)"
-                    class="form-control" id="alias" th:field="*{alias}"  minlength="3" maxlength="256">
-            </div>
+      </div>
+      <!-- alias -->
+      <div class="form-group row mb-2">
+        <label for="alias" class="col-sm-2 col-form-label">Alias:</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            placeholder="Default is product name (spaces are replaced by dashes)"
+            class="form-control"
+            id="alias"
+            th:field="*{alias}"
+            minlength="3"
+            maxlength="256"
+          />
         </div>
-        <!-- brand -->
-        <div class="form-group row mb-2">
-            <label for="brand" class="col-sm-2 col-form-label">Brand:</label>
-            <div class="col-sm-10">
-                <select class="form-select"  th:field="*{brand}" required
-                    aria-label="Default select example">
-                    <th:block th:each="brand : ${listBrands}">
-                        <option th:value="${brand.id}">[[${brand.name}]]</option>
-                    </th:block>
-                </select>
-            </div>
+      </div>
+      <!-- brand -->
+      <div class="form-group row mb-2">
+        <label for="brand" class="col-sm-2 col-form-label">Brand:</label>
+        <div class="col-sm-10">
+          <select
+            class="form-select"
+            th:field="*{brand}"
+            required
+            aria-label="Default select example"
+          >
+            <th:block th:each="brand : ${listBrands}">
+              <option th:value="${brand.id}">[[${brand.name}]]</option>
+            </th:block>
+          </select>
         </div>
-        <!-- category -->
-        <div class="form-group row mb-2">
-            <label for="category" class="col-sm-2 col-form-label">Category:</label>
-            <div class="col-sm-10">
-                <select class="form-select" name="category" th:field="*{category}" id="category" required
-                    aria-label="Default select example">
-
-                </select>
-            </div>
+      </div>
+      <!-- category -->
+      <div class="form-group row mb-2">
+        <label for="category" class="col-sm-2 col-form-label">Category:</label>
+        <div class="col-sm-10">
+          <!-- hiển thị danh sách category của form update -->
+          <th:block th:if="${product.category != null}">
+            <select
+              class="form-select"
+              name="category"
+              th:field="*{category}"
+              id="category"
+              required
+              aria-label="Default select example"
+            >
+              <th:block th:each=" cat: ${product.brand.categories}">
+                <option th:value="${cat.id}">[[${cat.name}]]</option>
+              </th:block>
+            </select>
+          </th:block>
+          <!-- hiển thị danh sách category của form create -->
+          <th:block th:if="${product.category == null}">
+            <select
+              class="form-select"
+              name="category"
+              th:field="*{category}"
+              id="category"
+              required
+              aria-label="Default select example"
+            ></select>
+          </th:block>
         </div>
-        <!-- Enabled -->
-        <div class="form-group row mb-2">
-            <label for="enabled" class="col-sm-2 col-form-label">Enabled:</label>
-            <div class="col-sm-10">
-                <input type="checkbox" id="enabled" th:field="*{enabled}">
-            </div>
+      </div>
+      <!-- Enabled -->
+      <div class="form-group row mb-2">
+        <label for="enabled" class="col-sm-2 col-form-label">Enabled:</label>
+        <div class="col-sm-10">
+          <input type="checkbox" id="enabled" th:field="*{enabled}" />
         </div>
-        <!-- In-Stock -->
-        <div class="form-group row mb-2">
-            <label for="inStock" class="col-sm-2 col-form-label">In-Stock:</label>
-            <div class="col-sm-10">
-                <input type="checkbox" id="inStock" th:field="*{inStock}">
-            </div>
+      </div>
+      <!-- In-Stock -->
+      <div class="form-group row mb-2">
+        <label for="inStock" class="col-sm-2 col-form-label">In-Stock:</label>
+        <div class="col-sm-10">
+          <input type="checkbox" id="inStock" th:field="*{inStock}" />
         </div>
-        <!-- cost -->
-        <div class="form-group row mb-2">
-            <label for="cost" class="col-sm-2 col-form-label">Cost:</label>
-            <div class="col-sm-10">
-                <input   class="form-control"  type="number" id="cost" th:field="*{cost}">
-            </div>
+      </div>
+      <!-- cost -->
+      <div class="form-group row mb-2">
+        <label for="cost" class="col-sm-2 col-form-label">Cost:</label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="number"
+            id="cost"
+            th:field="*{cost}"
+          />
         </div>
-        <!-- price -->
-        <div class="form-group row mb-2">
-            <label for="price" class="col-sm-2 col-form-label">Price:</label>
-            <div class="col-sm-10">
-                <input type="number"   class="form-control"  id="price" th:field="*{price}">
-            </div>
+      </div>
+      <!-- price -->
+      <div class="form-group row mb-2">
+        <label for="price" class="col-sm-2 col-form-label">Price:</label>
+        <div class="col-sm-10">
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            th:field="*{price}"
+          />
         </div>
-        <!-- Discount -->
-        <div class="form-group row mb-2">
-            <label for="discount" class="col-sm-2 col-form-label">Discount:</label>
-            <div class="col-sm-10">
-                <input type="number"  class="form-control"  id="discount" th:field="*{discountPercent}">
-            </div>
+      </div>
+      <!-- Discount -->
+      <div class="form-group row mb-2">
+        <label for="discount" class="col-sm-2 col-form-label">Discount:</label>
+        <div class="col-sm-10">
+          <input
+            type="number"
+            class="form-control"
+            id="discount"
+            th:field="*{discountPercent}"
+          />
         </div>
-        
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
