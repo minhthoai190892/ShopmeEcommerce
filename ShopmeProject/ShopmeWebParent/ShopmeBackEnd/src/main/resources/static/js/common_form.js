@@ -11,33 +11,31 @@ $(document).ready(function () {
   $("#fileImage").change(function (e) {
     if (!checkFileSize(this)) {
       return;
-    } else {
-      showImageThumbnail(this)
     }
+    showImageThumbnail(this);
   });
 });
 /**
  * Hàm kiểm tra kích thước của file hình ảnh
- * @param {*} fileInput  file hình ảnh 
+ * @param {*} fileInput  file hình ảnh
  * @returns trả về true hoặc false
  */
 function checkFileSize(fileInput) {
-
   //lấy size của hình ảnh
   fileSize = fileInput.files[0].size;
 
   //kiểm tra ddoojdaif file
   if (fileSize > MAX_FILE_SIZE) {
-    fileInput.setCustomValidity("You must choose an image less than 1MB!");//hiện thông báo
-    fileInput.reportValidity();//ngăn chuyển tới server
-    return false
+    fileInput.setCustomValidity("You must choose an image less than 1MB!"); //hiện thông báo
+    fileInput.reportValidity(); //ngăn chuyển tới server
+    return false;
   } else {
-    fileInput.setCustomValidity("");//hiện thông báo
+    fileInput.setCustomValidity(""); //hiện thông báo
     return true;
   }
 }
 /**
- * Hàm hiển thị hình ảnh 
+ * Hàm hiển thị hình ảnh
  * @param {*} fileInput với file hình ảnh được chọn
  */
 function showImageThumbnail(fileInput) {
@@ -54,7 +52,7 @@ function showImageThumbnail(fileInput) {
 function showModalDialog(title, message) {
   $("#modalTitle").text(title);
   $("#modalBody").text(message);
-  $("#modalDialog").modal('show');
+  $("#modalDialog").modal("show");
 }
 function showWarningModal(message) {
   showModalDialog("Warning", message);
@@ -62,4 +60,3 @@ function showWarningModal(message) {
 function showErrorModal(message) {
   showModalDialog("Error", message);
 }
-

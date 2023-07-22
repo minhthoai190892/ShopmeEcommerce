@@ -162,10 +162,13 @@ public class ProductController {
 	public String deleteProduct(@PathVariable(name = "id") Integer id, RedirectAttributes redirectAttributes) {
 		try {
 			productService.delete(id);
-			String productImageDir = "../product-images/" + id;
+			
+
 			String productExtraImageDir = "../product-images/" + id + "/extras";
-			FileUploadUtil.removeDir(productImageDir);
 			FileUploadUtil.removeDir(productExtraImageDir);
+			String productDir = "../product-images/" + id;
+			// gọi hàm xóa thư mục chứa file ảnh
+			FileUploadUtil.removeDir(productDir);
 			redirectAttributes.addFlashAttribute("message", "The product ID " + id + " has been deleted successfully");
 		} catch (ProductNotFoundException e) {
 			redirectAttributes.addFlashAttribute("message", e.getMessage());
@@ -179,10 +182,11 @@ public class ProductController {
 			Product product = productService.get(id);
 			List<Brand> listBrands = brandService.listAll();
 			Integer numberOfExistingExtraImage = product.getImages().size();
-			model.addAttribute("numberOfExistingExtraImage",numberOfExistingExtraImage);
+			
 			model.addAttribute("listBrands",listBrands);
 			model.addAttribute("product",product);
 			model.addAttribute("pageTitle","Edit Product (ID: "+id+")");
+			model.addAttribute("numberOfExistingExtraImage",numberOfExistingExtraImage);
 			return "products/product_form";
 		} catch (ProductNotFoundException e) {
 			// TODO: handle exception
