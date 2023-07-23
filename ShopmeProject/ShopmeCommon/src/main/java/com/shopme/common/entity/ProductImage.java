@@ -27,6 +27,17 @@ public class ProductImage {
 		super();
 	}
 
+	
+	
+	public ProductImage(Integer id, String name, Product product) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.product = product;
+	}
+
+
+
 	public ProductImage(String name, Product product) {
 		super();
 		this.name = name;

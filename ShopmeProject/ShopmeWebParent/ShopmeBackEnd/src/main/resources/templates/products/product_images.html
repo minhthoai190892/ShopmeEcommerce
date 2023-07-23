@@ -39,9 +39,9 @@
                 >Extra Image #[[${status.index+1}]]:[[${productImage.name}]]
               </label>
               <a
+              name="linkRemoveExtraImage"
                 class="fa fa-times-circle icon-dark float-right"
                 style="cursor: pointer"
-             
                 title="Remove this image"
                 fa-2x
                 aria-hidden="true"
@@ -63,8 +63,9 @@
                 accept="image/png,image/jpeg"
               />
             </div>
-            <input type="hidden" name="imageIDs" th:id="'imageId'+${status.index}">
-            <input type="hidden" name="imageNames" th:id="'imageName'+${status.index}">
+            <!-- lấy id và tên của từng ảnh -->
+            <input type="hidden" name="imageIDs" th:id="'imageId'+${status.index}" th:value="${productImage.id}">
+            <input type="hidden" name="imageNames" th:id="'imageName'+${status.index}" th:value="${productImage.name}">
           </div>
         </th:block>
 
