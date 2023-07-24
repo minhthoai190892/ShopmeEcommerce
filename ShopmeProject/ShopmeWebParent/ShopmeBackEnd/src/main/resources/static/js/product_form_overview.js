@@ -1,5 +1,6 @@
 dropdownBrands = $("#brand");
 dropdownCategories = $("#category");
+
 $(document).ready(function () {
   $("#shortDescription").richText();
   $("#fullDescription").richText();
@@ -8,8 +9,9 @@ $(document).ready(function () {
     getCategoies();
   });
   getCategoiesForNewForm();
+  
 });
-function getCategoiesForNewForm(params) {
+function getCategoiesForNewForm() {
   catIdField = $("#categoryId");
   editMode = false;
   if (catIdField.length) {

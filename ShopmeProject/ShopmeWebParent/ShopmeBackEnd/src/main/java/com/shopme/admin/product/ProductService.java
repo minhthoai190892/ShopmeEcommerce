@@ -59,7 +59,7 @@ public class ProductService {
 				return "Duplicate";
 			}
 		} else {
-			if (productByName != null && productByName.getId() != null) {
+			if (productByName != null && productByName.getId() != id) {
 				return "Duplicate";
 			}
 		}
