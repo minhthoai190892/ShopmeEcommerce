@@ -36,14 +36,16 @@
                         <td>
                             <img th:src="@{${product.mainImagePath}}" class="img-fluid" style="width: 120px;" alt="">
                         </td>
-                        <td>[[${product.name}]]</td>
+                        <td>
+                            <a class="link-detail"  th:href="@{'/products/detail/'+${product.id}}" title="View details of the product"> [[${product.name}]]</a>
+                        </td>
                         <td>[[${product.brand.name}]]</td>
                         <td>[[${product.category.name}]]</td>
                         <td th:replace="fragments::status(${product.enabled},'/products/'+${product.id},product)">
 
                         </td>
                         <td>
-                            <a class="fas fa-file-alt fa-2xl icon-green" th:href="@{'/products/detail/'+${product.id}}" title="View details of the product"></a>
+                            <a class="fas fa-file-alt fa-2xl icon-green link-detail" th:href="@{'/products/detail/'+${product.id}}" title="View details of the product"></a>
                             | <span th:replace="fragments::edit('product','/products/edit/'+${product.id})"></span>|<span
                                 th:replace="fragments::delete('product','/products/delete/'+${product.id},${product.id},true)"></span>
                         </td>
@@ -53,6 +55,24 @@
             </table>
             <!-- Modal -->
         <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
+            <!-- Modal -->
+        <div class="modal fade modal-xl" id="detailModal" tabindex="-1" aria-labelledby="modalTitle"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Warning</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
         </main>
     </div>
     <div th:replace="fragments::footer"></div>
@@ -71,10 +91,19 @@
              moduleURL = "[[@{/products}]]";
         
              $(document).ready(function(){
+                // lấy class link và thêm sự kiện click
                  $(".link-delete").on("click",function(e){
                      e.preventDefault();
                      showDeleteConfirmModal($(this),'product')
                  });
+                  // lấy class link và thêm sự kiện click
+                 $(".link-detail").on("click",function(e){
+                    e.preventDefault();
+                    // lấy thông tin URL của class
+                    linkDetailURL = $(this).attr("href");
+                    //gọi id của modal và hiển thị modal
+                    $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+                 })
              });
      
          </script>
