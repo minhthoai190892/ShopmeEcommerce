@@ -157,23 +157,21 @@
                 </div>
             </div>
             <!-- Detail -->
-            <div class="tab-pane" id="details" role="tabpanel" aria-labelledby="details-tab">
-                <div>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="detail : ${product.details}">
-                                <td>[[${detail.name}]]</td>
-                                <td>[[${detail.value}]]</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="tab-pane m-2" id="details" role="tabpanel" aria-labelledby="details-tab">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="detail : ${product.details}">
+                            <td>[[${detail.name}]]</td>
+                            <td>[[${detail.value}]]</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="tab-pane p-3" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
                 <div>
@@ -181,28 +179,32 @@
                     <div class="form-group row mb-2">
                         <label for="length" class="col-sm-2 col-form-label">Length (inch):</label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.01" class="form-control" id="length" th:value="${product.length}" disabled>
+                            <input type="number" step="0.01" class="form-control" id="length"
+                                th:value="${product.length}" disabled />
                         </div>
                     </div>
                     <!-- width -->
                     <div class="form-group row mb-2">
                         <label for="width" class="col-sm-2 col-form-label">width (inch):</label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.01" class="form-control" id="width" th:value="${product.width}" disabled>
+                            <input type="number" step="0.01" class="form-control" id="width" th:value="${product.width}"
+                                disabled />
                         </div>
                     </div>
                     <!-- height -->
                     <div class="form-group row mb-2">
                         <label for="height" class="col-sm-2 col-form-label">height (inch):</label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.01" class="form-control" id="height" th:value="${product.height}" disabled>
+                            <input type="number" step="0.01" class="form-control" id="height"
+                                th:value="${product.height}" disabled />
                         </div>
                     </div>
                     <!-- weight -->
                     <div class="form-group row mb-2">
                         <label for="weight" class="col-sm-2 col-form-label">weight (pounds):</label>
                         <div class="col-sm-10">
-                            <input type="number" step="0.01" class="form-control" id="weight" th:value="${product.weight}" disabled>
+                            <input type="number" step="0.01" class="form-control" id="weight"
+                                th:value="${product.weight}" disabled />
                         </div>
                     </div>
                 </div>
@@ -215,6 +217,3 @@
         Close
     </button>
 </div>
-
-
-
