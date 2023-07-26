@@ -26,7 +26,8 @@ public class Category {
 	private String alias;
 	@Column(length = 128, nullable = false)
 	private String image;
-
+	@Column(name = "all_parent_ids",length = 256,nullable = true)
+	private String allParentIDs;
 	private boolean enabled;
 	@OneToOne
 	@JoinColumn(name = "parent_id")
@@ -125,6 +126,16 @@ public class Category {
 		return children;
 	}
 
+	
+	
+	public String getAllParentIDs() {
+		return allParentIDs;
+	}
+
+	public void setAllParentIDs(String allParentIDs) {
+		this.allParentIDs = allParentIDs;
+	}
+
 	public void setChildren(Set<Category> children) {
 		this.children = children;
 	}
@@ -216,6 +227,7 @@ public class Category {
 	public void setHasChildren(boolean hasChildren) {
 		this.hasChildren = hasChildren;
 	}
+	
 	
 	
 
