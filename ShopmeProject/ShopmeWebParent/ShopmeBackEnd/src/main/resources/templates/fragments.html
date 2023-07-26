@@ -31,7 +31,7 @@
     <!-- sort by title -->
     <th th:fragment="column_link(moduleURL,fieldName,columnLabel,removeTag)" th:remove="${removeTag}">
 
-        <a th:href="@{${moduleURL}+'page/'+${currentPage}+'?sortField='+${fieldName}+'&sortDir='+${sortField!=fieldName?sortDir:reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
+        <a th:href="@{${moduleURL}+'page/'+${currentPage}+'?sortField='+${fieldName}+'&sortDir='+${sortField!=fieldName?sortDir:reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}+ ${categoryId!=null?'&categoryId='+categoryId:''}}"
             class="text-black" style="text-decoration: none;">[[${columnLabel}]]</a>
         <!-- sort icon -->
         <span th:if="${sortField == fieldName}"
@@ -46,7 +46,7 @@
     <!-- pagination -->
     <!-- số trang và tên nút -->
     <a th:fragment="page_link(moduleURL,pageNum,label)" class="page-link"
-        th:href="@{${moduleURL}+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">[[${label}]]</a>
+        th:href="@{${moduleURL}+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''} + ${categoryId!=null?'&categoryId='+categoryId:''}}">[[${label}]]</a>
 
     <div th:fragment="pagination(moduleURL,entityName)" th:remove="tag">
         <section>
@@ -138,6 +138,3 @@
 </body>
 
 </html>
-
-
-

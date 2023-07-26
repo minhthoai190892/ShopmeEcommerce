@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
@@ -24,4 +25,29 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	+ "or p.brand.name like %?1%" 
 	+ "or p.category.name like %?1%")
 	public Page<Product> findAll(String keyword, Pageable pageable);
+	
+	/**
+	 * search by dropdown category
+	 * @param categoryId
+	 * @param categoryIdMatch
+	 * @param pageable
+	 * @return
+	 */
+	@Query("select p from Product p where p.category.id=?1 or p.category.allParentIDs like %?2%")
+	public Page<Product> findAllInCategory(Integer categoryId,String categoryIdMatch,Pageable pageable);
+	/**
+	 * search by dropdown category and keyword
+	 * @param categoryId
+	 * @param categoryIdMatch
+	 * @param keyword
+	 * @param pageable
+	 * @return
+	 */
+	@Query("select p from Product p where (p.category.id=?1 or p.category.allParentIDs like %?2%) and"
+			+ "( p.name like %?3%"
+			+ "or p.shortDescription like %?3%" 
+			+ "or p.fullDescription like %?3%"
+			+ "or p.brand.name like %?3%" 
+			+ "or p.category.name like %?3%)")
+	public Page<Product> searchInCategory(Integer categoryId,String categoryIdMatch,String keyword,Pageable pageable);
 }

@@ -12,8 +12,29 @@
             <div th:replace="navigation::menu"></div>
             <!-- title -->
             <div th:replace="fragments::downfile('Manage Products','/products/')"></div>
-            <!-- form -->
-            <div th:replace="fragments::search_form('/products/page/1')"></div>
+            <!-- form search-->
+            <section>
+                <!--th:action="@{/users/page/1}"  -->
+                <form th:action="@{/products/page/1}" class="form-inline" id="searchForm">
+                    <input type="hidden" name="sortField" th:value="${sortField}">
+                    <input type="hidden" name="sortDir" th:value="${sortDir}">
+                    Category:
+                    <select name="categoryId"class="my-3"  id="dropdownCategory">
+                        <option value="0">All Category</option>
+                        <th:block th:each="cat : ${listCategories}">
+                        <option th:value="${cat.id}" th:selected="(${categoryId}==${cat.id})">[[${cat.name}]]</option>
+                        </th:block>
+                    </select>
+                    Filter:
+                    <input type="search" name="keyword" th:value="${keyword}" class="my-3" required />
+                    <button type="submit" value="Search" class="btn btn-primary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()">
+                        <i class="fa-solid fa-eraser"></i>
+                    </button>
+                </form>
+            </section>
             <div th:if="${message!=null}" class="alert alert-success text-center">
                 [[${message}]]
             </div>
@@ -109,7 +130,12 @@
                     linkDetailURL = $(this).attr("href");
                     //gọi id của modal và hiển thị modal
                     $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
-                 })
+                 });
+
+                //  dropdownCategory
+                $("#dropdownCategory").on("change",function(){
+                    $("#searchForm").submit();
+                });
              });
      
          </script>

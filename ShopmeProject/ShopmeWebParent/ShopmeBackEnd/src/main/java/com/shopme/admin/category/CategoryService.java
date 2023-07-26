@@ -117,6 +117,10 @@ public class CategoryService {
 		categoryRepository.updateEnabledStatus(id, enabled);
 	}
 
+	/**
+	 * Hàm hiển thị dropdown danh sách category
+	 * @return trả về 1 mảng danh sách
+	 */
 	public List<Category> listCategoriesUsedInForm() {
 		List<Category> categoriesUsedInForm = new ArrayList<>();
 		// lấy dữ liệu từ DB

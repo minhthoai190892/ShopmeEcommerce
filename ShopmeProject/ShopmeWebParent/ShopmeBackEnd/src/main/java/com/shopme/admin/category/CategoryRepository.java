@@ -53,4 +53,12 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
 	public Page<Category> findRootCategories(Pageable pageable);
 	@Query("select c from Category c where c.name like %?1%")
 	public Page<Category> search(String keyword,Pageable pageable);
+	/**
+	 * Hàm tìm kiếm category
+	 * @param categoryId tìm kiếm theo id
+	 * @param categoryIdMatch
+	 * @param pageable
+	 * @return
+	 */
+
 }
