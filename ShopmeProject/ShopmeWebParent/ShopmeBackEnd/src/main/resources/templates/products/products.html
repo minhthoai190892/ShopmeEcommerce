@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 </html>
 
@@ -11,7 +12,9 @@
             <!-- menu -->
             <div th:replace="navigation::menu"></div>
             <!-- title -->
-            <div th:replace="fragments::downfile('Manage Products','/products/')"></div>
+            <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                <div th:replace="fragments::downfile('Manage Products','/products/')"></div>
+            </th:block>
             <!-- form search-->
             <section>
                 <!--th:action="@{/users/page/1}"  -->
@@ -19,10 +22,11 @@
                     <input type="hidden" name="sortField" th:value="${sortField}">
                     <input type="hidden" name="sortDir" th:value="${sortDir}">
                     Category:
-                    <select name="categoryId"class="my-3"  id="dropdownCategory">
+                    <select name="categoryId" class="my-3" id="dropdownCategory">
                         <option value="0">All Category</option>
                         <th:block th:each="cat : ${listCategories}">
-                        <option th:value="${cat.id}" th:selected="(${categoryId}==${cat.id})">[[${cat.name}]]</option>
+                            <option th:value="${cat.id}" th:selected="(${categoryId}==${cat.id})">[[${cat.name}]]
+                            </option>
                         </th:block>
                     </select>
                     Filter:
@@ -48,7 +52,9 @@
                         <th th:replace="fragments::column_link('/products/','name','Product Name','none')"></th>
                         <th th:replace="fragments::column_link('/products/','brand','Brand','none')"></th>
                         <th th:replace="fragments::column_link('/products/','category','Category','none')"></th>
-                        <th>Enabled</th>
+                        <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                            <th>Enabled</th>
+                        </th:block>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -64,15 +70,21 @@
                         </td>
                         <td>[[${product.brand.name}]]</td>
                         <td>[[${product.category.name}]]</td>
-                        <td th:replace="fragments::status(${product.enabled},'/products/'+${product.id},product)">
-
-                        </td>
+                        <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                            <td th:replace="fragments::status(${product.enabled},'/products/'+${product.id},product)">
+                            </td>
+                        </th:block>
                         <td>
                             <a class="fas fa-file-alt fa-2xl icon-green link-detail"
                                 th:href="@{'/products/detail/'+${product.id}}" title="View details of the product"></a>
-                            | <span
-                                th:replace="fragments::edit('product','/products/edit/'+${product.id})"></span>|<span
-                                th:replace="fragments::delete('product','/products/delete/'+${product.id},${product.id},true)"></span>
+                             <th:block sec:authorize="hasAnyAuthority('Admin','Editor','Selesperson')">|
+                                <span th:replace="fragments::edit('product','/products/edit/'+${product.id})"></span>
+                            </th:block>
+                            <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                                |
+                                <span
+                                    th:replace="fragments::delete('product','/products/delete/'+${product.id},${product.id},true)"></span>
+                            </th:block>
                         </td>
                     </tr>
 
@@ -142,5 +154,3 @@
 </body>
 
 </html>
-
-

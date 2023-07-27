@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-
-
 <body>
-
     <div th:fragment="menu">
         <!-- form logout -->
         <form th:action="@{/logout}" th:hidden="true" name="logoutForm" method="post">
@@ -31,11 +28,12 @@
                         <li class="nav-item" sec:authorize="hasAnyAuthority('Admin','Editor')">
                             <a class="nav-link " aria-current="page" th:href="@{/brands}" sec:authorize="hasAnyAuthority('Admin','Editor')">Brands</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasAnyAuthority('Admin','Editor','Selesperson','Shipper')">
-                            <a class="nav-link" th:href="@{/products}" sec:authorize="hasAnyAuthority('Admin','Salesperson','Editor','Shipper')">Products</a>
+                        <!-- sec:authorize="hasAnyAuthority('Admin','Editor','Selesperson','Shipper')" -->
+                        <li class="nav-item" >
+                            <a class="nav-link" th:href="@{/products}" sec:authorize="hasAnyAuthority('Admin','Selesperson','Editor','Shipper')">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" th:href="@{/customers}"  sec:authorize="hasAnyAuthority('Admin','Salesperson')">Customers</a>
+                            <a class="nav-link " aria-current="page" th:href="@{/customers}"  sec:authorize="hasAnyAuthority('Admin','Selesperson')">Customers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/shipping}" sec:authorize="hasAnyAuthority('Admin','Salesperson')">Shipping</a>
@@ -43,8 +41,8 @@
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" th:href="@{/orders}" sec:authorize="hasAnyAuthority('Admin','Salesperson','Shipper')">Orders</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/report}" sec:authorize="hasAnyAuthority('Admin','Salesperson')">Sales Report</a>
+                        <li class="nav-item" sec:authorize="hasAnyAuthority('Admin','Selesperson')">
+                            <a class="nav-link" th:href="@{/report}" sec:authorize="hasAnyAuthority('Admin','Selesperson')">Sales Report</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/articles}"sec:authorize="hasAnyAuthority('Admin','Editor')">Articles</a>

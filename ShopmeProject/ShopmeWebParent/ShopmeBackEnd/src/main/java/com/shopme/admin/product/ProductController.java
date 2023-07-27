@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -29,6 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.brand.BrandService;
 import com.shopme.admin.category.CategoryService;
+import com.shopme.admin.security.ShopmeUserDetails;
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Product;
@@ -107,15 +109,21 @@ public class ProductController {
 
 	@PostMapping("/products/save")
 	public String saveProduct(Model model, Product product, RedirectAttributes redirectAttributes,
-			@RequestParam("fileImage") MultipartFile mainImageMultipartFile,
-			@RequestParam(name = "extraImage") MultipartFile[] extraImageMultipartFiles,
+			@RequestParam(value="fileImage", required = false) MultipartFile mainImageMultipartFile,
+			@RequestParam(value = "extraImage", required = false) MultipartFile[] extraImageMultipartFiles,
 			@RequestParam(name = "detailIDS", required = false) String[] detailIDS,
 			@RequestParam(name = "detailNames", required = false) String[] detailNames,
 			@RequestParam(name = "detailValues", required = false) String[] detailValues,
 			@RequestParam(name = "imageIDs", required = false) String[] imageIDs,
-			@RequestParam(name = "imageNames", required = false) String[] imageNames
+			@RequestParam(name = "imageNames", required = false) String[] imageNames,
+			@AuthenticationPrincipal ShopmeUserDetails loggedUser
 
 	) throws IOException {
+		if (loggedUser.hasRole("Selesperson")) {
+			productService.saveProductPrice(product);
+			redirectAttributes.addFlashAttribute("message", "The product has been saved successfully.");
+			return "redirect:/products";
+		}
 		// gọi hàm
 		setMainImageName(mainImageMultipartFile, product);
 		setExistingExtraImageNames(imageIDs, imageNames, product);

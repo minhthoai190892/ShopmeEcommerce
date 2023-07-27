@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -68,6 +69,14 @@ public class ProductService {
 		}
 		product.setUpdateTime(new Date());
 		return productRepository.save(product);
+	}
+	
+	public void saveProductPrice(Product productInForm) {
+		Product productInDB = productRepository.findById(productInForm.getId()).get();
+		productInDB.setCost(productInForm.getCost());
+		productInDB.setPrice(productInForm.getPrice());
+		productInDB.setDiscountPercent(productInForm.getDiscountPercent());
+		productRepository.save(productInDB);
 	}
 
 	/**
