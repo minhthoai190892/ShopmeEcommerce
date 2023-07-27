@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Shopme </title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::page_head('Shopme','none')"> </head>
+
 <body>
-<h1>Welcome to shopme asdasdqwes </h1>
+    <div class="container-fluid">
+        <!-- menu -->
+        <div th:replace="navigation::head_menu"> </div>
+        <h1>Welcome to shopme Font End</h1>
+
+
+        <div th:replace="navigation::footer_menu"></div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+            </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+            integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+            </script>
+        <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
 </body>
+
 </html>

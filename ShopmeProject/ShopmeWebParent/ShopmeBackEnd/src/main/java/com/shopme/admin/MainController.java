@@ -14,6 +14,7 @@ public class MainController {
 	}
 	@GetMapping("/login")
 	public String viewLoginPage() {
+		//khi nào logout mới quay về trang đăng nhập
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication==null||authentication instanceof AnonymousAuthenticationToken) {
 			return "login";

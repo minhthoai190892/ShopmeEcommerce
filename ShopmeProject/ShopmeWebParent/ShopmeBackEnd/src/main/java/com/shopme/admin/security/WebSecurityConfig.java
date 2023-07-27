@@ -16,12 +16,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 	@Bean
 	// lớp mã hóa mật khẩu
-	public PasswordEncoder passwordEncoder() {
+	 PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	public UserDetailsService userDetailsService() {
+	 UserDetailsService userDetailsService() {
 		return new ShopmeUserDetailsService();
 	}
 

@@ -20,7 +20,7 @@
 
 <body>
     <!-- tiêu đề và tải file -->
-    <div th:fragment="downfile(title,entityURL)">
+    <div th:fragment="download_file(title,entityURL)">
         <h2>[[${title}]]</h2>
         <!-- /users/ -->
         <a th:href="@{${entityURL}+'new'}" class="fa-solid fa-user-plus icon-dark fa-xl "></a>
@@ -72,8 +72,8 @@
                         </li>
                         <!-- tạo số trang tăng dần -->
 
-                        <li th:class="${currentPage !=i ? 'page-item':'page-item active'}"
-                            th:each=" i: ${#numbers.sequence(1,totalPages)}">
+                        <li th:each=" i: ${#numbers.sequence(1,totalPages)}"
+                            th:class="${currentPage !=i ? 'page-item':'page-item active'}">
                             <!-- gọi từ fragments.html -->
                             <a th:replace="fragments::page_link(${moduleURL},${i},${i})"></a>
                         </li>

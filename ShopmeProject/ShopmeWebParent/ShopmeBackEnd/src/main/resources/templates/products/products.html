@@ -13,7 +13,7 @@
             <div th:replace="navigation::menu"></div>
             <!-- title -->
             <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
-                <div th:replace="fragments::downfile('Manage Products','/products/')"></div>
+                <div th:replace="fragments::download_file('Manage Products','/products/')"></div>
             </th:block>
             <!-- form search-->
             <section>
@@ -77,7 +77,7 @@
                         <td>
                             <a class="fas fa-file-alt fa-2xl icon-green link-detail"
                                 th:href="@{'/products/detail/'+${product.id}}" title="View details of the product"></a>
-                             <th:block sec:authorize="hasAnyAuthority('Admin','Editor','Selesperson')">|
+                                <th:block sec:authorize="hasAnyAuthority('Admin','Editor','Selesperson')">|
                                 <span th:replace="fragments::edit('product','/products/edit/'+${product.id})"></span>
                             </th:block>
                             <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
