@@ -164,6 +164,12 @@ public class CategoryService {
 	 */
 	public Category save(Category category) {
 		Category parent = category.getParent();
+		if (category.getAlias() == null || category.getAlias().isEmpty()) {
+			String defaultAlias = category.getName().replaceAll(" ", "-");
+			category.setAlias(defaultAlias);
+		} else {
+			category.setAlias(category.getAlias().replaceAll(" ", "-"));
+		}
 		if (parent!=null) {
 			String allParentIds = parent.getAllParentIDs()==null?"-":parent.getAllParentIDs();
 			allParentIds+=String.valueOf(parent.getId())+"-";

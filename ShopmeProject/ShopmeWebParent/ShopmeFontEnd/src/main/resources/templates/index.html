@@ -7,7 +7,22 @@
     <div class="container-fluid">
         <!-- menu -->
         <div th:replace="navigation::head_menu"> </div>
-        <h1>Welcome to shopme Font End</h1>
+        <h1>Shopping by Categories</h1>
+
+        <div class="row">
+            <div class="col" th:each="cat : ${listCategories}">
+                <div>
+                    <img th:src="@{${cat.imagePath}}" style="width: 80px;object-fit: cover;" alt="">
+                    <div>
+                        <a th:href="@{'/c/'+cat.alias}">[[${cat.name}]]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
 
 
         <div th:replace="navigation::footer_menu"></div>
