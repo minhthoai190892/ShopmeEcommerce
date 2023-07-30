@@ -11,12 +11,27 @@
 
         <div class="row">
             <div class="col" th:each="cat : ${listCategories}">
-                <div>
+                <!-- <div>
                     <img th:src="@{${cat.imagePath}}" style="width: 80px;object-fit: cover;" alt="">
                     <div>
-                        <a th:href="@{'/c/'+cat.alias}">[[${cat.name}]]</a>
+                        <a th:href="@{'/c/'+${cat.alias}}" class="btn btn-primary">[[${cat.name}]]</a>
+                    </div>
+                </div> -->
+
+
+
+                <div class="card mb-2" style="width: 18rem;">
+                    <img class="card-img-top" th:src="@{${cat.imagePath}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">[[${cat.name}]]</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>,
+                        <a th:href="@{'/c/'+${cat.alias}}" class="btn btn-primary">[[${cat.name}]]</a>
                     </div>
                 </div>
+
+
+
             </div>
         </div>
 

@@ -27,7 +27,35 @@ public class CategoryService {
 				listNoChildrenCategories.add(category);
 			}
 		});
+		
 		return listNoChildrenCategories;
+	}
+	/**
+	 * hàm lấy một category với alias và enabeled = true
+	 * @param alias tên alias
+	 * @return trả về một category
+	 * */
+	public Category getCategory(String alias) {
+		return categoryRepository.findByAliasEnabled(alias);
+	}
+//	
+	/**
+	 * bread crumb
+	 * @param child
+	 * @return
+	 * */
+	public List<Category> getCategoryParents(Category child) {
+		List<Category> listParents = new ArrayList<>();
+		Category parent = child.getParent();
+		System.err.println("parent+++++++++"+parent);
+		while (parent!=null) {
+			listParents.add(0,parent);
+			parent = parent.getParent();
+			System.err.println("parent>>>>"+parent);
+		}
+		listParents.add(child);
+		System.err.println("listParents>>>>>>>>"+listParents);
+		return listParents;
 	}
 }
 

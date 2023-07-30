@@ -19,7 +19,54 @@
 </head>
 
 <body>
-   
+    <!-- pagination -->
+    <!-- số trang và tên nút -->
+    <a th:fragment="page_link(moduleURL,pageNum,label)" class="page-link"
+        th:href="@{${moduleURL}+'/page/'+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">[[${label}]]</a>
+
+    <div th:fragment="pagination(moduleURL,entityName)" th:remove="tag">
+        <section>
+            <!-- thể hiện số lượng phần tử trên một trang và thông báo rỗng -->
+            <div class="text-center">
+                <caption class="text-center m-1" th:if="${totalItems>0}">Showing [[${entityName}]] # [[${startCount}]]
+                    to
+                    [[${endCount}]] of [[${totalItems}]]</caption>
+                <caption class="text-center m-1" th:unless="${totalItems>0}">No [[${entityName}]] found</caption>
+            </div>
+            <!-- hiển thị số trang -->
+            <div th:if="${totalPages>1}">
+                <nav>
+                    <ul class="pagination justify-content-center flex-wrap">
+                        <!-- users/page/2?sortField=email&sortDir=asc -->
+                        <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},1,'First')"></a>
+                        </li>
+                        <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${currentPage -1},'Previous')"></a>
+                        </li>
+                        <!-- tạo số trang tăng dần -->
+
+                        <li th:each=" i: ${#numbers.sequence(1,totalPages)}"
+                            th:class="${currentPage !=i ? 'page-item':'page-item active'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${i},${i})"></a>
+                        </li>
+
+                        <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${currentPage +1},'Next')"></a>
+                        </li>
+                        <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${totalPages},'Last')"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
 
 
 

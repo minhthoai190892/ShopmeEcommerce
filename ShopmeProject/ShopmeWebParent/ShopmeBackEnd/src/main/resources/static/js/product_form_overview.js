@@ -6,25 +6,24 @@ $(document).ready(function () {
   $("#fullDescription").richText();
   dropdownBrands.change(function () {
     dropdownCategories.empty();
-    getCategoies();
+    getCategories();
   });
-  getCategoiesForNewForm();
-  
+  getCategoriesForNewForm();
 });
-function getCategoiesForNewForm() {
+function getCategoriesForNewForm() {
   catIdField = $("#categoryId");
   editMode = false;
   if (catIdField.length) {
     editMode = true;
   }
   if (!editMode) {
-    getCategoies();
+    getCategories();
   }
 }
 /**
  * Hàm liệt kê danh sách category
  */
-function getCategoies() {
+function getCategories() {
   brandID = dropdownBrands.val(); //id
   //tạo đường dẫn giống với BrandRestController
   // /brands/id/categories
