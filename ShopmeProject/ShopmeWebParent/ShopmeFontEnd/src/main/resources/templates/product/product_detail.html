@@ -13,9 +13,24 @@
 		<!-- breadcrumb -->
 		<!-- Detail -->
 		<div class="row">
+			<!-- main image -->
 			<div class="col-sm">
 				<div>
-					<img th:src="@{${product.mainImagePath}}" class="img-fluid" />
+					<img id="bigImage" th:src="@{${product.mainImagePath}}" style="width: 500px;height: 300px;"
+						class="img-fluid" />
+				</div>
+				<!-- extra image -->
+				<div class="row mt-2 d-flex justify-content-center">
+					<div>
+						<img class="image-thumbnail border" th:src="@{${product.mainImagePath}}" height="50" />
+						<!-- lấy từ field images trong product -->
+						<th:block th:each="extraImage:${product.images}">
+							<!-- enlarge thumbnail on mouse over -->
+							<img class="image-thumbnail border" th:src="@{${extraImage.imagePath}}" height="50" />
+
+						</th:block>
+					</div>
+
 				</div>
 			</div>
 			<!-- thông tin sản phẩm -->
@@ -53,36 +68,38 @@
 		<!-- Decription -->
 		<div class="row">
 			<div class="col-12">
-			<hr>
-			<div>
-				<h3>Product Decription: </h3>
-			</div>
-			<div th:utext="${product.fullDescription}"></div>
+				<hr>
+				<div>
+					<h3>Product Decription: </h3>
+				</div>
+				<div th:utext="${product.fullDescription}"></div>
 			</div>
 		</div>
 		<!-- Decription -->
 		<!--  -->
 		<div class="row">
 			<div class="col-12">
-			<hr>
-			<div>
-				<h3>Product Details: </h3>
-			</div>
-			<th:block th:each="detail:${product.details}">
+				<hr>
 				<div>
-					<b>[[${detail.name}]]</b>
-					<span>[[${detail.value}]]</span>
+					<h3>Product Details: </h3>
 				</div>
-			</th:block>
+				<th:block th:each="detail:${product.details}">
+					<div>
+						<b>[[${detail.name}]]</b>
+						<span>[[${detail.value}]]</span>
+					</div>
+				</th:block>
 			</div>
 		</div>
 		<!--  -->
-		
-		
-		
+
+
+
 		<!-- Detail -->
 	</div>
+	<div th:replace="product/images_carousel::content"></div>
 	<div th:replace="navigation::footer_menu"></div>
+	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
 		</script>
@@ -91,6 +108,22 @@
 		integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
 		</script>
 	<script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			bigImage = $("#bigImage");
+			//thêm sự kiện
+			$(".image-thumbnail").mousemove(function () {
+				//lấy đường dẫn extra image (".image-thumbnail")
+				currentImageSource = $(this).attr("src");
+				//thây đổi hình ảnh
+				bigImage.attr("src", currentImageSource);
+			});
+			bigImage.on("click",function(){
+				//lấy id của modal trong images_carousel.html
+				$("#carouselModal").modal("show");
+			})
+		});
+	</script>
 </body>
 
 </html>
