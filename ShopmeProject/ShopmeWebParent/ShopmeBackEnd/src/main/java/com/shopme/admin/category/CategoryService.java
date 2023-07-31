@@ -59,7 +59,9 @@ public class CategoryService {
 			List<Category> searchResult = pageCategories.getContent();
 			for (Category category : searchResult) {
 				category.setHasChildren(category.getChildren().size()>0);
+				System.err.println("category>>>>>>>>>>>>>>>>>"+category);
 			}
+//			System.err.println("searchResult>>>>>>>"+searchResult);
 			return searchResult;
 		} else {
 			// gọi lại hàm

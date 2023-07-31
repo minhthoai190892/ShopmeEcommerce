@@ -9,19 +9,35 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shopme.common.entity.Product;
+import com.shopme.common.exception.ProductNotFoundException;
 
 @Service
 public class ProductService {
 	public static final int PRODUCTS_PER_PAGE=3;
 	@Autowired
 	private ProductRepository productRepository;
-	
+	/**
+	 * Hàm dùng để phân trang
+	 * @param pageNum là số trang
+	 * @categoryId là id của category
+	 * @return trả về một danh sách category
+	 * */
 	public Page<Product> listByCategory(int pageNum,Integer categoryId) {
 		String categoryIdMatch = "-"+String.valueOf(categoryId)+"-";
 		System.err.println("categoryIdMatch>>>>>>>"+categoryIdMatch);
 		Pageable pageable = PageRequest.of(pageNum-1, PRODUCTS_PER_PAGE);
 		return productRepository.listByCategory(categoryId, categoryIdMatch, pageable);
 	}
-
-
+	/**
+	 * Hàm lấy product bằng alias
+	 * @param alias tên alias của product
+	 * @return trả về một product
+	 * */
+	public Product getProduct(String alias) throws ProductNotFoundException {
+		Product product = productRepository.findByAlias(alias);
+		if (product==null) {
+			throw new ProductNotFoundException("Could not find any product with alias "+alias);
+		}
+		return product;
+	}
 }
