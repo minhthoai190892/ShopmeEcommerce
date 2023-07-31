@@ -15,9 +15,14 @@ public interface ProductRepository  extends JpaRepository<Product, Integer>{
 	 * hàm tìm kiếm product bằng alias
 	 * @param alias tên alias của product
 	 * @return một product
-	 * */
+	 * */ 
 	public Product findByAlias(String alias);
 	
+	@Query(value = "select * from products where enabled = true and "
+	+"match(name, short_description,full_description) against (?1)",nativeQuery = true)
+
+	public Page<Product> search(String keyword,Pageable pageable);
 	
-	
+
+
 }

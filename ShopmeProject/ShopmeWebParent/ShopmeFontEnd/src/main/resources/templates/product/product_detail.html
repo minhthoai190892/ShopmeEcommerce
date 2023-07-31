@@ -7,6 +7,8 @@
 	<div class="container-fluid">
 		<!-- menu -->
 		<div th:replace="navigation::head_menu"> </div>
+		<!-- serach -->
+		<div th:replace="navigation::search_nav"> </div>
 		<!-- breadcrumb -->
 		<div th:replace="breadcrumb::content"> </div>
 
@@ -99,7 +101,7 @@
 	</div>
 	<div th:replace="product/images_carousel::content"></div>
 	<div th:replace="navigation::footer_menu"></div>
-	
+
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
 		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
 		</script>
@@ -118,7 +120,7 @@
 				//thây đổi hình ảnh
 				bigImage.attr("src", currentImageSource);
 			});
-			bigImage.on("click",function(){
+			bigImage.on("click", function () {
 				//lấy id của modal trong images_carousel.html
 				$("#carouselModal").modal("show");
 			})

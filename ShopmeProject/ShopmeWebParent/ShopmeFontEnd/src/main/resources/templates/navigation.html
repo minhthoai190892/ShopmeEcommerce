@@ -6,8 +6,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/ShopmeAdminSmall.png}" alt="" /></a>
+                <!--  data-bs-target="#navbarSupportedContent,#searchNavbar" thêm tìm kiếm vào -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    data-bs-target="#navbarSupportedContent,#searchNavbar" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -43,7 +44,21 @@
             </div>
         </nav>
     </div>
-
+	<div th:fragment="search_nav" class="row">
+		<div class="col-md">
+			<nav class="navbar navbar-expand-sm bg-light">
+				<div class="collapse navbar-collapse" id="searchNavbar">
+					<form th:action="@{/search}" method="get" class="form-inline">
+						<div style="display: flex;">
+							<input type="search" name="keyword" th:value="${keyword}" class="form-control mr-sm-2" placeholder="keyword" required/>
+						<input type="submit"  class="btn btn-outline-success"/>
+						</div>
+						
+					</form>
+				</div>
+			</nav>
+		</div>
+	</div>
     <div th:fragment="footer_menu">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
