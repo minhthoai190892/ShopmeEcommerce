@@ -25,25 +25,28 @@ public class CurrencyRepositoryTest {
 	public void testCreateCurrency() {
 //		Currency currencyBritishPound = new Currency("British Pound", "£", "GBP");
 //		Currency currencyJapaneseYen = new Currency("Japanese Yen", "¥", "JPY");
-//		Currency currency = new Currency("Euro", "€", "EUR");
+//	Currency currency = new Currency("Euro", "€", "EUR");
+//	Currency currencyUnitedStates = new Currency("United States", "$", "USA");
 //		Currency currencyRussianRuble = new Currency("Russian Ruble", "₽", "RUB");
-//		Currency currencyouthKoreanWon = new Currency("South Korean Won", "₩", "KRW");
-//		Currency currencyChineseYuan = new Currency("Chinese Yuan", "¥", "CNY");
-//		Currency currencyBrazilianReal = new Currency("Brazilian Real", "R$", "BRL");
-//		Currency currencyAustralianDollar = new Currency("Australian Dollar", "$", "AUD");
-//		Currency currencyCanadianDollar = new Currency("Canadian Dollar", "$", "CAD");
+//	Currency currencyouthKoreanWon = new Currency("South Korean Won", "₩", "KRW");
+//	Currency currencyChineseYuan = new Currency("Chinese Yuan", "¥", "CNY");
+//	Currency currencyBrazilianReal = new Currency("Brazilian Real", "R$", "BRL");
+//	Currency currencyAustralianDollar = new Currency("Australian Dollar", "$", "AUD");
+//	Currency currencyCanadianDollar = new Currency("Canadian Dollar", "$", "CAD");
 //		Currency currencyVietNam = new Currency("VietNam đồng", "đ", "VND");
 //		Currency currencyIndianRupee = new Currency("Indian Rupee", "₹", "INR");
-//		
-//		currencyRepository.saveAll(List.of(currencyBritishPound, currencyJapaneseYen, currencyRussianRuble, currencyouthKoreanWon, currencyChineseYuan, currencyBrazilianReal, currencyAustralianDollar, currencyCanadianDollar, currencyVietNam, currencyIndianRupee,currency));
-//		
-		List<Currency> currencies = currencyRepository.findAll();
-		for (Currency currency : currencies) {
-			System.err.println(currency);
-			
-		}
+//	
+//	currencyRepository.saveAll(List.of(currencyBritishPound, currencyJapaneseYen, currencyRussianRuble, currencyouthKoreanWon, currencyChineseYuan, currencyBrazilianReal, currencyAustralianDollar, currencyCanadianDollar, currencyVietNam, currencyIndianRupee,currency));
+//	
+		Currency currencyUnitedStates = new Currency("United States", "$", "USA");
+		currencyRepository.save(currencyUnitedStates);
 		
 //	Currency saveCurrency=	currencyRepository.save(currency);
 //	System.err.println(saveCurrency);
+	}
+	@Test
+	public void testList() {
+		List<Currency> currencies = currencyRepository.findAllByOrderByNameAsc();
+		currencies.forEach(System.err::println);
 	}
 }

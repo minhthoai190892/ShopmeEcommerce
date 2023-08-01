@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import com.shopme.common.entity.Setting;
+import com.shopme.common.entity.SettingBag;
 import com.shopme.common.entity.SettingCategory;
 
 @DataJpaTest
@@ -40,5 +41,30 @@ public class SettingRepositoryTest {
 		Setting decimalDigits = new Setting("DECIMAL_DIGITS", "2", SettingCategory.CURRENCY);
 		Setting thousandsPointType = new Setting("THOUSANDS_POINT_TYPE", "COMMA", SettingCategory.CURRENCY);
 		settingRepository.saveAll(List.of(currencyId, symbol, symbolPosition, decimalPointType, decimalDigits, thousandsPointType));
+	}
+	@Test
+	public void testShow() {
+		List<Setting> list = settingRepository.findAll();
+		list.forEach(System.err::println);
+	}
+	
+	@Test
+	public void testSettingBag() {
+		List<Setting> listSettings = settingRepository.findAll();
+		int index = listSettings.indexOf(new Setting("SITE_LOGO"));
+		if (index>=0) {
+			Setting setting =listSettings.get(index);
+			if (setting!=null) {
+				 System.err.println("Value: "+setting.getValue());
+			}
+			 System.err.println("Object: "+setting);
+		}else {
+		 System.err.println("null");
+		}
+	}
+	@Test
+	public void testListSettingsByCategory() {
+		List<Setting> list = settingRepository.findByCategory(SettingCategory.GENERAL);
+		list.forEach(System.err::println);
 	}
 }

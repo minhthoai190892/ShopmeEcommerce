@@ -1,5 +1,7 @@
 package com.shopme.common.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -22,6 +24,10 @@ public class Setting {
 	
 	
 	
+	public Setting(String key) {
+		super();
+		this.key = key;
+	}
 	public Setting() {
 		super();
 	}
@@ -53,6 +59,24 @@ public class Setting {
 	public String toString() {
 		return "Setting [key=" + key + ", value=" + value + ", category=" + category + "]";
 	}
+	//có hàm mới hiển thị hình ảnh
+	@Override
+	public int hashCode() {
+		return Objects.hash(key);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Setting other = (Setting) obj;
+		return Objects.equals(key, other.key);
+	}
+	
+	
 	
 	
 	

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+  <div th:fragment="content" th:remove="tag">
+    <form th:action="@{/settings/save_general}" method="post" enctype="multipart/form-data">
+      <!-- Site Name -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">Site Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${SITE_NAME}" name="SITE_NAME" required>
+        </div>
+      </div>
+      <!-- Copyright -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">Copyright:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${COPYRIGHT}" name="COPYRIGHT" required>
+        </div>
+      </div>
+      <!-- Logo -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Site Logo: </label>
+        <div class="col-sm-8">
+          <img th:src="@{${SITE_LOGO}}" width="150" height="70" id="thumbnail" alt="Image preview" class="img-fluid">
+          <br>
+          <input type="file" id="fileImage" name="fileImage" accept="image/png,image/jpeg">
+        </div>
+      </div>
+      <!-- Currency -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Currency Type: </label>
+        <div class="col-sm-8">
+          <select name="CURRENCY_ID" id="CURRENCY_ID" class="form-control">
+            <th:block th:each="currency : ${listCurrencies}">
+            <option th:value="${currency.id}" th:selected="(${currency.id}==${CURRENCY_ID})">[[${currency.toString()}]]</option>
+            </th:block>
+          </select>
+        </div>
+      </div>
+      <!-- Currency Symbol Position -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Currency Symbol Position: </label>
+        <div class="col-sm-8">
+          <select name="CURRENCY_SYMBOL_POSITION" id="CURRENCY_SYMBOL_POSITION" class="form-control">
+            <option value="Before price" th:selected="(${CURRENCY_SYMBOL_POSITION}=='Before price')">Before price</option>
+            <option value="After price" th:selected="(${CURRENCY_SYMBOL_POSITION}=='After price')">After price</option>
+          </select>
+        </div>
+      </div>
+      <!-- Decimal Point Type -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Decimal Point Type: </label>
+        <div class="col-sm-8">
+          <select name="DECIMAL_POINT_TYPE" id="DECIMAL_POINT_TYPE" class="form-control">
+            <option value="POINT" th:selected="(${DECIMAL_POINT_TYPE}=='POINT')">POINT(.)</option>
+            <option value="COMMA" th:selected="(${DECIMAL_POINT_TYPE}=='COMMA')">COMMA(,)</option>
+          </select>
+        </div>
+      </div>
+       <!-- Decimal Digits -->
+       <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Decimal Digits: </label>
+        <div class="col-sm-8">
+          <select name="DECIMAL_DIGITS" id="DECIMAL_DIGITS" class="form-control">
+            <option value="1" th:selected="(${DECIMAL_DIGITS}==1)">1</option>
+            <option value="2" th:selected="(${DECIMAL_DIGITS}==2)">2</option>
+            <option value="3" th:selected="(${DECIMAL_DIGITS}==3)">3</option>
+            <option value="4" th:selected="(${DECIMAL_DIGITS}==4)">4</option>
+          </select>
+        </div>
+      </div>
+       <!-- Thousands Point Type -->
+       <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Thousands Point Type: </label>
+        <div class="col-sm-8">
+          <select name="THOUSANDS_POINT_TYPE" id="THOUSANDS_POINT_TYPE" class="form-control">
+            <option value="POINT" th:selected="(${THOUSANDS_POINT_TYPE}=='POINT')">POINT(.)</option>
+            <option value="COMMA" th:selected="(${THOUSANDS_POINT_TYPE}=='COMMA')">COMMA(,)</option>
+          </select>
+        </div>
+      </div>
+      <!-- button -->
+      <div class="text-center">
+        <input type="submit" value="Save" class="btn btn-primary m-3">
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

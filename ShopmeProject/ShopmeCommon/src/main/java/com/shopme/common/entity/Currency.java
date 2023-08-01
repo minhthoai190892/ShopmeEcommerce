@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "currence")
+@Table(name = "currency")
 public class Currency {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,7 +55,7 @@ public class Currency {
 	}
 	@Override
 	public String toString() {
-		return "Currence [id=" + id + ", name=" + name + ", symbol=" + symbol + ", code=" + code + "]";
+		return  name + " - " + symbol + " - " + code ;
 	}
 	
 }
