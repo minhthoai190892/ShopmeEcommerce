@@ -84,7 +84,7 @@ public class ProductController {
 	public String searchFirstPage(@Param("keyword") String keyword,Model model) {
 		return searchByPage(keyword, 1, model);
 	}
-	
+//	search và phân trang 
 	@GetMapping("/search/page/{pageNum}")
 	public String searchByPage(@Param("keyword")String keyword,@PathVariable("pageNum")int pageNum,Model model) {
 		Page<Product>pageProducts = productService.search(keyword, pageNum);
