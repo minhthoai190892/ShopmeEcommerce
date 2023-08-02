@@ -67,4 +67,10 @@ public class SettingRepositoryTest {
 		List<Setting> list = settingRepository.findByCategory(SettingCategory.GENERAL);
 		list.forEach(System.err::println);
 	}
+	@Test
+	public void testfindByTwoCategories() {
+//		List<Setting> settings = settingRepository.findByTwoCategories(SettingCategory.GENERAL, SettingCategory.CURRENCY);
+		List<Setting> settings = settingRepository.findAll();
+		settings.forEach(System.out::println);
+	}
 }

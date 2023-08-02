@@ -5,7 +5,7 @@
     <div th:fragment="head_menu">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/ShopmeAdminSmall.png}" alt="" /></a>
+                <a class="navbar-brand" th:href="@{/}"><img th:src="@{${SITE_LOGO}}" alt="" width="100" height="100" /></a>
                 <!--  data-bs-target="#navbarSupportedContent,#searchNavbar" thêm tìm kiếm vào -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent,#searchNavbar" aria-controls="navbarSupportedContent"
@@ -86,7 +86,7 @@
             </div>
         </nav>
         <div class="text-center m-3">
-            <p>Shopme - Copyright &copy; Shopme Ltd.</p>
+            <p>[[${COPYRIGHT}]]</p>
         </div>
     </div>
 </body>
