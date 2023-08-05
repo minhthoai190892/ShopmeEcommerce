@@ -8,5 +8,5 @@ import com.shopme.common.entity.Country;
 import com.shopme.common.entity.State;
 
 public interface StateRepository extends JpaRepository<State, Integer> {
-public	List<State> findByCountryOrderByNameAsc(Country country);
+	public List<State> findByCountryOrderByNameAsc(Country country);
 }

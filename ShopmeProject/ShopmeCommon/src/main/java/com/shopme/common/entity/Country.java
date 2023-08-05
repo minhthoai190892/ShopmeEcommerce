@@ -2,6 +2,7 @@ package com.shopme.common.entity;
 
 import java.util.Set;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ public class Country {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false,length = 45)
+	@Nonnull
 	private String  name;
 	@Column(nullable = false,length = 5)
 	private String code;
@@ -46,6 +48,10 @@ public class Country {
 	public Country(String name) {
 		super();
 		this.name = name;
+	}
+
+	public Country(Integer id) {
+		this.id = id;
 	}
 
 	public Country() {
