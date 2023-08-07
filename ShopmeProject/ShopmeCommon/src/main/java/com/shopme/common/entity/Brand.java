@@ -84,6 +84,10 @@ public class Brand {
 		return this.name ;
 	}
 
+	/** 
+	 * lấy đường dẫn hình ảnh
+	 * @return
+	 */
 	@Transient
 	public String logoPath() {
 		if (this.id == null) {

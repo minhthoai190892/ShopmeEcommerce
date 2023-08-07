@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.shopme.common.entity.Product;
@@ -14,14 +19,36 @@ import jakarta.transaction.Transactional;
 @Service
 @Transactional
 public class ProductService {
-
+	public static final int PRODUCTS_PER_PAGE=5;
 	@Autowired
 	private ProductRepository productRepository;
 
 	public List<Product> listAll() {
 		return productRepository.findAll();
 	}
+	public Page<Product> listByPage(int pageNum,String sortField,String sortDir,String keyword,Integer categoryId) {
+		Sort sort = Sort.by(sortField);
+		sort = sortDir.equals("asc")?sort.ascending():sort.descending();
+		Pageable pageable = PageRequest.of(pageNum-1, PRODUCTS_PER_PAGE,sort);
+		//kiểm tra keyword có được nhập không
+		if (keyword!=null&&!keyword.isEmpty()) {
+			
+			if (categoryId!=null && categoryId>0) {
+				String categoryIdMatch = "-"+String.valueOf(categoryId)+"-";
+				return productRepository.searchInCategory(categoryId, categoryIdMatch, keyword, pageable);
+			}
+			//search by keyword
+			return productRepository.findAll(keyword, pageable);
 
+		}
+		//--search by dropdown category
+		if (categoryId!=null && categoryId>0) {
+			String categoryIdMatch = "-"+String.valueOf(categoryId)+"-";
+			return productRepository.findAllInCategory(categoryId, categoryIdMatch, pageable);
+		}
+		return productRepository.findAll(pageable);
+	}
+	
 	/**
 	 * hàm save product
 	 * 
@@ -42,6 +69,14 @@ public class ProductService {
 		}
 		product.setUpdateTime(new Date());
 		return productRepository.save(product);
+	}
+	
+	public void saveProductPrice(Product productInForm) {
+		Product productInDB = productRepository.findById(productInForm.getId()).get();
+		productInDB.setCost(productInForm.getCost());
+		productInDB.setPrice(productInForm.getPrice());
+		productInDB.setDiscountPercent(productInForm.getDiscountPercent());
+		productRepository.save(productInDB);
 	}
 
 	/**

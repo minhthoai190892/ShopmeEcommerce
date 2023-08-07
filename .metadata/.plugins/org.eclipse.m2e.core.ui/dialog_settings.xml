@@ -67,6 +67,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Funix\SpringSecurity6"/>
 			<item value="D:\ShopmeEcommerce"/>
 			<item value="C:\Users\ASUS\Downloads\ShopmeEcommerce"/>
 			<item value="D:\bootstrap\ShopmeEcommerce"/>
@@ -80,5 +81,11 @@
 			<item value="[groupId].[artifactId]-[version]"/>
 			<item value="[name]"/>
 		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item key="width" value="480"/>
+		<item key="height" value="531"/>
+		<item key="x" value="443"/>
+		<item key="y" value="30"/>
 	</section>
 </section>

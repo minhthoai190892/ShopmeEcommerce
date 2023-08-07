@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="page_head(title,remove)" th:remove="${remove}">
+    <title>[[${title}]] - [[${SITE_NAME}]]</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Font Awesome 6 -->
+    <!-- <link rel="stylesheet" th:href="@{/fontawesome/all.css}" type="text/css"> -->
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" th:href="@{/css/style.css}"> -->
+
+
+</head>
+
+<body>
+    <!-- pagination -->
+    <!-- số trang và tên nút -->
+    <a th:fragment="page_link(moduleURL,pageNum,label)" class="page-link"
+        th:href="@{${moduleURL}+'/page/'+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">[[${label}]]</a>
+
+    <div th:fragment="pagination(moduleURL,entityName)" th:remove="tag">
+        <section>
+            <!-- thể hiện số lượng phần tử trên một trang và thông báo rỗng -->
+            <div class="text-center">
+                <caption class="text-center m-1" th:if="${totalItems>0}">Showing [[${entityName}]] # [[${startCount}]]
+                    to
+                    [[${endCount}]] of [[${totalItems}]]</caption>
+                <caption class="text-center m-1" th:unless="${totalItems>0}">No [[${entityName}]] found</caption>
+            </div>
+            <!-- hiển thị số trang -->
+            <div th:if="${totalPages>1}">
+                <nav>
+                    <ul class="pagination justify-content-center flex-wrap">
+                        <!-- users/page/2?sortField=email&sortDir=asc -->
+                        <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},1,'First')"></a>
+                        </li>
+                        <li th:class="${currentPage >1 ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${currentPage -1},'Previous')"></a>
+                        </li>
+                        <!-- tạo số trang tăng dần -->
+
+                        <li th:each=" i: ${#numbers.sequence(1,totalPages)}"
+                            th:class="${currentPage !=i ? 'page-item':'page-item active'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${i},${i})"></a>
+                        </li>
+
+                        <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${currentPage +1},'Next')"></a>
+                        </li>
+                        <li th:class="${currentPage < totalPages ?'page-item':'page-item disabled'}">
+                            <!-- gọi từ fragments.html -->
+                            <a th:replace="fragments::page_link(${moduleURL},${totalPages},'Last')"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+
+
+</body>
+
+</html>

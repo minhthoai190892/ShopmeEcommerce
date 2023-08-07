@@ -9,7 +9,7 @@
         <!-- menu -->
         <div th:replace="navigation::menu"></div>
         <!-- title -->
-        <div th:replace="fragments::downfile('Manage Brands','/brands/')"></div>
+        <div th:replace="fragments::download_file('Manage Brands','/brands/')"></div>
         <!-- form -->
         <div th:replace="fragments::search_form('/brands/page/1')"></div>
         <div th:if="${message!=null}" class="alert alert-success text-center">

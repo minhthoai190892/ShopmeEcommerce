@@ -16,12 +16,12 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 	@Bean
 	// lớp mã hóa mật khẩu
-	public PasswordEncoder passwordEncoder() {
+	 PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
-	public UserDetailsService userDetailsService() {
+	 UserDetailsService userDetailsService() {
 		return new ShopmeUserDetailsService();
 	}
 
@@ -35,7 +35,11 @@ public class WebSecurityConfig {
                         .requestMatchers("/users/**").hasAnyAuthority("Admin")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
                         .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
-                        .requestMatchers("/products/**").hasAnyAuthority("Admin","Editor","Selesperson","Shipper")
+                        .requestMatchers("/products/new","/products/delete").hasAnyAuthority("Admin","Editor")//=>chỉ có admin và editor sử dụng
+                        .requestMatchers("/products/edit/**","/products/save/**","/products/check_unique").hasAnyAuthority("Admin","Editor","Selesperson")
+                        .requestMatchers("/products","/products/","/products/detail/**","/products/page/**").hasAnyAuthority("Admin","Editor","Selesperson","Shipper")
+                        .requestMatchers("/products/**").hasAnyAuthority("Admin","Editor")
+                        
                         .anyRequest()
                         .authenticated()
         				)

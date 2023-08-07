@@ -175,7 +175,7 @@ public class Product {
 	}
 	public void setBrand(Brand brand) {
 		this.brand = brand;
-	}
+	}	
 	public Date getUpdateTime() {
 		return UpdateTime;
 	}
@@ -248,5 +248,20 @@ public Set<ProductDetail> getDetails() {
 	}
 	public void addDetail(Integer id,String name,String value) {
 		this.details.add(new ProductDetail(id, name, value, this));
+	}
+	
+	@Transient
+	public String getShortName() {
+		if (name.length()>70) {
+			return name.substring(0,70).concat(" ...");
+		}
+		return name;
+	}
+	@Transient
+	public float getDiscountPrice() {
+		if (discountPercent>0) {
+			return price*((100-discountPercent)/100);
+		}
+		return this.price;
 	}
 }

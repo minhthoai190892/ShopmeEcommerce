@@ -59,7 +59,9 @@ public class CategoryService {
 			List<Category> searchResult = pageCategories.getContent();
 			for (Category category : searchResult) {
 				category.setHasChildren(category.getChildren().size()>0);
+				System.err.println("category>>>>>>>>>>>>>>>>>"+category);
 			}
+//			System.err.println("searchResult>>>>>>>"+searchResult);
 			return searchResult;
 		} else {
 			// gọi lại hàm
@@ -117,6 +119,10 @@ public class CategoryService {
 		categoryRepository.updateEnabledStatus(id, enabled);
 	}
 
+	/**
+	 * Hàm hiển thị dropdown danh sách category
+	 * @return trả về 1 mảng danh sách
+	 */
 	public List<Category> listCategoriesUsedInForm() {
 		List<Category> categoriesUsedInForm = new ArrayList<>();
 		// lấy dữ liệu từ DB
@@ -159,6 +165,18 @@ public class CategoryService {
 	 * @return trả
 	 */
 	public Category save(Category category) {
+		Category parent = category.getParent();
+		if (category.getAlias() == null || category.getAlias().isEmpty()) {
+			String defaultAlias = category.getName().replaceAll(" ", "-");
+			category.setAlias(defaultAlias);
+		} else {
+			category.setAlias(category.getAlias().replaceAll(" ", "-"));
+		}
+		if (parent!=null) {
+			String allParentIds = parent.getAllParentIDs()==null?"-":parent.getAllParentIDs();
+			allParentIds+=String.valueOf(parent.getId())+"-";
+			category.setAllParentIDs(allParentIds);
+		}
 		return categoryRepository.save(category);
 	}
 
@@ -240,3 +258,8 @@ public class CategoryService {
 		categoryRepository.deleteById(id);
 	}
 }
+
+
+
+
+

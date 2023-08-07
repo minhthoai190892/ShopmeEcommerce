@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 </html>
 
@@ -11,9 +12,33 @@
             <!-- menu -->
             <div th:replace="navigation::menu"></div>
             <!-- title -->
-            <div th:replace="fragments::downfile('Manage Products','/products/')"></div>
-            <!-- form -->
-            <div th:replace="fragments::search_form('/products/page/1')"></div>
+            <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                <div th:replace="fragments::download_file('Manage Products','/products/')"></div>
+            </th:block>
+            <!-- form search-->
+            <section>
+                <!--th:action="@{/users/page/1}"  -->
+                <form th:action="@{/products/page/1}" class="form-inline" id="searchForm">
+                    <input type="hidden" name="sortField" th:value="${sortField}">
+                    <input type="hidden" name="sortDir" th:value="${sortDir}">
+                    Category:
+                    <select name="categoryId" class="my-3" id="dropdownCategory">
+                        <option value="0">All Category</option>
+                        <th:block th:each="cat : ${listCategories}">
+                            <option th:value="${cat.id}" th:selected="(${categoryId}==${cat.id})">[[${cat.name}]]
+                            </option>
+                        </th:block>
+                    </select>
+                    Filter:
+                    <input type="search" name="keyword" th:value="${keyword}" class="my-3" required />
+                    <button type="submit" value="Search" class="btn btn-primary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <button type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()">
+                        <i class="fa-solid fa-eraser"></i>
+                    </button>
+                </form>
+            </section>
             <div th:if="${message!=null}" class="alert alert-success text-center">
                 [[${message}]]
             </div>
@@ -21,12 +46,15 @@
             <table class="table table-striped table-inverse table-responsive">
                 <thead class="thead-inverse">
                     <tr>
-                        <th>Product ID</th>
+                        <th th:replace="fragments::column_link('/products/','id','ID','none')"></th>
+
                         <th>Main Image</th>
-                        <th>Product Name</th>
-                        <th>Brand</th>
-                        <th>Category</th>   
-                        <th>Enabled</th>
+                        <th th:replace="fragments::column_link('/products/','name','Product Name','none')"></th>
+                        <th th:replace="fragments::column_link('/products/','brand','Brand','none')"></th>
+                        <th th:replace="fragments::column_link('/products/','category','Category','none')"></th>
+                        <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                            <th>Enabled</th>
+                        </th:block>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -36,23 +64,54 @@
                         <td>
                             <img th:src="@{${product.mainImagePath}}" class="img-fluid" style="width: 120px;" alt="">
                         </td>
-                        <td>[[${product.name}]]</td>
+                        <td>
+                            <a class="link-detail" th:href="@{'/products/detail/'+${product.id}}"
+                                th:title="${product.name}"> [[${product.shortName}]]</a>
+                        </td>
                         <td>[[${product.brand.name}]]</td>
                         <td>[[${product.category.name}]]</td>
-                        <td th:replace="fragments::status(${product.enabled},'/products/'+${product.id},product)">
-
-                        </td>
+                        <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                            <td th:replace="fragments::status(${product.enabled},'/products/'+${product.id},product)">
+                            </td>
+                        </th:block>
                         <td>
-                            <a class="fas fa-file-alt fa-2xl icon-green" th:href="@{'/products/detail/'+${product.id}}" title="View details of the product"></a>
-                            | <span th:replace="fragments::edit('product','/products/edit/'+${product.id})"></span>|<span
-                                th:replace="fragments::delete('product','/products/delete/'+${product.id},${product.id},true)"></span>
+                            <a class="fas fa-file-alt fa-2xl icon-green link-detail"
+                                th:href="@{'/products/detail/'+${product.id}}" title="View details of the product"></a>
+                                <th:block sec:authorize="hasAnyAuthority('Admin','Editor','Selesperson')">|
+                                <span th:replace="fragments::edit('product','/products/edit/'+${product.id})"></span>
+                            </th:block>
+                            <th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+                                |
+                                <span
+                                    th:replace="fragments::delete('product','/products/delete/'+${product.id},${product.id},true)"></span>
+                            </th:block>
                         </td>
                     </tr>
 
                 </tbody>
             </table>
+            <div th:replace="fragments::pagination('/products/page/','product')"></div>
+
             <!-- Modal -->
-        <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
+            <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
+            <!-- Modal -->
+            <div class="modal fade modal-xl" id="detailModal" tabindex="-1" aria-labelledby="modalTitle"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Warning</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div> -->
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     <div th:replace="fragments::footer"></div>
@@ -64,17 +123,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
-         <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
-         <script type="text/javaScript" th:src="@{/js/common.js}"></script>
-         <script type="text/javaScript">
-     
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+    <script type="text/javaScript">
+
              moduleURL = "[[@{/products}]]";
         
              $(document).ready(function(){
+                // lấy class link và thêm sự kiện click
                  $(".link-delete").on("click",function(e){
                      e.preventDefault();
                      showDeleteConfirmModal($(this),'product')
                  });
+                  // lấy class link và thêm sự kiện click
+                 $(".link-detail").on("click",function(e){
+                    e.preventDefault();
+                    // lấy thông tin URL của class
+                    linkDetailURL = $(this).attr("href");
+                    //gọi id của modal và hiển thị modal
+                    $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+                 });
+
+                //  dropdownCategory
+                $("#dropdownCategory").on("change",function(){
+                    $("#searchForm").submit();
+                });
              });
      
          </script>

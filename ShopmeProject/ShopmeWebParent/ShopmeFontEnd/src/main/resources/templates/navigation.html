@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div th:fragment="head_menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" th:href="@{/}"><img th:src="@{${SITE_LOGO}}" alt="" width="100" height="100" /></a>
+                <!--  data-bs-target="#navbarSupportedContent,#searchNavbar" thêm tìm kiếm vào -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent,#searchNavbar" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Careers -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" aria-current="page" data-bs-toggle="dropdown" href="">Careers</a>
+                        </li>
+                        <!-- Payment -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" aria-current="page" data-bs-toggle="dropdown" href="">Payment</a>
+                        </li>
+                        <!-- Shipping & Delivery -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" aria-current="page" data-bs-toggle="dropdown" href="">Shipping &
+                                Delivery</a>
+                        </li>
+                        <!-- Login -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" aria-current="page" data-bs-toggle="dropdown" href="">Login</a>
+                        </li>
+                        <!-- Register -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" aria-current="page" data-bs-toggle="dropdown" href="">Register</a>
+                        </li>
+                        <!-- Contact -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" aria-current="page" data-bs-toggle="dropdown" href="">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+	<div th:fragment="search_nav" class="row">
+		<div class="col-md">
+			<nav class="navbar navbar-expand-sm bg-light">
+				<div class="collapse navbar-collapse" id="searchNavbar">
+					<form th:action="@{/search}" method="get" class="form-inline">
+						<div style="display: flex;">
+							<input type="search" name="keyword" th:value="${keyword}" class="form-control mr-sm-2" placeholder="keyword" required/>
+						<input type="submit"  class="btn btn-outline-success"/>
+						</div>
+						
+					</form>
+				</div>
+			</nav>
+		</div>
+	</div>
+    <div th:fragment="footer_menu">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <!-- <a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/ShopmeAdminSmall.png}" alt="" /></a> -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bottomNavbar"
+                    aria-controls="bottomNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="bottomNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- About Us -->
+                        <li class="nav-item ">
+                            <a class="nav-link" aria-current="page" href="">About Us</a>
+                        </li>
+                        <!-- Privacy Notice -->
+                        <li class="nav-item ">
+                            <a class="nav-link" aria-current="page" href="">Privacy Notice</a>
+                        </li>
+                        <!-- Returns & Refunds -->
+                        <li class="nav-item ">
+                            <a class="nav-link" aria-current="page" href="">Returns & Refunds</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="text-center m-3">
+            <p>[[${COPYRIGHT}]]</p>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+

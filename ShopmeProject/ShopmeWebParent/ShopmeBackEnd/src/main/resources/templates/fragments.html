@@ -20,7 +20,7 @@
 
 <body>
     <!-- tiêu đề và tải file -->
-    <div th:fragment="downfile(title,entityURL)">
+    <div th:fragment="download_file(title,entityURL)">
         <h2>[[${title}]]</h2>
         <!-- /users/ -->
         <a th:href="@{${entityURL}+'new'}" class="fa-solid fa-user-plus icon-dark fa-xl "></a>
@@ -31,7 +31,7 @@
     <!-- sort by title -->
     <th th:fragment="column_link(moduleURL,fieldName,columnLabel,removeTag)" th:remove="${removeTag}">
 
-        <a th:href="@{${moduleURL}+'page/'+${currentPage}+'?sortField='+${fieldName}+'&sortDir='+${sortField!=fieldName?sortDir:reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}}"
+        <a th:href="@{${moduleURL}+'page/'+${currentPage}+'?sortField='+${fieldName}+'&sortDir='+${sortField!=fieldName?sortDir:reverseSortDir} +${keyword!=null?'&keyword='+keyword:''}+ ${categoryId!=null?'&categoryId='+categoryId:''}}"
             class="text-black" style="text-decoration: none;">[[${columnLabel}]]</a>
         <!-- sort icon -->
         <span th:if="${sortField == fieldName}"
@@ -46,7 +46,7 @@
     <!-- pagination -->
     <!-- số trang và tên nút -->
     <a th:fragment="page_link(moduleURL,pageNum,label)" class="page-link"
-        th:href="@{${moduleURL}+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''}}">[[${label}]]</a>
+        th:href="@{${moduleURL}+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir} +${keyword!=null?'&keyword='+keyword:''} + ${categoryId!=null?'&categoryId='+categoryId:''}}">[[${label}]]</a>
 
     <div th:fragment="pagination(moduleURL,entityName)" th:remove="tag">
         <section>
@@ -72,8 +72,8 @@
                         </li>
                         <!-- tạo số trang tăng dần -->
 
-                        <li th:class="${currentPage !=i ? 'page-item':'page-item active'}"
-                            th:each=" i: ${#numbers.sequence(1,totalPages)}">
+                        <li th:each=" i: ${#numbers.sequence(1,totalPages)}"
+                            th:class="${currentPage !=i ? 'page-item':'page-item active'}">
                             <!-- gọi từ fragments.html -->
                             <a th:replace="fragments::page_link(${moduleURL},${i},${i})"></a>
                         </li>
@@ -138,6 +138,3 @@
 </body>
 
 </html>
-
-
-

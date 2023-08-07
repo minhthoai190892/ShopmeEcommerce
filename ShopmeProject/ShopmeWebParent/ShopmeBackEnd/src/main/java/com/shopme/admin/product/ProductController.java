@@ -12,6 +12,11 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -24,7 +29,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.brand.BrandService;
+import com.shopme.admin.category.CategoryService;
+import com.shopme.admin.security.ShopmeUserDetails;
 import com.shopme.common.entity.Brand;
+import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Product;
 import com.shopme.common.entity.ProductImage;
 
@@ -35,12 +43,47 @@ public class ProductController {
 	private ProductService productService;
 	@Autowired
 	private BrandService brandService;
+	@Autowired
+	private CategoryService categoryService;
 
 	@GetMapping("/products")
-	public String listAll(Model model) {
-		List<Product> listProducts = productService.listAll();
+	public String listFirstPage(Model model) {
+		return listByPage(1, "asc", model, "name", null, 0);
+	}
+
+	@GetMapping("/products/page/{pageNum}")
+	public String listByPage(@PathVariable(name = "pageNum") int pageNum, @Param("sortDir") String sortDir, Model model,
+			@Param("sortField") String sortField, @Param("keyword") String keyword,
+			@Param("categoryId") Integer categoryId) {
+		System.err.println("categoryId: " + categoryId);
+		Page<Product> page = productService.listByPage(pageNum, sortField, sortDir, keyword, categoryId);
+		List<Product> listProducts = page.getContent();
+//		lấy danh sách dropdown trên form
+		List<Category> listCategories = categoryService.listCategoriesUsedInForm();
+		long startCount = (pageNum - 1) * ProductService.PRODUCTS_PER_PAGE + 1;
+		long endCount = startCount + ProductService.PRODUCTS_PER_PAGE - 1;
+		if (endCount > page.getTotalElements()) {
+			endCount = page.getTotalElements();
+		}
+
+		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+		if (categoryId != null) {
+			//hiển thị khi chọn category mà không bị xóa ở dropdown
+			model.addAttribute("categoryId", categoryId);
+		}
+		model.addAttribute("currentPage", pageNum);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("startCount", startCount);
+		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("reverseSortDir", reverseSortDir);
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("listProducts", listProducts);
+		model.addAttribute("listCategories", listCategories);
+
 		return "products/products";
+
 	}
 
 	/**
@@ -66,20 +109,26 @@ public class ProductController {
 
 	@PostMapping("/products/save")
 	public String saveProduct(Model model, Product product, RedirectAttributes redirectAttributes,
-			@RequestParam("fileImage") MultipartFile mainImageMultipartFile,
-			@RequestParam(name = "extraImage") MultipartFile[] extraImageMultipartFiles,
+			@RequestParam(value="fileImage", required = false) MultipartFile mainImageMultipartFile,
+			@RequestParam(value = "extraImage", required = false) MultipartFile[] extraImageMultipartFiles,
 			@RequestParam(name = "detailIDS", required = false) String[] detailIDS,
 			@RequestParam(name = "detailNames", required = false) String[] detailNames,
 			@RequestParam(name = "detailValues", required = false) String[] detailValues,
 			@RequestParam(name = "imageIDs", required = false) String[] imageIDs,
-			@RequestParam(name = "imageNames", required = false) String[] imageNames
+			@RequestParam(name = "imageNames", required = false) String[] imageNames,
+			@AuthenticationPrincipal ShopmeUserDetails loggedUser
 
 	) throws IOException {
+		if (loggedUser.hasRole("Selesperson")) {
+			productService.saveProductPrice(product);
+			redirectAttributes.addFlashAttribute("message", "The product has been saved successfully.");
+			return "redirect:/products";
+		}
 		// gọi hàm
 		setMainImageName(mainImageMultipartFile, product);
 		setExistingExtraImageNames(imageIDs, imageNames, product);
 		setNewExtraImageNames(extraImageMultipartFiles, product);
-		setProductDetails(detailIDS,detailNames, detailValues, product);
+		setProductDetails(detailIDS, detailNames, detailValues, product);
 		// save product
 		Product saveProduct = productService.save(product);
 		saveUploadedImages(mainImageMultipartFile, extraImageMultipartFiles, saveProduct);
@@ -253,4 +302,21 @@ public class ProductController {
 			return "redirect:/products";
 		}
 	}
+
+	@GetMapping("/products/detail/{id}")
+	public String viewProductDetails(@PathVariable("id") Integer id, Model model,
+			RedirectAttributes redirectAttributes) {
+		try {
+			Product product = productService.get(id);
+
+			model.addAttribute("product", product);
+
+			return "products/product_detail_modal";
+		} catch (ProductNotFoundException e) {
+			// TODO: handle exception
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			return "redirect:/products";
+		}
+	}
+
 }
