@@ -5,46 +5,47 @@
   <div th:fragment="content" th:remove="tag">
     <div>
       <p>
-        Use this page to manage countries which will be display in the
-        customer registration form. Click Load Country List first
+        Use this page to manage states/provinces which will be chosen by visitors in the customer registration form.
+        Click Load Country List first.
       </p>
     </div>
+    <!-- button load Country -->
     <div>
-      <input type="button" id="buttonLoadCountries" value="Load Country List" class="btn btn-primary m-2">
+      <input type="button" id="buttonLoadCountriesForStates" value="Load Country List" class="btn btn-primary m-2">
     </div>
-    <div>
-      <select name="" id="dropDownCountries" class="form-control m-2" style="height: 300px;" size="3"></select>
-    </div>
+    <!-- drop Down Countries For States -->
     <div class="form-group row">
-      <div style="display: flex; align-content: space-around; gap: 20px;">
-        <label id="labelCountryName" for="" class="col-form-label">Country Name:</label>
-        <div class="col-md">
-          <input type="text" class="form-control"  id="fieldCountryName">
-          <span id="message"></span>
-        </div>
-        <label id="labelCountryCode" for="" class="col-form-label">Country Code:</label>
-        <div class="col-md">
-          <input type="text" class="form-control"  id="fieldCountryCode">
-        </div>
-        <div class="col-lg-4">
-          <input type="button" id="buttonAddCountry" value="Add" class="btn btn-secondary mr-2">
-          <input type="button"  id="buttonUpdateCountry" value="Update" disabled  class="btn btn-secondary mr-2">
-          <input type="button"  id="buttonDeleteCountry" value="Delete" disabled class="btn btn-secondary">
-        </div>
+      <label for="" class="col-sm-2 col-form-label">Selected Country:</label>
+      <div class="col-sm-10">
+        <select name="" class="form-control m-2" id="dropDownCountriesForStates"></select>
       </div>
     </div>
-      <!-- Toast -->
-      <!-- <div class="toast justify-content-center d-flex" role="alert" aria-live="polite" aria-atomic="true" data-delay="3000">
-        <div role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-body">
-            <span id="toastMessage"></span>
-          </div>
-        </div>
-      </div> -->
+    <!-- drop Down States -->
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">All States/Province:</label>
+      <div class="col-sm-10">
+        <select name="" class="form-control m-2" style="height: 300;" size="3" id="dropDownStates"></select>
+
+      </div>
+    </div>
+<!-- drop Down States -->
+<div class="form-group row">
+  <label for="" id="labelStateName" class="col-sm-2 col-form-label">States/Province Name:</label>
+  <div class="col-sm-6">
+    <input type="text"  class="form-control m-2"   id="fieldStateName">
+  </div>
+  <div class="col-lg-4 mt-2">
+    <input type="button" id="buttonAddState" value="Add" class="btn btn-secondary mr-2">
+    <input type="button" id="buttonUpdateState" value="Update" class="btn btn-secondary mr-2">
+    <input type="button" id="buttonDeleteState" value="Delete" class="btn btn-secondary mr-2">
+  </div>
+</div>
 
 
 
-      
+
+
+
   </div>
 </body>
 

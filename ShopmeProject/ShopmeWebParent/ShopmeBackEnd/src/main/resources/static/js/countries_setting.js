@@ -49,6 +49,7 @@ function deleteCountry() {
     $.get(url, function () {
         $("#dropDownCountries option[value = '" + optionValue + "']").remove();
         changeFormStateToNew();
+        loadCountries() ;
     })
         .done(function () {
             showToastMessage("The country has been deleted");
@@ -76,6 +77,7 @@ function updateCountry() {
     }).done(function (countryId) {
         showToastMessage("The new country has been updated successfully");
         changeFormStateToNew();
+        loadCountries();
     }).fail(function () {
         showToastMessage("ERROR: Could not connect to server or server encountered an error");
     });
@@ -99,6 +101,7 @@ function addCountry() {
         }).done(function (countryId) {
             selectNewlyAddedCountry(countryId, countryCode, countryName);
             showToastMessage("The new country has been added successfully");
+            loadCountries();
         }).fail(function () {
             showToastMessage("ERROR: Could not connect to server or server encountered an error");
         });
@@ -128,7 +131,7 @@ function selectNewlyAddedCountry(countryId, countryCode, countryName) {
  * Hàm click vào button new
  */
 function changeFormStateToNew() {
-    console.log("changeFormStateToNew");
+  
     //thay đổi nut
     buttonAddCountry.val("Add");
     labelCountryName.text("Country Name: ")
@@ -164,7 +167,7 @@ function changeFormStateToSelectedCountry() {
  */
 function loadCountries() {
     url = contextPath + "countries/list";
-    // alert("About loading countries..."+url);
+     //alert("About loading countries..."+url);
     //lấy data từ RestController
     $.get(url, function (responseJSON) {
         dropDownCountry.empty();
