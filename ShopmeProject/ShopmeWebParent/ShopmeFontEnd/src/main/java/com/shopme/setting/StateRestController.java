@@ -1,4 +1,4 @@
-package com.shopme.admin.setting.state;
+package com.shopme.setting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class StateRestController {
 	@Autowired
 	private StateRepository stateRepository;
 
-	@GetMapping("/states/list_by_country/{id}")
+	@GetMapping("/states/list_states_by_country/{id}")
 	public List<StateDTO> listByCountry(@PathVariable("id") Integer countryId) {
 		System.out.println("RestController/listByCountry.java>>>>>");
 		List<State> listStates = stateRepository.findByCountryOrderByNameAsc(new Country(countryId));
@@ -39,14 +39,6 @@ public class StateRestController {
 
 	}
 
-	@PostMapping("/states/save")
-	public String save(@RequestBody State state) {
-		State saveState = stateRepository.save(state);
-		return String.valueOf(saveState.getId());
-	}
-	@DeleteMapping("/states/delete/{id}")
-	public void delete(@PathVariable("id") Integer id) {
-		stateRepository.deleteById(id);
-	}
+	
 
 }

@@ -104,4 +104,19 @@ public class SettingController implements saveSiteLogo {
 		}
 		settingService.saveAll(listSettings);
 	}
+	
+	@PostMapping("/settings/save_mail_server")
+	public String saveMailServerSettings(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+		List<Setting> mailServerSettings = settingService.getEmailServerSettings();
+		updateSettingValuesFromForm(request, mailServerSettings);
+		redirectAttributes.addFlashAttribute("message","Mail server settings have been saved");
+		return "redirect:/settings";
+	}
+	@PostMapping("/settings/save_mail_templates")
+	public String saveMailTemplateSettings(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+		List<Setting> mailTemplateSettings = settingService.getEmailTemplateSettings();
+		updateSettingValuesFromForm(request, mailTemplateSettings);
+		redirectAttributes.addFlashAttribute("message","Mail template settings have been saved");
+		return "redirect:/settings";
+	}
 }
