@@ -24,34 +24,40 @@
       <div>
         <ul class="nav nav-tabs" id="settingTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general"
-              type="button" role="tab" aria-controls="general" aria-selected="true">
+            <a href="#general" class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general"
+              type="button"  role="tab" aria-controls="general" aria-selected="true">
               General
-            </button>
+          </a>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="countries-tab" data-bs-toggle="tab" data-bs-target="#countries" type="button"
-              role="tab" aria-controls="countries" aria-selected="false">
+            <a class="nav-link" id="countries-tab" data-bs-toggle="tab" data-bs-target="#countries"
+              role="tab" href="#countries" aria-controls="countries" aria-selected="false">
               Countries
-            </button>
+          </a>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="states-tab" data-bs-toggle="tab" data-bs-target="#states" type="button"
+            <a href="#states" class="nav-link" id="states-tab" data-bs-toggle="tab" data-bs-target="#states" type="button"
               role="tab" aria-controls="states" aria-selected="false">
               States
-            </button>
+          </a>
+          </li>
+          <li href="#mailServer"class="nav-item" role="presentation">
+            <a class="nav-link" id="mailServer-tab" data-bs-toggle="tab" data-bs-target="#mailServer" type="button"
+              role="tab" aria-controls="mailServer" aria-selected="false">
+              Mail Server
+          </a>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="mailService-tab" data-bs-toggle="tab" data-bs-target="#mailService"
-              type="button" role="tab" aria-controls="mailService" aria-selected="false">
-              Mail Service
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="mailTemplates-tab" data-bs-toggle="tab" data-bs-target="#mailTemplates"
+            <a href="#mailTemplates"class="nav-link" id="mailTemplates-tab" data-bs-toggle="tab" data-bs-target="#mailTemplates"
               type="button" role="tab" aria-controls="mailTemplates" aria-selected="false">
               Mail Templates
-            </button>
+          </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a href="#payment"class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button"
+              role="tab" aria-controls="payment" aria-selected="false">
+              Payment
+          </a>
           </li>
         </ul>
 
@@ -66,14 +72,17 @@
           <div class="tab-pane p-3" id="states" role="tabpanel" aria-labelledby="states-tab">
             <div th:replace="/settings/states_fragment::content"></div>
           </div>
-          <div class="tab-pane" id="mailService" role="tabpanel" aria-labelledby="mailService-tab">qqqqqqq
+          <div class="tab-pane" id="mailServer" role="tabpanel" aria-labelledby="mailServer-tab">qqqqqqq
           </div>
           <div class="tab-pane" id="mailTemplates" role="tabpanel" aria-labelledby="mailTemplates-tab">wwwwwwww
+          </div>
+          <div class="tab-pane" id="payment" role="tabpanel" aria-labelledby="payment-tab">wwwwwwww
           </div>
         </div>
       </div>
       <!-- Toast -->
-      <div class="toast justify-content-center d-flex" role="alert" aria-live="polite" aria-atomic="true" data-delay="3000">
+      <div class="toast justify-content-center d-flex" role="alert" aria-live="polite" aria-atomic="true"
+        data-delay="3000">
         <div role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-body">
             <span id="toastMessage"></span>
@@ -105,6 +114,7 @@
     var csrfValue = "[[${_csrf.token}]]"
   </script>
   <script type="text/javaScript" th:src="@{/js/common_form.js}"></script>
+  <script type="text/javaScript" th:src="@{/js/common.js}"></script>
   <script type="text/javaScript" th:src="@{/js/countries_setting.js}"></script>
   <script type="text/javaScript" th:src="@{/js/states_setting.js}"></script>
 </body>

@@ -109,10 +109,27 @@
                                 sec:authorize="hasAnyAuthority('Admin','Editor')">Menus</a>
                         </li>
                         <!-- Settings -->
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/settings}"
-                                sec:authorize="hasAuthority('Admin')">Settings</a>
-                        </li>
+                        <div>
+                            <li class="nav-item dropdown ">
+                                <!-- hiển thị tên người dùng
+                    pricipal: đại dại cho đối tượng User
+                    -->
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" th:href="@{/settings}"
+                                    sec:authorize="hasAuthority('Admin')">Settings
+                                </a>
+                                <!-- dropdown menu -->
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <!-- tạo liên kết đến class AccountController -->
+                                    <a th:href="@{/settings#general}" class="dropdown-item">General</a>
+                                    <a th:href="@{/settings#countries}"  class="dropdown-item">Countries</a>
+                                    <a th:href="@{/settings#states}"  class="dropdown-item">States</a>
+                                    <a th:href="@{/settings#mailServer}"  class="dropdown-item">Mail Server</a>
+                                    <a th:href="@{/settings#mailTemplates}"  class="dropdown-item">Mail Templates</a>
+                                    <a th:href="@{/settings#payment}"  class="dropdown-item">Payment</a>
+                                </div>
+                            </li>
+                        </div>
+
                         <!-- Logout -->
                         <div style="display: inline-flex; align-items: center;margin-left:200px ;">
                             <li>
@@ -120,7 +137,7 @@
                             </li>
                             <li class="nav-item dropdown ">
                                 <!-- hiển thị tên người dùng
-                      pricipal: đại dại cho đối tượng User
+                    pricipal: đại dại cho đối tượng User
                     -->
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" th:href="@{/account}"
                                     sec:authentication="principal.fullName"></a>

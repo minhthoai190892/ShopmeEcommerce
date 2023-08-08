@@ -39,14 +39,35 @@ $(document).ready(function () {
     });
 });
 
+/**
+ * Sài GETMAPPING();
+ */
+// function deleteState() {
+//     stateId = dropDownStates.val();
+//     url = contextPath + "states/delete/" + stateId;
+//     $.get(url, function () {
+//         $("#dropDownStates option[value=" + stateId + "]").remove();
+//         changeFormStateToNew();
+//     }).done(function () {
+//         showToastMessage("The state has been deleted");
+//     }).fail(function () {
+//         showToastMessage("ERROR: Could not connect to the server or the server encountered an error");
+//     });
+// }
 
 function deleteState() {
     stateId = dropDownStates.val();
     url = contextPath + "states/delete/" + stateId;
-    $.get(url, function () {
+    $.ajax({
+        type: "DELETE",
+        url: url,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(csrfHeaderName, csrfValue);
+        },
+
+    }).done(function () {
         $("#dropDownStates option[value=" + stateId + "]").remove();
         changeFormStateToNew();
-    }).done(function () {
         showToastMessage("The state has been deleted");
     }).fail(function () {
         showToastMessage("ERROR: Could not connect to the server or the server encountered an error");
@@ -60,10 +81,10 @@ function updateState() {
     stateId = dropDownStates.val();
     stateName = fieldStateName.val();
     selectedCountry = $("#dropDownCountriesForStates option:selected");
-    
+
     countryId = selectedCountry.val();
     countryName = selectedCountry.text();
-    
+
     jsonData = { id: stateId, name: stateName, country: { id: countryId, name: countryName } };
     $.ajax({
         type: "POST",
@@ -106,12 +127,19 @@ function addState() {
 
     });
 }
+/**
+ * Hàm chọn state vừa thêm mới 
+ * @param {*} stateId 
+ * @param {*} stateName 
+ */
 function selectedNewlyAddedState(stateId, stateName) {
     $("<option>").val(stateId).text(stateName).appendTo(dropDownStates);
     $("#dropDownStates option[value='" + stateId + "']").prop('selected', true);
     fieldStateName.val("").focus();
 }
-
+/**
+ * Hàm thay đổi tên nút khi click vào State (All States/Province)
+ */
 function changeFormStateTeSelectedSate() {
     buttonAddState.prop("value", "New");
     buttonUpdateState.prop("disabled", false);
@@ -120,7 +148,9 @@ function changeFormStateTeSelectedSate() {
     selectedStateName = $("#dropDownStates option:selected").text();
     fieldStateName.val(selectedStateName);
 }
-
+/**
+ * Click button load Country
+ */
 function loadCountriesForStates() {
     url = contextPath + "countries/list";
     $.get(url, function (responseJSON) {
@@ -130,12 +160,14 @@ function loadCountriesForStates() {
         });
     });
 }
-
+/**
+ * Hiển thị danh sách State của Country
+ */
 function dropDownCountries4States() {
     selectedCountry = $("#dropDownCountriesForStates option:selected");
     countryId = selectedCountry.val();
     url = contextPath + "states/list_by_country/" + countryId;
-   
+
     $.get(url, function (responseJSON) {
         dropDownStates.empty();
         $.each(responseJSON, function (index, state) {
@@ -150,8 +182,11 @@ function dropDownCountries4States() {
         showToastMessage("ERROR: Could not connect to the server or the server encountered an error");
     });
 }
+/**
+ * Thay đổi tên nút
+ */
 function changeFormStateToNew() {
-  
+
     //thay đổi nut
     buttonAddState.val("Add");
 
