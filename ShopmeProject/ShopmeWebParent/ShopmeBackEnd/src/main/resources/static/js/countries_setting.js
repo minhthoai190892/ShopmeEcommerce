@@ -28,9 +28,9 @@ $(document).ready(function () {
     });
     buttonAddCountry.click(function () {
         if (buttonAddCountry.val() == "Add") {
-                addCountry();
+            addCountry();
         } else {
-            changeFormStateToNew();
+            changeFormStateToNewCountry();
         }
     })
     buttonUpdateCountry.click(function () {
@@ -41,24 +41,50 @@ $(document).ready(function () {
     });
 
 });
+
+
+// function deleteCountry() {
+//     // optionValue = dropDownCountry.val();
+//     countryId = dropDownCountry.val().split("-")[0];
+//     url = contextPath + "countries/delete/" + countryId;
+//     jsonData = { id: countryId };
+//     $.get(url, function () {
+//         $("#dropDownCountries option[value = '" + optionValue + "']").remove();
+//         changeFormStateToNewCountry();
+//         // loadCountries() ;
+//     })
+//         .done(function () {
+//             showToastMessage("The country has been deleted");
+//         })
+//         .fail(function () {
+//             showToastMessage(
+//                 "ERROR: Could not connect to server or server encountered an error"
+//             );
+//         });
+// }
+
 function deleteCountry() {
-    // optionValue = dropDownCountry.val();
-    countryId = dropDownCountry.val().split("-")[0];
+    optionValue = dropDownCountry.val();
+    countryId = optionValue.split("-")[0];
     url = contextPath + "countries/delete/" + countryId;
-    jsonData = { id: countryId };
-    $.get(url, function () {
+    // jsonData = { id: countryId };
+    $.ajax({
+        type: 'DELETE',
+        url: url,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(csrfHeaderName, csrfValue);
+        },
+
+    }).done(function () {
         $("#dropDownCountries option[value = '" + optionValue + "']").remove();
-        changeFormStateToNew();
-        loadCountries() ;
-    })
-        .done(function () {
-            showToastMessage("The country has been deleted");
-        })
-        .fail(function () {
-            showToastMessage(
-                "ERROR: Could not connect to server or server encountered an error"
-            );
-        });
+        changeFormStateToNewCountry();
+        loadCountries2();
+        showToastMessage("The country has been deleted");
+    }).fail(function () {
+        showToastMessage(
+            "ERROR: Could not connect to server or server encountered an error adwqe"
+        );
+    });
 }
 function updateCountry() {
     url = contextPath + "countries/save";
@@ -76,8 +102,9 @@ function updateCountry() {
         contentType: 'application/json'
     }).done(function (countryId) {
         showToastMessage("The new country has been updated successfully");
-        changeFormStateToNew();
-        loadCountries();
+        loadCountries2();
+
+        changeFormStateToNewCountry();
     }).fail(function () {
         showToastMessage("ERROR: Could not connect to server or server encountered an error");
     });
@@ -86,9 +113,9 @@ function addCountry() {
     url = contextPath + "countries/save";
     countryName = fieldCountryName.val().trim();
     countryCode = fieldCountryCode.val().trim();
-    if (countryCode === ""&& countryName ==="") {
+    if (countryCode === "" && countryName === "") {
         message.html("Please enter a country")
-    }else{
+    } else {
         jsonData = { name: countryName, code: countryCode };
         $.ajax({
             type: 'POST',
@@ -100,14 +127,14 @@ function addCountry() {
             contentType: 'application/json'
         }).done(function (countryId) {
             selectNewlyAddedCountry(countryId, countryCode, countryName);
-            showToastMessage("The new country has been added successfully");
-            loadCountries();
+        loadCountries2();
+        showToastMessage("The new country has been added successfully");
         }).fail(function () {
             showToastMessage("ERROR: Could not connect to server or server encountered an error");
         });
         message.html("")
     }
-    
+
 }
 /**
  * Hàm chọn quốc gia mới thêm vào
@@ -122,7 +149,7 @@ function selectNewlyAddedCountry(countryId, countryCode, countryName) {
         .val(optionValue)
         .text(countryName)
         .appendTo(dropDownCountry);
-        //chọn vào dữ liệu mới thêm vào
+    //chọn vào dữ liệu mới thêm vào
     $("#dropDownCountries option[value = '" + optionValue + "']").prop("selected", true)
     fieldCountryCode.val("");
     fieldCountryName.val("").focus();
@@ -130,8 +157,8 @@ function selectNewlyAddedCountry(countryId, countryCode, countryName) {
 /**
  * Hàm click vào button new
  */
-function changeFormStateToNew() {
-  
+function changeFormStateToNewCountry() {
+
     //thay đổi nut
     buttonAddCountry.val("Add");
     labelCountryName.text("Country Name: ")
@@ -167,11 +194,11 @@ function changeFormStateToSelectedCountry() {
  */
 function loadCountries() {
     url = contextPath + "countries/list";
-     //alert("About loading countries..."+url);
+    //alert("About loading countries..."+url);
     //lấy data từ RestController
     $.get(url, function (responseJSON) {
         dropDownCountry.empty();
-      
+
         $.each(responseJSON, function (index, country) {
             optionValue = country.id + "-" + country.code;
             $("<option>")
@@ -184,6 +211,32 @@ function loadCountries() {
             //thay đổi tên nút khi đã load country
             buttonLoad.val("Refresh Country List");
             showToastMessage("All countries have been load");
+        })
+        .fail(function () {
+            showToastMessage(
+                "ERROR: Could not connect to server or server encountered an error"
+            );
+        });
+}
+function loadCountries2() {
+    url = contextPath + "countries/list";
+    //alert("About loading countries..."+url);
+    //lấy data từ RestController
+    $.get(url, function (responseJSON) {
+        dropDownCountry.empty();
+
+        $.each(responseJSON, function (index, country) {
+            optionValue = country.id + "-" + country.code;
+            $("<option>")
+                .val(optionValue)
+                .text(country.name)
+                .appendTo(dropDownCountry);
+        });
+    })
+        .done(function () {
+            //thay đổi tên nút khi đã load country
+            buttonLoad.val("Refresh Country List");
+            // showToastMessage("All countries have been load");
         })
         .fail(function () {
             showToastMessage(

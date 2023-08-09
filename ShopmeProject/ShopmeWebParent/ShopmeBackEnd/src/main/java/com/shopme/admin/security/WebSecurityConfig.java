@@ -32,7 +32,7 @@ public class WebSecurityConfig {
         http
         .authorizeHttpRequests(configurer -> configurer
         				
-                        .requestMatchers("/users/**").hasAnyAuthority("Admin")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
+                        .requestMatchers("/users/**","/settings/**","/countries/**","/states/**").hasAnyAuthority("Admin")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
                         .requestMatchers("/categories/**").hasAnyAuthority("Admin", "Editor")//chỉ những roles được chỉ định mới có quyền vào đường dẫn users
                         .requestMatchers("/brands/**").hasAnyAuthority("Admin", "Editor")
                         .requestMatchers("/products/new","/products/delete").hasAnyAuthority("Admin","Editor")//=>chỉ có admin và editor sử dụng

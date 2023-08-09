@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+  <div th:fragment="content" th:remove="tag">
+    <form th:action="@{/settings/save_mail_server}" method="post" >
+      <!-- SMTP Server Host Name -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">SMTP Server Host Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${MAIL_HOST}" name="MAIL_HOST" required>
+        </div>
+      </div>
+      <!-- Port Number -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">Port Number:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${MAIL_PORT}" name="MAIL_PORT" required>
+        </div>
+      </div>
+      <!-- User Name -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">User Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${MAIL_USERNAME}" name="MAIL_USERNAME" required>
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">Password:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${MAIL_PASSWORD}" name="MAIL_PASSWORD" required>
+        </div>
+      </div>
+      <!--Server Authentication Required  -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Server Authentication Required: </label>
+        <div class="col-sm-10">
+          <select name="SMTP_AUTH" id="" class="form-control">
+            <option value="true" th:selected="(${SMTP_AUTH}=='true')">True</option>
+            <option value="false" th:selected="(${SMTP_AUTH}=='false')">False</option>
+          </select>
+        </div>
+      </div>
+      <!--Server Requires secured Connection (TLS)  -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2 col-form-label">Server Requires secured Connection (TLS): </label>
+        <div class="col-sm-10">
+          <select name="SMTP_SECURED" id="" class="form-control">
+            <option value="true" th:selected="(${SMTP_SECURED}=='true')">True</option>
+            <option value="false" th:selected="(${SMTP_SECURED}=='false')">False</option>
+          </select>
+        </div>
+      </div>
+      <!-- From E-mail Address -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">From E-mail Address:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${MAIL_FROM}" name="MAIL_FROM" required>
+        </div>
+      </div>
+      <!-- Sender Name -->
+      <div class="form-group row mt-2">
+        <label for="" class="col-sm-2">Sender Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" th:value="${MAIL_SENDER_NAME}" name="MAIL_SENDER_NAME" required>
+        </div>
+      </div>
+      <!-- button -->
+      <div class="text-center">
+        <input type="submit" value="Save" class="btn btn-primary m-3">
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+
