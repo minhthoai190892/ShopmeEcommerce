@@ -20,5 +20,10 @@ public class SettingService {
 		System.out.println("settings>>>> "+settings);
 		return settings;
 	}
+	public EmailSettingBag	 getEmailSettings() {
+		List<Setting> settings = settingRepository.findByCategory(SettingCategory.MAIL_SERVER);
+		settings.addAll(settingRepository.findByCategory(SettingCategory.MAIL_TEMPLATES));
+		return new EmailSettingBag(settings);
+	}
 
 }
