@@ -37,7 +37,7 @@ public class Customer {
 	private String state;
 	@Column(name = "postal_code",nullable = false,length = 10)
 	private String postalCode;
-	@Column(name = "verification_code",nullable = false,length = 64)
+	@Column(name = "verification_code",length = 64)
 	private String verificationCode;
 	private boolean enabled;
 	@Column(name = "created_time")

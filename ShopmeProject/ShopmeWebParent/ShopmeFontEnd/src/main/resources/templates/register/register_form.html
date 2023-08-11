@@ -12,7 +12,7 @@
             <h2>Customer Registration</h2>
         </div>
         <form th:action="@{/create_customer}" th:object="${customer}" method="post"
-            style="max-width:600px ; margin: 0 auto;">
+            style="max-width:600px ; margin: 0 auto;"  onsubmit="return checkEmailUnique(this)"  >
             <div class="border border-secondary rounded p-3">
                 <!-- First Name -->
                 <div class="form-group row">
@@ -168,6 +168,7 @@
             }
             console.log(confirmPassword +" "+$("#password").val());
             }
+
             function checkEmailUnique(form) {
         // xác định đường dẫn của dịch vụ web (UserRestService)
         // url = "[[@{/users/check_email}]]";//==> nhận được giá trị của trường biểu mẫu

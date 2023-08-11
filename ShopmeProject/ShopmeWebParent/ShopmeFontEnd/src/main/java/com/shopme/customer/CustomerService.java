@@ -11,7 +11,10 @@ import com.shopme.common.entity.Country;
 import com.shopme.common.entity.Customer;
 import com.shopme.setting.CountryRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class CustomerService {
 	@Autowired
 	private CountryRepository countryRepository;
@@ -63,6 +66,18 @@ public class CustomerService {
 		// TODO Auto-generated method stub
 		String encodePassword = passwordEncoder.encode(customer.getPassword());
 		customer.setPassword(encodePassword);
+		
+	}
+	public boolean verify(String verificationCode) {
+
+		Customer customer =customerRepository.findByVerificationCode(verificationCode);
+
+		if (customer==null || customer.isEnabled()) {
+			return false;
+		}else {
+			customerRepository.enabled(customer.getId());
+			return true;
+		}
 		
 	}
 }

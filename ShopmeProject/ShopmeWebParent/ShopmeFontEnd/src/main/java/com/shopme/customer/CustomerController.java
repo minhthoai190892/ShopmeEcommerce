@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.data.repository.query.Param;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -66,5 +67,10 @@ public class CustomerController {
 		mailSenderImpl.send(message);
 		System.err.println("to Address: "+toAddress);
 		System.err.println("verify URL: "+verifyURL);
+	}
+	@GetMapping("/verify")
+	public String verifyAccount(@Param("code")String code,Model model) {
+		boolean verified = customerService.verify(code);
+		return "register/"+(verified?"verify_success":"verify_fail");
 	}
 }
