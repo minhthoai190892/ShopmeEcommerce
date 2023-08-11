@@ -8,5 +8,8 @@ import com.shopme.common.entity.Country;
 
 
 public interface CountryRepository extends JpaRepository<Country, Integer> {
+	/**
+	 * Hàm tìm kiếm tất cả Country và sắp xếp 
+	 * */
 	public List<Country> findAllByOrderByNameAsc();
 }

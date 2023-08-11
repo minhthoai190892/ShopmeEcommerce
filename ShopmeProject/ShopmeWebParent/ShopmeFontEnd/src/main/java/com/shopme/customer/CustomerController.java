@@ -35,6 +35,7 @@ public class CustomerController {
 	
 	@GetMapping("/register")
 	public String showRegisterForm(Model model) {
+		//lấy danh sách Country
 		List<Country> listCountries = customerService.listAllCountries();
 		model.addAttribute("listCountries",listCountries);
 		model.addAttribute("pageTitle","Customer Registration");
@@ -48,8 +49,16 @@ public class CustomerController {
 		model.addAttribute("pageTitle","Registration Success");
 		return "/register/register_success";
 	}
+	/**
+	 * Hàm send Verification Email khi tạo mới một customer
+	 * @param request
+	 * @param customer đối tượng vừa tạo
+	 * 
+	 * */
 	private void sendVerificationEmail(HttpServletRequest request, Customer customer) throws UnsupportedEncodingException, MessagingException {
+		//
 		EmailSettingBag emailSettingBag = settingService.getEmailSettings();
+		
 		JavaMailSenderImpl mailSenderImpl = Utility.prepareMailSender(emailSettingBag);
 		String toAddress = customer.getEmail();
 		String subject = emailSettingBag.getCustomerVerifySubject();

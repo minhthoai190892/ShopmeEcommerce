@@ -22,13 +22,23 @@ public class CustomerService {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
 	public List<Country> listAllCountries() {
 		return countryRepository.findAllByOrderByNameAsc();
 	}
+	/**
+	 * Hàm kiểm tra email có trùng không
+	 * @param email của customer 
+	 * @return trả về null hoặc not null
+	 * */
 	public boolean isEmailUnique(String email) {
 	Customer customer=	customerRepository.findByEmail(email);
 	return customer == null;
 	}
+	/**
+	 * Hàm tạo mới customer
+	 * @param customer đối tượng customer từ form
+	 * */
 	public void registerCustomer(Customer customer) {
 		encodePassword(customer);
 		customer.setEnabled(false);
@@ -38,6 +48,11 @@ public class CustomerService {
 		customerRepository.save(customer);
 		System.err.println(randomCode);
 	}
+	/**
+	 * Hàm tạo Verification Code
+	 * @param n là số ký tự của mã Verification Code
+	 * @return trả về một mã code
+	 * */
 	private String randomString(int n) {
 		 // choose a Character random from this String
 		  String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -62,12 +77,21 @@ public class CustomerService {
 		 
 		  return sb.toString();
 	}
+	/**
+	 * Hàm mã hóa password
+	 * @param customer đối tượng customer cần mã hóa password
+	 * */
 	private void encodePassword(Customer customer) {
 		// TODO Auto-generated method stub
 		String encodePassword = passwordEncoder.encode(customer.getPassword());
 		customer.setPassword(encodePassword);
 		
 	}
+	/**
+	 * Hàm tìm kiếm và xác minh customer bằng  verification Code
+	 * @param verificationCode verificationCode của customer
+	 * @return false / true
+	 * */
 	public boolean verify(String verificationCode) {
 
 		Customer customer =customerRepository.findByVerificationCode(verificationCode);
@@ -75,6 +99,7 @@ public class CustomerService {
 		if (customer==null || customer.isEnabled()) {
 			return false;
 		}else {
+			//update customer
 			customerRepository.enabled(customer.getId());
 			return true;
 		}

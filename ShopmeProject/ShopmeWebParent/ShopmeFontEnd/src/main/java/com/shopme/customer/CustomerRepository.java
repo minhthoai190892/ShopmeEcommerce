@@ -7,10 +7,22 @@ import org.springframework.data.jpa.repository.Query;
 import com.shopme.common.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+	/**
+	 * Hàm tìm kiếm bằng Email của customer
+	 * @param email email của customer
+	 * */
 	@Query("select c from Customer c Where c.email=?1")
 	public Customer findByEmail(String email);
+	/**
+	 * Hàm tìm customer bằng Verification Code
+	 * @param code là Verification Code của customer
+	 * */
 	@Query("select c from Customer c where c.verificationCode=?1")
 	public Customer findByVerificationCode(String code);
+	/**
+	 * Hàm cập nhật enabled và verificationCode code khi click vào "Verify"
+	 * @param id id customer
+	 * */
 	@Query("update Customer c set c.enabled = true, c.verificationCode=null where c.id=?1")
 	@Modifying
 	public void enabled(Integer id);
