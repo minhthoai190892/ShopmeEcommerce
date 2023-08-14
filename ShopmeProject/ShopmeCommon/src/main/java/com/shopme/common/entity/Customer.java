@@ -29,7 +29,7 @@ public class Customer {
 	private String phoneNumber;
 	@Column(name = "address_line_1",nullable = false,length = 64)
 	private String addressLine1;
-	@Column(name = "address_line_2",nullable = false,length = 64)
+	@Column(name = "address_line_2",length = 64)
 	private String addressLine2;
 	@Column(nullable = false,length = 45)
 	private String city;
@@ -50,7 +50,9 @@ public class Customer {
 	public Customer() {
 		super();
 	}
-//
+	
+	
+// 
 //	public Customer(String email, String password, String firstName, String lastName, String phoneNumber,
 //			String addressLine1, String addressLine2, String city, String state, String postalCode,
 //			String verificationCode, boolean enabled, Date createdTime, Country country) {
@@ -191,16 +193,16 @@ public class Customer {
 		this.country = country;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", addressLine1=" + addressLine1
 				+ ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", postalCode="
 				+ postalCode + ", verificationCode=" + verificationCode + ", enabled=" + enabled + ", createdTime="
-				+ createdTime + ", country=" + country + "]";
+				+ createdTime + "]";
 	}
-	
-	
+
 	public String getFullName() {
 		return firstName+" "+lastName;
 	}

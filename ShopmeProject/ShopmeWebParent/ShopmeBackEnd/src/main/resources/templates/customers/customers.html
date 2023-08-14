@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+</html>
+
+<head th:replace="fragments::page_head('Customer - Shopme Admin','none')"></head>
+
+<body>
+    <div class="container-fluid">
+        <main>
+            <!-- menu -->
+            <div th:replace="navigation::menu"></div>
+            <div>
+                <!-- title -->
+                <h2>Customer Manager</h2>
+                <a th:href="@{/customers/export/csv'}" class="fa-solid fa-file-csv icon-dark fa-xl "></a>
+            </div>
+            <!-- form -->
+            <div th:replace="fragments::search_form('/customers/page/1')"></div>
+            <div th:if="${message!=null}" class="alert alert-success text-center">
+                [[${message}]]
+            </div>
+            <div class="full-details">
+                <table class="table table-bordered table-striped table-hover table-responsive-xl">
+                    <thead>
+                        <tr>
+                            <th th:replace="fragments::column_link('/customers/','id','ID','none')"></th>
+                            <th th:replace="fragments::column_link('/customers/','firstName','First Name','none')"></th>
+                            <th th:replace="fragments::column_link('/customers/','lastName','Last Name','none')"></th>
+                            <th th:replace="fragments::column_link('/customers/','email','Email','none')"></th>
+                            <th th:replace="fragments::column_link('/customers/','city','City','none')"></th>
+                            <th th:replace="fragments::column_link('/customers/','state','State','none')"></th>
+                            <th th:replace="fragments::column_link('/customers/','country','Country','none')"></th>
+                            <th th:replace="fragments::column_link('/customers/','enabled','Enabled','none')"></th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each=" customer: ${listCustomers}">
+                            <td>[[${customer.id}]]</td>
+                            <td>[[${customer.firstName}]]</td>
+                            <td>[[${customer.lastName}]]</td>
+                            <td>[[${customer.email}]]</td>
+                            <td>[[${customer.city}]]</td>
+                            <td>[[${customer.state}]]</td>
+                            <td>[[${customer.country.name}]]</td>
+                            <td
+                                th:replace="fragments::status(${customer.enabled},'/customers/'+${customer.id},'customer')">
+                            </td>
+                            <td>
+                                <a class="fas fa-file-alt fa-2xl icon-green link-detail"
+                                    th:href="@{'/customers/detail/'+${customer.id}}"
+                                    title="View details of the customer"></a>
+                                |
+                                <span th:replace="fragments::edit('customer','/customers/edit/'+${customer.id})"></span>
+                                |
+                                <span
+                                    th:replace="fragments::delete('customer','/customers/delete/'+${customer.id},${customer.id},true)"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:replace="fragments::pagination('/customers/page/','customer')"></div>
+            <!-- Modal -->
+            <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
+            <!-- Modal Detail -->
+            <div class="modal fade modal-xl" id="detailModal" tabindex="-1" aria-labelledby="modalTitle"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div th:replace="fragments::footer"></div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+    <script type="text/javaScript">
+        moduleURL="[[@{/customers}]]";
+        $(document).ready(function() {
+            $(".link-delete").on("click", function(e){
+                e.preventDefault();
+                //gọi hàm hiển thị modal
+                showDeleteConfirmModal($(this), 'customer');
+            });
+            $(".link-detail").on("click", function(e){
+                e.preventDefault();
+                linkDetailURL = $(this).attr("href");
+                //gọi hàm hiển thị modal
+            $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL)
+            console.log(linkDetailURL);
+            });
+        });
+    </script>
+</body>
+
+</html>

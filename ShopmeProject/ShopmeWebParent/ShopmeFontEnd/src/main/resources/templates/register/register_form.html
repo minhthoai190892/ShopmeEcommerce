@@ -12,7 +12,7 @@
             <h2>Customer Registration</h2>
         </div>
         <form th:action="@{/create_customer}" th:object="${customer}" method="post"
-            style="max-width:600px ; margin: 0 auto;"  onsubmit="return checkEmailUnique(this)"  >
+            style="max-width:600px ; margin: 0 auto;" onsubmit="return checkEmailUnique(this)">
             <div class="border border-secondary rounded p-3">
                 <!-- First Name -->
                 <div class="form-group row">
@@ -132,7 +132,7 @@
         </script>
     <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
     <script type="text/JavaScript">
-        var contextPath = "[[@{/}]]";
+    var contextPath = "[[@{/}]]";
     var dropDownCountry;
     var dataListState;
     var fieldState;
@@ -147,8 +147,9 @@
         });
         function loadStatesForCountry(){
             selectedCountry = $("#country option:selected");
+            
             countryId = selectedCountry.val();
-            url=contextPath + "states/list_states_by_country/"+countryId;
+            url=contextPath + "settings/list_states_by_country/"+countryId;
             console.log(url);
             $.get(url, function(responseJSON){
             dataListState.empty();
@@ -216,4 +217,3 @@ function showErrorModal(message) {
 </body>
 
 </html>
-

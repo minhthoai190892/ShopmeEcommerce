@@ -2,7 +2,12 @@ package com.shopme.common.exception;
 
 public class CategoryNotFoundException extends Exception {
 
-    public CategoryNotFoundException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CategoryNotFoundException(String message) {
         super(message);
     }
  

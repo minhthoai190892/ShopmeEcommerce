@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+</html>
+
+<head th:replace="fragments::page_head('Customer - Shopme Admin','none')"></head>
+
+<body>
+    <div class="container-fluid">
+        <main>
+            <!-- menu -->
+            <div th:replace="navigation::menu"></div>
+            <div>
+                <!-- title -->
+                <h2>Customer Manager</h2>
+           
+            </div>
+            <!-- form -->
+           <form th:action="@{/customers/save}" method="post" th:object="${customer}">
+            <input type="hidden" th:field="*{id}">
+            <input type="text" th:field="*{firstName}">
+            <input type="text" th:field="*{country}">
+           </form>
+        </main>
+    </div>
+    <div th:replace="fragments::footer"></div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+    <script type="text/javaScript">
+        moduleURL="[[@{/customers}]]";
+        $(document).ready(function() {
+            $(".link-delete").on("click", function(e){
+                e.preventDefault();
+                //gọi hàm hiển thị modal
+                showDeleteConfirmModal($(this), 'customer');
+            });
+            $(".link-detail").on("click", function(e){
+                e.preventDefault();
+                linkDetailURL = $(this).attr("href");
+                //gọi hàm hiển thị modal
+            $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL)
+            console.log(linkDetailURL);
+            });
+        });
+    </script>
+</body>
+
+</html>

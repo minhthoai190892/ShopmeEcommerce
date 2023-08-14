@@ -37,6 +37,9 @@ public class CustomerController {
 	public String showRegisterForm(Model model) {
 		//lấy danh sách Country
 		List<Country> listCountries = customerService.listAllCountries();
+		for (Country country : listCountries) {
+			System.err.println(country.getName());
+		}
 		model.addAttribute("listCountries",listCountries);
 		model.addAttribute("pageTitle","Customer Registration");
 		model.addAttribute("customer",new Customer());

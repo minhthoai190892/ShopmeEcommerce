@@ -288,6 +288,7 @@ public class ProductController {
 	public String editProduct(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
 		try {
 			Product product = productService.get(id);
+			System.err.println(product);
 			List<Brand> listBrands = brandService.listAll();
 			Integer numberOfExistingExtraImage = product.getImages().size();
 

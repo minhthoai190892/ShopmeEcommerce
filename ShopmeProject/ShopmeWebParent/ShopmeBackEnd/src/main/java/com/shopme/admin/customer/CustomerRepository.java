@@ -1,5 +1,7 @@
 package com.shopme.admin.customer;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,7 +16,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	 * @param keyword từ khóa cần tìm kiếm
 	 * @param pageable 
 	 * */
-	@Query("select c from Customer c where concat(c.email,' ',c.firstName,' ',c.lastName,' ',c.addressLine1,' ',c.addressLine2,' ',c.city,' ',c.state,' ',c.postalCode,' ',c.countryName)like %?1%")
+	@Query("select c from Customer c where concat(c.email,' ',c.firstName,' ',c.lastName,' ',c.addressLine1,' ',c.addressLine2,' ',c.city,' ',c.state,' ',c.postalCode,' ',c.country.name)like %?1%")
 	public Page<Customer> findAll(String keyword,Pageable pageable);
 	/**
 	 * Hàm update enabled
@@ -31,5 +33,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	@Query("select c from Customer c where c.email=?1")
 	public Customer findByEmail(String email);
 	
-	public long countId(Integer id);
+	public long countById(Integer id);
+	
 }

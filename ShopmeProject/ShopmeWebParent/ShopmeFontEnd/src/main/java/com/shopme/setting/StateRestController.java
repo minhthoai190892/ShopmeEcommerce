@@ -20,7 +20,7 @@ public class StateRestController {
 	@Autowired
 	private StateRepository stateRepository;
 
-	@GetMapping("/states/list_states_by_country/{id}")
+	@GetMapping("/settings/list_states_by_country/{id}")
 	public List<StateDTO> listByCountry(@PathVariable("id") Integer countryId) {
 		System.out.println("RestController/listByCountry.java>>>>>");
 		List<State> listStates = stateRepository.findByCountryOrderByNameAsc(new Country(countryId));

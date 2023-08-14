@@ -1,12 +1,12 @@
 package com.shopme.common.exception;
 
-public class ProductNotFoundException extends Exception {
+public class CustomerNotFoundException extends Exception {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ProductNotFoundException(String message) {
+	public CustomerNotFoundException(String message) {
 		super(message);
 	}
 }
