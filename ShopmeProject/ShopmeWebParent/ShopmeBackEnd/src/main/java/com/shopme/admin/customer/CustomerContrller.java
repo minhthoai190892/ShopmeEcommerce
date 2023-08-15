@@ -107,8 +107,7 @@ public class CustomerContrller {
 			System.err.println(customer.getCountry().getName()+" "+customer.getCountry().getId());
 			model.addAttribute("countries",countries);
 			model.addAttribute("customer",customer);
-//			model.addAttribute("pageTitle", String.format("Edit Customer (ID: %d)", id));
-			model.addAttribute("pageTitle", "Edit");
+			model.addAttribute("pageTitle", String.format("Edit Customer (ID: %d)", id));
 			return "customers/customer_form";
 		} catch (CustomerNotFoundException e) {
 			// TODO: handle exception

@@ -150,7 +150,7 @@
             
             countryId = selectedCountry.val();
             url=contextPath + "settings/list_states_by_country/"+countryId;
-            console.log(url);
+           
             $.get(url, function(responseJSON){
             dataListState.empty();
             $.each(responseJSON, function (index, state) { 

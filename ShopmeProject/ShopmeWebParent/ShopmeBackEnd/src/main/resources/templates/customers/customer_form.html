@@ -4,7 +4,7 @@
 
 </html>
 
-<head th:replace="fragments::page_head('Customer - Shopme Admin','none')"></head>
+<head th:replace="fragments::page_head(${pageTitle},'none')"></head>
 
 <body>
     <div class="container-fluid">
@@ -13,15 +13,100 @@
             <div th:replace="navigation::menu"></div>
             <div>
                 <!-- title -->
-                <h2>Customer Manager</h2>
-           
+                <h2>Customer Manager | [[${pageTitle}]]</h2>
             </div>
-            <!-- form -->
-           <form th:action="@{/customers/save}" method="post" th:object="${customer}">
-            <input type="hidden" th:field="*{id}">
-            <input type="text" th:field="*{firstName}">
-            <input type="text" th:field="*{country}">
-           </form>
+            <form th:action="@{/customers/save}" method="post" th:object="${customer}"
+                style="max-width: 600px; margin: 0 auto;">
+                <input type="hidden" th:field="*{id}">
+                <div class="border border-secondary rounded p-3">
+                    <div class="form-group row m-2">
+                        <label for="firstName" class="col-sm-4 col-form-control">First Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{firstName}" required minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="lastName" class="col-sm-4 col-form-control">Last Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{lastName}" required minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="email" class="col-sm-4 col-form-control">E-mail:</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" th:field="*{email}" required minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="password" class="col-sm-4 col-form-control">Password:</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" th:field="*{password}"  minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="phoneNumber" class="col-sm-4 col-form-control">Phone Number:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{phoneNumber}" required minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="addressLine1" class="col-sm-4 col-form-control">Address Line 1:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{addressLine1}" required minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="addressLine2" class="col-sm-4 col-form-control">Address Line 2:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{addressLine2}"  minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="city" class="col-sm-4 col-form-control">City:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{city}" required minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="country" class="col-sm-4 col-form-control">Country:</label>
+                        <div class="col-sm-8">
+                            <select name="" th:field="*{country}" id="" class="form-control">
+                                <option th:each=" country: ${countries}" th:value="${country.id}">[[${country.name}]]
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="state" class="col-sm-4 col-form-control">State/Province:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{state}" list="listStates" required
+                                minlength="2" maxlength="64">
+                            <datalist id="listStates"></datalist>
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <label for="postalCode" class="col-sm-4 col-form-control">Postal Code:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" th:field="*{postalCode}" required minlength="2"
+                                maxlength="64">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" value="Save" class="btn btn-primary m-3">
+                        <input type="submit" value="Cancel" id="cancelButton" class="btn btn-secondary m-3">
+                    </div>
+                </div>
+
+            </form>
+            <div th:replace="./fragments/fragment_modal::modal_dialog"></div>
         </main>
     </div>
     <div th:replace="fragments::footer"></div>
@@ -37,20 +122,39 @@
     <script type="text/javaScript" th:src="@{/js/common.js}"></script>
     <script type="text/javaScript">
         moduleURL="[[@{/customers}]]";
-        $(document).ready(function() {
-            $(".link-delete").on("click", function(e){
-                e.preventDefault();
-                //gọi hàm hiển thị modal
-                showDeleteConfirmModal($(this), 'customer');
+        var dropDownCountries;
+        var dropDownStates;
+        var listStates;
+        $(document).ready(function(){
+            dropDownCountries = $("#country");
+            dropDownStates = $("#listStates");
+            // cancel button
+            $("#cancelButton").click(function(){
+            window.location.href="[[@{/customers}]]";
             });
-            $(".link-detail").on("click", function(e){
-                e.preventDefault();
-                linkDetailURL = $(this).attr("href");
-                //gọi hàm hiển thị modal
-            $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL)
-            console.log(linkDetailURL);
+            //thay đổi state khi country thay đổi
+            dropDownCountries.on("change", function(){
+                //hàm load states
+                loadStates4Country();
+                $("#state").val("").focus();
             });
+            loadStates4Country();
         });
+        function loadStates4Country(){
+            //lấy id của option
+            selectedCountry = $("#country option:selected");
+            countryId = selectedCountry.val();
+            url = "[[@{/states/list_by_country/}]]"+countryId;
+            $.get(url, function(responseJson){
+                dropDownStates.empty();
+                $.each(responseJson, function(index, state){
+                    $("<option>").val(state.name).text(state.name).appendTo(dropDownStates);
+                });
+            }).fail(function(){
+                showErrorModal("ERROR loading state/provinces for the selected country.");
+            });
+            console.log(url);
+        };
     </script>
 </body>
 
