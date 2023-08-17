@@ -38,7 +38,7 @@
         [[${message}]]
       </div>
       <!-- form search -->
-      <div th:replace="fragments::search_form('/users/page/1')"></div>
+      <div th:replace="fragments::search_form"></div>
       <!-- tabel -->
       <div class="table-responsive full-details">
         <table class="table table-striped
@@ -55,21 +55,21 @@
             <tr>
               <!-- gọi từ fragments.html -->
               <th class="hideable-colum">
-              <th th:replace="fragments::column_link('/users/','id','User Id','tag')"></th>
+              <th th:replace="fragments::column_link('id','User Id','tag')"></th>
               </th>
               <th>Photo</th>
               <!-- gọi từ fragments.html -->
               <th class="hideable-colum">
-              <th th:replace="fragments::column_link('/users/','email','E-mail','tag')"></th>
+              <th th:replace="fragments::column_link('email','E-mail','tag')"></th>
               </th>
               <!-- gọi từ fragments.html -->
-              <th th:replace="fragments::column_link('/users/','firstName','First Name','none')"></th>
+              <th th:replace="fragments::column_link('firstName','First Name','none')"></th>
 
               <!-- gọi từ fragments.html -->
-              <th th:replace="fragments::column_link('/users/','lastName','Last Name','none')"></th>
+              <th th:replace="fragments::column_link('lastName','Last Name','none')"></th>
               <th>Role</th>
               <!-- gọi từ fragments.html -->
-              <th th:replace="fragments::column_link('/users/','enable','Enable','none')"></th>
+              <th th:replace="fragments::column_link('enable','Enable','none')"></th>
               <th>Action</th>
             </tr>
           </thead>
@@ -145,7 +145,7 @@
         </div>
       </div>
       <!-- pagination -->
-      <div th:replace="fragments::pagination('/users/page/','users')"></div>
+      <div th:replace="fragments::pagination('users')"></div>
 
     </div>
     <!-- Modal -->

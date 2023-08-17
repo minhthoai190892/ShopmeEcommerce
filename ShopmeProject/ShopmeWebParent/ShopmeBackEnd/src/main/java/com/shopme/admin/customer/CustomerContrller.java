@@ -47,6 +47,7 @@ public class CustomerContrller {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 		model.addAttribute("endCount", endCount);
+		model.addAttribute("moduleURL","/customers");
 		return "customers/customers";
 	}
 
@@ -80,6 +81,8 @@ public class CustomerContrller {
 		customerService.save(customer);
 		redirectAttributes.addFlashAttribute("message",
 				"The Customer ID " + customer.getId() + " has been update successfully");
+		boolean testEmailUniqu = customerService.isEmailUnique(customer.getId(), customer.getEmail());
+		System.err.println("testEmailUniqu >>>>>>>>>>>> "+testEmailUniqu);
 		return "redirect:/customers";
 	}
 

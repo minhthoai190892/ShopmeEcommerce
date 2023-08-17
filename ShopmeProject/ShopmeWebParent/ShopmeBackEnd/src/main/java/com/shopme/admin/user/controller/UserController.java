@@ -97,6 +97,7 @@ public class UserController {
 		//search
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("listUsers", listUsers);
+		model.addAttribute("moduleURL","/users");
 		return "users/users";
 	}
 	

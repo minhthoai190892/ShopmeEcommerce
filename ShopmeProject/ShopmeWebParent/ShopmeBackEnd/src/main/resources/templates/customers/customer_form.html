@@ -15,7 +15,7 @@
                 <!-- title -->
                 <h2>Customer Manager | [[${pageTitle}]]</h2>
             </div>
-            <form th:action="@{/customers/save}" method="post" th:object="${customer}"
+            <form th:action="@{/customers/save}"  method="post" th:object="${customer}"
                 style="max-width: 600px; margin: 0 auto;">
                 <input type="hidden" th:field="*{id}">
                 <div class="border border-secondary rounded p-3">
@@ -43,7 +43,7 @@
                     <div class="form-group row m-2">
                         <label for="password" class="col-sm-4 col-form-control">Password:</label>
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" th:field="*{password}"  minlength="2"
+                            <input type="password" class="form-control" th:field="*{password}" minlength="2"
                                 maxlength="64">
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                     <div class="form-group row m-2">
                         <label for="addressLine2" class="col-sm-4 col-form-control">Address Line 2:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" th:field="*{addressLine2}"  minlength="2"
+                            <input type="text" class="form-control" th:field="*{addressLine2}" minlength="2"
                                 maxlength="64">
                         </div>
                     </div>
@@ -120,6 +120,7 @@
         </script>
     <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
     <script type="text/javaScript" th:src="@{/js/common.js}"></script>
+    <script type="text/javaScript" th:src="@{/js/common_form.js}"></script>
     <script type="text/javaScript">
         moduleURL="[[@{/customers}]]";
         var dropDownCountries;
@@ -139,6 +140,19 @@
                 $("#state").val("").focus();
             });
             loadStates4Country();
+
+
+            customerId = $("#id").val();
+            customerEmail = $("#email").val();
+            csrfValue = $("input[name='_csrf']").val();
+            url="[[@{/customers/check_email}]]";
+            console.log(url);
+
+            params={id:customerId,email:customerEmail,_csrf:csrfValue};
+            // $.post(url, params,function(response) {
+            //     console.log(response);
+            // };
+            console.log(params);
         });
         function loadStates4Country(){
             //lấy id của option
@@ -155,6 +169,25 @@
             });
             console.log(url);
         };
+        function checkEmailUnique(form) {
+            customerId = $("#id").val();
+            customerEmail = $("#email").val();
+            csrfValue = $("input[name='_csrf']").val();
+            url="[[@{/customers/check_email}]]";
+            params={id:customerId,email:customerEmail,_csrf:csrfValue};
+            $.post(url, params,function(response) {
+                if (response=="OK") {
+                    form.submit();
+                }else if (response=="Duplicated") {
+                    showWarningModal("There is another customer having the email "+customerEmail);
+                }else{
+                showErrorModal("Unknown response form server");
+                }
+            }).fail(function(){
+                showErrorModal("Could not connect to the server");
+            });
+            return false;
+        }
     </script>
 </body>
 

@@ -209,14 +209,15 @@ public Set<ProductDetail> getDetails() {
 		this.images = images;
 	}
 
+	
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", alias=" + alias + ", shortDescription=" + shortDescription
 				+ ", fullDescription=" + fullDescription + ", createdTime=" + createdTime + ", UpdateTime=" + UpdateTime
 				+ ", enabled=" + enabled + ", inStock=" + inStock + ", cost=" + cost + ", price=" + price
 				+ ", discountPercent=" + discountPercent + ", length=" + length + ", width=" + width + ", height="
-				+ height + ", weight=" + weight + ", mainImage=" + mainImage + ", images=" + images + ", category="
-				+ category + ", brand=" + brand + "]";
+				+ height + ", weight=" + weight + ", mainImage=" + mainImage + "]";
 	}
 	/**
 	 * hàm thêm extra image

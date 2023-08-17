@@ -17,7 +17,7 @@
                 <a th:href="@{/customers/export/csv'}" class="fa-solid fa-file-csv icon-dark fa-xl "></a>
             </div>
             <!-- form -->
-            <div th:replace="fragments::search_form('/customers/page/1')"></div>
+            <div th:replace="fragments::search_form"></div>
             <div th:if="${message!=null}" class="alert alert-success text-center">
                 [[${message}]]
             </div>
@@ -25,14 +25,14 @@
                 <table class="table table-bordered table-striped table-hover table-responsive-xl">
                     <thead>
                         <tr>
-                            <th th:replace="fragments::column_link('/customers/','id','ID','none')"></th>
-                            <th th:replace="fragments::column_link('/customers/','firstName','First Name','none')"></th>
-                            <th th:replace="fragments::column_link('/customers/','lastName','Last Name','none')"></th>
-                            <th th:replace="fragments::column_link('/customers/','email','Email','none')"></th>
-                            <th th:replace="fragments::column_link('/customers/','city','City','none')"></th>
-                            <th th:replace="fragments::column_link('/customers/','state','State','none')"></th>
-                            <th th:replace="fragments::column_link('/customers/','country','Country','none')"></th>
-                            <th th:replace="fragments::column_link('/customers/','enabled','Enabled','none')"></th>
+                            <th th:replace="fragments::column_link('id','ID','none')"></th>
+                            <th th:replace="fragments::column_link('firstName','First Name','none')"></th>
+                            <th th:replace="fragments::column_link('lastName','Last Name','none')"></th>
+                            <th th:replace="fragments::column_link('email','Email','none')"></th>
+                            <th th:replace="fragments::column_link('city','City','none')"></th>
+                            <th th:replace="fragments::column_link('state','State','none')"></th>
+                            <th th:replace="fragments::column_link('country','Country','none')"></th>
+                            <th th:replace="fragments::column_link('enabled','Enabled','none')"></th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -62,7 +62,7 @@
                     </tbody>
                 </table>
             </div>
-            <div th:replace="fragments::pagination('/customers/page/','customer')"></div>
+            <div th:replace="fragments::pagination('customer')"></div>
             <!-- Modal Delete-->
             <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
             <!-- Modal Detail -->
@@ -106,3 +106,6 @@
 </body>
 
 </html>
+
+
+

@@ -86,6 +86,8 @@ public class CustomerService {
 	 * 
 	 * */
 	public void save(Customer customerInform) {
+		//tìm customer từ database
+		Customer customerDB = customerRepository.findById(customerInform.getId()).get();
 		//kiểm tra xem ô password có được nhập không 
 		if (!customerInform.getPassword().isEmpty()) {
 			//=> có nhập
@@ -93,11 +95,12 @@ public class CustomerService {
 			customerInform.setPassword(encondePassword);
 		}else {
 			//=> không có nhập
-			//tìm customer từ database
-			Customer customerDB = customerRepository.findById(customerInform.getId()).get();
 			//set lại password customer
 			customerInform.setPassword(customerDB.getPassword());
 		}
+		customerInform.setCreatedTime(customerDB.getCreatedTime());
+		customerInform.setEnabled(customerDB.isEnabled());
+		customerInform.setVerificationCode(customerDB.getVerificationCode());
 		customerRepository.save(customerInform);
 	}
 	/**

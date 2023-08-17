@@ -35,6 +35,7 @@ public class ProductService {
 			
 			if (categoryId!=null && categoryId>0) {
 				String categoryIdMatch = "-"+String.valueOf(categoryId)+"-";
+				
 				return productRepository.searchInCategory(categoryId, categoryIdMatch, keyword, pageable);
 			}
 			//search by keyword

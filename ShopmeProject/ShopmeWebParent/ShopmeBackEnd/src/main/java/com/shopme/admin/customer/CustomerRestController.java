@@ -11,6 +11,7 @@ public class CustomerRestController {
 	private CustomerService customerService;
 	@PostMapping("/customers/check_email")
 	public String checkDuplicateEmail(@PathVariable("id")Integer id, @PathVariable("email")String email) {
+		System.err.println(customerService.isEmailUnique(id, email));
 		if (customerService.isEmailUnique(id, email)) {
 			return "OK";
 		}else {
