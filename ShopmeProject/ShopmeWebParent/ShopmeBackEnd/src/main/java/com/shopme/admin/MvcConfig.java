@@ -2,10 +2,14 @@ package com.shopme.admin;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.shopme.admin.paging.PagingAndSortingArgumentResolver;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
@@ -58,5 +62,12 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addResourceHandler(logicalPath)// đăng ký cho tất cả các thư mục có trong "dirName"
 		.addResourceLocations("file:/" + absolutePath + "/");
 	}
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+		// TODO Auto-generated method stub
+		resolvers.add(new PagingAndSortingArgumentResolver());
+	}
+	
+	
 
 }

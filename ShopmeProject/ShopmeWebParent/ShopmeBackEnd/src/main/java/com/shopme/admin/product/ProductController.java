@@ -119,10 +119,13 @@ public class ProductController {
 			@AuthenticationPrincipal ShopmeUserDetails loggedUser
 
 	) throws IOException {
-		if (loggedUser.hasRole("Selesperson")) {
-			productService.saveProductPrice(product);
+		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Editor") ) {
+			if ( loggedUser.hasRole("Selesperson")) {
+					productService.saveProductPrice(product);
 			redirectAttributes.addFlashAttribute("message", "The product has been saved successfully.");
 			return "redirect:/products";
+			}
+		
 		}
 		// gọi hàm
 		setMainImageName(mainImageMultipartFile, product);
