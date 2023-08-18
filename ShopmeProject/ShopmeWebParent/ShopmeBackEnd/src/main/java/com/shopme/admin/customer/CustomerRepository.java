@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import com.shopme.common.entity.AuthenticationType;
 import com.shopme.common.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
@@ -35,4 +36,11 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	
 	public long countById(Integer id);
 	
+	
+//	==============================================Font End=======================================================================
+	
+//	test
+	@Query("update Customer c set c.authenticationType = ?2 where c.id=?1")
+	@Modifying
+	public void updateAuthenticationType(Integer customerId,AuthenticationType type);
 }

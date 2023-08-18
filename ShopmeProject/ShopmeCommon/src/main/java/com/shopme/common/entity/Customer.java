@@ -4,6 +4,8 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -47,6 +49,10 @@ public class Customer {
 	@JoinColumn(name = "country_id")
 	private Country country;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name = "authentication_type",length = 10)
+	private AuthenticationType authenticationType;
+	
 	public Customer() {
 		super();
 	}
@@ -194,6 +200,16 @@ public class Customer {
 	}
 
 	
+	public AuthenticationType getAuthenticationType() {
+		return authenticationType;
+	}
+
+
+	public void setAuthenticationType(AuthenticationType authenticationType) {
+		this.authenticationType = authenticationType;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName

@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import com.shopme.admin.product.ProductRepository;
+import com.shopme.common.entity.AuthenticationType;
 import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.Product;
 
@@ -27,5 +28,12 @@ public class TestCustomer {
 		for (Product product : customers) {
 			System.out.println(product);
 		}
+	}
+	@Test
+	public void testUpdateAuthenticationType() {
+		Integer id =8;
+		customerRepository.updateAuthenticationType(id, AuthenticationType.FACEBOOK);
+		Customer customer = customerRepository.findById(id).get();
+		System.err.println(customer.getAuthenticationType());
 	}
 }
