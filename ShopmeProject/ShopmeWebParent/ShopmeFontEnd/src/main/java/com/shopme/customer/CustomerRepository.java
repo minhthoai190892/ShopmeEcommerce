@@ -27,7 +27,11 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	@Query("update Customer c set c.enabled = true, c.verificationCode=null where c.id=?1")
 	@Modifying
 	public void enabled(Integer id);
-	
+	/**
+	 * hàm dùng để update loại xác thực (database, facebook, google)
+	 * @param customerId là id của customer cầm cập nhật
+	 * @param type là loại xác thực
+	 * */
 	@Query("update Customer c set c.authenticationType = ?2 where c.id=?1")
 	@Modifying
 	public void updateAuthenticationType(Integer customerId,AuthenticationType type);
