@@ -28,6 +28,13 @@ spring:
             scope:
             - email
             - profile
+          facebook:
+            client-id: 298301506215098
+            client-secret: 4985bf18247dd2aea3ea8c6240615767
+            
+            scope:
+            - email
+            - public_profile
 # lifecycle bug fix when login GOOGLE
   main:
     allow-circular-references: 

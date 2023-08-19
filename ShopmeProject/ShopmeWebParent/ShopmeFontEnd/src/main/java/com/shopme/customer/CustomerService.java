@@ -121,7 +121,7 @@ public class CustomerService {
 	 * @param email nhận email khi đăng nhập goodle
 	 * @param countryCode nhận country code khi đăng nhập google
 	 * **/
-	public void addNewCustomerUponOAuthLogin(String name, String email,String countryCode) {
+	public void addNewCustomerUponOAuthLogin(String name, String email,String countryCode,AuthenticationType authenticationType) {
 		// TODO Auto-generated method stub
 		Customer customer = new Customer();
 		
@@ -131,7 +131,7 @@ public class CustomerService {
 		
 		customer.setEnabled(true); 
 		customer.setCreatedTime(new Date());
-		customer.setAuthenticationType(AuthenticationType.GOOGLE);
+		customer.setAuthenticationType(authenticationType);
 		
 		customer.setPassword("");
 		customer.setAddressLine1("");

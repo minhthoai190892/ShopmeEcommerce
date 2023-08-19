@@ -12,8 +12,12 @@ public class CustomerOAuth2UserService extends DefaultOAuth2UserService {
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		// TODO Auto-generated method stub
+		//login facebook
+		String clientName = userRequest.getClientRegistration().getClientId();
+		
+		
 		OAuth2User user= super.loadUser(userRequest);
-		return new CustomerOAuth2User(user);
+		return new CustomerOAuth2User(user,clientName);
 	}
 
 }
