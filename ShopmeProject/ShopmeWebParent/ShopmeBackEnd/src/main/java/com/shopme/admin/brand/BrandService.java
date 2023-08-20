@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.shopme.admin.paging.PagingAndSortingHelper;
 import com.shopme.common.entity.Brand;
 
 import jakarta.transaction.Transactional;
@@ -26,15 +27,17 @@ public class BrandService {
 	public List<Brand> listAll() {
 		return brandRepository.findAll();
 	}
-	public Page<Brand> listByPage(int pageNum,String sortField,String sortDir,String keyword){
-		Sort sort = Sort.by(sortField);
-		sort = sortDir.equals("asc")?sort.ascending():sort.descending();
+	public void listByPage(int pageNum,PagingAndSortingHelper helper){
+		Sort sort = Sort.by(helper.getSortField());
+		sort = helper.getSortDir().equals("asc")?sort.ascending():sort.descending();
 		Pageable pageable = PageRequest.of(pageNum-1, BRANDS_PER_PAGE,sort);
-		
-		if (keyword != null) {
-			return brandRepository.findAll(keyword,pageable);
+		Page<Brand> page=null;
+		if (helper.getKeyword() != null) {
+			page= brandRepository.findAll(helper.getKeyword(),pageable);
+		}else {
+			page= brandRepository.findAll(pageable);
 		}
-		return brandRepository.findAll(pageable);
+		helper.updateModelAttributes(pageNum, page);
 		
 		
 	}

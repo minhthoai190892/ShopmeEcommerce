@@ -28,19 +28,20 @@
 
       </div>
     </div>
-<!-- drop Down States -->
-<div class="form-group row">
-  <label for="" id="labelStateName" class="col-sm-2 col-form-label">States/Province Name:</label>
-  <div class="col-sm-6">
-    <input type="text"  class="form-control m-2"   id="fieldStateName">
-  </div>
-  <div class="col-lg-4 mt-2">
-    <input type="button" id="buttonAddState" value="Add" class="btn btn-secondary mr-2">
-    <input type="button" id="buttonUpdateState" value="Update" class="btn btn-secondary mr-2">
-    <input type="button" id="buttonDeleteState" value="Delete" class="btn btn-secondary mr-2">
-  </div>
-</div>
-
+    <!-- drop Down States -->
+    <form id="formStates">
+      <div class="form-group row">
+        <label for="" id="labelStateName" class="col-sm-2 col-form-label">States/Province Name:</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control m-2" id="fieldStateName" required minlength="3" maxlength="45">
+        </div>
+        <div class="col-lg-4 mt-2">
+          <input type="button" id="buttonAddState" value="Add" class="btn btn-secondary mr-2">
+          <input type="button" id="buttonUpdateState" value="Update" class="btn btn-secondary mr-2">
+          <input type="button" id="buttonDeleteState" value="Delete" class="btn btn-secondary mr-2">
+        </div>
+      </div>
+    </form>
 
 
 
@@ -50,3 +51,5 @@
 </body>
 
 </html>
+
+

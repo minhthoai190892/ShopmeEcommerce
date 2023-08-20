@@ -4,6 +4,8 @@ import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +31,7 @@ public class Customer {
 	private String phoneNumber;
 	@Column(name = "address_line_1",nullable = false,length = 64)
 	private String addressLine1;
-	@Column(name = "address_line_2",nullable = false,length = 64)
+	@Column(name = "address_line_2",length = 64)
 	private String addressLine2;
 	@Column(nullable = false,length = 45)
 	private String city;
@@ -37,7 +39,7 @@ public class Customer {
 	private String state;
 	@Column(name = "postal_code",nullable = false,length = 10)
 	private String postalCode;
-	@Column(name = "verification_code",nullable = false,length = 64)
+	@Column(name = "verification_code",length = 64)
 	private String verificationCode;
 	private boolean enabled;
 	@Column(name = "created_time")
@@ -47,10 +49,16 @@ public class Customer {
 	@JoinColumn(name = "country_id")
 	private Country country;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name = "authentication_type",length = 10)
+	private AuthenticationType authenticationType;
+	
 	public Customer() {
 		super();
 	}
-//
+	
+	
+// 
 //	public Customer(String email, String password, String firstName, String lastName, String phoneNumber,
 //			String addressLine1, String addressLine2, String city, String state, String postalCode,
 //			String verificationCode, boolean enabled, Date createdTime, Country country) {
@@ -191,15 +199,30 @@ public class Customer {
 		this.country = country;
 	}
 
+	
+	public AuthenticationType getAuthenticationType() {
+		return authenticationType;
+	}
+
+
+	public void setAuthenticationType(AuthenticationType authenticationType) {
+		this.authenticationType = authenticationType;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", addressLine1=" + addressLine1
 				+ ", addressLine2=" + addressLine2 + ", city=" + city + ", state=" + state + ", postalCode="
 				+ postalCode + ", verificationCode=" + verificationCode + ", enabled=" + enabled + ", createdTime="
-				+ createdTime + ", country=" + country + "]";
+				+ createdTime + "]";
 	}
-	
-	
-	
+
+	public String getFullName() {
+		return firstName+" "+lastName;
+	}
+
+
+
 }

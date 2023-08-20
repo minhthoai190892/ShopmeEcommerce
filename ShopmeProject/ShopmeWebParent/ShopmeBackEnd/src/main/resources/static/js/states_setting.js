@@ -76,6 +76,11 @@ function deleteState() {
 
 
 function updateState() {
+	    formStates = document.getElementById("formStates");
+    if (!formStates.checkValidity()) {
+        formStates.reportValidity();
+        return;
+    }
     url = contextPath + "states/save";
 
     stateId = dropDownStates.val();
@@ -104,6 +109,12 @@ function updateState() {
 }
 
 function addState() {
+
+    formStates = document.getElementById("formStates");
+    if (!formStates.checkValidity()) {
+        formStates.reportValidity();
+        return;
+    }
     url = contextPath + "states/save";
     stateName = fieldStateName.val();
     stateId = fieldStateName.val();

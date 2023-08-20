@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <body>
     <div th:fragment="head_menu">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/}"><img th:src="@{${SITE_LOGO}}" alt="" width="100" height="100" /></a>
+                <a class="navbar-brand" th:href="@{/}"><img th:src="@{${SITE_LOGO}}" alt="" width="100"
+                        height="100" /></a>
                 <!--  data-bs-target="#navbarSupportedContent,#searchNavbar" thêm tìm kiếm vào -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent,#searchNavbar" aria-controls="navbarSupportedContent"
@@ -16,49 +18,82 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <!-- Careers -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link" aria-current="page"  href="">Careers</a>
+                            <a class="nav-link" aria-current="page" href="">Careers</a>
                         </li>
                         <!-- Payment -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link" aria-current="page"  href="">Payment</a>
+                            <a class="nav-link" aria-current="page" href="">Payment</a>
                         </li>
                         <!-- Shipping & Delivery -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link" aria-current="page"  href="">Shipping &
+                            <a class="nav-link" aria-current="page" href="">Shipping &
                                 Delivery</a>
                         </li>
                         <!-- Login -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link" aria-current="page"  href="">Login</a>
+                            <a class="nav-link" aria-current="page" th:href="@{/login}">Login</a>
                         </li>
                         <!-- Register -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link" aria-current="page"  th:href="@{/register}">Register</a>
+                            <a class="nav-link" aria-current="page" th:href="@{/register}">Register</a>
                         </li>
                         <!-- Contact -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link" aria-current="page"  href="">Contact</a>
+                            <a class="nav-link" aria-current="page" href="">Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
-	<div th:fragment="search_nav" class="row">
-		<div class="col-md">
-			<nav class="navbar navbar-expand-sm bg-light">
-				<div class="collapse navbar-collapse" id="searchNavbar">
-					<form th:action="@{/search}" method="get" class="form-inline">
-						<div style="display: flex;">
-							<input type="search" name="keyword" th:value="${keyword}" class="form-control mr-sm-2" placeholder="keyword" required/>
-						<input type="submit"  class="btn btn-outline-success"/>
-						</div>
-						
-					</form>
-				</div>
-			</nav>
-		</div>
-	</div>
+
+    <div th:fragment="search_nav" class="row">
+        <div class="col-md">
+            <th:block sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+                    <input type="submit" value="Logout">
+                </form>
+            </th:block>
+
+            <nav class="navbar navbar-expand-sm bg-light">
+                <div class="collapse navbar-collapse" id="searchNavbar">
+                    <form th:action="@{/search}" method="get" class="form-inline">
+                        <div style="display: flex;">
+                            <input type="search" name="keyword" th:value="${keyword}" class="form-control mr-sm-2"
+                                placeholder="keyword" required />
+                            <input type="submit" class="btn btn-outline-success" />
+                        </div>
+                    </form>
+                    <ul class="navbar-nav">
+                        <th:block sec:authorize="isAuthenticated()">
+                            <li class="nav-item">
+                                <b><a th:href="@{/customer}" sec:authentication="principal.fullName"
+                                        class="nav-link"></a></b>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Address</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Questions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Reviews</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Cart</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="javascript:document.logoutForm.submit()" class="nav-link">Logout</a>
+                            </li>
+                        </th:block>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
     <div th:fragment="footer_menu">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -92,6 +127,4 @@
 </body>
 
 </html>
-
-
 

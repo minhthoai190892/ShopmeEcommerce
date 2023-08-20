@@ -11,7 +11,7 @@
         <!-- title -->
         <div th:replace="fragments::download_file('Manage Brands','/brands/')"></div>
         <!-- form -->
-        <div th:replace="fragments::search_form('/brands/page/1')"></div>
+        <div th:replace="fragments::search_form"></div>
         <div th:if="${message!=null}" class="alert alert-success text-center">
             [[${message}]]
         </div>
@@ -21,7 +21,7 @@
                     <th>Brand ID</th>
                     <th>Logo</th>
                     <!-- <th>Brand Name</th> -->
-                    <th th:replace="fragments::column_link('/brands/','name','Brand Name','none')"></th>
+                    <th th:replace="fragments::column_link(,'name','Brand Name','none')"></th>
                     <th>Category</th>
                     <th>Action</th>
                 </tr>
@@ -47,7 +47,7 @@
 
             </tbody>
         </table>
-        <div th:replace="fragments::pagination('/brands/page/','brand')"></div>
+        <div th:replace="fragments::pagination('brand')"></div>
         <!-- Modal -->
         <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
         <!-- footer -->

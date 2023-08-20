@@ -21,7 +21,7 @@
       <div class="full-details">
         <!-- search form -->
         <!-- /categories/page/1 -->
-        <div th:replace="fragments::search_form('/categories/page/1')"></div>
+        <div th:replace="fragments::search_form"></div>
         <!-- Thông báo lỗi bằng RedirectAttributes -->
         <div th:if="${message!=null}" class="alert alert-success text-center">
           [[${message}]]
@@ -43,7 +43,7 @@
                   th:class="${reverseSortDir=='desc'?'fa-sharp fa-solid fa-caret-up':'fa-sharp fa-solid fa-caret-down'}"></span>
 
               </th>  -->
-              <th th:replace="fragments::column_link('/categories/','name','Category Name','none')"></th>
+              <th th:replace="fragments::column_link('name','Category Name','none')"></th>
               <th>Alias</th>
               <th>Enables</th>
 
@@ -94,7 +94,7 @@
         <div th:replace="fragments::pagination('/categories','categories')"></div>
        </div> -->
 
-    <div th:replace="fragments::pagination('/categories/page/','top-level categories')"></div>
+    <div th:replace="fragments::pagination('top-level categories')"></div>
     <!-- Modal Confirm -->
     <div th:replace="./fragments/fragment_modal::confirm_modal"></div>
   </main>

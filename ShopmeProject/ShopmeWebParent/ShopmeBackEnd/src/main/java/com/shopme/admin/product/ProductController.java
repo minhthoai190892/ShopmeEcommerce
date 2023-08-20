@@ -81,7 +81,7 @@ public class ProductController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("listProducts", listProducts);
 		model.addAttribute("listCategories", listCategories);
-
+		model.addAttribute("moduleURL","/products");
 		return "products/products";
 
 	}
@@ -119,10 +119,13 @@ public class ProductController {
 			@AuthenticationPrincipal ShopmeUserDetails loggedUser
 
 	) throws IOException {
-		if (loggedUser.hasRole("Selesperson")) {
-			productService.saveProductPrice(product);
+		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Editor") ) {
+			if ( loggedUser.hasRole("Selesperson")) {
+					productService.saveProductPrice(product);
 			redirectAttributes.addFlashAttribute("message", "The product has been saved successfully.");
 			return "redirect:/products";
+			}
+		
 		}
 		// gọi hàm
 		setMainImageName(mainImageMultipartFile, product);
@@ -288,6 +291,7 @@ public class ProductController {
 	public String editProduct(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
 		try {
 			Product product = productService.get(id);
+			System.err.println(product);
 			List<Brand> listBrands = brandService.listAll();
 			Integer numberOfExistingExtraImage = product.getImages().size();
 

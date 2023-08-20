@@ -11,6 +11,6 @@ public class CustomerRestController {
 	private CustomerService customerService;
 		@PostMapping("/customers/check_unique_email")
 		public String checkDuplicateEmail(@Param("email")String email) {
-			return customerService.isEmailUnique(email)?"Ok":"Duplicated";
+			return customerService.isEmailUnique(email)?"OK":"Duplicated";
 		}
 }

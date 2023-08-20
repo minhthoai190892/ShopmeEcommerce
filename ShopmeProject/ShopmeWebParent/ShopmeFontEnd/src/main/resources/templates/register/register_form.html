@@ -78,6 +78,13 @@
                         <input type="text" th:field="*{addressLine2}" class="form-control" maxlength="64" minlength="3">
                     </div>
                 </div>
+                <!-- City -->
+                <div class="form-group row mt-2">
+                    <label for="" class="col-sm-4 col-form-label">City:</label>
+                    <div class="col-sm-8">
+                        <input type="text" th:field="*{city}" class="form-control" maxlength="64" minlength="3">
+                    </div>
+                </div>
                 <!-- Country -->
                 <div class="form-group row mt-2">
                     <label for="" class="col-sm-4 col-form-label">Country:</label>
@@ -125,7 +132,7 @@
         </script>
     <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
     <script type="text/JavaScript">
-        var contextPath = "[[@{/}]]";
+    var contextPath = "[[@{/}]]";
     var dropDownCountry;
     var dataListState;
     var fieldState;
@@ -140,9 +147,10 @@
         });
         function loadStatesForCountry(){
             selectedCountry = $("#country option:selected");
+            
             countryId = selectedCountry.val();
-            url=contextPath + "states/list_states_by_country/"+countryId;
-            console.log(url);
+            url=contextPath + "settings/list_states_by_country/"+countryId;
+           
             $.get(url, function(responseJSON){
             dataListState.empty();
             $.each(responseJSON, function (index, state) { 
@@ -161,6 +169,7 @@
             }
             console.log(confirmPassword +" "+$("#password").val());
             }
+
             function checkEmailUnique(form) {
         // xác định đường dẫn của dịch vụ web (UserRestService)
         // url = "[[@{/users/check_email}]]";//==> nhận được giá trị của trường biểu mẫu

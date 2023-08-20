@@ -19,7 +19,7 @@ public class CountryRestController {
 	@GetMapping("/countries/list")
 	
 	public List<Country> listAll(){
-		return countryRepository.findAllByOrderByNameAsc();
+		return countryRepository.findAll();
 	}
 	@PostMapping("/countries/save")
 	public String save(@RequestBody Country country) {

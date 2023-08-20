@@ -87,6 +87,11 @@ function deleteCountry() {
     });
 }
 function updateCountry() {
+    formCountry = document.getElementById("formCountry");
+    if (!formCountry.checkValidity()){
+        formCountry.reportValidity();
+        return ;
+    }
     url = contextPath + "countries/save";
     countryName = fieldCountryName.val();
     countryCode = fieldCountryCode.val();
@@ -109,13 +114,17 @@ function updateCountry() {
         showToastMessage("ERROR: Could not connect to server or server encountered an error");
     });
 }
+
 function addCountry() {
+    formCountry = document.getElementById("formCountry");
+    if (!formCountry.checkValidity()){
+        formCountry.reportValidity();
+        return ;
+    }
     url = contextPath + "countries/save";
     countryName = fieldCountryName.val().trim();
     countryCode = fieldCountryCode.val().trim();
-    if (countryCode === "" && countryName === "") {
-        message.html("Please enter a country")
-    } else {
+
         jsonData = { name: countryName, code: countryCode };
         $.ajax({
             type: 'POST',
@@ -132,9 +141,14 @@ function addCountry() {
         }).fail(function () {
             showToastMessage("ERROR: Could not connect to server or server encountered an error");
         });
-        message.html("")
+}
+function validateFormCountry(){
+    formCountry = document.getElementById("formCountry");
+    if (!formCountry.checkValidity()){
+        formCountry.reportValidity();
+        return false;
     }
-
+    return true;
 }
 /**
  * Hàm chọn quốc gia mới thêm vào
@@ -142,15 +156,15 @@ function addCountry() {
  * @param {*} countryCode 
  * @param {*} countryName 
  */
-function selectNewlyAddedCountry(countryId, countryCode, countryName) {
+function selectNewlyAddedCountry(countryId, countryName) {
     console.log("selectNewlyAddedCountry");
     //thêm dữ liệu vào option 
     $("<option>")
-        .val(optionValue)
+        .val(countryId)
         .text(countryName)
         .appendTo(dropDownCountry);
     //chọn vào dữ liệu mới thêm vào
-    $("#dropDownCountries option[value = '" + optionValue + "']").prop("selected", true)
+    $("#dropDownCountries option[value = '" + countryId + "']").prop("selected", true)
     fieldCountryCode.val("");
     fieldCountryName.val("").focus();
 }

@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shopme.admin.FileUploadUtil;
+import com.shopme.admin.paging.PagingAndSortingHelper;
+import com.shopme.admin.paging.PagingAndSortingParam;
 import com.shopme.admin.user.UserNotFoundException;
 import com.shopme.admin.user.UserService;
 import com.shopme.admin.user.export.UserCsvExporter;
@@ -37,66 +39,32 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	/**
+	 * PagingAndSortingHelper cần đăng ký ở MvcConfig.java
 	 * @param model cần quyền truy cập vào model
 	 * @return về trang html
+	 * 
 	 */
 	@GetMapping("/users")
 	//cần quyền truy cập Model
-	public String listFirstPage(Model model) {
+	public String listFirstPage() {
 //		//tạo một danh sách "users"
 //		List<User> listUsers = service.listAll();
 //		//thêm vào model
 //		model.addAttribute("listUsers", listUsers);
 //		return "users";
-		return listByPage(1, model,"id","asc", null);
+//		return listByPage(1, model,"id","asc", null);
+//		return listByPage(helper,1, model,"id","asc", null);
+		return "redirect:/users/page/1?sortField=firstName&sortDir=asc";
 	}
 	/**
-	 * hàm hiển thị phân trên html
-	 * @param pageNum lấy số trang trên đường dẫn
-	 * @param model
-	 * @return
+	 * listUsers là dùng cho trang html, users là đường dẫn 
 	 */
 	@GetMapping("/users/page/{pageNum}")
-	public String listByPage(
+	public String listByPage(@PagingAndSortingParam(listName = "listUsers",moduleURL = "/users") PagingAndSortingHelper helper,
 			@PathVariable(name = "pageNum")int pageNum //@PathVariable thì được dùng để trích xuất dữ liệu từ URL path
-			,Model model
-			,@Param("sortField") String sortField,@Param("sortDir") String sortDir
-			,@Param("keyword") String keyword
+			
 			) {
-		Page<User> pageUser = service.listByPage(pageNum,sortField,sortDir, keyword);
-		//trả về nội dung của trang dưới dạng danh sách
-		List<User> listUsers = pageUser.getContent();
-		long startCount = (pageNum-1)*UserService.USER_PER_PAGE+1;
-		long endCount = startCount+UserService.USER_PER_PAGE-1;
-		if (endCount>pageUser.getTotalElements()) {
-			endCount=pageUser.getTotalElements();
-		}
-		String reverseSortDir = sortDir.equals("asc")?"desc":"asc";
-		System.out.println("Pagenum = "+pageNum);
-		System.out.println("Total elements = "+pageUser.getTotalElements());
-		System.out.println("Total page = "+pageUser.getTotalPages());
-		System.out.println("------------------");
-		System.out.println("startCount = "+startCount);
-		System.out.println("TendCount = "+endCount);
-		System.out.println("--------Sort----------");
-		System.out.println("Sort Field: "+sortField);
-		System.out.println("Sort Dir: "+sortDir);
-		System.out.println("reverseSortDir: "+reverseSortDir);
-		System.out.println("keyword: "+keyword);
-		
-		//thêm vào model dùng để hiển thị trên html 
-		model.addAttribute("currentPage", pageNum);
-		model.addAttribute("totalPages", pageUser.getTotalPages());
-		model.addAttribute("startCount", startCount);
-		model.addAttribute("endCount", endCount);
-		model.addAttribute("totalItems", pageUser.getTotalElements());
-		//thêm vào model dùng để hiển thị icon trên html 
-		model.addAttribute("sortField", sortField);
-		model.addAttribute("sortDir", sortDir);
-		model.addAttribute("reverseSortDir", reverseSortDir);
-		//search
-		model.addAttribute("keyword", keyword);
-		model.addAttribute("listUsers", listUsers);
+		service.listByPage(pageNum,helper);
 		return "users/users";
 	}
 	
