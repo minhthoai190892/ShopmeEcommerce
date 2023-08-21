@@ -101,6 +101,7 @@ public class CustomerService {
 		customerInform.setCreatedTime(customerDB.getCreatedTime());
 		customerInform.setEnabled(customerDB.isEnabled());
 		customerInform.setVerificationCode(customerDB.getVerificationCode());
+		customerInform.setAuthenticationType(customerDB.getAuthenticationType());
 		customerRepository.save(customerInform);
 	}
 	/**

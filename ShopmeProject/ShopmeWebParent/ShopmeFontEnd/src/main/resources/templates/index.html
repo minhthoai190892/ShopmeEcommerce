@@ -12,16 +12,8 @@
         <h1>Shopping by Categories</h1>
 
         <div class="row">
+            <!-- listCategories thuộc maincontroller -->
             <div class="col" th:each="cat : ${listCategories}">
-                <!-- <div>
-                    <img th:src="@{${cat.imagePath}}" style="width: 80px;object-fit: cover;" alt="">
-                    <div>
-                        <a th:href="@{'/c/'+${cat.alias}}" class="btn btn-primary">[[${cat.name}]]</a>
-                    </div>
-                </div> -->
-
-
-
                 <div class="card mb-2" style="width: 18rem;">
                     <img class="card-img-top" th:src="@{${cat.imagePath}}" alt="Card image cap">
                     <div class="card-body">

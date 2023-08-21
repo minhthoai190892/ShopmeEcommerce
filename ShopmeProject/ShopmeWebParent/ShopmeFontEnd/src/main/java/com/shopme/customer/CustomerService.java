@@ -23,23 +23,27 @@ public class CustomerService {
 	private CustomerRepository customerRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	public List<Country> listAllCountries() {
 		return countryRepository.findAllByOrderByNameAsc();
 	}
+
 	/**
 	 * Hàm kiểm tra email có trùng không
-	 * @param email của customer 
+	 * 
+	 * @param email của customer
 	 * @return trả về null hoặc not null
-	 * */
+	 */
 	public boolean isEmailUnique(String email) {
-	Customer customer=	customerRepository.findByEmail(email);
-	return customer == null;
+		Customer customer = customerRepository.findByEmail(email);
+		return customer == null;
 	}
+
 	/**
 	 * Hàm tạo mới customer
+	 * 
 	 * @param customer đối tượng customer từ form
-	 * */
+	 */
 	public void registerCustomer(Customer customer) {
 		encodePassword(customer);
 		customer.setEnabled(false);
@@ -50,89 +54,95 @@ public class CustomerService {
 		customerRepository.save(customer);
 		System.err.println(randomCode);
 	}
+
 	/**
 	 * Hàm tạo Verification Code
+	 * 
 	 * @param n là số ký tự của mã Verification Code
 	 * @return trả về một mã code
-	 * */
+	 */
 	private String randomString(int n) {
-		 // choose a Character random from this String
-		  String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-		         + "0123456789"
-		         + "abcdefghijklmnopqrstuvxyz";
-		 
-		  // create StringBuffer size of AlphaNumericString
-		  StringBuilder sb = new StringBuilder(n);
-		 
-		  for (int i = 0; i < n; i++) {
-		 
-		   // generate a random number between
-		   // 0 to AlphaNumericString variable length
-		   int index
-		    = (int)(AlphaNumericString.length()
-		      * Math.random());
-		 
-		   // add Character one by one in end of sb
-		   sb.append(AlphaNumericString
-		      .charAt(index));
-		  }
-		 
-		  return sb.toString();
+		// choose a Character random from this String
+		String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "0123456789" + "abcdefghijklmnopqrstuvxyz";
+
+		// create StringBuffer size of AlphaNumericString
+		StringBuilder sb = new StringBuilder(n);
+
+		for (int i = 0; i < n; i++) {
+
+			// generate a random number between
+			// 0 to AlphaNumericString variable length
+			int index = (int) (AlphaNumericString.length() * Math.random());
+
+			// add Character one by one in end of sb
+			sb.append(AlphaNumericString.charAt(index));
+		}
+
+		return sb.toString();
 	}
+
 	/**
 	 * Hàm mã hóa password
+	 * 
 	 * @param customer đối tượng customer cần mã hóa password
-	 * */
+	 */
 	private void encodePassword(Customer customer) {
 		// TODO Auto-generated method stub
 		String encodePassword = passwordEncoder.encode(customer.getPassword());
 		customer.setPassword(encodePassword);
-		
+
 	}
+
 	/**
-	 * Hàm tìm kiếm và xác minh customer bằng  verification Code
+	 * Hàm tìm kiếm và xác minh customer bằng verification Code
+	 * 
 	 * @param verificationCode verificationCode của customer
 	 * @return false / true
-	 * */
+	 */
 	public boolean verify(String verificationCode) {
 
-		Customer customer =customerRepository.findByVerificationCode(verificationCode);
+		Customer customer = customerRepository.findByVerificationCode(verificationCode);
 
-		if (customer==null || customer.isEnabled()) {
+		if (customer == null || customer.isEnabled()) {
 			return false;
-		}else {
-			//update customer
+		} else {
+			// update customer
 			customerRepository.enabled(customer.getId());
 			return true;
 		}
-		
+
 	}
-	public void updateAuthenticationType(Customer customer,AuthenticationType authenticationType) {
+
+	public void updateAuthenticationType(Customer customer, AuthenticationType authenticationType) {
 		if (!customer.getAuthenticationType().equals(authenticationType)) {
 			customerRepository.updateAuthenticationType(customer.getId(), authenticationType);
 		}
 	}
+
 	public Customer getCustomerByEmail(String email) {
 		return customerRepository.findByEmail(email);
 	}
+
 	/**
 	 * Hàm tạo mới khi login bằng GOOGLE
-	 * @param name nhận tên của custommer
-	 * @param email nhận email khi đăng nhập goodle
+	 * 
+	 * @param name        nhận tên của custommer
+	 * @param email       nhận email khi đăng nhập goodle
 	 * @param countryCode nhận country code khi đăng nhập google
-	 * **/
-	public void addNewCustomerUponOAuthLogin(String name, String email,String countryCode,AuthenticationType authenticationType) {
+	 **/
+	public void addNewCustomerUponOAuthLogin(String name, String email, String countryCode,
+			AuthenticationType authenticationType) {
 		// TODO Auto-generated method stub
 		Customer customer = new Customer();
-		
+
 		customer.setEmail(email);
-		
+
 		setName(name, customer);
-		
-		customer.setEnabled(true); 
+
+		customer.setEnabled(true);
 		customer.setCreatedTime(new Date());
 		customer.setAuthenticationType(authenticationType);
-		
+
 		customer.setPassword("");
 		customer.setAddressLine1("");
 		customer.setAddressLine2("");
@@ -143,21 +153,57 @@ public class CustomerService {
 		customer.setCountry(countryRepository.findByCode(countryCode));
 		customerRepository.save(customer);
 	}
+
 	/**
 	 * Hàm thiết lặp first name và last name
-	 * @param name nhận một tên của customer
+	 * 
+	 * @param name     nhận một tên của customer
 	 * @param customer đối tượng customer
-	 * */
+	 */
 	private void setName(String name, Customer customer) {
 		String[] nameArray = name.split(" ");
-		if (nameArray.length<2) {
+		if (nameArray.length < 2) {
 			customer.setFirstName(name);
 			customer.setLastName("");
-		}else {
+		} else {
 			String firstName = nameArray[0];
 			customer.setFirstName(firstName);
 			String lastName = name.replaceFirst(firstName, "");
 			customer.setLastName(lastName);
 		}
 	}
+
+	/**
+	 * Hàm lưu thông tin người dùng
+	 * 
+	 * @param customerInform là lấy thông tin người dùng nhập trên form đăng ký
+	 * 
+	 */
+	public void update(Customer customerInform) {
+
+		// tìm customer từ database
+		Customer customerDB = customerRepository.findById(customerInform.getId()).get();
+		if (customerDB.getAuthenticationType().equals(AuthenticationType.DATABASE)) {
+
+			// kiểm tra xem ô password có được nhập không
+			if (!customerInform.getPassword().isEmpty()) {
+				// => có nhập
+				String encondePassword = passwordEncoder.encode(customerInform.getPassword());
+				customerInform.setPassword(encondePassword);
+			} else {
+				// => không có nhập
+				// set lại password customer
+				customerInform.setPassword(customerDB.getPassword());
+			}
+		}else {
+			customerInform.setPassword(customerDB.getPassword());
+		}
+		customerInform.setCreatedTime(customerDB.getCreatedTime());
+		customerInform.setEnabled(customerDB.isEnabled());
+		customerInform.setVerificationCode(customerDB.getVerificationCode());
+		customerInform.setAuthenticationType(customerDB.getAuthenticationType());
+		customerInform.setEmail(customerDB.getEmail());
+		customerRepository.save(customerInform);
+	}
+
 }
