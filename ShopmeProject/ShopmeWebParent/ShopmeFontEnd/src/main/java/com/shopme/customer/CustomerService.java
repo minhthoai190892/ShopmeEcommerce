@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.shopme.common.entity.AuthenticationType;
 import com.shopme.common.entity.Country;
 import com.shopme.common.entity.Customer;
+import com.shopme.common.exception.CustomerNotFoundException;
 import com.shopme.setting.CountryRepository;
 
 import jakarta.transaction.Transactional;
@@ -203,7 +204,40 @@ public class CustomerService {
 		customerInform.setVerificationCode(customerDB.getVerificationCode());
 		customerInform.setAuthenticationType(customerDB.getAuthenticationType());
 		customerInform.setEmail(customerDB.getEmail());
+		customerInform.setResetPasswordToken(customerDB.getResetPasswordToken());
 		customerRepository.save(customerInform);
 	}
-
+/**
+ * Hàm cập nhật lại password và trả về một chuổi reset password mới
+ * */
+	public String updateResetPasswordToken(String email) throws CustomerNotFoundException {
+		// TODO Auto-generated method stub
+		Customer customer = customerRepository.findByEmail(email);
+		if (customer!=null) {
+			String token = randomString(30);
+			customer.setResetPasswordToken(token);
+			customerRepository.save(customer);
+			return token;
+		}else {
+			throw new CustomerNotFoundException("Could not find any customer with the email "+email);
+		}
+		
+	}
+	/**
+	 * Hàm lấy customer bằng field resetPassword
+	 * */
+	public Customer getByResetPasswordToken(String token) {
+		return customerRepository.findByResetPasswordToken(token);
+	}
+	
+	public void updatePassword(String token, String newPassword) throws CustomerNotFoundException {
+		Customer customer = customerRepository.findByResetPasswordToken(token);
+		if (customer == null) {
+			throw new CustomerNotFoundException("No customer found: invalid token");
+		}
+		customer.setPassword(newPassword);
+		customer.setResetPasswordToken(null);
+		encodePassword(customer);
+		customerRepository.save(customer);
+	}
 }

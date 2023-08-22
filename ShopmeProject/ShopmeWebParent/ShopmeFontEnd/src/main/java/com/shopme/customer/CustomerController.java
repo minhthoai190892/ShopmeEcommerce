@@ -82,6 +82,7 @@ public class CustomerController {
 		helper.setFrom(emailSettingBag.getFromAddress(), emailSettingBag.getSenderName());
 		helper.setTo(toAddress);
 		helper.setSubject(subject);
+		
 		content = content.replace("[[name]]", customer.getFullName());
 		String verifyURL = Utility.getSiteURL(request) + "/verify?code=" + customer.getVerificationCode();
 		content = content.replace("[[URL]]", verifyURL);

@@ -15,6 +15,10 @@ public class Utility {
 		System.out.println("Utility > siteURL: "+siteURL);
 		return siteURL.replace(request.getServletPath(), "");
 	}
+	/**
+	 * Hàm send email
+	 * @param settings 
+	 * */
 	public static JavaMailSenderImpl prepareMailSender(EmailSettingBag settings) {
 		JavaMailSenderImpl mailSenderImpl = new JavaMailSenderImpl();
 		mailSenderImpl.setHost(settings.getHost());

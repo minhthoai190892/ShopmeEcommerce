@@ -102,6 +102,7 @@ public class CustomerService {
 		customerInform.setEnabled(customerDB.isEnabled());
 		customerInform.setVerificationCode(customerDB.getVerificationCode());
 		customerInform.setAuthenticationType(customerDB.getAuthenticationType());
+		customerInform.setResetPasswordToken(customerDB.getResetPasswordToken());
 		customerRepository.save(customerInform);
 	}
 	/**
