@@ -35,4 +35,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 	@Query("update Customer c set c.authenticationType = ?2 where c.id=?1")
 	@Modifying
 	public void updateAuthenticationType(Integer customerId,AuthenticationType type);
+	/**
+	 * Hàm lấy customer bằng field resetPassword
+	 * */
+	public Customer findByResetPasswordToken(String token);
+	
 }

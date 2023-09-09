@@ -68,4 +68,10 @@ public class CustomerUserDetails implements UserDetails{
 	public Customer getCustomer() {
 		return this.customer;
 	}
+
+	@Override
+	public String toString() {
+		return "CustomerUserDetails [customer=" + customer + "]";
+	}
+	
 }

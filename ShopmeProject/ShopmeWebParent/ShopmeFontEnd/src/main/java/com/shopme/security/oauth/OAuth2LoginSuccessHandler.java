@@ -39,12 +39,18 @@ public class OAuth2LoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 		if (customer == null) {
 			customerService.addNewCustomerUponOAuthLogin(name, email, countryCode,authenticationType);;
 		} else {
+			oauth2User.setFullName(customer.getFullName());
 			customerService.updateAuthenticationType(customer, authenticationType);
 		}
 		System.err.println("onAuthenticationSuccess Handler: " + name + " " + email+" "+countryCode);
 
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
+	/**
+	 * Hàm so sánh và lấy theo loại đăng nhập
+	 * @param clientName tên loại đăng nhập
+	 * 
+	 * */
 	private AuthenticationType getAuthenticationType(String clientName) {
 		if (clientName.equals("61157404128-177hlpi5f435v2fj26f2io3lhe5q9ujp.apps.googleusercontent.com")) {
 			return AuthenticationType.GOOGLE;

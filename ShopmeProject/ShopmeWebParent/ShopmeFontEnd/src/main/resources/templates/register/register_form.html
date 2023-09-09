@@ -119,8 +119,8 @@
             </div>
         </form>
         <br>
-        <div th:replace="fragments::modal_dialog"></div>
     </div>
+    <div th:replace="fragments::modal_dialog"></div>
 
     <div th:replace="navigation::footer_menu"></div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -201,6 +201,7 @@
         });
         return false;
     }
+    
       // Modal Dialog
 function showModalDialog(title, message) {
   $("#modalTitle").text(title);

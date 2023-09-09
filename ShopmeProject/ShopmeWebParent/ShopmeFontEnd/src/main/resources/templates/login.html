@@ -4,7 +4,7 @@
 <head th:replace="fragments::page_head('Shopme','none')"> </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid text-center">
         <!-- menu -->
         <div th:replace="navigation::head_menu"></div>
         <!-- serach -->
@@ -39,6 +39,9 @@
                 </p>
             </div>
         </form>
+        <div>
+            or <a th:href="@{/forgot_password}">Forgot Password</a>
+        </div>
         <div class="text-center">
             Don't have an account? <a th:href="@{/register}"><b>Sign up</b></a>
         </div>
