@@ -50,7 +50,7 @@
             </th:block>
           </select>
         </th:block>
-
+        
         <th:block
           th:if="${!#authorization.expression('hasAuthority(''Admin'')')&&!#authorization.expression('hasAuthority(''Editor'')')}">
           <th:block th:if="${#authorization.expression('hasAuthority(''Selesperson'')')}">
