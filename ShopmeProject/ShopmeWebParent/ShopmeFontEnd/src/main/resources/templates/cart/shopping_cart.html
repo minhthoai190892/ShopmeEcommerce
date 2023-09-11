@@ -35,7 +35,8 @@
                             <div><span>=&nbsp;</span>
                                 <span th:if="${CURRENCY_SYMBOL_POSITION}=='Before price'"
                                     th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
-                                [[${#numbers.formatDecimal(item.subtotal,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]
+                                <span class="h4 subtotal" th:id="'subtotal' +${product.id} " }>
+                                    [[${#numbers.formatDecimal(item.subtotal,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]</span>
                                 <span th:if="${CURRENCY_SYMBOL_POSITION}=='After price'"
                                     th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
                             </div>
@@ -52,7 +53,7 @@
                 <div class="mt-2">
                     <span th:if="${CURRENCY_SYMBOL_POSITION}=='Before price'"
                         th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
-                    [[${#numbers.formatDecimal(estimatedTotal,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]
+                    <span class="h2" id="total">[[${#numbers.formatDecimal(estimatedTotal,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]</span>
                     <span th:if="${CURRENCY_SYMBOL_POSITION}=='After price'"
                         th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
                 </div>
@@ -64,6 +65,8 @@
         <div class="row m-1 text-center" th:if="${#lists.isEmpty(cartItems)}">
             <h3>You have not chosen any product yet.</h3>
         </div>
+        <!-- Modal -->
+        <div th:replace="fragments::modal_dialog"></div>
         <div th:replace="navigation::footer_menu"></div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
             integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
@@ -73,7 +76,16 @@
             integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
             </script>
         <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+        <script>
+            contextPath = "[[@{/}]]";
+            var csrfHeaderName = "[[${_csrf.headerName}]]";
+            var csrfValue = "[[${_csrf.token}]]"
+        </script>
         <script th:src="@{/js/common_modal.js}"></script>
+        <script th:src="@{/js/shopping_cart.js}"></script>
+        <script th:src="@{/js/jquery.number.min.js}"></script><!-- format price number -->
+
+
 </body>
 
 </html>
