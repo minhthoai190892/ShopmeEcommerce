@@ -82,7 +82,7 @@ public class CustomerController {
 		helper.setFrom(emailSettingBag.getFromAddress(), emailSettingBag.getSenderName());
 		helper.setTo(toAddress);
 		helper.setSubject(subject);
-		
+
 		content = content.replace("[[name]]", customer.getFullName());
 		String verifyURL = Utility.getSiteURL(request) + "/verify?code=" + customer.getVerificationCode();
 		content = content.replace("[[URL]]", verifyURL);
@@ -100,8 +100,8 @@ public class CustomerController {
 
 	@GetMapping("/account_details")
 	public String viewAccountDetails(Model model, HttpServletRequest request) {
-		String email = getEmailOfAuthenticatedCustomer(request);
-		System.err.println("account_details>>>>>>>"+email);
+		String email = Utility.getEmailOfAuthenticatedCustomer(request);
+		System.err.println("account_details>>>>>>>" + email);
 		Customer customer = customerService.getCustomerByEmail(email);
 
 		List<Country> listCountries = customerService.listAllCountries();
@@ -110,56 +110,44 @@ public class CustomerController {
 		return "customer/account_form";
 	}
 
-	private String getEmailOfAuthenticatedCustomer(HttpServletRequest request) {
-		Object principal = request.getUserPrincipal();
-		String customerEmail = null;
-		if (principal instanceof UsernamePasswordAuthenticationToken
-				|| principal instanceof RememberMeAuthenticationToken) {
-			customerEmail = request.getUserPrincipal().getName();
-			System.err.println("customerEmail>>>>>>" + customerEmail);
-		} else if (principal instanceof OAuth2AuthenticationToken) {
-			OAuth2AuthenticationToken oauth2AuthenticationToken = (OAuth2AuthenticationToken) principal;
-			CustomerOAuth2User oAuth2User = (CustomerOAuth2User) oauth2AuthenticationToken.getPrincipal();
-			customerEmail = oAuth2User.getEmail();
-			System.err.println("customerEmail......" + customerEmail);
-		}
-		return customerEmail;
-	}
+
 
 	@PostMapping("/update_account_details")
-	public String updateAccountDetails(Model model, Customer customer,RedirectAttributes redirectAttributes,HttpServletRequest request) {
-		
+	public String updateAccountDetails(Model model, Customer customer, RedirectAttributes redirectAttributes,
+			HttpServletRequest request) {
+
 		customerService.update(customer);
-		redirectAttributes.addFlashAttribute("message","Your account details have been updated.");
-		updateNameForAuthenticatedCustomer(customer,request);
+		redirectAttributes.addFlashAttribute("message", "Your account details have been updated.");
+		updateNameForAuthenticatedCustomer(customer, request);
 		return "redirect:/account_details";
 	}
 
-	private void updateNameForAuthenticatedCustomer(Customer customer,HttpServletRequest request) {
+	private void updateNameForAuthenticatedCustomer(Customer customer, HttpServletRequest request) {
 		Object principal = request.getUserPrincipal();
-		
+
 		if (principal instanceof UsernamePasswordAuthenticationToken
 				|| principal instanceof RememberMeAuthenticationToken) {
 			CustomerUserDetails userDetails = getCustomerUserDetailsObject(principal);
-			System.err.println("userDetails=============="+userDetails);
+			System.err.println("userDetails==============" + userDetails);
 			Customer authenticatedCustomer = userDetails.getCustomer();
 			authenticatedCustomer.setFirstName(customer.getFirstName());
 			authenticatedCustomer.setLastName(customer.getLastName());
 		} else if (principal instanceof OAuth2AuthenticationToken) {
 			OAuth2AuthenticationToken oauth2AuthenticationToken = (OAuth2AuthenticationToken) principal;
 			CustomerOAuth2User oAuth2User = (CustomerOAuth2User) oauth2AuthenticationToken.getPrincipal();
-			String fullName = customer.getFirstName()+ " "+customer.getLastName();
+			String fullName = customer.getFirstName() + " " + customer.getLastName();
 			oAuth2User.setFullName(fullName);
 		}
 	}
+
 	private CustomerUserDetails getCustomerUserDetailsObject(Object principal) {
-		CustomerUserDetails  userDetails = null;
+		CustomerUserDetails userDetails = null;
 		if (principal instanceof UsernamePasswordAuthenticationToken) {
 			UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) principal;
-		userDetails=	(CustomerUserDetails) token.getPrincipal();
-		}else if (principal instanceof RememberMeAuthenticationToken) {
+			userDetails = (CustomerUserDetails) token.getPrincipal();
+		} else if (principal instanceof RememberMeAuthenticationToken) {
 			RememberMeAuthenticationToken token = (RememberMeAuthenticationToken) principal;
-			userDetails= (CustomerUserDetails) token.getPrincipal();
+			userDetails = (CustomerUserDetails) token.getPrincipal();
 		}
 		return userDetails;
 	}

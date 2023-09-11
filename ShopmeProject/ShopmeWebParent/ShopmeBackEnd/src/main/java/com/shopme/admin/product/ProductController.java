@@ -288,14 +288,25 @@ public class ProductController {
 	}
 
 	@GetMapping("/products/edit/{id}")
-	public String editProduct(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+	public String editProduct(@PathVariable("id") Integer id, Model model
+			, RedirectAttributes redirectAttributes
+			,@AuthenticationPrincipal ShopmeUserDetails loggedUser
+			) {
 		try {
 			Product product = productService.get(id);
 			System.err.println(product);
 			List<Brand> listBrands = brandService.listAll();
 			Integer numberOfExistingExtraImage = product.getImages().size();
-
+			boolean isReadOnlyForSelesperson =false;
+			if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Editor") ) {
+				if ( loggedUser.hasRole("Selesperson")) {
+					isReadOnlyForSelesperson = true;
+				}
+			
+			}
+			
 			model.addAttribute("listBrands", listBrands);
+			model.addAttribute("isReadOnlyForSelesperson", isReadOnlyForSelesperson);
 			model.addAttribute("product", product);
 			model.addAttribute("pageTitle", "Edit Product (ID: " + id + ")");
 			model.addAttribute("numberOfExistingExtraImage", numberOfExistingExtraImage);

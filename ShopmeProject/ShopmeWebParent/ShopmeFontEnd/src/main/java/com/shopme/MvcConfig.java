@@ -46,7 +46,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		exposeDirectory("../site-logo", registry);
 	}
 	/**
-	 * Hàm tạo file hình ảnh
+	 * Hàm tạo file hình ảnh cho product
 	 * @param pathPattern tên thư mục hình ảnh
 	 * @param registry đăng ký thư mục
 	 */

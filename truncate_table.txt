@@ -1,3 +1,10 @@
 set foreign_key_checks =0;
 truncate table table_name;
 set foreign_key_checks =1;
+
+
+
+git checkout -b 178.-Code-View-Shopping-Cart
+git add .
+git commit -m "178.-Code-View-Shopping-Cart"
+git push -u origin 178.-Code-View-Shopping-Cart

@@ -34,7 +34,7 @@ public class WebSecurityConfig {
 		http.authorizeHttpRequests(configurer -> configurer.anyRequest().permitAll()// không cần xét đăng nhập
 //                        .authenticated()//phải đăng nhập
  * */
-		http.authorizeHttpRequests(configurer -> configurer.requestMatchers("/account_details","/update_account_details").authenticated().anyRequest().permitAll()
+		http.authorizeHttpRequests(configurer -> configurer.requestMatchers("/account_details","/update_account_details","/cart").authenticated().anyRequest().permitAll()
 		).formLogin(login -> login
 				.loginPage("/login")// hiển thị form login
 				.usernameParameter("email")//sử dụng email để đăng nhập

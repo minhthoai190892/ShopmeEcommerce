@@ -13,18 +13,22 @@
 			</a>
 		</div>
 		<!-- price -->
-		<div th:if="${product.discountPercent<=0}">
+		<div th:replace="product/product_fragment::product_price"></div>
+	</div>
+	<div th:fragment="product_price" th:remove="tag">
+		<!-- price -->
+		<th:block th:if="${product.discountPercent &lt;= 0}">
 			<!-- <span>[[${CURRENCY_SYMBOL}]] [[${product.price}]]</span> -->
 			<span th:replace="/product/product_fragment::price_fragment(${product.price})"></span>
-		</div>
+		</th:block>
 		<!-- discountPercent -->
-		<div th:if="${product.discountPercent>0}">
+		<th:block th:if="${product.discountPercent>0}">
 			<!-- ${product.discountPrice} -->
 			<span style="font-size: larger; color:darkred ;">
 				<span th:replace="/product/product_fragment::price_fragment(${product.discountPrice})"></span>
 			</span>
 			<del><span th:replace="/product/product_fragment::price_fragment(${product.discountPrice})"></span></del>
-		</div>
+		</th:block>
 	</div>
 	<span th:fragment="price_fragment(productPrice)" th:remove="tag">
 		<span th:if="${CURRENCY_SYMBOL_POSITION}=='Before price'" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>

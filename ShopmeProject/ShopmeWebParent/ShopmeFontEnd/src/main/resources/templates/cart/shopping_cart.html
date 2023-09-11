@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::page_head('Shopping Cart','none')"> </head>
+
+<body>
+    <div class="container-fluid">
+        <!-- menu -->
+        <div th:replace="navigation::head_menu"> </div>
+        <!-- serach -->
+        <div th:replace="navigation::search_nav"> </div>
+        <div class="text-center">
+            <h2>[[${pageTitle}]]</h2>
+        </div>
+        <div class="row m-1">
+            <div class="col-sm-8">
+                <th:block th:each="item,status : ${cartItems}">
+                    <!-- th:with="product=${item.product}" trường thay thế -->
+                    <div class="row border rounded p-1" th:with="product=${item.product}">
+                        <div class="col-2">
+                            <div>[[${status.count}]]</div>
+                            <i class="fa-solid fa-trash "></i>
+                        </div>
+                        <div class="col-3">
+                            <img th:src="@{${item.product.mainImagePath}}" class="img-fluid" alt="preview">
+                        </div>
+                        <div class="col-6">
+                            <a th:href="@{'/p/'+${item.product.alias}}" th:title="${product.name}"
+                                target="_blank"><b>[[${product.shortName}]]</b></a>
+                            <div th:replace="cart/quantity_control::quantity_control(${item.quantity},${product.id})">
+                            </div>
+                            <div><span>X&nbsp;</span>
+                                <div th:replace="product/product_fragment::product_price"></div>
+                            </div>
+                            <div><span>=&nbsp;</span>
+                                <span th:if="${CURRENCY_SYMBOL_POSITION}=='Before price'"
+                                    th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+                                [[${#numbers.formatDecimal(item.subtotal,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]
+                                <span th:if="${CURRENCY_SYMBOL_POSITION}=='After price'"
+                                    th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-1">&nbsp;</div>
+                </th:block>
+            </div>
+
+            <div class="col-sm-4" th:unless="${#lists.isEmpty(cartItems)}">
+                <div>
+                    <span class="h3">Estimated Total:</span>
+                </div>
+                <div class="mt-2">
+                    <span th:if="${CURRENCY_SYMBOL_POSITION}=='Before price'"
+                        th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+                    [[${#numbers.formatDecimal(estimatedTotal,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]
+                    <span th:if="${CURRENCY_SYMBOL_POSITION}=='After price'"
+                        th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-danger">Check out</button>
+                </div>
+            </div>
+        </div>
+        <div class="row m-1 text-center" th:if="${#lists.isEmpty(cartItems)}">
+            <h3>You have not chosen any product yet.</h3>
+        </div>
+        <div th:replace="navigation::footer_menu"></div>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+            </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+            integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+            </script>
+        <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+        <script th:src="@{/js/common_modal.js}"></script>
+</body>
+
+</html>
