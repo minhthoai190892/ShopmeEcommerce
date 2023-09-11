@@ -68,8 +68,11 @@
             </div>
 
             <div class="tab-pane" id="description" role="tabpanel" aria-labelledby="description-tab">
-              </th:block th:if="${isReadOnlyForSelesperson}">
-              <div th:replace="products/product_description_read_only::content"></div>
+              <th:block
+                th:if="${!#authorization.expression('hasAuthority(''Admin'')')&&!#authorization.expression('hasAuthority(''Editor'')')}">
+                <th:block th:if="${#authorization.expression('hasAuthority(''Selesperson'')')}">
+                  <div th:replace="products/product_description_read_only::content"></div>
+                </th:block>
               </th:block>
               <th:block
                 th:if="${#authorization.expression('hasAuthority(''Admin'')')||#authorization.expression('hasAuthority(''Editor'')')}">
@@ -77,18 +80,23 @@
               </th:block>
             </div>
             <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">
-              </th:block th:if="${isReadOnlyForSelesperson}">
-              <div th:replace="products/product_images_read_only::content"></div>
+              <th:block
+                th:if="${!#authorization.expression('hasAuthority(''Admin'')')&&!#authorization.expression('hasAuthority(''Editor'')')}">
+                <th:block th:if="${#authorization.expression('hasAuthority(''Selesperson'')')}">
+                  <div th:replace="products/product_images_read_only::content"></div>
+                </th:block>
               </th:block>
-
               <th:block
                 th:if="${#authorization.expression('hasAuthority(''Admin'')')||#authorization.expression('hasAuthority(''Editor'')')}">
                 <div th:replace="products/product_images::content"></div>
               </th:block>
             </div>
             <div class="tab-pane" id="details" role="tabpanel" aria-labelledby="details-tab">
-              </th:block th:if="${isReadOnlyForSelesperson}">
-              <div th:replace="products/product_details_read_only::content"></div>
+              <th:block
+                th:if="${!#authorization.expression('hasAuthority(''Admin'')')&&!#authorization.expression('hasAuthority(''Editor'')')}">
+                <th:block th:if="${#authorization.expression('hasAuthority(''Selesperson'')')}">
+                  <div th:replace="products/product_details_read_only::content"></div>
+                </th:block>
               </th:block>
               <th:block
                 th:if="${#authorization.expression('hasAuthority(''Admin'')')||#authorization.expression('hasAuthority(''Editor'')')}">
@@ -108,8 +116,11 @@
               </div>
             </div>
             <div class="tab-pane p-3" id="shipping" role="tabpanel" aria-labelledby="details-tab">
-              </th:block th:if="${isReadOnlyForSelesperson}">
-              <div th:replace="products/product_shipping_read_only::content"></div>
+              <th:block
+                th:if="${!#authorization.expression('hasAuthority(''Admin'')')&&!#authorization.expression('hasAuthority(''Editor'')')}">
+                <th:block th:if="${#authorization.expression('hasAuthority(''Selesperson'')')}">
+                  <div th:replace="products/product_shipping_read_only::content"></div>
+                </th:block>
               </th:block>
               <th:block
                 th:if="${#authorization.expression('hasAuthority(''Admin'')')||#authorization.expression('hasAuthority(''Editor'')')}">

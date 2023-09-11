@@ -1,5 +1,7 @@
 package com.shopme.shoppingcart;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +30,8 @@ public class ShoppingCartService {
 		cartItem.setQuantity(updateQuantity);
 		cartItemRepository.save(cartItem);
 		return updateQuantity;
+	}
+	public List<CartItem> listCartItems(Customer customer) {
+		return cartItemRepository.findByCustomer(customer);
 	}
 }
