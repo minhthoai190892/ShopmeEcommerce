@@ -29,7 +29,7 @@ public class ShopmeFontEndApplication {
 //			testFindByCustomer(cartItemRepository,customerRepository);
 //			testFindCustomerAndProduct(customerRepository, productRepository, cartItemRepository);
 //			testUpdateQuantity(customerRepository, productRepository, cartItemRepository);
-			testDeleteByCustomerAndProduct(customerRepository, productRepository, cartItemRepository);
+//			testDeleteByCustomerAndProduct(customerRepository, productRepository, cartItemRepository);
 		};
 	}
 
