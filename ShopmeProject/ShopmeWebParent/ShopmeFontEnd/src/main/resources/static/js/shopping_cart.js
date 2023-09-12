@@ -24,7 +24,15 @@ $(document).ready(function () {
             showModalDialog("Warning", "Maximum quantity is 5");
         }
     });
+    $(".linkRemove").on("click", function (evt) {
+        evt.preventDefault();
+        removeProduct($(this));
+
+    });
+
+
 });
+
 function updateQuantity(productId, quantity) {
     // quantity = $("#quantity" + productId).val();
     url = contextPath + "cart/update/" + productId + "/" + quantity;
@@ -52,9 +60,52 @@ function updateSubtotal(updatedSubtotal, productId) {
 }
 function updateTotal() {
     total = 0.0;
+    productCount = 0;
     $(".subtotal").each(function (indexInArray, valueOfElement) {
-        total+=parseFloat(valueOfElement.innerHTML.replaceAll(",",""))
+        productCount++;
+        total += parseFloat(valueOfElement.innerHTML.replaceAll(",", ""))
     });
-    formattedTotal=$.number(total,8);
-    $("#total").text(formattedTotal);
+    if (productCount < 1) {
+        showEmptyShoppingCart();
+    } else {
+
+        // formattedTotal = $.number(total, 8);
+        $("#total").text(total);
+    }
+
+}
+function showEmptyShoppingCart(){
+    $("#sectionTotal").hide();
+    $("#sectionEmptyCartMessage").removeClass("d-none");
+}
+function removeProduct(link) {
+    url = link.attr("href");
+    $.ajax({
+        type: "DELETE",
+        url: url,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader(csrfHeaderName, csrfValue);
+        }
+
+    }).done(function (response) {
+
+        rowNumber = link.attr("rowNumber");
+        removeProductHTML(rowNumber)
+        updateTotal();
+        updateCountNumber();
+        showModalDialog("Shopping Cart", response);
+    }).fail(function () {
+        showErrorModal("Error while removing product.");
+        // showModalDialog();
+    });
+}
+function removeProductHTML(rowNumber) {
+    $("#row" + rowNumber).remove();
+    $("#blankLine" + rowNumber).remove();
+}
+function updateCountNumber() {
+    $(".divCount").each(function (index, element) {
+        element.innerHTML = "" + (index + 1);
+
+    });
 }
