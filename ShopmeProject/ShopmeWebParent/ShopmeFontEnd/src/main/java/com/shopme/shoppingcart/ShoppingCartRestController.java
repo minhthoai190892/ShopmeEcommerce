@@ -1,6 +1,7 @@
 package com.shopme.shoppingcart;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +31,7 @@ public class ShoppingCartRestController {
 		} catch (CustomerNotFoundException e) {
 			// TODO: handle exception
 			return "You must login to add this product to cart.";
-		}catch (ShoppingCartException e) {
+		} catch (ShoppingCartException e) {
 			// TODO: handle exception
 			return e.getMessage();
 		}
@@ -46,5 +47,34 @@ public class ShoppingCartRestController {
 		}
 		return customerService.getCustomerByEmail(email);
 
+	}
+
+	@PostMapping("/cart/update/{productId}/{quantity}")
+	public String updateQuantity(@PathVariable(name = "productId") Integer productId,
+			@PathVariable(name = "quantity") Integer quantiry, HttpServletRequest request) {
+		try {
+			Customer customer = getAuthenticatedCustomer(request);
+
+			float subtotal = shoppingCartService.updateQuantity(productId, quantiry, customer);
+
+			return String.valueOf(subtotal);
+		} catch (CustomerNotFoundException e) {
+			// TODO: handle exception
+			return "You must login to change of product.";
+		}
+	}
+
+	@DeleteMapping("/cart/remove/{productId}")
+	public String updateQuantity(@PathVariable(name = "productId") Integer productId, HttpServletRequest request) {
+		try {
+			Customer customer = getAuthenticatedCustomer(request);
+			shoppingCartService.removeProduct(productId, customer);
+			return "The product has been removed from your shopping cart";
+		} catch (CustomerNotFoundException e) {
+			// TODO Auto-generated catch block
+			return "You must login to remove product.";
+		}
+
+	
 	}
 }

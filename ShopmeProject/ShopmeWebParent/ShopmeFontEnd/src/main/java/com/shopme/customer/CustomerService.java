@@ -52,6 +52,7 @@ public class CustomerService {
 		customer.setAuthenticationType(AuthenticationType.DATABASE);
 		String randomCode = randomString(64);
 		customer.setVerificationCode(randomCode);
+		
 		customerRepository.save(customer);
 		System.err.println(randomCode);
 	}
@@ -88,8 +89,11 @@ public class CustomerService {
 	 * @param customer đối tượng customer cần mã hóa password
 	 */
 	private void encodePassword(Customer customer) {
+		System.out.println("encodePassword");
 		// TODO Auto-generated method stub
+		System.out.println(customer.getPassword());
 		String encodePassword = passwordEncoder.encode(customer.getPassword());
+		System.out.println("encodePassword"+encodePassword);
 		customer.setPassword(encodePassword);
 
 	}

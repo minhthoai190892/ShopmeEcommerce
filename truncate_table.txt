@@ -4,7 +4,7 @@ set foreign_key_checks =1;
 
 
 
-git checkout -b 178.-Code-View-Shopping-Cart
+git checkout -b 180.-Code-Remove-Product-from-Shopping-Cart
 git add .
-git commit -m "178.-Code-View-Shopping-Cart"
-git push -u origin 178.-Code-View-Shopping-Cart
+git commit -m "180.-Code-Remove-Product-from-Shopping-Cart"
+git push -u origin 180.-Code-Remove-Product-from-Shopping-Cart
